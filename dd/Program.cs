@@ -43,9 +43,7 @@ namespace dd
                 theDeck = deck;
             }
             if (results.Count == 1)
-            {
                 theDeck.Dump();
-            }
             else if (deckCount > 1)
                 theFirstDeck.Dump();
         }
