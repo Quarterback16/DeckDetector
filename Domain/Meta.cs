@@ -22,5 +22,19 @@ namespace Domain
         {
             Decks.Add(deck);
         }
+
+        public List<Card> PlayableCards()
+        {
+            var playableCards = new List<Card>();
+            foreach (var deck in Decks)
+            {
+                foreach (var card in deck.Cards)
+                {
+                    if (!playableCards.Contains(card))
+                        playableCards.Add(card);
+                }
+            }
+            return playableCards;
+        }
     }
 }
