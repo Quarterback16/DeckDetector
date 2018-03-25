@@ -46,5 +46,12 @@ namespace Domain
             manaCost = HearthDb.ManaCost(Name);
             return manaCost;
         }
+
+        public bool HasAoe()
+        {
+            var isAoe = false;
+            isAoe = HearthDb.HasAoe(this);
+            return isAoe;
+        }
     }
 }

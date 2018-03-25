@@ -24,14 +24,34 @@ namespace Domain
             return false;
         }
 
+        public override string ToString()
+        {
+            return NameOut();
+        }
+
+        public string NameOut()
+        {
+            return $"T{Tier} {Name} ({Rank})";
+        }
+
+
         public void Dump()
         {
-            Console.WriteLine("------------------");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine($"   {NameOut()}");
+            Console.WriteLine("-----------------------------");
             foreach (var card in Cards)
             {
-                Console.WriteLine($"{card.ManaCost()}-{card.Name}");
+                ConsoleColor oldColour = Console.ForegroundColor;
+                if (card.HasAoe())
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+                Console.WriteLine($"{string.Format("{0,2}", card.ManaCost())}-{card.Name}");
+                if (card.HasAoe())
+                    Console.ForegroundColor = oldColour;
             }
-            Console.WriteLine("------------------");
+            Console.WriteLine("------------------------------");
         }
     }
 }

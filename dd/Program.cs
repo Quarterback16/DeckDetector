@@ -13,9 +13,6 @@ namespace dd
         {
             var options = new Options();
             IEnumerable<string> cardsPlayed = new List<string>();
-            //  version 1.9
-            //if (!Parser.Default.ParseArguments(args, options))
-            //    Environment.Exit(Parser.DefaultExitCodeFail);
 
             var result = Parser.Default.ParseArguments<Options>(args)
                 .WithParsed(o => options.HeroClass = o.HeroClass)
@@ -34,9 +31,14 @@ namespace dd
 
         private static void DumpDecks(List<Deck> results)
         {
+            var deckCount = 0;
+            Deck theFirstDeck = new Deck();
             Deck theDeck = new Deck();
             foreach (var deck in results)
             {
+                deckCount++;
+                if (deckCount == 1)
+                    theFirstDeck = deck;
                 Console.WriteLine($"T{deck.Tier} {deck.Name} ({deck.Rank})");
                 theDeck = deck;
             }
@@ -44,6 +46,8 @@ namespace dd
             {
                 theDeck.Dump();
             }
+            else if (deckCount > 1)
+                theFirstDeck.Dump();
         }
     }
 }

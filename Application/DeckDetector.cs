@@ -288,6 +288,7 @@ namespace Application
                     new Card { Name = "Dark Pact" },
                     new Card { Name = "Kobold Librarian" },
                     new Card { Name = "Mistress of Mixtures" },
+                    new Card { Name = "Plated Beetle" },
                     new Card { Name = "Defile" },
                     new Card { Name = "Doomsayer" },
                     new Card { Name = "Hellfire" },

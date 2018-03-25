@@ -61,6 +61,19 @@ namespace Application.Tests
         }
 
         [TestMethod]
+        public void DeckDetector_CanDisplayDeck()
+        {
+            var heroClass = "Priest";
+            var played = new string[]
+            {
+                "PV"
+            };
+            var results = sut.ListDecks(heroClass, played);
+            DumpDecks(results);
+        }
+
+
+        [TestMethod]
         public void DeckDetector_CardsAllHaveAManaCost()
         {
             Assert.IsTrue(sut.CardsAreValid());
