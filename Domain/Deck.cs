@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Domain
 {
@@ -40,7 +41,7 @@ namespace Domain
             Console.WriteLine("-----------------------------");
             Console.WriteLine($"   {NameOut()}");
             Console.WriteLine("-----------------------------");
-            foreach (var card in Cards)
+            foreach (var card in Cards.OrderBy(c=>c.ManaCost()))
             {
                 ConsoleColor oldColour = Console.ForegroundColor;
                 if (card.HasAoe())

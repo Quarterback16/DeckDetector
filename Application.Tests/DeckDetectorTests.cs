@@ -44,11 +44,11 @@ namespace Application.Tests
         }
 
         [TestMethod]
-        public void DeckDetector_WithMc2Meta_HasHas_320_PlayableCards()
+        public void DeckDetector_WithMc2Meta_HasHas_319_PlayableCards()
         {
             var result = sut.PlayableCards();
             Assert.AreEqual(
-                expected: 320,
+                expected: 319,
                 actual: result.Count);
         }
 
@@ -125,6 +125,33 @@ namespace Application.Tests
             var results = sut.ListDecks(heroClass, played);
             DumpDecks(results);
             Assert.IsTrue(results.Count == 2);
+        }
+
+
+        [TestMethod]
+        public void DeckDetector_ListDruidDecksHavingUltimateInfestation_Returns2Decks()
+        {
+            var heroClass = "D";
+            var played = new string[]
+            {
+                "UI",
+            };
+            var results = sut.ListDecks(heroClass, played);
+            DumpDecks(results);
+            Assert.AreEqual(3, results.Count);
+        }
+
+        [TestMethod]
+        public void DeckDetector_ListDruidDecksHavingWildGrowth_Returns2Decks()
+        {
+            var heroClass = "D";
+            var played = new string[]
+            {
+                "WG",
+            };
+            var results = sut.ListDecks(heroClass, played);
+            DumpDecks(results);
+            Assert.AreEqual(2, results.Count);
         }
 
 

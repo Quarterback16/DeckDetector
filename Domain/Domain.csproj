@@ -44,6 +44,7 @@
     <Compile Include="Deck.cs" />
     <Compile Include="HearthDb.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="KatacombsAndKoboldsPostNerf.cs" />
     <Compile Include="Meta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
