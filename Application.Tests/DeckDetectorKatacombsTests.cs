@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Domain.Metas;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 namespace Application.Tests
 {
     [TestClass]
-    public class DeckDetectorTests
+    public class DeckDetectorKoboldsTests
     {
         private DeckDetector sut;
 
@@ -18,7 +19,7 @@ namespace Application.Tests
 
         private DeckDetector SystemUnderTest()
         {
-            return new DeckDetector();
+            return new DeckDetector(KatacombsAndKoboldsPostNerf.LoadMeta());
         }
 
         [TestMethod]
@@ -28,10 +29,9 @@ namespace Application.Tests
             var played = new string[]
             {
                 "Cavern Shinyfinder",
-
             };
             var results = sut.ListDecks(heroClass, played);
-            DumpDecks(results);
+            sut.DumpDecks(results);
         }
 
 
@@ -39,7 +39,7 @@ namespace Application.Tests
         public void DeckDetector_OnInstantiation_HasMc2Meta()
         {
             Assert.AreEqual(
-                expected: "MC2",
+                expected: "KC2",
                 actual: sut.CurrentMeta.Code);
         }
 
@@ -56,7 +56,7 @@ namespace Application.Tests
         public void DeckDetector_ListDecks_Returns_27_Decks()
         {
             var results = sut.ListDecks();
-            DumpDecks(results);
+            sut.DumpDecks(results);
             Assert.IsTrue(results.Count == 27);
         }
 
@@ -69,7 +69,7 @@ namespace Application.Tests
                 "PV"
             };
             var results = sut.ListDecks(heroClass, played);
-            DumpDecks(results);
+            sut.DumpDecks(results);
         }
 
 
@@ -83,7 +83,7 @@ namespace Application.Tests
         public void DeckDetector_ListPriestDecks_Returns4Decks()
         {
             var results = sut.ListDecks("Priest");
-            DumpDecks(results);
+            sut.DumpDecks(results);
             Assert.IsTrue(results.Count == 4);
         }
 
@@ -96,7 +96,7 @@ namespace Application.Tests
                 "Radiant Elemental"
             };
             var results = sut.ListDecks(heroClass, played);
-            DumpDecks(results);
+            sut.DumpDecks(results);
             Assert.IsTrue(results.Count == 2);
         }
 
@@ -109,7 +109,7 @@ namespace Application.Tests
                 "RE"
             };
             var results = sut.ListDecks(heroClass, played);
-            DumpDecks(results);
+            sut.DumpDecks(results);
             Assert.IsTrue(results.Count == 2);
         }
 
@@ -123,7 +123,7 @@ namespace Application.Tests
                 "Radiant Elemental"
             };
             var results = sut.ListDecks(heroClass, played);
-            DumpDecks(results);
+            sut.DumpDecks(results);
             Assert.IsTrue(results.Count == 2);
         }
 
@@ -137,7 +137,7 @@ namespace Application.Tests
                 "UI",
             };
             var results = sut.ListDecks(heroClass, played);
-            DumpDecks(results);
+            sut.DumpDecks(results);
             Assert.AreEqual(3, results.Count);
         }
 
@@ -150,23 +150,8 @@ namespace Application.Tests
                 "WG",
             };
             var results = sut.ListDecks(heroClass, played);
-            DumpDecks(results);
+            sut.DumpDecks(results);
             Assert.AreEqual(2, results.Count);
-        }
-
-
-        private static void DumpDecks(List<Deck> results)
-        {
-            Deck theDeck = new Deck();
-            foreach (var deck in results)
-            {
-                Console.WriteLine($"T{deck.Tier} {deck.Name} ({deck.Rank})");
-                theDeck = deck;
-            }
-            if ( results.Count == 1 )
-            {
-                theDeck.Dump();
-            }
         }
     }
 }

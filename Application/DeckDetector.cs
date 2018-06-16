@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Domain.Metas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,16 @@ namespace Application
 
         public DeckDetector()
         {
-            CurrentMeta = KatacombsAndKoboldsPostNerf.LoadMeta();
+            CurrentMeta = WitchwoodBalanced.LoadMeta();
         }
 
+		public DeckDetector(Meta meta)
+		{
+			CurrentMeta = meta;
+		}
 
-        public List<Card> PlayableCards()
+
+		public List<Card> PlayableCards()
         {
             var pc = CurrentMeta.PlayableCards();
             foreach (var card in pc.OrderBy(c=>c.Name))
@@ -81,6 +87,18 @@ namespace Application
             return shortList.ToList();
         }
 
-
-    }
+		public void DumpDecks(List<Deck> results)
+		{
+			Deck theDeck = new Deck();
+			foreach (var deck in results)
+			{
+				Console.WriteLine($"T{deck.Tier} {deck.Name} ({deck.Rank})");
+				theDeck = deck;
+			}
+			if (results.Count == 1)
+			{
+				theDeck.Dump();
+			}
+		}
+	}
 }
