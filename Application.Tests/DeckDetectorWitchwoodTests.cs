@@ -71,5 +71,50 @@ namespace Application.Tests
 				}
 			}
 		}
+
+		[TestMethod]
+		public void DeckDetector_ListDecksHavingCertainCards_ReturnsDeck()
+		{
+			var heroClass = "Hunter";
+			var played = new string[]
+			{
+				"Wandering Monster",
+			};
+			var results = sut.ListDecks(heroClass, played);
+			sut.DumpDecks(results);
+		}
+
+		[TestMethod]
+		public void DeckDetector_ListPriestDecksHavingRE_Returns2Deck()
+		{
+			var heroClass = "Priest";
+			var played = new string[]
+			{
+				"RE"
+			};
+			var results = sut.ListDecks(heroClass, played);
+			sut.DumpDecks(results);
+			Assert.AreEqual(1, results.Count);
+		}
+
+		[TestMethod]
+		public void DeckDetector_ListDecksHavingWanderingMonster_ReturnsSpellHunter()
+		{
+			var heroClass = "Hunter";
+			var played = new string[]
+			{
+				"WM",
+				"ST"
+			};
+			var results = sut.ListDecks(heroClass, played);
+			Assert.AreEqual(2,results.Count);
+			var containsSpellHunter = false;
+			foreach (var deck in results)
+			{
+				if (deck.Name == "Spell Hunter")
+					containsSpellHunter = true;
+			}
+			Assert.IsTrue(containsSpellHunter, "results should includ Spell Hunter");
+		}
 	}
 }
