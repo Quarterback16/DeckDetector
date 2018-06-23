@@ -31,29 +31,45 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_WithRw2Meta_HasHas_319_PlayableCards()
+		public void DeckDetector_WithRw2Meta_HasHas_326_PlayableCards()
 		{
 			var result = sut.PlayableCards();
 			Assert.AreEqual(
-				expected: 218,
+				expected: 326,
 				actual: result.Count);
 		}
 
 		[TestMethod]
-		public void DeckDetector_ListDecks_Returns_27_Decks()
+		public void DeckDetector_ListDecks_Returns_28_Decks()
 		{
 			var results = sut.ListDecks();
 			sut.DumpDecks(results);
-			Assert.IsTrue(results.Count == 16);
+			Assert.AreEqual(
+				expected: 28,
+				actual: results.Count );
 		}
 
 		[TestMethod]
-		public void DeckDetector_ListPriestDecks_Returns4Decks()
+		public void DeckDetector_ListPriestDecks_Returns3Decks()
 		{
 			var results = sut.ListDecks("Priest");
 			sut.DumpDecks(results);
-			Assert.AreEqual(1,results.Count);
+			Assert.AreEqual(3,results.Count);
 		}
 
+		[TestMethod]
+		public void DeckDetector_HeathDb_HasAllWitchwoodCards()
+		{
+			var cards = sut.PlayableCards();
+			foreach (var card in cards)
+			{
+				if ( !HearthDb.Contains(card))
+				{
+					Console.WriteLine(
+						$" [\"{card.Name}\", new CardData [ ManaCost = 0 ] ],"
+						);
+				}
+			}
+		}
 	}
 }

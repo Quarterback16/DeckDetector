@@ -21,13 +21,17 @@ namespace Application
 		}
 
 
-		public List<Card> PlayableCards()
+		public List<Card> PlayableCards(bool dump = false)
         {
-            var pc = CurrentMeta.PlayableCards();
-            foreach (var card in pc.OrderBy(c=>c.Name))
-            {
-                Console.WriteLine(card.ToString());
-            }
+            var pc = CurrentMeta.PlayableCards().OrderBy(c => c.Name).ToList();
+			
+			if (dump)
+			{
+				foreach (var card in pc)
+				{
+					Console.WriteLine(card.ToString());
+				}
+			}
             return pc;
         }
 

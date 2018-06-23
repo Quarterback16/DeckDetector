@@ -10,7 +10,9 @@ namespace Application.Tests
         [TestMethod]
         public void ManaCostForNorthshireCleric_Returns_1()
         {
-            Assert.AreEqual(expected: 1, actual: HearthDb.ManaCost("Northshire Cleric"));
+            Assert.AreEqual(
+				expected: 1, 
+				actual: HearthDb.ManaCost("Northshire Cleric"));
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Domain
 {
@@ -45,8 +44,21 @@ namespace Domain
             return false;
         }
 
+		public static bool Contains(Card card)
+		{
+			if (CardBase == null)
+				LoadCardBase();
 
-        private static void LoadCardBase()
+			var cardData = new CardData();
+			if (CardBase.TryGetValue(card.Name, out cardData))
+			{
+				return true;
+			}
+			return false;
+		}
+
+
+		private static void LoadCardBase()
         {
             CardBase = new Dictionary<string, CardData>
             {
@@ -368,8 +380,131 @@ namespace Domain
 { "Youthful Brewmaster", new CardData { ManaCost = 2 } },
 { "Ysera", new CardData { ManaCost = 9 } },
 { "Y'Shaarj Rage Unbound", new CardData { ManaCost = 10 } },
-{ "Zola the Gorgon", new CardData { ManaCost = 3 } }
-            };
+{ "Zola the Gorgon", new CardData { ManaCost = 3 } },
+{"Acherus Veteran", new CardData { ManaCost = 1 } },
+ {"Acidic Swap Ooze", new CardData { ManaCost = 2 } },
+ {"Al'Akir the Windlord", new CardData { ManaCost = 8 } },
+ {"Alexstraza", new CardData { ManaCost = 9 } },
+ {"Amani Berserker", new CardData { ManaCost = 2 } },
+ {"Arcane Keysmith", new CardData { ManaCost = 4 } },
+ {"Arcane Missiles", new CardData { ManaCost = 1 } },
+ {"Arcane Shot", new CardData { ManaCost = 1 } },
+ {"Arcane Tyrant", new CardData { ManaCost = 5 } },
+ {"Archbishop Benedictus", new CardData { ManaCost = 7 } },
+ {"Argent Commander", new CardData { ManaCost = 6 } },
+ {"Argent Protector", new CardData { ManaCost = 2 } },
+ {"Armani Berserker", new CardData { ManaCost = 0 } },
+ {"Avenging Wrath", new CardData { ManaCost = 6 } },
+ {"Awaken the Makers", new CardData { ManaCost = 1 } },
+ {"Baku the Mooneater", new CardData { ManaCost = 9 } },
+ {"Baleful Banker", new CardData { ManaCost = 2 } },
+ {"Baron Geddon", new CardData { ManaCost = 7 } },
+ {"Blessing of Kings", new CardData { ManaCost = 4 } },
+ {"Blessing of Might", new CardData { ManaCost = 1 } },
+ {"Blink Fox", new CardData { ManaCost = 3 } },
+ {"Bloodmage Thalnos", new CardData { ManaCost = 2 } },
+ {"Bone Drake", new CardData { ManaCost = 6 } },
+ {"Charged Devilsaur", new CardData { ManaCost = 8 } },
+ {"Chillblade Champion", new CardData { ManaCost = 4 } },
+ {"Cinderstorm", new CardData { ManaCost = 3 } },
+ {"Circle of Healing", new CardData { ManaCost = 0 } },
+ {"Cornered Sentry", new CardData { ManaCost = 2 } },
+ {"Corpsetaker", new CardData { ManaCost = 4 } },
+ {"Crypt Lord", new CardData { ManaCost = 3 } },
+ {"Crystalline Oracle", new CardData { ManaCost = 1 } },
+ {"Darius Crowley", new CardData { ManaCost = 5 } },
+ {"Dark Iron Dwarf", new CardData { ManaCost = 4 } },
+ {"Divine Hymn", new CardData { ManaCost = 2 } },
+ {"Dread Infernal", new CardData { ManaCost = 6 } },
+ {"Druid of the Scythe", new CardData { ManaCost = 3 } },
+ {"Earthen Might", new CardData { ManaCost = 1 } },
+ {"Evolving Spores", new CardData { ManaCost = 4 } },
+ {"Far Sight", new CardData { ManaCost = 3 } },
+ {"Ferocious Howl", new CardData { ManaCost = 3 } },
+ {"Fire Elemental", new CardData { ManaCost = 6 } },
+ {"Fire Plume's Heart", new CardData { ManaCost = 1 } },
+ {"Forge Of Souls", new CardData { ManaCost = 2 } },
+ {"Gather Your Party", new CardData { ManaCost = 6 } },
+ {"Genn Greymane", new CardData { ManaCost = 6 } },
+ {"Geosculptor Yip", new CardData { ManaCost = 8 } },
+ {"Gluttonous Ooze", new CardData { ManaCost = 3 } },
+ {"Gnomeferatu", new CardData { ManaCost = 2 } },
+ {"Grievous Bite", new CardData { ManaCost = 2 } },
+ {"Grommash Hellscream", new CardData { ManaCost = 8 } },
+ {"Hadronox", new CardData { ManaCost = 9 } },
+ {"Hagatha The Witch", new CardData { ManaCost = 8 } },
+ {"Hallucination", new CardData { ManaCost = 1 } },
+ {"Hammer of Wrath", new CardData { ManaCost = 4 } },
+ {"Hench-Clan Thug", new CardData { ManaCost = 3 } },
+ {"Holy Fire", new CardData { ManaCost = 6 } },
+ {"Hooked Reaver", new CardData { ManaCost = 4 } },
+ {"Injured Blademaster", new CardData { ManaCost = 3 } },
+ {"Iron Hide", new CardData { ManaCost = 1 } },
+ {"Ironbeak Owl", new CardData { ManaCost = 3 } },
+ {"Ironwood Golem", new CardData { ManaCost = 4 } },
+ {"Kalimos Primal Lord", new CardData { ManaCost = 8 } },
+ {"Kathrena Winterwisp", new CardData { ManaCost = 8 } },
+ {"King Krush", new CardData { ManaCost = 9 } },
+ {"Knife Jugger", new CardData { ManaCost = 2 } },
+ {"Lifedrinker", new CardData { ManaCost = 4 } },
+ {"Lightning Bolt", new CardData { ManaCost = 1 } },
+ {"Lightning Storm", new CardData { ManaCost = 3 } },
+ {"Lord Godfrey", new CardData { ManaCost = 7 } },
+ {"Lyra the Sunshard", new CardData { ManaCost = 5 } },
+ {"Moonfire", new CardData { ManaCost = 0 } },
+ {"Mossy Horror", new CardData { ManaCost = 6 } },
+ {"Murkspark Eel", new CardData { ManaCost = 2 } },
+ {"Naturalize", new CardData { ManaCost = 1 } },
+ {"Nightmare Amalgam", new CardData { ManaCost = 4 } },
+ {"Phantom Militia", new CardData { ManaCost = 3 } },
+ {"Play Dead", new CardData { ManaCost = 1 } },
+ {"Primalfin Totem", new CardData { ManaCost = 2 } },
+ {"Rabid Worgen", new CardData { ManaCost = 3 } },
+ {"Radient Elemental", new CardData { ManaCost = 2 } },
+ {"Raid Leader", new CardData { ManaCost = 3 } },
+ {"Reckless Flurry", new CardData { ManaCost = 3 } },
+ {"Rotface", new CardData { ManaCost = 8 } },
+ {"Rotten Applebaum", new CardData { ManaCost = 5 } },
+ {"Sandbinder", new CardData { ManaCost = 4 } },
+ {"Saronite Chain Gang", new CardData { ManaCost = 4 } },
+ {"Savannah Highmane", new CardData { ManaCost = 6 } },
+ {"Sea Giant", new CardData { ManaCost = 10 } },
+ {"Shroom Brewer", new CardData { ManaCost = 4 } },
+ {"Shudderwock", new CardData { ManaCost = 9 } },
+ {"Silence", new CardData { ManaCost = 0 } },
+ {"Silver Vanguard", new CardData { ManaCost = 7 } },
+ {"Sindragosa", new CardData { ManaCost = 8 } },
+ {"Snipe", new CardData { ManaCost = 2 } },
+ {"Soul of the Forest", new CardData { ManaCost = 4 } },
+ {"Spiritsinger Umbra", new CardData { ManaCost = 4 } },
+ {"Starfall", new CardData { ManaCost = 5 } },
+ {"Stitched Tracker", new CardData { ManaCost = 3 } },
+ {"Stormwind Champion", new CardData { ManaCost = 7 } },
+ {"Sunfury Protector", new CardData { ManaCost = 2 } },
+ {"The Glass Knight", new CardData { ManaCost = 4 } },
+ {"Tinkmaster Overspark", new CardData { ManaCost = 3 } },
+ {"To My Side!", new CardData { ManaCost = 6 } },
+ {"Tortollan Shellraiser", new CardData { ManaCost = 4 } },
+ {"Town Crier", new CardData { ManaCost = 1 } },
+ {"Truesilver Champion", new CardData { ManaCost = 4 } },
+ {"Twig Of The World Tree", new CardData { ManaCost = 4 } },
+ {"Twillight's Call", new CardData { ManaCost = 3 } },
+ {"Unpowered Steambot", new CardData { ManaCost = 4 } },
+ {"Vicious Fledgling", new CardData { ManaCost = 3 } },
+ {"Vicious Scalehide", new CardData { ManaCost = 2 } },
+ {"Violet Teacher", new CardData { ManaCost = 4 } },
+ {"Voodoo Doll", new CardData { ManaCost = 3 } },
+ {"Warpath", new CardData { ManaCost = 2 } },
+ {"Wing Blast", new CardData { ManaCost = 4 } },
+ {"Wispering Woods", new CardData { ManaCost = 4 } },
+ {"Witching Hour", new CardData { ManaCost = 3 } },
+ {"Witch's Cauldron", new CardData { ManaCost = 3 } },
+ {"Witchwood Piper", new CardData { ManaCost = 4 } },
+ {"Woecleaver", new CardData { ManaCost = 8 } },
+ {"Wolfrider", new CardData { ManaCost = 3 } },
+ {"Woodcutter's Axe", new CardData { ManaCost = 2 } },
+ {"Wrath", new CardData { ManaCost = 2 } },
+			};
         }
 
     }
