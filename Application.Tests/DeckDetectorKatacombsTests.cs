@@ -1,12 +1,9 @@
-﻿using Domain;
-using Domain.Metas;
+﻿using Domain.Metas;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 
 namespace Application.Tests
 {
-    [TestClass]
+	[TestClass]
     public class DeckDetectorKoboldsTests
     {
         private DeckDetector sut;
@@ -39,7 +36,7 @@ namespace Application.Tests
         public void DeckDetector_OnInstantiation_HasMc2Meta()
         {
             Assert.AreEqual(
-                expected: "KC2",
+                expected: "MC2",
                 actual: sut.CurrentMeta.Code);
         }
 

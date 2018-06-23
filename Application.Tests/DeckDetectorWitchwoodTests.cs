@@ -35,7 +35,7 @@ namespace Application.Tests
 		{
 			var result = sut.PlayableCards();
 			Assert.AreEqual(
-				expected: 326,
+				expected: 318,
 				actual: result.Count);
 		}
 
@@ -85,6 +85,33 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
+		public void DeckDetector_ListWarlockDecksHavingGG_ReturnsEvenWarlok()
+		{
+			var heroClass = "Warlock";
+			var played = new string[]
+			{
+				"GG"
+			};
+			var results = sut.ListDecks(heroClass, played);
+			sut.DumpDecks(results);
+			Assert.AreEqual(1, results.Count);
+		}
+
+		[TestMethod]
+		public void DeckDetector_ListWarlockDecksHavingLordGodfrey_Returns2Decks()
+		{
+			var heroClass = "Warlock";
+			var played = new string[]
+			{
+				"Lord Godfrey"
+			};
+			var results = sut.ListDecks(heroClass, played);
+			sut.DumpDecks(results);
+			Assert.AreEqual(2, results.Count);
+		}
+
+
+		[TestMethod]
 		public void DeckDetector_ListPriestDecksHavingRE_Returns2Deck()
 		{
 			var heroClass = "Priest";
@@ -98,7 +125,7 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_ListDecksHavingWanderingMonster_ReturnsSpellHunter()
+		public void DeckDetector_ListDecksHavingWanderingMonster_ReturnsRecruitHunter()
 		{
 			var heroClass = "Hunter";
 			var played = new string[]
@@ -107,14 +134,15 @@ namespace Application.Tests
 				"ST"
 			};
 			var results = sut.ListDecks(heroClass, played);
-			Assert.AreEqual(2,results.Count);
-			var containsSpellHunter = false;
+			var containsRecruitHunter = false;
 			foreach (var deck in results)
 			{
-				if (deck.Name == "Spell Hunter")
-					containsSpellHunter = true;
+				if (deck.Name == "Recruit Hunter")
+					containsRecruitHunter = true;
 			}
-			Assert.IsTrue(containsSpellHunter, "results should includ Spell Hunter");
+			Assert.IsTrue(
+				containsRecruitHunter, 
+				"results should include Recruit Hunter");
 		}
 	}
 }
