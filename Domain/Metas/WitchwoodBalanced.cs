@@ -46,6 +46,7 @@ namespace Domain.Metas
             return new Deck
             {
                 Name = "Token Druid",
+				Prototype = "AGGRO",
                 Tier = 1,
                 Rank = 1,
                 HeroClass = new Hero("Druid"),
@@ -80,6 +81,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Cubelock",
+				Prototype = "CONTROL",
 				Tier = 1,
 				Rank = 2,
 				HeroClass = new Hero("Warlock"),
@@ -114,6 +116,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Control Warlock",
+				Prototype = "CONTROL",
 				Tier = 1,
 				Rank = 3,
 				HeroClass = new Hero("Warlock"),
@@ -152,6 +155,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Miracle Rogue",
+				Prototype = "TEMPO",
 				Tier = 1,
 				Rank = 4,
 				HeroClass = new Hero("Rogue"),
@@ -185,6 +189,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Shudderwock Shaman",
+				Prototype = "COMBO",
 				Tier = 1,
 				Rank = 5,
 				HeroClass = new Hero("Shaman"),
@@ -219,6 +224,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Taunt Druid",
+				Prototype = "CONTROL",
 				Tier = 2,
 				Rank = 6,
 				HeroClass = new Hero("Druid"),
@@ -251,6 +257,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Even Warlock",
+				Prototype = "AGGRO",
 				Tier = 2,
 				Rank = 7,
 				HeroClass = new Hero("Warlock"),
@@ -282,6 +289,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Spell Hunter",
+				Prototype = "TEMPO",
 				Tier = 2,
 				Rank = 8,
 				HeroClass = new Hero("Hunter"),
@@ -319,6 +327,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Even Shaman",
+				Prototype = "TEMPO",
 				Tier = 2,
 				Rank = 9,
 				HeroClass = new Hero("Shaman"),
@@ -353,6 +362,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Odd Rogue",
+				Prototype = "AGGRO",
 				Tier = 2,
 				Rank = 10,
 				HeroClass = new Hero("Rogue"),
@@ -384,6 +394,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Aggro Mage",
+				Prototype = "AGGRO",
 				Tier = 2,
 				Rank = 11,
 				HeroClass = new Hero("Mage"),
@@ -415,6 +426,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Malygos Druid",
+				Prototype = "CONTROL",
 				Tier = 2,
 				Rank = 12,
 				HeroClass = new Hero("Druid"),
@@ -450,6 +462,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Recruit Warrior",
+				Prototype = "CONTROL",
 				Tier = 2,
 				Rank = 13,
 				HeroClass = new Hero("Warrior"),
@@ -484,6 +497,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Control Priest",
+				Prototype = "CONTROL",
 				Tier = 2,
 				Rank = 14,
 				HeroClass = new Hero("Priest"),
@@ -518,6 +532,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Quest Warrior",
+				Prototype = "CONTROL",
 				Tier = 2,
 				Rank = 15,
 				HeroClass = new Hero("Warrior"),
@@ -549,6 +564,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Odd Paladin",
+				Prototype = "AGGRO",
 				Tier = 2,
 				Rank = 16,
 				HeroClass = new Hero("Paladin"),
@@ -582,6 +598,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Spiteful Druid",
+				Prototype = "TEMPO",
 				Tier = 3,
 				Rank = 17,
 				HeroClass = new Hero("Druid"),
@@ -615,6 +632,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Dino Druid",
+				Prototype = "TEMPO",
 				Tier = 3,
 				Rank = 17,
 				HeroClass = new Hero("Druid"),
@@ -645,6 +663,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Control Mage",
+				Prototype = "CONTROL",
 				Tier = 3,
 				Rank = 18,
 				HeroClass = new Hero("Mage"),
@@ -679,6 +698,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Recruit Hunter",
+				Prototype = "TEMPO",
 				Tier = 3,
 				Rank = 19,
 				HeroClass = new Hero("Hunter"),
@@ -712,6 +732,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Big Burst Priest",
+				Prototype = "COMBO",
 				Tier = 3,
 				Rank = 20,
 				HeroClass = new Hero("Priest"),
@@ -748,6 +769,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Quest Rogue",
+				Prototype = "TEMPO",
 				Tier = 3,
 				Rank = 21,
 				HeroClass = new Hero("Rogue"),
@@ -780,6 +802,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Even Paladin",
+				Prototype = "TEMPO",
 				Tier = 3,
 				Rank = 22,
 				HeroClass = new Hero("Paladin"),
@@ -814,6 +837,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Combo Priest",
+				Prototype = "COMBO",
 				Tier = 3,
 				Rank = 23,
 				HeroClass = new Hero("Priest"),
@@ -843,6 +867,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Murloc Paladin",
+				Prototype = "AGGRO",
 				Tier = 3,
 				Rank = 24,
 				HeroClass = new Hero("Paladin"),
@@ -875,6 +900,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Odd Hunter",
+				Prototype = "AGGRO",
 				Tier = 4,
 				Rank = 25,
 				HeroClass = new Hero("Hunter"),
@@ -906,6 +932,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Pirate Warrior",
+				Prototype = "AGGRO",
 				Tier = 4,
 				Rank = 26,
 				HeroClass = new Hero("Warrior"),
@@ -937,6 +964,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Zoolock",
+				Prototype = "AGGRO",
 				Tier = 4,
 				Rank = 27,
 				HeroClass = new Hero("Warlock"),

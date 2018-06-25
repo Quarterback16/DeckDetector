@@ -39,7 +39,15 @@ namespace dd
                 deckCount++;
                 if (deckCount == 1)
                     theFirstDeck = deck;
-                Console.WriteLine($"T{deck.Tier} {deck.Name} ({deck.Rank})");
+                Console.WriteLine($@"T{
+					deck.Tier
+					} {
+					deck.Name
+					} ({
+					deck.Rank
+					})  {
+					deck.Prototype
+					}");
                 theDeck = deck;
             }
             if (results.Count == 1)

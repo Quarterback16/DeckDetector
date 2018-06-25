@@ -44,6 +44,55 @@ namespace Domain
             return false;
         }
 
+		public static bool IsSecret(Card card)
+		{
+			if (CardBase == null)
+				LoadCardBase();
+			var cardData = new CardData();
+			if (CardBase.TryGetValue(card.Name, out cardData))
+			{
+				return cardData.IsSecret;
+			}
+			return false;
+		}
+
+
+		public static bool IsWeapon(Card card)
+		{
+			if (CardBase == null)
+				LoadCardBase();
+			var cardData = new CardData();
+			if (CardBase.TryGetValue(card.Name, out cardData))
+			{
+				return cardData.IsWeapon;
+			}
+			return false;
+		}
+
+		public static bool IsRemoval(Card card)
+		{
+			if (CardBase == null)
+				LoadCardBase();
+			var cardData = new CardData();
+			if (CardBase.TryGetValue(card.Name, out cardData))
+			{
+				return cardData.IsRemoval;
+			}
+			return false;
+		}
+
+		public static bool IsBurn(Card card)
+		{
+			if (CardBase == null)
+				LoadCardBase();
+			var cardData = new CardData();
+			if (CardBase.TryGetValue(card.Name, out cardData))
+			{
+				return cardData.IsBurn;
+			}
+			return false;
+		}
+
 		public static bool Contains(Card card)
 		{
 			if (CardBase == null)
@@ -66,7 +115,7 @@ namespace Domain
 { "Acolyte of Pain", new CardData { ManaCost = 3 } },
 { "Alexstrasza", new CardData { ManaCost = 9 } },
 { "Alleycat", new CardData { ManaCost = 1 } },
-{ "Aluneth", new CardData { ManaCost = 0 } },
+{ "Aluneth", new CardData { ManaCost = 6, IsWeapon = true } },
 { "Animal Companion", new CardData { ManaCost = 3 } },
 { "Arcane Artificer", new CardData { ManaCost = 1 } },
 { "Arcane Intellect", new CardData { ManaCost = 3 } },
@@ -99,10 +148,10 @@ namespace Domain
 { "Cairn Bloodhoof", new CardData { ManaCost = 6 } },
 { "Call of the Wild", new CardData { ManaCost = 8 } },
 { "Call to Arms", new CardData { ManaCost = 4 } },
-{ "Candleshot", new CardData { ManaCost = 1 } },
+{ "Candleshot", new CardData { ManaCost = 1, IsWeapon = true } },
 { "Captain Greenskin", new CardData { ManaCost = 5 } },
 { "Carnivorous Cube", new CardData { ManaCost = 5 } },
-{ "Cat Trick", new CardData { ManaCost = 2 } },
+{ "Cat Trick", new CardData { ManaCost = 2, IsSecret = true } },
 { "Cavern Shinyfinder", new CardData { ManaCost = 2 } },
 { "Cobalt Scalebane", new CardData { ManaCost = 5 } },
 { "Cold Blood", new CardData { ManaCost = 1 } },
@@ -111,7 +160,7 @@ namespace Domain
 { "Consecration", new CardData { ManaCost = 4 , Aoe = true} },
 { "Corridor Creeper", new CardData { ManaCost = 7 } },
 { "Counterfeit Coin", new CardData { ManaCost = 0 } },
-{ "Counterspell", new CardData { ManaCost = 3 } },
+{ "Counterspell", new CardData { ManaCost = 3, IsSecret = true } },
 { "Crackling Razormaw", new CardData { ManaCost = 2 } },
 { "Crystalweaver", new CardData { ManaCost = 4 } },
 { "C'Thun", new CardData { ManaCost = 10 } },
@@ -122,7 +171,7 @@ namespace Domain
 { "Dark Pact", new CardData { ManaCost = 1 } },
 { "Dead Man's Hand", new CardData { ManaCost = 2 } },
 { "Deadly Poison", new CardData { ManaCost = 1 } },
-{ "Deadly Shot", new CardData { ManaCost = 3 } },
+{ "Deadly Shot", new CardData { ManaCost = 3, IsRemoval = true } },
 { "Deathstalker Rexxar", new CardData { ManaCost = 6, Aoe = true } },
 { "Deathwing", new CardData { ManaCost = 10 } },
 { "Deathwing, Dragonlord", new CardData { ManaCost = 10 } },
@@ -160,18 +209,18 @@ namespace Domain
 { "Eternal Servitude", new CardData { ManaCost = 4 } },
 { "Eviscerate", new CardData { ManaCost = 1 } },
 { "Evolve", new CardData { ManaCost =  1 } },
-{ "Execute", new CardData { ManaCost = 2 } },
-{ "Explosive Runes", new CardData { ManaCost = 3 } },
-{ "Explosive Trap", new CardData { ManaCost = 2, Aoe = true } },
+{ "Execute", new CardData { ManaCost = 2, IsRemoval = true } },
+{ "Explosive Runes", new CardData { ManaCost = 3, IsSecret = true } },
+{ "Explosive Trap", new CardData { ManaCost = 2, Aoe = true, IsSecret = true } },
 { "Faceless Manipulator", new CardData { ManaCost = 5 } },
 { "Fal'dorei Strider", new CardData { ManaCost = 4 } },
 { "Fan of Knives", new CardData { ManaCost = 3, Aoe = true } },
 { "Fandral Staghelm", new CardData { ManaCost = 4 } },
-{ "Fiery War Axe", new CardData { ManaCost = 2 } },
+{ "Fiery War Axe", new CardData { ManaCost = 2, IsWeapon = true } },
 { "Finja the Flying Star", new CardData { ManaCost = 5 } },
 { "Fire Fly", new CardData { ManaCost = 1 } },
 { "Fire Plume Phoenix", new CardData { ManaCost = 4 } },
-{ "Fireball", new CardData { ManaCost = 4 } },
+{ "Fireball", new CardData { ManaCost = 4, IsBurn = true } },
 { "Firelands Portal", new CardData { ManaCost = 7 } },
 { "Flame Imp", new CardData { ManaCost = 1 } },
 { "Flamestrike", new CardData { ManaCost = 7, Aoe = true } },
@@ -179,10 +228,10 @@ namespace Domain
 { "Flanking Strike", new CardData { ManaCost = 4 } },
 { "Flare", new CardData { ManaCost = 2 } },
 { "Free From Amber", new CardData { ManaCost = 8 } },
-{ "Freezing Trap", new CardData { ManaCost = 1 } },
+{ "Freezing Trap", new CardData { ManaCost = 1, IsSecret = true } },
 { "Frost Lich Jaina", new CardData { ManaCost = 9 } },
-{ "Frost Nova", new CardData { ManaCost = 3 } },
-{ "Frostbolt", new CardData { ManaCost = 2 } },
+{ "Frost Nova", new CardData { ManaCost = 3, Aoe = true } },
+{ "Frostbolt", new CardData { ManaCost = 2, IsBurn = true } },
 { "Frothing Berserker", new CardData { ManaCost = 3 } },
 { "Fungalmancer", new CardData { ManaCost = 5 } },
 { "Gadgetzan Auctioneer", new CardData { ManaCost = 6 } },
@@ -198,14 +247,14 @@ namespace Domain
 { "Healing Rain", new CardData { ManaCost = 3 } },
 { "Hellfire", new CardData { ManaCost = 4 , Aoe = true} },
 { "Heroic Strike", new CardData { ManaCost = 2 } },
-{ "Hex", new CardData { ManaCost = 3 } },
+{ "Hex", new CardData { ManaCost = 3, IsRemoval = true } },
 { "Holy Smite", new CardData { ManaCost = 1 } },
 { "Houndmaster", new CardData { ManaCost = 4 } },
 { "Hungry Crab", new CardData { ManaCost = 1 } },
 { "Hunter's Mark", new CardData { ManaCost = 1 } },
 { "Hydrologist", new CardData { ManaCost = 2 } },
-{ "Ice Barrier", new CardData { ManaCost = 3 } },
-{ "Ice Block", new CardData { ManaCost = 3 } },
+{ "Ice Barrier", new CardData { ManaCost = 3, IsSecret = true } },
+{ "Ice Block", new CardData { ManaCost = 3, IsSecret = true } },
 { "Inner Fire", new CardData { ManaCost = 1 } },
 { "Innervate", new CardData { ManaCost = 1 } },
 { "Jade Behemoth", new CardData { ManaCost = 6 } },
@@ -220,7 +269,7 @@ namespace Domain
 { "Kabal Lackey", new CardData { ManaCost = 1 } },
 { "Kabal Songstealer", new CardData { ManaCost = 5 } },
 { "Kabal Talonpriest", new CardData { ManaCost = 3 } },
-{ "Kill Command", new CardData { ManaCost = 3 } },
+{ "Kill Command", new CardData { ManaCost = 3, IsRemoval = true } },
 { "Kindly Grandmother", new CardData { ManaCost = 2 } },
 { "Kingsbane", new CardData { ManaCost = 1 } },
 { "Kirin Tor Mage", new CardData { ManaCost = 3 } },
@@ -229,7 +278,7 @@ namespace Domain
 { "Kor'kron Elite", new CardData { ManaCost = 3 } },
 { "Kun the Forgotten King", new CardData { ManaCost = 10 } },
 { "Leeching Poison", new CardData { ManaCost = 2 } },
-{ "Leeroy Jenkins", new CardData { ManaCost = 5 } },
+{ "Leeroy Jenkins", new CardData { ManaCost = 5, IsBurn = true } },
 { "Lesser Amethyst Spellstone", new CardData { ManaCost = 4 } },
 { "Lesser Diamond Spellstone", new CardData { ManaCost = 7 } },
 { "Lesser Emerald Spellstone", new CardData { ManaCost = 5 } },
@@ -292,7 +341,7 @@ namespace Domain
 { "Prince Taldaram", new CardData { ManaCost = 3 } },
 { "Prophet Velen", new CardData { ManaCost = 7 } },
 { "Psychic Scream", new CardData { ManaCost = 7, Aoe = true } },
-{ "Pyroblast", new CardData { ManaCost = 10 } },
+{ "Pyroblast", new CardData { ManaCost = 10, IsBurn = true } },
 { "Radiant Elemental", new CardData { ManaCost = 2 } },
 { "Ragnaros Lightlord", new CardData { ManaCost = 8 } },
 { "Rallying Blade", new CardData { ManaCost = 3 } },
@@ -364,7 +413,7 @@ namespace Domain
 { "Valeera the Hollow", new CardData { ManaCost = 9 } },
 { "Vanish", new CardData { ManaCost = 6 } },
 { "Vilefin Inquisitor", new CardData { ManaCost = 1 } },
-{ "Vilespine Slayer", new CardData { ManaCost = 5 } },
+{ "Vilespine Slayer", new CardData { ManaCost = 5, IsRemoval = true } },
 { "Vinecleaver", new CardData { ManaCost = 7 } },
 { "Violent Teacher", new CardData { ManaCost = 4 } },
 { "Viscious Fledgling", new CardData { ManaCost = 3 } },
@@ -372,11 +421,11 @@ namespace Domain
 { "Voidwalker", new CardData { ManaCost = 1 } },
 { "Volcano", new CardData { ManaCost = 5, Aoe = true } },
 { "Vulgar Homunculus", new CardData { ManaCost = 2 } },
-{ "Wandering Monster", new CardData { ManaCost = 2 } },
+{ "Wandering Monster", new CardData { ManaCost = 2, IsSecret = true } },
 { "Wax Elemental", new CardData { ManaCost = 1 } },
 { "Whirlwind", new CardData { ManaCost = 1 , Aoe = true} },
 { "Wild Growth", new CardData { ManaCost = 2 } },
-{ "Wild Pyromancer", new CardData { ManaCost = 2 } },
+{ "Wild Pyromancer", new CardData { ManaCost = 2, Aoe = true } },
 { "Youthful Brewmaster", new CardData { ManaCost = 2 } },
 { "Ysera", new CardData { ManaCost = 9 } },
 { "Y'Shaarj Rage Unbound", new CardData { ManaCost = 10 } },
@@ -432,7 +481,7 @@ namespace Domain
  {"Grievous Bite", new CardData { ManaCost = 2 } },
  {"Grommash Hellscream", new CardData { ManaCost = 8 } },
  {"Hadronox", new CardData { ManaCost = 9 } },
- {"Hagatha The Witch", new CardData { ManaCost = 8 } },
+ {"Hagatha The Witch", new CardData { ManaCost = 8, Aoe = true } },
  {"Hallucination", new CardData { ManaCost = 1 } },
  {"Hammer of Wrath", new CardData { ManaCost = 4 } },
  {"Hench-Clan Thug", new CardData { ManaCost = 3 } },
@@ -448,7 +497,7 @@ namespace Domain
  {"Knife Jugger", new CardData { ManaCost = 2 } },
  {"Lifedrinker", new CardData { ManaCost = 4 } },
  {"Lightning Bolt", new CardData { ManaCost = 1 } },
- {"Lightning Storm", new CardData { ManaCost = 3 } },
+ {"Lightning Storm", new CardData { ManaCost = 3, Aoe = true } },
  {"Lord Godfrey", new CardData { ManaCost = 7 } },
  {"Lyra the Sunshard", new CardData { ManaCost = 5 } },
  {"Moonfire", new CardData { ManaCost = 0 } },
@@ -474,10 +523,10 @@ namespace Domain
  {"Silence", new CardData { ManaCost = 0 } },
  {"Silver Vanguard", new CardData { ManaCost = 7 } },
  {"Sindragosa", new CardData { ManaCost = 8 } },
- {"Snipe", new CardData { ManaCost = 2 } },
+ {"Snipe", new CardData { ManaCost = 2, IsSecret = true } },
  {"Soul of the Forest", new CardData { ManaCost = 4 } },
  {"Spiritsinger Umbra", new CardData { ManaCost = 4 } },
- {"Starfall", new CardData { ManaCost = 5 } },
+ {"Starfall", new CardData { ManaCost = 5, Aoe = true } },
  {"Stitched Tracker", new CardData { ManaCost = 3 } },
  {"Stormwind Champion", new CardData { ManaCost = 7 } },
  {"Sunfury Protector", new CardData { ManaCost = 2 } },
@@ -487,7 +536,7 @@ namespace Domain
  {"Tortollan Shellraiser", new CardData { ManaCost = 4 } },
  {"Town Crier", new CardData { ManaCost = 1 } },
  {"Truesilver Champion", new CardData { ManaCost = 4 } },
- {"Twig Of The World Tree", new CardData { ManaCost = 4 } },
+ {"Twig Of The World Tree", new CardData { ManaCost = 4, IsWeapon = true } },
  {"Twillight's Call", new CardData { ManaCost = 3 } },
  {"Unpowered Steambot", new CardData { ManaCost = 4 } },
  {"Vicious Fledgling", new CardData { ManaCost = 3 } },
@@ -500,9 +549,9 @@ namespace Domain
  {"Witching Hour", new CardData { ManaCost = 3 } },
  {"Witch's Cauldron", new CardData { ManaCost = 3 } },
  {"Witchwood Piper", new CardData { ManaCost = 4 } },
- {"Woecleaver", new CardData { ManaCost = 8 } },
+ {"Woecleaver", new CardData { ManaCost = 8, IsWeapon = true } },
  {"Wolfrider", new CardData { ManaCost = 3 } },
- {"Woodcutter's Axe", new CardData { ManaCost = 2 } },
+ {"Woodcutter's Axe", new CardData { ManaCost = 2, IsWeapon = true } },
  {"Wrath", new CardData { ManaCost = 2 } },
 			};
         }
@@ -513,5 +562,9 @@ namespace Domain
     {
         public int ManaCost { get; set; }
         public bool Aoe { get; set; }
-    }
+		public bool IsSecret { get; set; }
+		public bool IsWeapon { get; set; }
+		public bool IsRemoval { get; set; }
+		public bool IsBurn { get; set; }
+	}
 }
