@@ -35,7 +35,7 @@ namespace Application.Tests
 		{
 			var result = sut.PlayableCards();
 			Assert.AreEqual(
-				expected: 318,
+				expected: 323,
 				actual: result.Count);
 		}
 
@@ -45,7 +45,7 @@ namespace Application.Tests
 			var results = sut.ListDecks();
 			sut.DumpDecks(results);
 			Assert.AreEqual(
-				expected: 28,
+				expected: 29,
 				actual: results.Count );
 		}
 
@@ -130,7 +130,6 @@ namespace Application.Tests
 			var heroClass = "Hunter";
 			var played = new string[]
 			{
-				"WM",
 				"ST"
 			};
 			var results = sut.ListDecks(heroClass, played);
