@@ -2,7 +2,6 @@
 using Domain.Metas;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 
 namespace Application.Tests
 {
@@ -40,7 +39,7 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_ListDecks_Returns_28_Decks()
+		public void DeckDetector_ListDecks_Returns_29_Decks()
 		{
 			var results = sut.ListDecks();
 			sut.DumpDecks(results);

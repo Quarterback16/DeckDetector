@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeckDetectorBoomsdayTests.cs" />
     <Compile Include="DeckDetectorKatacombsTests.cs" />
     <Compile Include="DeckDetectorWitchwoodTests.cs" />
     <Compile Include="HearthDbTests.cs" />
