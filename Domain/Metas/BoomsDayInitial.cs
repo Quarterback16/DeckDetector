@@ -14,35 +14,40 @@ namespace Domain.Metas
 			code: "RB",
 			name: "The Booms Day Project");
 
-			meta.AddDeck(TogwaggleDruid());
+			//  TIER 1
 			meta.AddDeck(MalygosDruid());
-			meta.AddDeck(EvenWarlock());
-			meta.AddDeck(Zoolock());
 			meta.AddDeck(OddRogue());
-			meta.AddDeck(TempoShudderwock());
-
-			meta.AddDeck(OddPaladin());
-			meta.AddDeck(TokenDruid());
-			meta.AddDeck(SecretHunter());
+			meta.AddDeck(TogwaggleDruid());
+			meta.AddDeck(Zoolock());
 			meta.AddDeck(DeathrattleHunter());
-			meta.AddDeck(ControlWarlock());
-			meta.AddDeck(DeathrattleRogue());
-			meta.AddDeck(BigDruid());
+			meta.AddDeck(SecretHunter());
+			meta.AddDeck(QuestRogue());
+			meta.AddDeck(EvenWarlock());
+
+			//  TIER 2
+			meta.AddDeck(TempoShudderwock());
 			meta.AddDeck(AggroMage());
-			meta.AddDeck(ApmPriest());
-			meta.AddDeck(ComboShudderwock());
-			meta.AddDeck(MechathunPriest());
-
+			meta.AddDeck(TokenDruid());
 			meta.AddDeck(KingsbaneRogue());
-			meta.AddDeck(MiracleRogue());
-			meta.AddDeck(MechathunDruid());
-			meta.AddDeck(EvenShaman());
-			meta.AddDeck(RecruitWarrior());
-			meta.AddDeck(MechathunWarlock());
-			meta.AddDeck(ControlMage());
-			meta.AddDeck(PocketMage());
+			meta.AddDeck(ControlWarlock());
+			meta.AddDeck(OddPaladin());
+			meta.AddDeck(ComboShudderwock());
+			meta.AddDeck(BigDruid());
 
+			//  TIER 3
 			meta.AddDeck(OddFatigueWarrior());
+			meta.AddDeck(DeathrattleRogue());
+			meta.AddDeck(MiracleRogue());
+			meta.AddDeck(EvenShaman());
+			meta.AddDeck(ControlMage());
+			meta.AddDeck(RecruitWarrior());
+			meta.AddDeck(ApmPriest());
+
+			//  TIER 4
+			meta.AddDeck(MechathunPriest());
+			meta.AddDeck(MechathunDruid());
+			meta.AddDeck(MechathunWarlock());
+			meta.AddDeck(PocketMage());
 			meta.AddDeck(PogoRogue());
 
 			//meta.AddDeck(ControlPriest());
@@ -56,7 +61,6 @@ namespace Domain.Metas
 			//meta.AddDeck(MurlocPaladin());
 			//meta.AddDeck(QuestPriest());
 			//meta.AddDeck(DinoDruid());
-			//meta.AddDeck(QuestRogue());
 			//meta.AddDeck(EvenPaladin());
 			//meta.AddDeck(OddHunter());
 			//meta.AddDeck(PirateWarrior());
@@ -71,7 +75,7 @@ namespace Domain.Metas
 				Name = "Togwaggle Druid",
 				Prototype = "COMBO",
 				Tier = 1,
-				Rank = 1,
+				Rank = 3,
 				HeroClass = new Hero("Druid"),
 				Cards = new List<Card>
 				{
@@ -103,31 +107,34 @@ namespace Domain.Metas
 				Name = "Token Druid",
 				Prototype = "AGGRO",
 				Tier = 2,
-				Rank = 8,
+				Rank = 11,
 				HeroClass = new Hero("Druid"),
 				Cards = new List<Card>
 				{
                     //new Card { Name = "Innervate" },
-                    new Card { Name = "Floop's Glorious Gloop" },
-                    new Card { Name = "Dendrologist" },
+                    //new Card { Name = "Floop's Glorious Gloop" },
+                    //new Card { Name = "Dendrologist" },
+					new Card { Name = "Lesser Jasper Spellstone" },
 					new Card { Name = "Power of the Wild" },
 					new Card { Name = "Wild Growth" },
 					//new Card { Name = "Wrath" },
                     new Card { Name = "Landscaping" },
 					new Card { Name = "Savage Roar" },
 					new Card { Name = "Branching Paths" },
-					//new Card { Name = "Evolving Spores" },
-					//new Card { Name = "Oaken Summons" },
+					new Card { Name = "Evolving Spores" },
+					new Card { Name = "Oaken Summons" },
 					new Card { Name = "Soul of the Forest" },
 					new Card { Name = "Swipe" },
-					//new Card { Name = "Violet Teacher" },
+					new Card { Name = "Void Ripper" },
+					new Card { Name = "Violet Teacher" },
 					new Card { Name = "Wispering Woods" },
+					new Card { Name = "Giggling Inventor" },
 					new Card { Name = "Arcane Tyrant" },
-                    new Card { Name = "Living Mana" },
+                    //new Card { Name = "Living Mana" },
 					new Card { Name = "Nourish" },
 					new Card { Name = "Spreading Plague" },
 					new Card { Name = "Malfurion the Pestilent" },
-                    new Card { Name = "Mulchmuncher" },
+                    //new Card { Name = "Mulchmuncher" },
 					new Card { Name = "Ultimate Infestation" },
 					//new Card { Name = "The Lich King" },
 					//new Card { Name = "Starfall" },  // tech vs Aggro
@@ -178,7 +185,7 @@ namespace Domain.Metas
 				Name = "Control Warlock",
 				Prototype = "CONTROL",
 				Tier = 2,
-				Rank = 11,
+				Rank = 13,
 				HeroClass = new Hero("Warlock"),
 				Cards = new List<Card>
 				{
@@ -190,7 +197,7 @@ namespace Domain.Metas
 					new Card { Name = "Demonic Project" },
 					new Card { Name = "Doomsayer" },
 					new Card { Name = "Gnomeferatu" },
-					//new Card { Name = "Plated Beetle" },
+					new Card { Name = "Plated Beetle" },
 					new Card { Name = "Gluttonous Ooze" },
 					new Card { Name = "Stonehill Defender" },
 					//new Card { Name = "Tar Creeper" },
@@ -219,8 +226,8 @@ namespace Domain.Metas
 			{
 				Name = "Mechathun Warlock",
 				Prototype = "CONTROL",
-				Tier = 3,
-				Rank = 23,
+				Tier = 4,
+				Rank = 26,
 				HeroClass = new Hero("Warlock"),
 				Cards = new List<Card>
 				{
@@ -308,7 +315,7 @@ namespace Domain.Metas
 				Name = "Pogo Rogue",
 				Prototype = "TEMPO",
 				Tier = 4,
-				Rank = 27,
+				Rank = 28,
 				HeroClass = new Hero("Rogue"),
 				Cards = new List<Card>
 				{
@@ -351,8 +358,8 @@ namespace Domain.Metas
 			{
 				Name = "Kingsbane Rogue",
 				Prototype = "COMBO",
-				Tier = 3,
-				Rank = 18,
+				Tier = 2,
+				Rank = 12,
 				HeroClass = new Hero("Rogue"),
 				Cards = new List<Card>
 				{
@@ -399,7 +406,7 @@ namespace Domain.Metas
 				Name = "Combo Shudderwock Shaman",
 				Prototype = "COMBO",
 				Tier = 2,
-				Rank = 16,
+				Rank = 15,
 				HeroClass = new Hero("Shaman"),
 				Cards = new List<Card>
 				{
@@ -439,8 +446,8 @@ namespace Domain.Metas
 			{
 				Name = "Shudderwock Shaman",
 				Prototype = "TEMPO",
-				Tier = 1,
-				Rank = 6,
+				Tier = 2,
+				Rank = 1,
 				HeroClass = new Hero("Shaman"),
 				Cards = new List<Card>
 				{
@@ -520,7 +527,7 @@ namespace Domain.Metas
 				Name = "Big Druid",
 				Prototype = "CONTROL",
 				Tier = 2,
-				Rank = 13,
+				Rank = 16,
 				HeroClass = new Hero("Druid"),
 				Cards = new List<Card>
 				{
@@ -595,8 +602,8 @@ namespace Domain.Metas
 			{
 				Name = "Secret Hunter",
 				Prototype = "TEMPO",
-				Tier = 2,
-				Rank = 9,
+				Tier = 1,
+				Rank = 6,
 				HeroClass = new Hero("Hunter"),
 				Cards = new List<Card>
 				{
@@ -667,8 +674,8 @@ namespace Domain.Metas
 			{
 				Name = "Deathrattle Hunter",
 				Prototype = "TEMPO",
-				Tier = 2,
-				Rank = 10,
+				Tier = 1,
+				Rank = 5,
 				HeroClass = new Hero("Hunter"),
 				Cards = new List<Card>
 				{
@@ -704,7 +711,7 @@ namespace Domain.Metas
 				Name = "Even Shaman",
 				Prototype = "TEMPO",
 				Tier = 3,
-				Rank = 21,
+				Rank = 20,
 				HeroClass = new Hero("Shaman"),
 				Cards = new List<Card>
 				{
@@ -747,7 +754,7 @@ namespace Domain.Metas
 				Name = "Odd Rogue",
 				Prototype = "AGGRO",
 				Tier = 1,
-				Rank = 5,
+				Rank = 2,
 				HeroClass = new Hero("Rogue"),
 				Cards = new List<Card>
 				{
@@ -758,6 +765,7 @@ namespace Domain.Metas
 					new Card { Name = "Fire Fly" },
 					new Card { Name = "Southsea Deckhand" },
 					new Card { Name = "Blink Fox" },
+					new Card { Name = "Blood Knight" },
 					new Card { Name = "Edwin VanCleef" },
 					new Card { Name = "Hench-Clan Thug" },
 //					new Card { Name = "Ironbeak Owl" },
@@ -783,7 +791,7 @@ namespace Domain.Metas
 				Name = "Aggro Mage",
 				Prototype = "AGGRO",
 				Tier = 2,
-				Rank = 14,
+				Rank = 10,
 				HeroClass = new Hero("Mage"),
 				Cards = new List<Card>
 				{
@@ -815,8 +823,8 @@ namespace Domain.Metas
 			{
 				Name = "Malygos Druid",
 				Prototype = "CONTROL",
-				Tier = 2,
-				Rank = 14,
+				Tier = 1,
+				Rank = 1,
 				HeroClass = new Hero("Druid"),
 				Cards = new List<Card>
 				{
@@ -931,8 +939,8 @@ namespace Domain.Metas
 			{
 				Name = "Mechathun Priest",
 				Prototype = "CONTROL",
-				Tier = 2,
-				Rank = 17,
+				Tier = 4,
+				Rank = 24,
 				HeroClass = new Hero("Priest"),
 				Cards = new List<Card>
 				{
@@ -971,8 +979,8 @@ namespace Domain.Metas
 			{
 				Name = "Odd Fatigue Warrior",
 				Prototype = "CONTROL",
-				Tier = 4,
-				Rank = 26,
+				Tier = 3,
+				Rank = 17,
 				HeroClass = new Hero("Warrior"),
 				Cards = new List<Card>
 				{
@@ -1047,7 +1055,7 @@ namespace Domain.Metas
 				Name = "Odd Paladin",
 				Prototype = "AGGRO",
 				Tier = 2,
-				Rank = 7,
+				Rank = 14,
 				HeroClass = new Hero("Paladin"),
 				Cards = new List<Card>
 				{
@@ -1148,8 +1156,8 @@ namespace Domain.Metas
 			{
 				Name = "Mechathun Druid",
 				Prototype = "TEMPO",
-				Tier = 3,
-				Rank = 20,
+				Tier = 4,
+				Rank = 25,
 				HeroClass = new Hero("Druid"),
 				Cards = new List<Card>
 				{
@@ -1188,7 +1196,7 @@ namespace Domain.Metas
 				Name = "Control Mage",
 				Prototype = "CONTROL",
 				Tier = 3,
-				Rank = 24,
+				Rank = 20,
 				HeroClass = new Hero("Mage"),
 				Cards = new List<Card>
 				{
@@ -1226,8 +1234,8 @@ namespace Domain.Metas
 			{
 				Name = "Pocket Mage",
 				Prototype = "CONTROL",
-				Tier = 3,
-				Rank = 25,
+				Tier = 4,
+				Rank = 27,
 				HeroClass = new Hero("Mage"),
 				Cards = new List<Card>
 				{
@@ -1346,8 +1354,8 @@ namespace Domain.Metas
 			{
 				Name = "Deathrattle Rogue",
 				Prototype = "TEMPO",
-				Tier = 2,
-				Rank = 12,
+				Tier = 3,
+				Rank = 18,
 				HeroClass = new Hero("Rogue"),
 				Cards = new List<Card>
 				{
@@ -1384,8 +1392,8 @@ namespace Domain.Metas
 			{
 				Name = "Quest Rogue",
 				Prototype = "TEMPO",
-				Tier = 5,
-				Rank = 26,
+				Tier = 1,
+				Rank = 7,
 				HeroClass = new Hero("Rogue"),
 				Cards = new List<Card>
 				{
@@ -1404,7 +1412,8 @@ namespace Domain.Metas
 					new Card { Name = "Mimic Pod" },
 					new Card { Name = "Sonya Shadowdancer" },
 					new Card { Name = "Zola the Gorgon" },
-					new Card { Name = "Elven Minstrel" },
+//					new Card { Name = "Elven Minstrel" },
+					new Card { Name = "Giggling Inventor" },
 					new Card { Name = "Vanish" },
 					new Card { Name = "Valeera the Hollow" },
 				}
@@ -1483,8 +1492,8 @@ namespace Domain.Metas
 			{
 				Name = "APM Priest",
 				Prototype = "COMBO",
-				Tier = 2,
-				Rank = 15,
+				Tier = 3,
+				Rank = 23,
 				HeroClass = new Hero("Priest"),
 				Cards = new List<Card>
 				{

@@ -30,21 +30,21 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_WithRbMeta_HasHas_302_PlayableCards()
+		public void DeckDetector_WithRbMeta_HasHas_311_PlayableCards()
 		{
 			var result = sut.PlayableCards();
 			Assert.AreEqual(
-				expected: 302,
+				expected: 311,
 				actual: result.Count);
 		}
 
 		[TestMethod]
-		public void DeckDetector_ListDecks_Returns_27_Decks()
+		public void DeckDetector_ListDecks_Returns_28_Decks()
 		{
 			var results = sut.ListDecks();
 			sut.DumpDecks(results);
 			Assert.AreEqual(
-				expected: 27,
+				expected: 28,
 				actual: results.Count);
 		}
 
@@ -69,6 +69,30 @@ namespace Application.Tests
 						);
 				}
 			}
+		}
+
+		[TestMethod]
+		public void DeckDetector_ListDruidDecksHavingPowerOfTheWild_Returns2Deck()
+		{
+			var heroClass = "Druid";
+			var played = new string[]
+			{
+				"PW"
+			};
+			var results = sut.ListDecks(heroClass, played);
+			sut.DumpDecks(results);
+			Assert.IsTrue(results.Count == 1);
+		}
+
+		[TestMethod]
+		public void Card_PowerOfTheWild_HasInitialsPW()
+		{
+			var cut = new Card
+			{
+				Name = "Power of the Wild"
+			};
+			var result = cut.Initials();
+			Assert.AreEqual("PW", result );
 		}
 
 	}

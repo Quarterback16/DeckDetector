@@ -12,7 +12,7 @@ namespace Application
 
         public DeckDetector()
         {
-            CurrentMeta = WitchwoodBalanced.LoadMeta();
+            CurrentMeta = BoomsDayInitial.LoadMeta();
         }
 
 		public DeckDetector(Meta meta)

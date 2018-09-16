@@ -43,7 +43,10 @@ namespace Domain
 			string[] output = Name.Split(' ');
 			foreach (var word in output)
 			{
-				inits += word[0];
+				var possible = word[0];
+				var ascii = (int)possible;
+				if (ascii < 97)
+					inits += possible;
 			}
 			return inits;
 		}
