@@ -39,6 +39,7 @@ namespace Domain
 
 		public string Initials()
 		{
+			//  lower case intials not included
 			var inits = string.Empty;
 			string[] output = Name.Split(' ');
 			foreach (var word in output)
