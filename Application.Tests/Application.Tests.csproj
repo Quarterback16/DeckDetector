@@ -46,6 +46,7 @@
     <Compile Include="DeckDetectorWitchwoodTests.cs" />
     <Compile Include="HearthDbTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RastakhansRumbleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj">

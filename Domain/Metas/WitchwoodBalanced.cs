@@ -515,7 +515,7 @@ namespace Domain.Metas
 					new Card { Name = "Mind Blast" },
 					new Card { Name = "Shadow Visions" },
 					new Card { Name = "Wild Pyromancer" },
-					new Card { Name = "Acolyte Of Pain" },
+					new Card { Name = "Acolyte of Pain" },
 					new Card { Name = "Twilight Acolyte" },
 					new Card { Name = "Duskbreaker" },
 					new Card { Name = "Mass Dispel" },

@@ -20,7 +20,10 @@ namespace dd
 
             var dd = new DeckDetector();
 
-            var decks = dd.ListDecks(options.HeroClass, cardsPlayed.ToArray());
+            var decks = dd.ListDecks(
+				heroClass: options.HeroClass,
+				played: cardsPlayed.ToArray());
+
             if (decks.Count == 0)
                 Console.WriteLine("Unknown Deck");
             else

@@ -47,6 +47,7 @@
     <Compile Include="Metas\BoomsDayInitial.cs" />
     <Compile Include="Metas\KatacombsAndKoboldsPostNerf.cs" />
     <Compile Include="Meta.cs" />
+    <Compile Include="Metas\RastakhansRumble.cs" />
     <Compile Include="Metas\WitchwoodBalanced.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
