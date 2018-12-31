@@ -90,6 +90,27 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
+		public void DeckDetector_ListDecksHavingBaku_ReturnsOddPaladin()
+		{
+			var heroClass = "Paladin";
+			var played = new string[]
+			{
+				"BM"
+			};
+			var results = sut.ListDecks(heroClass, played);
+			var containsCard = false;
+			foreach (var deck in results)
+			{
+				Console.WriteLine(deck.Name);
+				if (deck.Name == "Odd Paladin")
+					containsCard = true;
+			}
+			Assert.IsTrue(
+				containsCard,
+				"results should include Odd Paladin");
+		}
+
+		[TestMethod]
 		public void DeckDetector_HeathDb_HasAllCards()
 		{
 			var cards = sut.PlayableCards();

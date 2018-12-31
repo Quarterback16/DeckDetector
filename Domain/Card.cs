@@ -10,6 +10,9 @@ namespace Domain
 
         internal bool HasTheseInitials(string cardName)
         {
+#if DEBUG
+			Console.WriteLine($"{Name}={Initials()}");
+#endif
 			if (cardName == Initials())
 				return true;
 

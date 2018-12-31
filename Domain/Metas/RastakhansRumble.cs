@@ -50,6 +50,8 @@ namespace Domain.Metas
 			meta.AddDeck(MalygosDruid());
 			meta.AddDeck(TauntDruid());
 
+			////  TIER 5
+			meta.AddDeck(OddPaladin());
 			return meta;
 		}
 
@@ -1324,8 +1326,8 @@ namespace Domain.Metas
 			{
 				Name = "Odd Paladin",
 				Prototype = "AGGRO",
-				Tier = 2,
-				Rank = 14,
+				Tier = 5,
+				Rank = 33,
 				HeroClass = new Hero("Paladin"),
 				Cards = new List<Card>
 				{

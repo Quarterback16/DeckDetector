@@ -15,7 +15,12 @@ namespace Domain
 
         public bool HasCardNamed(string cardName)
         {
-            foreach (var card in Cards)
+#if DEBUG
+			Console.WriteLine();
+			Console.WriteLine($"Deck: {Name}");
+			Console.WriteLine();
+#endif
+			foreach (var card in Cards)
             {
                 if (card.Name.Equals(cardName) 
                     || card.HasTheseInitials(cardName))
