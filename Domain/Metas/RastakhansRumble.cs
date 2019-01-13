@@ -52,6 +52,9 @@ namespace Domain.Metas
 
 			////  TIER 5
 			meta.AddDeck(OddPaladin());
+			meta.AddDeck(OtkPriest());
+			meta.AddDeck(EspionageRogue());
+
 			return meta;
 		}
 
@@ -1950,6 +1953,37 @@ namespace Domain.Metas
 			};
 		}
 
+		private static Deck OtkPriest()
+		{
+			return new Deck
+			{
+				Name = "OTK Priest",
+				Prototype = "COMBO",
+				Tier = 5,
+				Rank = 34,
+				HeroClass = new Hero("Priest"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Circle of Healing" },
+					new Card { Name = "Silence" },
+					new Card { Name = "Inner Fire" },
+					new Card { Name = "Northshire Cleric" },
+					new Card { Name = "Power Word: Shield" },
+					new Card { Name = "Divine Spirit" },
+					new Card { Name = "Radient Elemental" },
+					new Card { Name = "Seance" },
+					new Card { Name = "Shadow Visions" },
+					new Card { Name = "Wild Pyromancer" },
+					new Card { Name = "Acolyte of Pain" },
+					new Card { Name = "Banana Buffoon" },
+					new Card { Name = "Extra Arms" },
+					new Card { Name = "Sand Drudge" },
+					new Card { Name = "Lyra the Sunshard" },
+					new Card { Name = "Grave Horror" },
+				}
+			};
+		}
+
 		private static Deck MurlocPaladin()
 		{
 			return new Deck
@@ -2120,6 +2154,41 @@ namespace Domain.Metas
 					//new Card { Name = "Void Ripper" },
 					//new Card { Name = "Despicable Dreadlord" },
 					//new Card { Name = "Bloodreaver Gul'dan" },
+				}
+			};
+		}
+
+		private static Deck EspionageRogue()
+		{
+			return new Deck
+			{
+				Name = "Espionage Rogue",
+				Prototype = "TEMPO",
+				Tier = 5,
+				Rank = 36,
+				HeroClass = new Hero("Rogue"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Backstab" },
+					new Card { Name = "Preparation" },
+					new Card { Name = "Eviscerate" },
+					new Card { Name = "Edwin VanCleef" },
+					new Card { Name = "Fan of Knives" },
+					new Card { Name = "SI:7 Agent" },
+					new Card { Name = "Academic Espionage" },
+					new Card { Name = "Elven Minstrel" },
+					new Card { Name = "Fal'dorei Strider" },
+					new Card { Name = "Vilespine Slayer" },
+					new Card { Name = "Sprint" },
+					//new Card { Name = "Sap" },
+					new Card { Name = "Fire Fly" },
+					new Card { Name = "Bloodmage Thalnos" },
+					new Card { Name = "Loot Hoarder" },
+					new Card { Name = "Augmented Elekk" },
+					new Card { Name = "Witchwood Piper" },
+//					new Card { Name = "Giggling Inventor" },
+					//new Card { Name = "Vanish" },
+					//new Card { Name = "Valeera the Hollow" },
 				}
 			};
 		}

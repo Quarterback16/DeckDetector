@@ -30,11 +30,11 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_WithRw2Meta_HasHas_326_PlayableCards()
+		public void DeckDetector_WithRw2Meta_HasHas_322_PlayableCards()
 		{
 			var result = sut.PlayableCards();
 			Assert.AreEqual(
-				expected: 323,
+				expected: 322,
 				actual: result.Count);
 		}
 

@@ -30,12 +30,12 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_WithRrMeta_HasHas_206_PlayableCards()
+		public void DeckDetector_WithRrMeta_HasHas_368_PlayableCards()
 		{
 			//  top 2 tiers
 			var result = sut.PlayableCards();
 			Assert.AreEqual(
-				expected: 206,
+				expected: 368,
 				actual: result.Count);
 		}
 
@@ -45,7 +45,7 @@ namespace Application.Tests
 			var results = sut.ListDecks();
 			sut.DumpDecks(results);
 			Assert.AreEqual(
-				expected: 16,
+				expected: 35,
 				actual: results.Count);
 		}
 
@@ -55,17 +55,7 @@ namespace Application.Tests
 			var results = sut.ListDecks("Priest");
 			sut.DumpDecks(results);
 			Assert.AreEqual(
-				expected: 3, 
-				actual: results.Count);
-		}
-
-		[TestMethod]
-		public void DeckDetector_MageBtm_ReturnsBaku()
-		{
-			var results = sut.ListDecks("Priest");
-			sut.DumpDecks(results);
-			Assert.AreEqual(
-				expected: 3,
+				expected: 6, 
 				actual: results.Count);
 		}
 

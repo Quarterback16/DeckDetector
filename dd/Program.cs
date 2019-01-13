@@ -25,7 +25,7 @@ namespace dd
 				played: cardsPlayed.ToArray());
 
             if (decks.Count == 0)
-                Console.WriteLine("Unknown Deck");
+                Console.WriteLine("Off-Meta Deck");
             else
                 DumpDecks(decks);
 
