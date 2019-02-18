@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Domain
 {
@@ -18,12 +19,28 @@ namespace Domain
             Decks = new List<Deck>();
         }
 
-        public void AddDeck( Deck deck)
+		internal void AddDecks(List<Deck> decks, int tier)
+		{
+			foreach (var deck in decks)
+			{
+				AddDeck(deck, tier);
+			}
+		}
+
+		public void AddDeck( Deck deck)
         {
+			deck.Rank = Decks.Count + 1;
             Decks.Add(deck);
         }
 
-        public List<Card> PlayableCards()
+		public void AddDeck(Deck deck, int tier)
+		{
+			deck.Rank = Decks.Count + 1;
+			deck.Tier = tier;
+			Decks.Add(deck);
+		}
+
+		public List<Card> PlayableCards()
         {
             var playableCards = new List<Card>();
             foreach (var deck in Decks)

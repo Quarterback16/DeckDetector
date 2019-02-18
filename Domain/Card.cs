@@ -13,7 +13,7 @@ namespace Domain
 #if DEBUG
 			Console.WriteLine($"{Name}={Initials()}");
 #endif
-			if (cardName == Initials())
+			if (cardName.ToUpper() == Initials())
 				return true;
 
             return false;

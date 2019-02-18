@@ -30,37 +30,36 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_WithRrMeta_HasHas_368_PlayableCards()
+		public void DeckDetector_WithRrMeta_HasHas_425_PlayableCards()
 		{
-			//  top 2 tiers
 			var result = sut.PlayableCards();
 			Assert.AreEqual(
-				expected: 368,
+				expected: 425,
 				actual: result.Count);
 		}
 
 		[TestMethod]
-		public void DeckDetector_ListDecks_Returns_16_Decks()
+		public void DeckDetector_ListDecks_Returns_46_Decks()
 		{
 			var results = sut.ListDecks();
 			sut.DumpDecks(results);
 			Assert.AreEqual(
-				expected: 35,
+				expected: 46,
 				actual: results.Count);
 		}
 
 		[TestMethod]
-		public void DeckDetector_ListPriestDecks_Returns3Decks()
+		public void DeckDetector_ListPriestDecks_Returns7Decks()
 		{
 			var results = sut.ListDecks("Priest");
 			sut.DumpDecks(results);
 			Assert.AreEqual(
-				expected: 6, 
+				expected: 7, 
 				actual: results.Count);
 		}
 
 		[TestMethod]
-		public void DeckDetector_ListDecksHavingBaku_ReturnsRecruitHunter()
+		public void DeckDetector_ListDecksHavingBaku_IncludesOddMage()
 		{
 			var heroClass = "Mage";
 			var played = new string[]
@@ -71,7 +70,8 @@ namespace Application.Tests
 			var containsCard = false;
 			foreach (var deck in results)
 			{
-				if (deck.Name == "Odd Mage")
+				if (   deck.Name == "Odd Control Mage"
+					|| deck.Name == "Odd Aggro Mage")
 					containsCard = true;
 			}
 			Assert.IsTrue(
@@ -80,24 +80,107 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_ListDecksHavingBaku_ReturnsOddPaladin()
+		public void DeckDetector_InitialsForAcolyteOfPainAre()
 		{
-			var heroClass = "Paladin";
+			var cut = new Card { Name = "Acolyte of Pain" };
+			var result = cut.Initials();
+			Assert.AreEqual(
+				"AP",
+				result);
+		}
+
+		[TestMethod]
+		public void DeckDetector_CaseShouldBeInsensitiveForCards()
+		{
+			var heroClass = "Priest";
 			var played = new string[]
 			{
-				"BM"
+				"ap"
 			};
 			var results = sut.ListDecks(heroClass, played);
+			var countAoP = results.Count;
+			played = new string[]
+			{
+				"AP"
+			};
+			results = sut.ListDecks(heroClass, played);
+			var countAOP = results.Count;
+			Assert.AreEqual(
+				countAoP,
+				countAOP);
+		}
+
+		[TestMethod]
+		public void DeckDetector_CaseShouldBeInsensitiveForHeros()
+		{
+			var played = new string[]
+			{
+				"AP"
+			};
+			var results = sut.ListDecks(
+				"Pr", 
+				played);
+			var countMixed = results.Count;
+			played = new string[]
+			{
+				"AP"
+			};
+			results = sut.ListDecks(
+				"pr", 
+				played);
+			var countLower = results.Count;
+			Assert.AreEqual(
+				countMixed,
+				countLower);
+		}
+
+		[TestMethod]
+		public void DeckDetector_ListDecksHavingBaku_ReturnsOddPaladin()
+		{
+			TestDeckContainsCards(
+				heroClass: "Paladin",
+				cardsPlayed: new string[] { "BM" },
+				deckName: "Odd Paladin" );
+		}
+
+		private void TestDeckContainsCards(
+			string heroClass,
+			string[] cardsPlayed,
+			string deckName )
+		{
+			var results = sut.ListDecks(heroClass, cardsPlayed);
 			var containsCard = false;
 			foreach (var deck in results)
 			{
 				Console.WriteLine(deck.Name);
-				if (deck.Name == "Odd Paladin")
+				if (deck.Name == deckName)
 					containsCard = true;
 			}
 			Assert.IsTrue(
 				containsCard,
-				"results should include Odd Paladin");
+				$"results should include {deckName}");
+		}
+
+		[TestMethod]
+		public void DeckDetector_ListDecksHavingHct_ReturnsOddRogue()
+		{
+			var heroClass = "Rogue";
+			var played = new string[]
+			{
+				"HT"
+			};
+			var results = sut.ListDecks(heroClass, played);
+			Console.WriteLine($"{results.Count} decks");
+			var containsCard = false;
+			foreach (var deck in results)
+			{
+				Console.WriteLine(deck.Name);
+				if (deck.Name == "Odd Rogue")
+					containsCard = true;
+			}
+			Assert.IsTrue(
+				containsCard,
+				"results should include Odd Rogue");
 		}
 
 		[TestMethod]

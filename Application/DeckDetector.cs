@@ -74,7 +74,8 @@ namespace Application
             //  deck must v all the cards played
             var shortList = new List<Deck>();
             var list = CurrentMeta.Decks
-				.Where(d => d.HeroClass.Name.StartsWith(heroClass));
+				.Where(d => d.HeroClass.Name.ToUpper()
+				            .StartsWith(heroClass.ToUpper()));
             foreach (Deck deck in list.ToList())
             {
                 var cardCount = 0;
