@@ -14,40 +14,41 @@ namespace Domain.Metas
 			var tier1Decks = new List<Deck>
 			{
 				MidrangeHunter(),
-				ResurrectPriest(),
+				EvenWarlock(),
 			};
 			meta.AddDecks(tier1Decks, 1);
 
 			//  TIER 2
 			var tier2Decks = new List<Deck>
 			{
-				EvenWarlock(),
-				ControlPriest(),
-				DeathrattleHunter(),
-				OddAggroMage(),
+				ResurrectPriest(),
 				MalygosDruid(),
+				DeathrattleHunter(),
+				ControlPriest(),
+				OddAggroMage(),
+				WallPriest(),
 				QuestRogue(),
-				Cubelock(),
 				MiracleDruid(),
-				SecretPaladin()
+				EvenPaladin(),
+				OddControlMage(),
+				Zoolock(),
 			};
 			meta.AddDecks(tier2Decks, 2);
 
 			//  TIER 3
 			var tier3Decks = new List<Deck>
 			{
-				MechathunWarlock(),
-				OddPaladin(),
+				Cubelock(),
 				OddWarrior(),
 				OddQuestWarrior(),
-				ComboPriest(),
-				Zoolock(),
-				EvenPaladin(),
-				ApmPriest(),
+				MechathunWarlock(),
+				OddPaladin(),
+				OddRogue(),
+				RushWarrior(),
 				MalygosRogue(),
+				SecretPaladin(),
+				ApmPriest(),
 				ControlMage(),
-				OddControlMage(),
-				HolyWrathPaladin()
 			};
 			meta.AddDecks(tier3Decks, 3);
 
@@ -55,20 +56,22 @@ namespace Domain.Metas
 			var tier4Decks = new List<Deck>
 			{
 				EvenRogue(),
-				OddRogue(),
 				EvenShaman(),
-				OtkDeathKnightPaladin(),
 				TogwaggleDruid(),
 				MechathunPriest(),
-				EggPaladin(),
-				PirateMiracleRogue()
+				PirateMiracleRogue(),
+				ComboPriest(),
 			};
 			meta.AddDecks(tier4Decks, 4);
 
 			////  TIER 5
 			var tier5Decks = new List<Deck>
 			{
-				WallPriest(),
+				MidrangeWarlock(),
+				HolyWrathPaladin(),
+				OtkDeathKnightPaladin(),
+				EggPaladin(),
+				MechathunDruid(),
 				ElementalShaman(),
 				SpellHunter(),
 				SecretHunter(),
@@ -236,6 +239,43 @@ namespace Domain.Metas
 					new Card { Name = "Voidlord" },
 					new Card { Name = "Bloodreaver Gul'dan" },
 					new Card { Name = "Mountain Giant" },
+				}
+			};
+		}
+
+		private static Deck MidrangeWarlock()
+		{
+			return new Deck
+			{
+				Name = "Midrange Warlock",
+				Prototype = "MIDRANGE",
+				Tier = 5,
+				Rank = 23,
+				HeroClass = new Hero("Warlock"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Kobold Librarian" },
+					new Card { Name = "Soulfire" },
+					new Card { Name = "Prince Keleseth" },
+					new Card { Name = "Stonehill Defender" },
+					new Card { Name = "Tar Creeper" },
+					new Card { Name = "Hellfire" },
+					new Card { Name = "Lesser Amethyst Spellstone" },
+					new Card { Name = "Shroom Brewer" },
+
+					new Card { Name = "Despicable Dreadlord" },
+					new Card { Name = "Doomguard" },
+					new Card { Name = "Skull of the Man'ari" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Mojomaster Zihi" },
+					new Card { Name = "Soulwarden" },
+					new Card { Name = "Lord Godfrey" },
+
+					new Card { Name = "The Lich King" },
+					new Card { Name = "Voidlord" },
+					new Card { Name = "Bloodreaver Gul'dan" },
+					new Card { Name = "Mountain Giant" },
+
 				}
 			};
 		}
@@ -600,7 +640,7 @@ namespace Domain.Metas
 					new Card { Name = "Storm Chaser" },
 					new Card { Name = "Volcano" },
 					new Card { Name = "Grumble Worldshaker" },
-					new Card { Name = "Hagatha The Witch" },
+					new Card { Name = "Hagatha the Witch" },
 					new Card { Name = "Shudderwock" },
 					//new Card { Name = "Tar Creeper" },   // tech vs aggro
 				}
@@ -637,7 +677,7 @@ namespace Domain.Metas
 					//new Card { Name = "Wild Pyromancer" },
 					//new Card { Name = "Murmuring Elemental" },
 					new Card { Name = "Corridor Creeper" },
-					new Card { Name = "Hagatha The Witch" },
+					new Card { Name = "Hagatha the Witch" },
 					new Card { Name = "The Lich King" },
 					new Card { Name = "Kalimos Primal Lord" },
 					//new Card { Name = "Healing Rain" },
@@ -680,7 +720,7 @@ namespace Domain.Metas
 					new Card { Name = "Amani War Bear" },
 					new Card { Name = "Malfurion the Pestilent" },
 					new Card { Name = "Da Undatakah" },
-					new Card { Name = "Mosh'ogg Enforcer" },
+					new Card { Name = "Mosh'Ogg Enforcer" },
 					new Card { Name = "The Lich King" },
 					new Card { Name = "Hadronox" },
 					new Card { Name = "Master Oakheart" },
@@ -963,7 +1003,7 @@ namespace Domain.Metas
 					new Card { Name = "Fire Elemental" },
 					new Card { Name = "Genn Greymane" },
 					new Card { Name = "Al'Akir the Windlord" },
-					new Card { Name = "Hagatha The Witch" },
+					new Card { Name = "Hagatha the Witch" },
 					//new Card { Name = "Kalimos Primal Lord" },
 					//new Card { Name = "The Runespear" },
 					new Card { Name = "The Lich King" },
@@ -1029,7 +1069,7 @@ namespace Domain.Metas
 					new Card { Name = "Menacing Nimbus" },
 					new Card { Name = "Bog Slosher" },
 					new Card { Name = "Tar Creeper" },
-					new Card { Name = "Fire Plume Pheoni" },
+					new Card { Name = "Fire Plume Pheonix" },
 					new Card { Name = "Tol'vir Stoneshaper" },
 					new Card { Name = "Fire Elemental" },
 					new Card { Name = "Grumble Worldshaker" },
@@ -1266,7 +1306,7 @@ namespace Domain.Metas
 					new Card { Name = "Psychic Scream" },
 					//new Card { Name = "Primordial Drake" },
 					new Card { Name = "Shadowreaper Anduin" },
-					new Card { Name = "Alexstraza" },
+					new Card { Name = "Alexstrasza" },
 				}
 			};
 		}
@@ -1382,6 +1422,44 @@ namespace Domain.Metas
 					new Card { Name = "Gorehowl" },
 					new Card { Name = "Baku the Mooneater" },
 					new Card { Name = "King Mosh" },
+				}
+			};
+		}
+
+		private static Deck RushWarrior()
+		{
+			return new Deck
+			{
+				Name = "Rush Warrior",
+				Prototype = "TEMPO",
+				Tier = 3,
+				Rank = 15,
+				HeroClass = new Hero("Warrior"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Eternium Rover" },
+					new Card { Name = "Fire Fly" },
+					new Card { Name = "Town Crier" },
+					new Card { Name = "Prince Keleseth" },
+					new Card { Name = "Acolyte of Pain" },
+					new Card { Name = "Frothing Beserker" },
+					new Card { Name = "Rabid Worgen" },
+					new Card { Name = "Tar Creeper" },
+
+					new Card { Name = "Blood Razor" },
+					new Card { Name = "Kor'kron Elite" },
+					new Card { Name = "Militia Commander" },
+					new Card { Name = "Spellbreaker" },
+					new Card { Name = "Darius Crowley" },
+					new Card { Name = "Dyn-o-matic" },
+					new Card { Name = "Fungalmancer" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Cairne Bloodhoof" },
+
+					new Card { Name = "Mojomaster Zihi" },
+					new Card { Name = "Countess Ashmore" },
+					new Card { Name = "Scourgelord Garrosh" },
+					new Card { Name = "The Lich King" },
 				}
 			};
 		}
@@ -1682,18 +1760,17 @@ namespace Domain.Metas
 					new Card { Name = "Wild Pyromancer" },
 					new Card { Name = "Wrath" },
 					new Card { Name = "Ferocious Howl" },
-					//new Card { Name = "Witching Hour" },
 					new Card { Name = "Branching Paths" },
-					//new Card { Name = "Ironwood Golem" },
+					new Card { Name = "Ironwood Golem" },
 					new Card { Name = "Flobbidinous Floop" },
-					//new Card { Name = "Oaken Summons" },
+					new Card { Name = "Oaken Summons" },
 					new Card { Name = "Swipe" },
-					//new Card { Name = "Arcane Tyrant" },
-					//new Card { Name = "Carnivorous Cube" },
+					new Card { Name = "Arcane Tyrant" },
 					new Card { Name = "Nourish" },
+					new Card { Name = "Starfall" },
+					new Card { Name = "Spreading Plague" },
 					new Card { Name = "Gadgetzan Auctioneer" },
 					new Card { Name = "Malfurion the Pestilent" },
-					//new Card { Name = "Ultimate Infestation" },
 					new Card { Name = "Mecha'thun" },
 				}
 			};
@@ -2329,13 +2406,13 @@ namespace Domain.Metas
 					new Card { Name = "Shadow Visions" },
 					new Card { Name = "Tar Creeper" },
 					new Card { Name = "Eternal Servitude" },
-					new Card { Name = "Mass Dispell" },
+					new Card { Name = "Mass Dispel" },
 					new Card { Name = "Shadow Madness" },
 					new Card { Name = "Mass Hysteria" },
 					new Card { Name = "Witchwood Grizzly" },
 					new Card { Name = "Zilliax" },
 					new Card { Name = "Lesser Diamond Spellstone" },
-					new Card { Name = "Pyschic Scream" },
+					new Card { Name = "Psychic Scream" },
 					new Card { Name = "Mosh'Ogg Enforcer" },
 					new Card { Name = "The Lich King" },
 					new Card { Name = "Master Oakheart" },

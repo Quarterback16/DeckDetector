@@ -221,7 +221,7 @@ namespace Domain.Metas
 					new Card { Name = "Saronite Chain Gang" },
 					new Card { Name = "Volcano" },
 					new Card { Name = "Grumble Worldshaker" },
-					new Card { Name = "Hagatha The Witch" },
+					new Card { Name = "Hagatha the Witch" },
 					new Card { Name = "Shudderwock" },
 					new Card { Name = "Tar Creeper" },   // tech vs aggro
 				}
@@ -351,7 +351,7 @@ namespace Domain.Metas
 					new Card { Name = "Fire Elemental" },
 					new Card { Name = "Genn Greymane" },
 					new Card { Name = "Al'Akir the Windlord" },
-					new Card { Name = "Hagatha The Witch" },
+					new Card { Name = "Hagatha the Witch" },
 					new Card { Name = "Kalimos Primal Lord" },
 					new Card { Name = "The Lich King" },
 					new Card { Name = "Sea Giant" },
@@ -526,7 +526,7 @@ namespace Domain.Metas
 					new Card { Name = "Psychic Scream" },
 					new Card { Name = "Primordial Drake" },
 					new Card { Name = "Shadowreaper Anduin" },
-					new Card { Name = "Alexstraza" },
+					new Card { Name = "Alexstrasza" },
 					new Card { Name = "Tar Creeper" },  // tech v aggro
 					new Card { Name = "Harrison Jones" },  // tech v control
 				}

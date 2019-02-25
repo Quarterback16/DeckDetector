@@ -62,7 +62,11 @@ namespace Application
             if (string.IsNullOrEmpty(heroClass))
                 return ListDecks();
 
-            var list = CurrentMeta.Decks.Where(d => d.HeroClass.Name.StartsWith(heroClass));
+            var list = CurrentMeta
+				.Decks
+				.Where(
+					d => d.HeroClass.Name.ToUpper().StartsWith(
+						heroClass.ToUpper()));
             return list.ToList();
         }
 
