@@ -30,11 +30,11 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_WithRrMeta_HasHas_444_PlayableCards()
+		public void DeckDetector_WithRrMeta_HasHas_447_PlayableCards()
 		{
 			var result = sut.PlayableCards();
 			Assert.AreEqual(
-				expected: 446,
+				expected: 447,
 				actual: result.Count);
 		}
 
@@ -208,5 +208,30 @@ namespace Application.Tests
 			}
 		}
 
+		[TestMethod]
+		public void DectDetector_DetectsBadDeckNames()
+		{
+			Assert.IsFalse(sut.IsValidDeckname("bogus"));
+		}
+
+		[TestMethod]
+		public void DectDetector_DetectsGoodDeckNames()
+		{
+			Assert.IsTrue(sut.IsValidDeckname("Control Priest"));
+		}
+
+		[TestMethod]
+		public void DectDetector_DetectsResurrectPriestAsGoodDeckName()
+		{
+			Assert.IsTrue(sut.IsValidDeckname("Resurrect OTK Priest"));
+		}
+
+		[TestMethod]
+		public void DeckDetector_GeneratesWikiOutput()
+		{
+			var result = sut.CurrentMeta.ToWiki("Control Priest");
+			Assert.IsNotNull(result);
+			Console.WriteLine(result);
+		}
 	}
 }

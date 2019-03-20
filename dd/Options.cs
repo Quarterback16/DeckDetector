@@ -10,5 +10,8 @@ namespace dd
 
         [Option('p', Separator =',')]
         public IEnumerable<string> Played { get; set; }
-    }
+
+		[Option('r')]
+		public string Report { get; set; }
+	}
 }

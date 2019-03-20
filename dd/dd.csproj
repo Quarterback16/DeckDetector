@@ -61,6 +61,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\HsEventStore\HsEventStore.csproj">
+      <Project>{f94a487e-ce9b-4666-a76c-f268e8b5726a}</Project>
+      <Name>HsEventStore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Application\Application.csproj">
       <Project>{6D59BC3D-B4B2-4A5F-B5D7-A3678760CE15}</Project>
       <Name>Application</Name>

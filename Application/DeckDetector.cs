@@ -70,6 +70,15 @@ namespace Application
             return list.ToList();
         }
 
+		public bool IsValidDeckname( string deckName )
+		{
+			var list = CurrentMeta
+				.Decks
+				.Where(
+					d => d.Name.Equals(deckName));
+			return list.Count() == 1;
+		}
+
         public List<Deck> ListDecks(string heroClass, string[] played)
         {
             if (played.Length == 0)

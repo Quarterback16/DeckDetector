@@ -56,7 +56,6 @@ namespace Domain
 			return false;
 		}
 
-
 		public static bool IsWeapon(Card card)
 		{
 			if (CardBase == null)
@@ -105,7 +104,6 @@ namespace Domain
 			}
 			return false;
 		}
-
 
 		private static void LoadCardBase()
         {
@@ -512,7 +510,7 @@ namespace Domain
  {"Rabid Worgen", new CardData { ManaCost = 3 } },
  {"Radient Elemental", new CardData { ManaCost = 2 } },
  {"Raid Leader", new CardData { ManaCost = 3 } },
- {"Reckless Flurry", new CardData { ManaCost = 3 } },
+ {"Reckless Flurry", new CardData { ManaCost = 3, Aoe = true } },
  {"Rotface", new CardData { ManaCost = 8 } },
  {"Rotten Applebaum", new CardData { ManaCost = 5 } },
  {"Sandbinder", new CardData { ManaCost = 4 } },
@@ -648,8 +646,7 @@ namespace Domain
  { "Weapons Project", new CardData { ManaCost = 2 } },
  { "Zap!", new CardData { ManaCost = 0 } },
  { "Zilliax", new CardData { ManaCost = 5 } },
-
-  {"Amani War Bear", new CardData{ManaCost = 7} },
+ {"Amani War Bear", new CardData{ManaCost = 7} },
  {"Ancient Brewmaster", new CardData{ManaCost = 4} },
  {"Bloodscalp Strategist", new CardData{ManaCost = 3} },
  {"Charged Devisaur", new CardData{ManaCost = 8} },
@@ -686,7 +683,6 @@ namespace Domain
  {"Witchwood Grizzly", new CardData{ManaCost = 5} },
  {"Zerek's Cloning Gallery", new CardData{ManaCost = 9} },
  {"Zul'jin", new CardData{ManaCost = 10} },
-
  { "Annoy-o-Module", new CardData { ManaCost = 4 } },
  { "Astral Tiger", new CardData { ManaCost = 4 } },
  { "Banana Buffoon", new CardData { ManaCost = 3 } },
@@ -735,7 +731,6 @@ namespace Domain
  {"Grave Horror", new CardData { ManaCost = 0 } },
  {"Sand Drudge", new CardData { ManaCost = 0 } },
  {"Seance", new CardData { ManaCost = 0 } },
-
  {"Autodefense Matrix", new CardData { ManaCost = 1 , IsSecret = true} },
  {"Bellringer Sentry", new CardData { ManaCost = 4 } },
  {"Bonemare", new CardData { ManaCost = 8 } },
@@ -761,7 +756,6 @@ namespace Domain
  {"Sinister Strike", new CardData { ManaCost = 1, IsBurn = true } },
  {"Ticket Scalper", new CardData { ManaCost = 5 } },
  {"Windfury Harpy", new CardData { ManaCost = 6 } },
-
  {"Bog Slosher", new CardData { ManaCost = 3 } },
  {"Countess Ashmore", new CardData { ManaCost = 7 } },
  {"Elementary Reaction", new CardData { ManaCost = 2 } },
@@ -772,6 +766,7 @@ namespace Domain
  {"Shadow Madness", new CardData { ManaCost = 4 } },
  {"Tol'vir Stoneshaper", new CardData { ManaCost = 4 } },
  { "Soulwarden", new CardData { ManaCost = 6 } },
+  { "Headhunter's Hatchet", new CardData { ManaCost = 2, IsWeapon = true } },
 			};
         }
 

@@ -50,6 +50,7 @@
     <Compile Include="Metas\RastakhansRumble.cs" />
     <Compile Include="Metas\WitchwoodBalanced.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Record.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,7 +8,9 @@ namespace Domain
 
         public Hero HeroClass { get; set; }
 
-        internal bool HasTheseInitials(string cardName)
+		public bool Single { get; set; }
+
+		internal bool HasTheseInitials(string cardName)
         {
 #if DEBUG
 			Console.WriteLine($"{Name}={Initials()}");
@@ -55,7 +57,20 @@ namespace Domain
 			return inits;
 		}
 
-        public bool HasAoe()
+		public string CardName()
+		{
+			return $"{ManaCost()}-{Name}";
+		}
+
+		public int CardCount()
+		{
+			var cardCount = 2;
+			if (Single)
+				cardCount = 1;
+			return cardCount;
+		}
+
+		public bool HasAoe()
         {
             var isAoe = false;
             isAoe = HearthDb.HasAoe(this);

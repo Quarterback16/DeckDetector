@@ -8,7 +8,8 @@ namespace Domain.Metas
         {
             var meta = new Meta(
                 code: "MC2",
-                name: "Katacombs And Kobolds Post Nerf");
+                name: "Katacombs And Kobolds Post Nerf",
+				patchNo: 10.0M);
             meta.AddDeck(Cubelock());
             meta.AddDeck(ComboDragonPriest());
             meta.AddDeck(ControlPriest());

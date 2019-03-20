@@ -8,7 +8,8 @@ namespace Domain.Metas
         {
             var meta = new Meta(
             code: "RW2",
-            name: "The Witchwood Post Balance changes");
+            name: "The Witchwood Post Balance changes",
+			patchNo: 12.0M);
 
             meta.AddDeck(TokenDruid());
 			meta.AddDeck(TauntDruid());

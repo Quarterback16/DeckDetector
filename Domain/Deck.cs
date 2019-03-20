@@ -41,7 +41,6 @@ namespace Domain
             return $"T{Tier} {Name} ({Rank})";
         }
 
-
         public void Dump()
         {
             Console.WriteLine("-----------------------------");

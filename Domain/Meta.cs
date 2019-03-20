@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Domain
 {
@@ -7,15 +8,18 @@ namespace Domain
     {
         public string Code { get; set; }
         public string Name { get; set; }
+		public decimal PatchNo { get; set; }
 
         public List<Deck> Decks { get; set; }
 
         public Meta(
             string code,
-            string name )
+            string name,
+			decimal patchNo)
         {
             Code = code;
             Name = name;
+			PatchNo = patchNo;
             Decks = new List<Deck>();
         }
 
@@ -53,5 +57,48 @@ namespace Domain
             }
             return playableCards;
         }
-    }
+
+		public string ToWiki(string deckName )
+		{
+			var deck = GetDeck(deckName);
+			var sb = new StringBuilder();
+			AddLine(sb, MetaHeading());
+			AddLine(sb, string.Empty);
+			AddLine(sb, "|| **Count** || **Card**  ||  **Notes**  ||");
+			foreach (var card in deck.Cards)
+			{
+				AddLine(sb, $"|| {card.CardCount()} || {card.CardName()} ||  ||");
+			}
+			return sb.ToString();
+		}
+
+		private Deck GetDeck(string deckName)
+		{
+			var d = new Deck();
+			foreach (var deck in Decks)
+			{
+				if (deck.Name.Equals(deckName))
+				{
+					d = deck;
+					break;
+				}
+			};
+			return d;
+		}
+
+		private void AddLine(StringBuilder sb, string v)
+		{
+			sb.AppendLine(v);
+		}
+
+		private string MetaHeading()
+		{
+			return $"=== [[{WikiLink(Name)}]] {PatchNo} edition ===";
+		}
+
+		private string WikiLink(string name)
+		{
+			return name.Replace(" ", string.Empty);
+		}
+	}
 }

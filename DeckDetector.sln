@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests", "Applic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dd", "dd\dd.csproj", "{C2AC984F-0328-4770-8CDA-CC1538476F4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HsEventStore", "..\HsEventStore\HsEventStore.csproj", "{F94A487E-CE9B-4666-A76C-F268E8B5726A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C2AC984F-0328-4770-8CDA-CC1538476F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2AC984F-0328-4770-8CDA-CC1538476F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2AC984F-0328-4770-8CDA-CC1538476F4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F94A487E-CE9B-4666-A76C-F268E8B5726A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F94A487E-CE9B-4666-A76C-F268E8B5726A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F94A487E-CE9B-4666-A76C-F268E8B5726A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F94A487E-CE9B-4666-A76C-F268E8B5726A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

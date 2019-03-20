@@ -8,46 +8,46 @@ namespace Domain.Metas
 		{
 			var meta = new Meta(
 				code: "RR",
-				name: "Rastakhans Rumble");
+				name: "Rastakhans Rumble",
+				patchNo: 13.2M);
 
 			//  TIER 1
 			var tier1Decks = new List<Deck>
 			{
 				MidrangeHunter(),
-				EvenWarlock(),
 			};
 			meta.AddDecks(tier1Decks, 1);
 
 			//  TIER 2
 			var tier2Decks = new List<Deck>
 			{
-				ResurrectPriest(),
-				MalygosDruid(),
+				EvenWarlock(),
 				DeathrattleHunter(),
 				ControlPriest(),
-				OddAggroMage(),
-				WallPriest(),
 				QuestRogue(),
-				MiracleDruid(),
-				EvenPaladin(),
+				ResurrectPriest(),
 				OddControlMage(),
-				Zoolock(),
+				OddPaladin(),
+				WallPriest(),
 			};
 			meta.AddDecks(tier2Decks, 2);
 
 			//  TIER 3
 			var tier3Decks = new List<Deck>
 			{
+				PirateTempoRogue(),
 				Cubelock(),
+				MalygosDruid(),
 				OddWarrior(),
 				OddQuestWarrior(),
 				MechathunWarlock(),
-				OddPaladin(),
-				OddRogue(),
-				RushWarrior(),
+				OddAggroMage(),
+				Zoolock(),
 				MalygosRogue(),
 				SecretPaladin(),
-				ApmPriest(),
+				OddRogue(),
+				MiracleDruid(),
+				EvenPaladin(),
 				ControlMage(),
 			};
 			meta.AddDecks(tier3Decks, 3);
@@ -55,20 +55,21 @@ namespace Domain.Metas
 			//  TIER 4
 			var tier4Decks = new List<Deck>
 			{
-				EvenRogue(),
 				EvenShaman(),
+				RushWarrior(),
 				TogwaggleDruid(),
 				MechathunPriest(),
-				PirateMiracleRogue(),
-				ComboPriest(),
+				ApmPriest(),
+				HolyWrathPaladin(),
 			};
 			meta.AddDecks(tier4Decks, 4);
 
 			////  TIER 5
 			var tier5Decks = new List<Deck>
 			{
+				EvenRogue(),
+				ComboPriest(),
 				MidrangeWarlock(),
-				HolyWrathPaladin(),
 				OtkDeathKnightPaladin(),
 				EggPaladin(),
 				MechathunDruid(),
@@ -444,11 +445,11 @@ namespace Domain.Metas
 			};
 		}
 
-		private static Deck PirateMiracleRogue()
+		private static Deck PirateTempoRogue()
 		{
 			return new Deck
 			{
-				Name = "Pirate Miracle Rogue",
+				Name = "Pirate Tempo Rogue",
 				Prototype = "TEMPO",
 				Tier = 4,
 				Rank = 29,
@@ -816,7 +817,7 @@ namespace Domain.Metas
 		{
 			return new Deck
 			{
-				Name = "MidrangeHunter",
+				Name = "Midrange Hunter",
 				Prototype = "TEMPO",
 				Tier = 1,
 				Rank = 1,
@@ -833,6 +834,7 @@ namespace Domain.Metas
 					new Card { Name = "Scavenging Hyena" },
 					new Card { Name = "Animal Companion" },
 					new Card { Name = "Kill Command" },
+					new Card { Name = "Headhunter's Hatchet" },
 
 					new Card { Name = "Master's Call" },
 					new Card { Name = "Unleash the Hounds" },
@@ -1287,26 +1289,26 @@ namespace Domain.Metas
 					new Card { Name = "Northshire Cleric" },
 					new Card { Name = "Power Word: Shield" },
 					new Card { Name = "Firetree Witchdoctor" },
-//					new Card { Name = "Divine Hymn" },
+					new Card { Name = "Divine Hymn" },
 					new Card { Name = "Mind Blast" },
 					new Card { Name = "Shadow Visions" },
-					//new Card { Name = "Wild Pyromancer" },
-					new Card { Name = "Acolyte of Pain" },
+
+					//new Card { Name = "Acolyte of Pain" },
 					new Card { Name = "Twilight Acolyte" },
 					new Card { Name = "Duskbreaker" },
-					//new Card { Name = "Mass Dispel" },
+					new Card { Name = "Mass Dispel", Single = true },
+					new Card { Name = "Mass Histeria", Single = true },
 					new Card { Name = "Scaleworm" },
 
-					//new Card { Name = "Shadow Word: Horror" },
 					new Card { Name = "Twilight Drake" },
 					new Card { Name = "Cabal Shadow Priest" },
-					new Card { Name = "Holy Fire" },
-					new Card { Name = "Archbishop Benedictus" },
-					new Card { Name = "Crowd Roaster" },
-					new Card { Name = "Psychic Scream" },
-					//new Card { Name = "Primordial Drake" },
-					new Card { Name = "Shadowreaper Anduin" },
-					new Card { Name = "Alexstrasza" },
+					new Card { Name = "Holy Fire", Single = true },
+					//new Card { Name = "Archbishop Benedictus" },
+					new Card { Name = "Crowd Roaster", Single = true},
+					new Card { Name = "Psychic Scream", Single = true},
+					new Card { Name = "Primordial Drake" , Single = true},
+					new Card { Name = "Shadowreaper Anduin", Single = true },
+					new Card { Name = "Alexstrasza", Single = true },
 				}
 			};
 		}
