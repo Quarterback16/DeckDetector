@@ -23,6 +23,11 @@ namespace Domain
             Decks = new List<Deck>();
         }
 
+		public override string ToString()
+		{
+			return Name;
+		}
+
 		internal void AddDecks(List<Deck> decks, int tier)
 		{
 			foreach (var deck in decks)

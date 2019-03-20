@@ -1,5 +1,6 @@
 ﻿using Domain;
 using Domain.Metas;
+using HsEventStore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,6 @@ namespace Application
 		{
 			CurrentMeta = meta;
 		}
-
 
 		public List<Card> PlayableCards(bool dump = false)
         {
@@ -50,7 +50,6 @@ namespace Application
             }
             return true;
         }
-
 
         public List<Deck> ListDecks()
         {
@@ -118,6 +117,172 @@ namespace Application
 			{
 				theDeck.Dump();
 			}
+		}
+
+		public void DumpNotes(
+			string homeDeck,
+			string oppDeck,
+			List<HsGamePlayedEvent> results)
+		{
+			var notes = new List<string>();
+			var gameCount = 0;
+			var wins = 0;
+			var losses = 0;
+
+			foreach (var game in results)
+			{
+				if (game.HomeDeck == homeDeck
+					&& game.OpponentDeck == oppDeck)
+				{
+					gameCount++;
+					if (game.Result.Equals("win"))
+					{
+						notes.Add($"W-F-{game.Notes}");
+						wins++;
+					}
+					else
+					{
+						notes.Add($"L-F-{game.Notes}");
+						losses++;
+					}
+				}
+				if (game.OpponentDeck == homeDeck
+					&& game.HomeDeck == oppDeck)
+				{
+					gameCount++;
+					if (game.Result.Equals("win"))
+					{
+						notes.Add($"L-A-{game.Notes}");
+						losses++;
+					}
+					else
+					{
+						notes.Add($"W-A-{game.Notes}");
+						wins++;
+					}
+				}
+			}
+
+			Console.WriteLine($@"Notes: for {
+				homeDeck
+				} games: {
+				gameCount
+				} ({wins}-{losses})");
+
+			if (notes.Any())
+			{
+				foreach (var item in notes)
+				{
+					Console.WriteLine(item);
+				}
+			}
+		}
+
+		public void DumpRunRecord(List<HsGamePlayedEvent> results)
+		{
+			var runRecord = RunRecord(results);
+			Console.WriteLine(runRecord.ToString());
+		}
+
+		public void DumpDeckRecord(string homeDeck, List<HsGamePlayedEvent> results)
+		{
+			var deckRecord = DeckRecord(results, homeDeck);
+			Console.WriteLine(deckRecord.ToString());
+		}
+
+		public void DumpMonthRecord(List<HsGamePlayedEvent> results)
+		{
+			var monthRecord = MonthRecord(results);
+			Console.WriteLine(monthRecord.ToString());
+		}
+
+		public void DumpMetaRecord(List<HsGamePlayedEvent> results)
+		{
+			var metaRecord = MetaRecord(results);
+			Console.WriteLine(metaRecord.ToString());
+		}
+
+		private static Record RunRecord(List<HsGamePlayedEvent> results)
+		{
+			var record = new Record();
+			var latestRun = 0;
+			foreach (var game in results)
+			{
+				if (game.Run != latestRun)
+				{
+					latestRun = game.Run;
+					record.Name = $"Run {game.Run}";
+					record.Wins = 0;
+					record.Losses = 0;
+				}
+				if (game.Result.Equals("win"))
+					record.Wins++;
+				else
+					record.Losses++;
+			}
+			return record;
+		}
+
+		private Record MetaRecord(List<HsGamePlayedEvent> results)
+		{
+			var record = new Record();
+			var currMonth = DateTime.Now.Month;
+			record.Name = $"Meta {CurrentMeta} Record";
+			record.Wins = 0;
+			record.Losses = 0;
+			foreach (var game in results)
+			{
+				if (game.Result.Equals("win"))
+					record.Wins++;
+				else
+					record.Losses++;
+			}
+			return record;
+		}
+
+		private static Record MonthRecord(List<HsGamePlayedEvent> results)
+		{
+			var record = new Record();
+			var currMonth = DateTime.Now.Month;
+			record.Name = $"Overall {DateTime.Now.Year}-{currMonth:0#} Record";
+			record.Wins = 0;
+			record.Losses = 0;
+			foreach (var game in results)
+			{
+				if (game.DatePlayed.Month == currMonth)
+				{
+					if (game.Result.Equals("win"))
+						record.Wins++;
+					else
+						record.Losses++;
+				}
+
+			}
+			return record;
+		}
+
+		private static Record DeckRecord(
+			List<HsGamePlayedEvent> results,
+			string deckName)
+		{
+			var record = new Record();
+			var currMonth = DateTime.Now.Month;
+			record.Name = $"Deck {DateTime.Now.Year}-{currMonth:0#} Record";
+			record.Wins = 0;
+			record.Losses = 0;
+			foreach (var game in results)
+			{
+				if (game.DatePlayed.Month == currMonth
+					&& game.HomeDeck.Equals(deckName))
+				{
+					if (game.Result.Equals("win"))
+						record.Wins++;
+					else
+						record.Losses++;
+				}
+
+			}
+			return record;
 		}
 	}
 }
