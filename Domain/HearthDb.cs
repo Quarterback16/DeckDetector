@@ -409,7 +409,7 @@ namespace Domain
 { "Unstable Evolution", new CardData { ManaCost = 1 } },
 { "Upgrade!", new CardData { ManaCost = 0 } },
 { "Uther of the Ebon Blade", new CardData { ManaCost = 9 } },
-{ "Val'anyr", new CardData { ManaCost = 6 } },
+{ "Val'anyr", new CardData { ManaCost = 6, IsWeapon = true } },
 { "Valeera the Hollow", new CardData { ManaCost = 9 } },
 { "Vanish", new CardData { ManaCost = 6, Aoe = true } },
 { "Vilefin Inquisitor", new CardData { ManaCost = 1 } },

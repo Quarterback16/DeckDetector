@@ -35,7 +35,7 @@ namespace dd
 
 			if (options.Report != null)
 			{
-				FrequencyReport(eventStore);
+				FrequencyReport(eventStore,homeDeck,dd);
 #if DEBUG
 				Console.ReadLine();
 #endif
@@ -59,6 +59,8 @@ namespace dd
 				dd.DumpMonthRecord(results);
 				dd.DumpDeckRecord(homeDeck, results);
 				dd.DumpRunRecord(results);
+				dd.DumpDailyRecord(results);
+				Console.WriteLine("-----------------------------------");
 			}
 			dd.DumpNotes(homeDeck, oppDeck, results);
 
@@ -69,7 +71,9 @@ namespace dd
 		}
 
 		private static void FrequencyReport(
-			HsEventStore.HsEventStore eventStore)
+			HsEventStore.HsEventStore eventStore,
+			string homeDeck,
+			DeckDetector dd)
 		{
 			var d = new Dictionary<string, int>();
 			var results = (List<HsGamePlayedEvent>)
@@ -87,9 +91,10 @@ namespace dd
 				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
 			foreach (KeyValuePair<string, int> pair in myList)
 			{
-				Console.WriteLine("  {0,-24} {1}",
+				Console.WriteLine("  {0,-24} {1,-2} {2}",
 					pair.Key,
-					pair.Value);
+					pair.Value,
+					dd.RecordVersusDeck(homeDeck,pair.Key,results));
 			}
 		}
 

@@ -146,6 +146,9 @@ namespace Application
 						losses++;
 					}
 				}
+				if (oppDeck.Equals(homeDeck))
+					continue;  //  mirror dont double count
+
 				if (game.OpponentDeck == homeDeck
 					&& game.HomeDeck == oppDeck)
 				{
@@ -178,6 +181,38 @@ namespace Application
 			}
 		}
 
+		public string RecordVersusDeck(
+			string homeDeck,
+			string oppDeck,
+			List<HsGamePlayedEvent> results)
+		{
+			var record = new Record();
+
+			foreach (var game in results)
+			{
+				if (game.HomeDeck == homeDeck
+					&& game.OpponentDeck == oppDeck)
+				{
+					if (game.Result.Equals("win"))
+					{
+						record.Wins++;
+					}
+					else
+					{
+						record.Losses++;
+					}
+				}
+			}
+
+			return record.ToString();
+		}
+
+		public void DumpDailyRecord(List<HsGamePlayedEvent> results)
+		{
+			var runRecord = DailyRecord(results);
+			Console.WriteLine(runRecord.ToString());
+		}
+
 		public void DumpRunRecord(List<HsGamePlayedEvent> results)
 		{
 			var runRecord = RunRecord(results);
@@ -200,6 +235,26 @@ namespace Application
 		{
 			var metaRecord = MetaRecord(results);
 			Console.WriteLine(metaRecord.ToString());
+		}
+
+		private static Record DailyRecord(List<HsGamePlayedEvent> results)
+		{
+			var record = new Record
+			{
+				Name = $"Daily Record"
+			};
+
+			foreach (var game in results)
+			{
+				if (game.DatePlayed.Date == DateTime.Now.Date)
+				{
+					if (game.Result.Equals("win"))
+						record.Wins++;
+					else
+						record.Losses++;
+				}
+			}
+			return record;
 		}
 
 		private static Record RunRecord(List<HsGamePlayedEvent> results)

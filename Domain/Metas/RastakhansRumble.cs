@@ -1622,14 +1622,15 @@ namespace Domain.Metas
 					new Card { Name = "Unidentified Maul" },
 					new Card { Name = "Void Ripper" },
 					new Card { Name = "Fungalmancer" },
-//					new Card { Name = "Leeroy Jenkins" },
+					new Card { Name = "Leeroy Jenkins" },
 					new Card { Name = "Level Up!" },
 					new Card { Name = "Wargear" },
 					new Card { Name = "Corridor Creeper" },
-					//new Card { Name = "Stormwind Champion" },
+					new Card { Name = "Stormwind Champion" },
 					new Card { Name = "Vinecleaver" },
+					new Card { Name = "Tirian Fordring" },
 					new Card { Name = "Baku the Mooneater" },
-					//new Card { Name = "Witch's Cauldron" },  // tech vs Control
+					new Card { Name = "Witch's Cauldron" },  // tech vs Control
 				}
 			};
 		}
