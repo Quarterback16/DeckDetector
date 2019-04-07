@@ -2,7 +2,6 @@
 using Domain.Metas;
 using HsEventStore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 
 namespace Application.Tests

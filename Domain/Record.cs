@@ -8,7 +8,19 @@
 
 		public override string ToString()
 		{
-			return $"{Name}: ({Wins}-{Losses})";
+			return $"{Name}: ({Wins}-{Losses}) {Percent(),5}";
+		}
+
+		private string Percent()
+		{
+			if (TotalGames() == 0)
+				return "0%";
+			return $"{  Wins / (decimal) TotalGames() * 100M:####0}%";
+		}
+
+		private int TotalGames()
+		{
+			return Wins + Losses;
 		}
 	}
 }

@@ -56,8 +56,10 @@ namespace dd
 			if (cardsPlayed.Count() == 0)
 			{
 				dd.DumpMetaRecord(results);
+				dd.DumpPreviousMonthRecord(results);
 				dd.DumpMonthRecord(results);
 				dd.DumpDeckRecord(homeDeck, results);
+				dd.DumpDeckMonthRecord(homeDeck, results);
 				dd.DumpRunRecord(results);
 				dd.DumpDailyRecord(results);
 				Console.WriteLine("-----------------------------------");
@@ -85,13 +87,13 @@ namespace dd
 				else
 					d.Add(game.OpponentDeck, 1);
 			}
-			Console.WriteLine($"Frequency Report          {results.Count()}");
+			Console.WriteLine($"Frequency Report           {results.Count()}");
 			var myList = d.ToList();
 			myList.Sort(
 				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
 			foreach (KeyValuePair<string, int> pair in myList)
 			{
-				Console.WriteLine("  {0,-24} {1,-2} {2}",
+				Console.WriteLine("  {0,-24} {1,2} {2}",
 					pair.Key,
 					pair.Value,
 					dd.RecordVersusDeck(homeDeck,pair.Key,results));

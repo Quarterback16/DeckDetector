@@ -21,28 +21,27 @@ namespace Domain.Metas
 			//  TIER 2
 			var tier2Decks = new List<Deck>
 			{
-				EvenWarlock(),
 				DeathrattleHunter(),
+				EvenWarlock(),
+				PirateTempoRogue(),
 				ControlPriest(),
-				QuestRogue(),
-				ResurrectPriest(),
 				OddControlMage(),
 				OddPaladin(),
-				WallPriest(),
+				OddWarrior(),
 			};
 			meta.AddDecks(tier2Decks, 2);
 
 			//  TIER 3
 			var tier3Decks = new List<Deck>
 			{
-				PirateTempoRogue(),
+				QuestRogue(),
+				ResurrectPriest(),
 				Cubelock(),
 				MalygosDruid(),
-				OddWarrior(),
+				WallPriest(),
 				OddQuestWarrior(),
-				MechathunWarlock(),
-				OddAggroMage(),
 				Zoolock(),
+				MechathunWarlock(),
 				MalygosRogue(),
 				SecretPaladin(),
 				OddRogue(),
@@ -55,18 +54,21 @@ namespace Domain.Metas
 			//  TIER 4
 			var tier4Decks = new List<Deck>
 			{
+				DeathrattleRogue(),
 				EvenShaman(),
 				RushWarrior(),
 				TogwaggleDruid(),
+				HolyWrathPaladin(),
 				MechathunPriest(),
 				ApmPriest(),
-				HolyWrathPaladin(),
 			};
 			meta.AddDecks(tier4Decks, 4);
 
 			////  TIER 5
 			var tier5Decks = new List<Deck>
 			{
+				BwonsamdiQuestPriest(),
+				OddAggroMage(),
 				EvenRogue(),
 				ComboPriest(),
 				MidrangeWarlock(),
@@ -85,7 +87,6 @@ namespace Domain.Metas
 				QuestMage(),
 				KingsbaneRogue(),
 				SpitefulPriest(),
-				DeathrattleRogue(),
 				TauntDruid(),
 				OtkPriest(),
 				EspionageRogue()
@@ -1297,7 +1298,7 @@ namespace Domain.Metas
 					new Card { Name = "Twilight Acolyte" },
 					new Card { Name = "Duskbreaker" },
 					new Card { Name = "Mass Dispel", Single = true },
-					new Card { Name = "Mass Histeria", Single = true },
+					new Card { Name = "Mass Hysteria", Single = true },
 					new Card { Name = "Scaleworm" },
 
 					new Card { Name = "Twilight Drake" },
@@ -2065,6 +2066,46 @@ namespace Domain.Metas
 					new Card { Name = "Primordial Drake" },
 					new Card { Name = "Shadowreaper Anduin" },
 					new Card { Name = "Alexstrasza" },
+					//new Card { Name = "Mind Control" },
+				}
+			};
+		}
+
+		private static Deck BwonsamdiQuestPriest()
+		{
+			return new Deck
+			{
+				Name = "Bwonsamdi Quest Priest",
+				Prototype = "COMBO",
+				Tier = 5,
+				Rank = 24,
+				HeroClass = new Hero("Priest"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Awaken the Makers" },
+					new Card { Name = "Crystalline Oracle" },
+					new Card { Name = "Bloodmage Thalnos" },
+					new Card { Name = "Loot Hoarder" },
+					new Card { Name = "Swamp Dragon Egg" },
+					new Card { Name = "Devilsaur Egg" },
+					new Card { Name = "Voodoo Doll" },
+					new Card { Name = "Dead Ringer" },
+					new Card { Name = "Shadow Visions" },
+					new Card { Name = "Seance" },
+					new Card { Name = "Guilded Gargoyle" },
+					new Card { Name = "Carnivourous Cube" },
+					new Card { Name = "Stonehill Defender" },
+					new Card { Name = "Twillight's Call" },
+					new Card { Name = "Tortellian Shellraiser" },
+					new Card { Name = "Dragonmaw Scorcher" },
+					new Card { Name = "Cabal Shadow Priest" },
+					new Card { Name = "Bwonsamdi the Dead" },
+					new Card { Name = "Crowd Roaster" },
+					new Card { Name = "Prophet Velen" },
+					new Card { Name = "Psychic Scream" },
+					new Card { Name = "Primordial Drake" },
+					new Card { Name = "Shadowreaper Anduin" },
+					new Card { Name = "Obsidian Statue" },
 					//new Card { Name = "Mind Control" },
 				}
 			};

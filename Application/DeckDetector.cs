@@ -221,6 +221,12 @@ namespace Application
 
 		public void DumpDeckRecord(string homeDeck, List<HsGamePlayedEvent> results)
 		{
+			var deckRecord = DeckTotalRecord(results, homeDeck);
+			Console.WriteLine(deckRecord.ToString());
+		}
+
+		public void DumpDeckMonthRecord(string homeDeck, List<HsGamePlayedEvent> results)
+		{
 			var deckRecord = DeckRecord(results, homeDeck);
 			Console.WriteLine(deckRecord.ToString());
 		}
@@ -228,6 +234,12 @@ namespace Application
 		public void DumpMonthRecord(List<HsGamePlayedEvent> results)
 		{
 			var monthRecord = MonthRecord(results);
+			Console.WriteLine(monthRecord.ToString());
+		}
+
+		public void DumpPreviousMonthRecord(List<HsGamePlayedEvent> results)
+		{
+			var monthRecord = PreviousMonthRecord(results);
 			Console.WriteLine(monthRecord.ToString());
 		}
 
@@ -295,7 +307,31 @@ namespace Application
 			return record;
 		}
 
-		private static Record MonthRecord(List<HsGamePlayedEvent> results)
+		private static Record PreviousMonthRecord(
+			List<HsGamePlayedEvent> results)
+		{
+			var record = new Record();
+			var previousDate = DateTime.Now.AddMonths(-1);
+			var prevMonth = previousDate.Month;
+			record.Name = $"Overall {previousDate.Year}-{prevMonth:0#} Record";
+			record.Wins = 0;
+			record.Losses = 0;
+			foreach (var game in results)
+			{
+				if (game.DatePlayed.Month == prevMonth)
+				{
+					if (game.Result.Equals("win"))
+						record.Wins++;
+					else
+						record.Losses++;
+				}
+			}
+			return record;
+		}
+
+
+		private static Record MonthRecord(
+			List<HsGamePlayedEvent> results	)
 		{
 			var record = new Record();
 			var currMonth = DateTime.Now.Month;
@@ -336,6 +372,29 @@ namespace Application
 						record.Losses++;
 				}
 
+			}
+			return record;
+		}
+
+		private static Record DeckTotalRecord(
+			List<HsGamePlayedEvent> results,
+			string deckName)
+		{
+			var record = new Record
+			{
+				Name = "Deck Total Record",
+				Wins = 0,
+				Losses = 0
+			};
+			foreach (var game in results)
+			{
+				if (game.HomeDeck.Equals(deckName))
+				{
+					if (game.Result.Equals("win"))
+						record.Wins++;
+					else
+						record.Losses++;
+				}
 			}
 			return record;
 		}

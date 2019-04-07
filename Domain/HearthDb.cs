@@ -658,7 +658,7 @@ namespace Domain
  {"Emberscale Drake", new CardData{ManaCost = 5} },
  {"Firetree Witchdoctor", new CardData{ManaCost = 2} },
  {"Flash of Light", new CardData{ManaCost = 2} },
- {"Guilded Gargoyle", new CardData{ManaCost = 0} },
+ {"Guilded Gargoyle", new CardData{ManaCost = 2} },
  {"Lynessa Sunsorrow", new CardData{ManaCost = 7} },
  {"Masked Contender", new CardData{ManaCost = 3} },
  {"Mass Hysteria", new CardData{ManaCost = 5, Aoe = true} },
@@ -767,6 +767,9 @@ namespace Domain
  {"Tol'vir Stoneshaper", new CardData { ManaCost = 4 } },
  { "Soulwarden", new CardData { ManaCost = 6 } },
   { "Headhunter's Hatchet", new CardData { ManaCost = 2, IsWeapon = true } },
+   {"Swamp Dragon Egg", new CardData { ManaCost = 1 } },
+ {"Bwonsamdi the Dead", new CardData { ManaCost = 0 } },
+
 			};
         }
 

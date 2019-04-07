@@ -30,7 +30,7 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_WithRrMeta_HasHas_447_PlayableCards()
+		public void DeckDetector_WithRrMeta_HasHas_449_PlayableCards()
 		{
 			var result = sut.PlayableCards();
 			Assert.AreEqual(
@@ -39,32 +39,22 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_ListDecks_Returns_51_Decks()
+		public void DeckDetector_ListDecks_Returns_52_Decks()
 		{
 			var results = sut.ListDecks();
 			sut.DumpDecks(results);
 			Assert.AreEqual(
-				expected: 51,
+				expected: 52,
 				actual: results.Count);
 		}
 
 		[TestMethod]
-		public void DeckDetector_List_pr_Decks_Returns_8_Decks()
+		public void DeckDetector_List_pr_Decks_Returns_9_Decks()
 		{
 			var results = sut.ListDecks("pr");
 			sut.DumpDecks(results);
 			Assert.AreEqual(
-				expected: 8,
-				actual: results.Count);
-		}
-
-		[TestMethod]
-		public void DeckDetector_ListPriestDecks_Returns_8_Decks()
-		{
-			var results = sut.ListDecks("Priest");
-			sut.DumpDecks(results);
-			Assert.AreEqual(
-				expected: 8, 
+				expected: 9,
 				actual: results.Count);
 		}
 
