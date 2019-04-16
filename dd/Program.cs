@@ -16,7 +16,7 @@ namespace dd
 
 			var homeDeck = Environment.GetEnvironmentVariable("HOMEDECK");
 #if DEBUG
-			homeDeck = "Control Priest";
+			homeDeck = "Muckmorpher Shaman";
 			Console.WriteLine($"Home Deck is {homeDeck}");
 #endif
 			var eventStore = new HsEventStore.HsEventStore();

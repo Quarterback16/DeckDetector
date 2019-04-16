@@ -13,7 +13,7 @@ namespace Application
 
         public DeckDetector()
         {
-            CurrentMeta = RastakhansRumble.LoadMeta();
+            CurrentMeta = RiseOfShadows.LoadMeta();
         }
 
 		public DeckDetector(Meta meta)
