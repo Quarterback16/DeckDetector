@@ -72,36 +72,31 @@ namespace Domain
 
 		public bool HasAoe()
         {
-            var isAoe = false;
-            isAoe = HearthDb.HasAoe(this);
-            return isAoe;
+			bool isAoe = HearthDb.HasAoe(this);
+			return isAoe;
         }
 
 		public bool IsSecret()
 		{
-			var isSecret = false;
-			isSecret = HearthDb.IsSecret(this);
+			bool isSecret = HearthDb.IsSecret(this);
 			return isSecret;
 		}
 
 		public bool IsWeapon()
 		{
-			var isWeapon = false;
-			isWeapon = HearthDb.IsWeapon(this);
+			bool isWeapon = HearthDb.IsWeapon(this);
 			return isWeapon;
 		}
 
 		public bool IsRemoval()
 		{
-			var isSecret = false;
-			isSecret = HearthDb.IsSecret(this);
+			bool isSecret = HearthDb.IsSecret(this);
 			return isSecret;
 		}
 
 		public bool IsBurn()
 		{
-			var isBurn = false;
-			isBurn = HearthDb.IsBurn(this);
+			bool isBurn = HearthDb.IsBurn(this);
 			return isBurn;
 		}
 	}
