@@ -10,7 +10,7 @@ namespace Application.Tests
 		public void DeckParserLoadsInput()
 		{
 			var sut = new DeckParser();
-			sut.LoadInput("SilencePriest");
+			sut.LoadInput("Handlock");
 			sut.DisplayCode();
 		}
 
@@ -20,9 +20,10 @@ namespace Application.Tests
 			var sut = new DeckParser();
 			var filesIn = new List<string>
 			{
-				"DragonWarrior",
-				"WallPriest",
-				"ThiefRogue"
+				"HolyWrathPaladin",
+				"MechathunWarrior",
+				"MechathunShaman",
+				"CycloneGiantsMage"
 			};
 			foreach (var item in filesIn)
 			{

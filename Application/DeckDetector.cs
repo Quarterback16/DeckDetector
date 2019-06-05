@@ -358,7 +358,7 @@ namespace Application
 		{
 			var record = new Record();
 			var currMonth = DateTime.Now.Month;
-			record.Name = $"Deck {DateTime.Now.Year}-{currMonth:0#} Record";
+			record.Name = $"{deckName} {DateTime.Now.Year}-{currMonth:0#} Record";
 			record.Wins = 0;
 			record.Losses = 0;
 			foreach (var game in results)
@@ -371,7 +371,6 @@ namespace Application
 					else
 						record.Losses++;
 				}
-
 			}
 			return record;
 		}
@@ -382,7 +381,7 @@ namespace Application
 		{
 			var record = new Record
 			{
-				Name = "Deck Total Record",
+				Name = $"{deckName} Record",
 				Wins = 0,
 				Losses = 0
 			};

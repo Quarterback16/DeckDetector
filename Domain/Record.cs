@@ -11,7 +11,7 @@
 			return $"{Name}: ({Wins}-{Losses}) {Percent(),5}";
 		}
 
-		private string Percent()
+		public string Percent()
 		{
 			if (TotalGames() == 0)
 				return "0%";

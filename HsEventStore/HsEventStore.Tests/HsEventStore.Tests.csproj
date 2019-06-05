@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C2AC984F-0328-4770-8CDA-CC1538476F4A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>dd</RootNamespace>
-    <AssemblyName>dd</AssemblyName>
+    <ProjectGuid>{1500A24C-D028-4617-82DC-FFE48B60367B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HsEventStore.Tests</RootNamespace>
+    <AssemblyName>HsEventStore.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,18 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommandLine, Version=2.2.1.0, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommandLineParser.2.2.1\lib\net45\CommandLine.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Console, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Console.4.0.0\lib\net46\System.Console.dll</HintPath>
-    </Reference>
     <Reference Include="System.Core" />
-    <Reference Include="System.Reflection.TypeExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Reflection.TypeExtensions.4.1.0\lib\net46\System.Reflection.TypeExtensions.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,24 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Options.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="HsEventIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Application\Application.csproj">
-      <Project>{6D59BC3D-B4B2-4A5F-B5D7-A3678760CE15}</Project>
-      <Name>Application</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{1638f0d1-decc-4488-a153-d33e3463dfec}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HsEventStore\HsEventStore.csproj">
+    <ProjectReference Include="..\HsEventStore.csproj">
       <Project>{f94a487e-ce9b-4666-a76c-f268e8b5726a}</Project>
       <Name>HsEventStore</Name>
     </ProjectReference>

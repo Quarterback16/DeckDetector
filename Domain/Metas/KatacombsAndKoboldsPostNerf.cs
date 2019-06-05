@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Domain.Metas
 {
@@ -9,8 +10,9 @@ namespace Domain.Metas
             var meta = new Meta(
                 code: "MC2",
                 name: "Katacombs And Kobolds Post Nerf",
-				patchNo: 10.0M);
-            meta.AddDeck(Cubelock());
+				patchNo: 10.0M,
+				asOf: new DateTime(1, 1, 1));
+			meta.AddDeck(Cubelock());
             meta.AddDeck(ComboDragonPriest());
             meta.AddDeck(ControlPriest());
             meta.AddDeck(MurlocPaladin());

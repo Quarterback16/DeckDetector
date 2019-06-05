@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Domain.Metas
 {
@@ -9,7 +10,8 @@ namespace Domain.Metas
 			var meta = new Meta(
 				code: "RR",
 				name: "Rastakhans Rumble",
-				patchNo: 13.2M);
+				patchNo: 13.2M,
+				asOf: new DateTime(1, 1, 1));
 
 			//  TIER 1
 			var tier1Decks = new List<Deck>

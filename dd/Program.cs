@@ -16,7 +16,7 @@ namespace dd
 
 			var homeDeck = Environment.GetEnvironmentVariable("HOMEDECK");
 #if DEBUG
-			homeDeck = "Muckmorpher Shaman";
+			homeDeck = "Lackey Rogue";
 			Console.WriteLine($"Home Deck is {homeDeck}");
 #endif
 			var eventStore = new HsEventStore.HsEventStore();
@@ -87,17 +87,29 @@ namespace dd
 				else
 					d.Add(game.OpponentDeck, 1);
 			}
-			Console.WriteLine($"Frequency Report           {results.Count()}");
+			Console.WriteLine($"Deck: {homeDeck}");
+			Console.WriteLine($"Frequency Report           {results.Count()}        Deck Record");
 			var myList = d.ToList();
 			myList.Sort(
 				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
 			foreach (KeyValuePair<string, int> pair in myList)
 			{
-				Console.WriteLine("  {0,-24} {1,2} {2}",
+				Console.WriteLine("  {0,-24} {1,2} {2,4} {3}",
 					pair.Key,
 					pair.Value,
+					MeetFrequency(results.Count(),pair.Value),
 					dd.RecordVersusDeck(homeDeck,pair.Key,results));
 			}
+		}
+
+		private static string MeetFrequency(int count, int games)
+		{
+			var record = new Record
+			{
+				Wins = games,
+				Losses = count
+			};
+			return record.Percent();
 		}
 
 		private static void Validate(

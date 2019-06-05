@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Domain.Metas
 {
@@ -9,9 +10,10 @@ namespace Domain.Metas
             var meta = new Meta(
             code: "RW2",
             name: "The Witchwood Post Balance changes",
-			patchNo: 12.0M);
+			patchNo: 12.0M,
+			asOf: new DateTime(1, 1, 1));
 
-            meta.AddDeck(TokenDruid());
+			meta.AddDeck(TokenDruid());
 			meta.AddDeck(TauntDruid());
 			meta.AddDeck(EvenWarlock());
 			meta.AddDeck(Shudderwock());

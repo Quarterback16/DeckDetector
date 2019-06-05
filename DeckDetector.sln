@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2005
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28917.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{1638F0D1-DECC-4488-A153-D33E3463DFEC}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests", "Applic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dd", "dd\dd.csproj", "{C2AC984F-0328-4770-8CDA-CC1538476F4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HsEventStore", "..\HsEventStore\HsEventStore.csproj", "{F94A487E-CE9B-4666-A76C-F268E8B5726A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HsEventStore", "HsEventStore\HsEventStore.csproj", "{F94A487E-CE9B-4666-A76C-F268E8B5726A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

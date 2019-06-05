@@ -13,7 +13,8 @@ namespace Domain.Metas
 			var meta = new Meta(
 			code: "RB",
 			name: "The Booms Day Project",
-			patchNo: 11.0M);
+			patchNo: 11.0M,
+			asOf: new DateTime(1,1,1));
 
 			//  TIER 1
 			meta.AddDeck(MalygosDruid());

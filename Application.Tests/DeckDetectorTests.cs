@@ -34,5 +34,18 @@ namespace Application.Tests
 				oppDeck: "Control Priest",
 				results: events);
 		}
+
+		[TestMethod]
+		public void DumpNotes_ForConjurerMage()
+		{
+			var eventStore = new HsEventStore.HsEventStore();
+			var events = (List<HsGamePlayedEvent>)
+				eventStore.Get<HsGamePlayedEvent>("game-played");
+
+			sut.DumpNotes(
+				homeDeck: "Lackey Rogue",
+				oppDeck: "Conjurer Mage",
+				results: events);
+		}
 	}
 }

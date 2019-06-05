@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Domain
 {
     public class Meta
     {
-        public string Code { get; set; }
+		public DateTime AsOf { get; set; }
+		public string Code { get; set; }
         public string Name { get; set; }
 		public decimal PatchNo { get; set; }
 
@@ -14,12 +16,14 @@ namespace Domain
         public Meta(
             string code,
             string name,
-			decimal patchNo)
+			decimal patchNo,
+			DateTime asOf)
         {
             Code = code;
             Name = name;
 			PatchNo = patchNo;
             Decks = new List<Deck>();
+			AsOf = asOf;
         }
 
 		public override string ToString()

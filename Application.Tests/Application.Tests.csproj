@@ -52,10 +52,6 @@
     <Compile Include="RiseOfShadowsTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\HsEventStore\HsEventStore.csproj">
-      <Project>{f94a487e-ce9b-4666-a76c-f268e8b5726a}</Project>
-      <Name>HsEventStore</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Application\Application.csproj">
       <Project>{6d59bc3d-b4b2-4a5f-b5d7-a3678760ce15}</Project>
       <Name>Application</Name>
@@ -63,6 +59,10 @@
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{1638F0D1-DECC-4488-A153-D33E3463DFEC}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HsEventStore\HsEventStore.csproj">
+      <Project>{f94a487e-ce9b-4666-a76c-f268e8b5726a}</Project>
+      <Name>HsEventStore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

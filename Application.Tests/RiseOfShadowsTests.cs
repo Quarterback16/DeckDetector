@@ -22,7 +22,7 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_OnInstantiation_HasRrMeta()
+		public void DeckDetector_OnInstantiation_HasRsMeta()
 		{
 			Assert.AreEqual(
 				expected: "RS",
@@ -56,6 +56,33 @@ namespace Application.Tests
 			Assert.AreEqual(
 				expected: 3,
 				actual: results.Count);
+		}
+
+		[TestMethod]
+		public void MageQuery_DoesntFallOver()
+		{
+			var heroClass = "Mage";
+			var played = new string[]
+			{
+				"aso",
+				"ra"
+			};
+			var results = sut.ListDecks(heroClass, played);
+			sut.DumpDecks(results);
+			Assert.AreEqual(0, results.Count);
+		}
+
+		[TestMethod]
+		public void PaladinQuery_DoesntFallOver()
+		{
+			var heroClass = "Paladin";
+			var played = new string[]
+			{
+				"lh"
+			};
+			var results = sut.ListDecks(heroClass, played);
+			sut.DumpDecks(results);
+			Assert.AreEqual(0, results.Count);
 		}
 
 		[TestMethod]

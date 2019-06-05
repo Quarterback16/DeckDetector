@@ -45,13 +45,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\HsEventStore\HsEventStore.csproj">
-      <Project>{F94A487E-CE9B-4666-A76C-F268E8B5726A}</Project>
-      <Name>HsEventStore</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{1638f0d1-decc-4488-a153-d33e3463dfec}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HsEventStore\HsEventStore.csproj">
+      <Project>{f94a487e-ce9b-4666-a76c-f268e8b5726a}</Project>
+      <Name>HsEventStore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
