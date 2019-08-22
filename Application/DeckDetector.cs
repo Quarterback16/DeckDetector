@@ -13,7 +13,7 @@ namespace Application
 
         public DeckDetector()
         {
-            CurrentMeta = RiseOfShadows.LoadMeta();
+            CurrentMeta = SavioursOfUldem.LoadMeta();
         }
 
 		public DeckDetector(Meta meta)

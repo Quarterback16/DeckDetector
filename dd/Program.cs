@@ -16,7 +16,7 @@ namespace dd
 
 			var homeDeck = Environment.GetEnvironmentVariable("HOMEDECK");
 #if DEBUG
-			homeDeck = "Lackey Rogue";
+			homeDeck = "Cyclone Giants Mage";
 			Console.WriteLine($"Home Deck is {homeDeck}");
 #endif
 			var eventStore = new HsEventStore.HsEventStore();
@@ -33,8 +33,9 @@ namespace dd
 				.WithParsed(o => options.HeroClass = o.HeroClass)
                 .WithParsed(o => cardsPlayed = o.Played);
 
-			if (options.Report != null)
+			if (options.Report.ToUpper() == "F")
 			{
+				//  -r f
 				FrequencyReport(eventStore,homeDeck,dd);
 #if DEBUG
 				Console.ReadLine();

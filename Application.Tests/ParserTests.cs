@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Application.Tests
 {
@@ -10,25 +12,49 @@ namespace Application.Tests
 		public void DeckParserLoadsInput()
 		{
 			var sut = new DeckParser();
-			sut.LoadInput("Handlock");
+			sut.LoadInput("AggroMechHunter");
 			sut.DisplayCode();
 		}
 
 		[TestMethod]
 		public void DeckParserLoadsMany()
 		{
-			var sut = new DeckParser();
-			var filesIn = new List<string>
+			var filesIn = new List<string>();
+			DirectoryInfo d = new DirectoryInfo(
+				path: @"d:\temp\decks");
+			FileInfo[] Files = d.GetFiles("*.txt");
+			foreach (FileInfo file in Files)
 			{
-				"HolyWrathPaladin",
-				"MechathunWarrior",
-				"MechathunShaman",
-				"CycloneGiantsMage"
-			};
+				filesIn.Add(
+					Path.GetFileNameWithoutExtension(file.Name));
+			}
+			var sut = new DeckParser();
+			sut.AddCode("#region Decks");
 			foreach (var item in filesIn)
 			{
 				sut.LoadInput(item);
 				sut.DisplayCode();
+			}
+			Console.WriteLine($"#endregion");
+		}
+
+		[TestMethod]
+		public void DeckParserCodesNames()
+		{
+			var filesIn = new List<string>();
+			DirectoryInfo d = new DirectoryInfo(
+				path: @"d:\temp\decks");
+			FileInfo[] Files = d.GetFiles("*.txt");
+			foreach (FileInfo file in Files)
+			{
+				filesIn.Add(
+					Path.GetFileNameWithoutExtension(file.Name));
+			}
+			var sut = new DeckParser();
+
+			foreach (var item in filesIn)
+			{
+				sut.LoadLine(item);
 			}
 		}
 	}

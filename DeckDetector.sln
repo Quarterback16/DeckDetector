@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dd", "dd\dd.csproj", "{C2AC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HsEventStore", "HsEventStore\HsEventStore.csproj", "{F94A487E-CE9B-4666-A76C-F268E8B5726A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework", "EntityFramework\EntityFramework.csproj", "{93518D70-ED4C-43F2-B2FB-C4466B6A7C36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F94A487E-CE9B-4666-A76C-F268E8B5726A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F94A487E-CE9B-4666-A76C-F268E8B5726A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F94A487E-CE9B-4666-A76C-F268E8B5726A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93518D70-ED4C-43F2-B2FB-C4466B6A7C36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93518D70-ED4C-43F2-B2FB-C4466B6A7C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93518D70-ED4C-43F2-B2FB-C4466B6A7C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93518D70-ED4C-43F2-B2FB-C4466B6A7C36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

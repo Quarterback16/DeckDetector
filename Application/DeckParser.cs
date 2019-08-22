@@ -12,12 +12,21 @@ namespace Application
 		public List<Card> Cards { get; set; }
 		public List<string> Code { get; set; }
 
-		public void LoadInput(string fileName)
+		public DeckParser()
 		{
 			Cards = new List<Card>();
 			Code = new List<string>();
+		}
 
-			fileName = $"d:\\temp\\{fileName}.txt";
+		public void LoadLine(string fileName)
+		{
+			Console.WriteLine($"{WikiName(fileName)}(),");
+		}
+
+		public void LoadInput(string fileName)
+		{
+			Cards.Clear();
+			fileName = $"d:\\temp\\decks\\{fileName}.txt";
 			string[] lines = System.IO.File.ReadAllLines(
 				fileName);
 			var lineNo = 0;
@@ -41,7 +50,7 @@ namespace Application
 				{
 					if (start)
 					{
-						if (!line.Substring(0,1).Equals("#"))
+						if (!line.Substring(0, 1).Equals("#"))
 						{
 							break;
 						}
@@ -54,7 +63,7 @@ namespace Application
 		public void DisplayCode()
 		{
 			AddCode($"private static Deck {WikiName(DeckName)}()");
-			AddCode( "{");
+			AddCode("{");
 			AddCode("\treturn new Deck");
 			AddCode("\t{");
 			AddCode($"\t\tName = \"{DeckName}\",");
@@ -67,20 +76,21 @@ namespace Application
 			foreach (var card in Cards)
 			{
 				AddCode("\t\t\tnew Card { Name = \""
-					+ $"{card.Name}\"" 
+					+ $"{card.Name.Trim()}\""
 					+ " },");
 			}
 			AddCode("\t\t}");
 			AddCode("\t};");
-			AddCode( "}");
+			AddCode("}");
 
 			foreach (var item in Code)
 			{
 				Console.WriteLine($"\t\t{item}");
 			}
+			Code.Clear();
 		}
 
-		private void AddCode(string line1)
+		public void AddCode(string line1)
 		{
 			Code.Add(line1);
 		}
@@ -98,7 +108,7 @@ namespace Application
 
 		private void ProcessLine(string line)
 		{
-			var qty = int.Parse(line.Substring(2,1));
+			var qty = int.Parse(line.Substring(2, 1));
 			var name = LineFrom(line, 9);
 			var card = new Card
 			{
