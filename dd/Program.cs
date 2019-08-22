@@ -33,9 +33,9 @@ namespace dd
 				.WithParsed(o => options.HeroClass = o.HeroClass)
                 .WithParsed(o => cardsPlayed = o.Played);
 
-			if (options.Report.ToUpper() == "F")
+			if (options.Report != null)
 			{
-				//  -r f
+				//  -r 
 				Report(options.Report, eventStore, homeDeck, dd);
 #if DEBUG
 				Console.ReadLine();
@@ -81,9 +81,16 @@ namespace dd
 		{
 			if (report.ToUpper() == "F")
 			   FrequencyReport(eventStore, homeDeck, dd);
+			else if (report.ToUpper() == "A")
+				AlphaReport(dd);
 #if DEBUG
 			Console.ReadLine();
 #endif
+		}
+
+		private static void AlphaReport(DeckDetector dd)
+		{
+			dd.AlphaList(dd.ListDecks());
 		}
 
 		private static void FrequencyReport(

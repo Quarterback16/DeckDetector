@@ -78,7 +78,9 @@ namespace Application
 			return list.Count() == 1;
 		}
 
-        public List<Deck> ListDecks(string heroClass, string[] played)
+        public List<Deck> ListDecks(
+			string heroClass, 
+			string[] played)
         {
             if (played.Length == 0)
                 return ListDecks(heroClass);
@@ -117,6 +119,17 @@ namespace Application
 			{
 				theDeck.Dump();
 			}
+		}
+
+		public void AlphaList(List<Deck> results)
+		{
+			results.Sort();
+			foreach (var deck in results)
+			{
+				Console.WriteLine($"{deck.Name} T{deck.Tier} ({deck.Rank})");
+			}
+			Console.WriteLine();
+			Console.WriteLine($"{results.Count} decks in meta");
 		}
 
 		public void DumpNotes(
@@ -207,49 +220,57 @@ namespace Application
 			return record.ToString();
 		}
 
-		public void DumpDailyRecord(List<HsGamePlayedEvent> results)
+		public void DumpDailyRecord(
+			List<HsGamePlayedEvent> results)
 		{
 			var runRecord = DailyRecord(results);
 			Console.WriteLine(runRecord.ToString());
 		}
 
-		public void DumpRunRecord(List<HsGamePlayedEvent> results)
+		public void DumpRunRecord(
+			List<HsGamePlayedEvent> results)
 		{
 			var runRecord = RunRecord(results);
 			Console.WriteLine(runRecord.ToString());
 		}
 
-		public void DumpDeckRecord(string homeDeck, List<HsGamePlayedEvent> results)
+		public void DumpDeckRecord(
+			string homeDeck, List<HsGamePlayedEvent> results)
 		{
 			var deckRecord = DeckTotalRecord(results, homeDeck);
 			Console.WriteLine(deckRecord.ToString());
 		}
 
-		public void DumpDeckMonthRecord(string homeDeck, List<HsGamePlayedEvent> results)
+		public void DumpDeckMonthRecord(
+			string homeDeck, List<HsGamePlayedEvent> results)
 		{
 			var deckRecord = DeckRecord(results, homeDeck);
 			Console.WriteLine(deckRecord.ToString());
 		}
 
-		public void DumpMonthRecord(List<HsGamePlayedEvent> results)
+		public void DumpMonthRecord(
+			List<HsGamePlayedEvent> results)
 		{
 			var monthRecord = MonthRecord(results);
 			Console.WriteLine(monthRecord.ToString());
 		}
 
-		public void DumpPreviousMonthRecord(List<HsGamePlayedEvent> results)
+		public void DumpPreviousMonthRecord(
+			List<HsGamePlayedEvent> results)
 		{
 			var monthRecord = PreviousMonthRecord(results);
 			Console.WriteLine(monthRecord.ToString());
 		}
 
-		public void DumpMetaRecord(List<HsGamePlayedEvent> results)
+		public void DumpMetaRecord(
+			List<HsGamePlayedEvent> results)
 		{
 			var metaRecord = MetaRecord(results);
 			Console.WriteLine(metaRecord.ToString());
 		}
 
-		private static Record DailyRecord(List<HsGamePlayedEvent> results)
+		private static Record DailyRecord(
+			List<HsGamePlayedEvent> results)
 		{
 			var record = new Record
 			{
@@ -328,7 +349,6 @@ namespace Application
 			}
 			return record;
 		}
-
 
 		private static Record MonthRecord(
 			List<HsGamePlayedEvent> results	)

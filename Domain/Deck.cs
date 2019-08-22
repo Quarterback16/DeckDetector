@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Domain
 {
-    public class Deck
+    public class Deck : IComparable
     {
         public string  Name { get; set; }
 		public string Prototype { get; set; }
@@ -83,6 +83,12 @@ namespace Domain
 				Console.ForegroundColor = ConsoleColor.Green;
 				return;
 			}
+		}
+
+		public int CompareTo(object obj)
+		{
+			var objDeck = (Deck) obj;
+			return Name.CompareTo(objDeck.Name);
 		}
 	}
 }
