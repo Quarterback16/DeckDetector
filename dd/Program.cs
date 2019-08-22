@@ -36,7 +36,7 @@ namespace dd
 			if (options.Report.ToUpper() == "F")
 			{
 				//  -r f
-				FrequencyReport(eventStore,homeDeck,dd);
+				Report(options.Report, eventStore, homeDeck, dd);
 #if DEBUG
 				Console.ReadLine();
 #endif
@@ -68,6 +68,19 @@ namespace dd
 			dd.DumpNotes(homeDeck, oppDeck, results);
 
             Console.WriteLine();
+#if DEBUG
+			Console.ReadLine();
+#endif
+		}
+
+		private static void Report(
+			string report,
+			HsEventStore.HsEventStore eventStore,
+			string homeDeck,
+			DeckDetector dd)
+		{
+			if (report.ToUpper() == "F")
+			   FrequencyReport(eventStore, homeDeck, dd);
 #if DEBUG
 			Console.ReadLine();
 #endif
