@@ -8,7 +8,7 @@
 
 		public override string ToString()
 		{
-			return $"{Name}: ({Wins}-{Losses}) {Percent(),5}";
+			return $"{Name}: ({Wins,2}-{Losses,2}) {Percent(),5}";
 		}
 
 		public string Percent()

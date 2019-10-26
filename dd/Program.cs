@@ -126,7 +126,7 @@ namespace dd
 				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
 			foreach (KeyValuePair<string, int> pair in mysortedDeckList)
 			{
-				Console.WriteLine("  {0,-24} {1,2} {2,4} {3}  {4}",
+				Console.WriteLine("  {0,-24} {1,2} {2,4} {3}  {4,2}",
 					pair.Key,
 					pair.Value,
 					MeetFrequency(results.Count(),pair.Value),
