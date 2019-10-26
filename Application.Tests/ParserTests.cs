@@ -9,10 +9,10 @@ namespace Application.Tests
 	public class ParserTests
 	{
 		[TestMethod]
-		public void DeckParserLoadsInput()
+		public void DeckParserLoadsSingleInput()
 		{
 			var sut = new DeckParser();
-			sut.LoadInput("AggroMechHunter");
+			sut.LoadInput("Deathrattle Rogue");
 			sut.DisplayCode();
 		}
 

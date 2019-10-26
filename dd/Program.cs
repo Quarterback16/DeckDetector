@@ -36,7 +36,11 @@ namespace dd
 			if (options.Report != null)
 			{
 				//  -r 
-				Report(options.Report, eventStore, homeDeck, dd);
+				Report(
+					report: options.Report,
+					eventStore: eventStore,
+					homeDeck: homeDeck,
+					dd: dd);
 #if DEBUG
 				Console.ReadLine();
 #endif
@@ -98,29 +102,151 @@ namespace dd
 			string homeDeck,
 			DeckDetector dd)
 		{
-			var d = new Dictionary<string, int>();
+			var OppDeckDict = new Dictionary<string, int>();
+			var OppDeckDateDict = new Dictionary<string, DateTime>();
 			var results = (List<HsGamePlayedEvent>)
 				eventStore.Get<HsGamePlayedEvent>("game-played");
 			foreach (var game in results)
 			{
-				if (d.ContainsKey(game.OpponentDeck))
-					d[game.OpponentDeck]++;
+				if (OppDeckDict.ContainsKey(game.OpponentDeck))
+				{
+					OppDeckDict[game.OpponentDeck]++;
+					OppDeckDateDict[key: game.OpponentDeck] = game.DatePlayed;
+				}
 				else
-					d.Add(game.OpponentDeck, 1);
+				{
+					OppDeckDict.Add(game.OpponentDeck, 1);
+					OppDeckDateDict[key: game.OpponentDeck] = game.DatePlayed;
+				}
 			}
 			Console.WriteLine($"Deck: {homeDeck}");
 			Console.WriteLine($"Frequency Report           {results.Count()}        Deck Record");
-			var myList = d.ToList();
-			myList.Sort(
+			var mysortedDeckList = OppDeckDict.ToList();
+			mysortedDeckList.Sort(
 				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
-			foreach (KeyValuePair<string, int> pair in myList)
+			foreach (KeyValuePair<string, int> pair in mysortedDeckList)
 			{
-				Console.WriteLine("  {0,-24} {1,2} {2,4} {3}",
+				Console.WriteLine("  {0,-24} {1,2} {2,4} {3}  {4}",
 					pair.Key,
 					pair.Value,
 					MeetFrequency(results.Count(),pair.Value),
-					dd.RecordVersusDeck(homeDeck,pair.Key,results));
+					dd.RecordVersusDeck(homeDeck,pair.Key,results),
+					DaysSince(OppDeckDateDict[pair.Key]));
 			}
+			ArchTypeFrequency(
+				results,
+				dd);
+			ClassFrequency(
+				results,
+				dd);
+		}
+
+		public static double DaysSince(DateTime gameDate)
+		{
+			TimeSpan difference = DateTime.Now.Date - gameDate.Date;
+
+			return difference.TotalDays;
+		}
+
+		private static void ClassFrequency(
+			List<HsGamePlayedEvent> results,
+			DeckDetector dd)
+		{
+			var decks = dd.ListDecks();
+
+			var classDict = new Dictionary<string, int>
+			{
+				{ "Mage", 0 },
+				{ "Warrior", 0 },
+				{ "Warlock", 0 },
+				{ "Shaman", 0 },
+				{ "Rogue", 0 },
+				{ "Paladin", 0 },
+				{ "Druid", 0 },
+				{ "Hunter", 0 },
+				{ "Priest", 0 }
+			};
+
+			foreach (var game in results)
+			{
+				var deck = GetDeck(
+					decks,
+					game.OpponentDeck);
+				if (deck.HeroClass == null)
+					Console.WriteLine($"Hero class {game.OpponentDeck} not found");
+				else
+				{
+					if (classDict.ContainsKey(deck.HeroClass.Name))
+						classDict[deck.HeroClass.Name]++;
+					else
+						classDict.Add(deck.HeroClass.Name, 1);
+				}
+			}
+
+			MeetFrequencyBy("Classes", results, classDict);
+		}
+
+		private static void MeetFrequencyBy(
+			string topic, 
+			List<HsGamePlayedEvent> results, 
+			Dictionary<string, int> d)
+		{
+			Console.WriteLine();
+			Console.WriteLine(topic);
+			foreach (KeyValuePair<string, int> pair in d)
+			{
+				Console.WriteLine("  {0,-24} {1,2} {2,4}",
+					pair.Key,
+					pair.Value,
+					MeetFrequency(results.Count(), pair.Value));
+			}
+		}
+
+		private static void ArchTypeFrequency(
+			List<HsGamePlayedEvent> results,
+			DeckDetector dd)
+		{
+			var decks = dd.ListDecks();
+
+			var d = new Dictionary<string, int>
+			{
+				{ "CONTROL", 0 },
+				{ "MIDRANGE", 0 },
+				{ "AGGRO", 0 },
+				{ "COMBO", 0 }
+			};
+
+			foreach (var game in results)
+			{
+				var deck = GetDeck(
+					decks,
+					game.OpponentDeck);
+				if (deck.Prototype == null)
+					Console.WriteLine($"Deck {game.OpponentDeck} not found");
+				else
+				{
+					if (d.ContainsKey(deck.Prototype))
+						d[deck.Prototype]++;
+					else
+						d.Add(deck.Prototype, 1);
+				}
+			}
+
+			MeetFrequencyBy("Prototypes", results, d);
+		}
+
+		private static Deck GetDeck(List<Deck> decks, string opponentDeck)
+		{
+			Deck foundDeck = new Deck();
+			foreach (var deck in decks)
+			{
+				if (deck.Name.Equals(opponentDeck))
+				{
+					foundDeck = deck;
+					break;
+				}
+			}
+			return foundDeck;
 		}
 
 		private static string MeetFrequency(int count, int games)
