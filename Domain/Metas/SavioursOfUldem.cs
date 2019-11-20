@@ -77,9 +77,8 @@ namespace Domain.Metas
 			{
 				TauntWarrior(),
 				AggroShaman(),
-				HighlanderWarrior(),
-				TempoWarrior(),
 				QuestHunter(),
+				MechathunDruid(),
 				HandPaladin(),
 				QuestWarrior(),
 				ComboAggroPriest(),
@@ -549,7 +548,43 @@ namespace Domain.Metas
 				}
 	};
 }
-private static Deck QuestPaladin()
+		private static Deck MechathunDruid()
+		{
+			return new Deck
+			{
+				Name = "Mecha'thun Druid",
+				Prototype = "COMBO",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Druid"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Innervate" },
+					new Card { Name = "Moonfire" },
+					new Card { Name = "Untapped Potential" },
+					new Card { Name = "Crystal Merchant" },
+					new Card { Name = "Wrath" },
+					new Card { Name = "Zephrys the Great" },
+					new Card { Name = "BEEEES!!!" },
+					new Card { Name = "Ferocious Howl" },
+					new Card { Name = "Wardruid Loti" },
+					new Card { Name = "Flobbidinous Floop" },
+					new Card { Name = "Swipe" },
+					new Card { Name = "Anubisath Defender" },
+					new Card { Name = "Elise the Enlightened" },
+					new Card { Name = "Oasis Surger" },
+					new Card { Name = "Starfall" },
+					new Card { Name = "Voodoo Doll" },
+					new Card { Name = "Hidden Oasis" },
+					new Card { Name = "Nourish" },
+					new Card { Name = "Dreampetal Florist" },
+					new Card { Name = "Siamat" },
+					new Card { Name = "Mecha'thun" },
+					new Card { Name = "Kun the Forgotten King" },
+				}
+			};
+		}
+		private static Deck QuestPaladin()
 {
 	return new Deck
 	{
@@ -1737,6 +1772,7 @@ private static Deck SecretPaladin()
 					new Card { Name = "Inner Rage" },
 					new Card { Name = "Eternium Rover" },
 					new Card { Name = "Improve Morale" },
+					new Card { Name = "Frightened Flunky" },
 					new Card { Name = "Town Crier" },
 					new Card { Name = "Battle Rage" },
 					new Card { Name = "Cruel Taskmaster" },

@@ -179,11 +179,22 @@ namespace Application
 				}
 			}
 
+			var homeDeckRecord = new Record
+			{
+				Losses = losses,
+				Wins = wins,
+			};
 			Console.WriteLine($@"Notes: for {
 				homeDeck
 				} games: {
 				gameCount
-				} ({wins}-{losses})");
+				} ({
+				wins
+				}-{
+				losses
+				})  {
+				homeDeckRecord.Percent()
+				}");
 
 			if (notes.Any())
 			{

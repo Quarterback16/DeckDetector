@@ -182,8 +182,17 @@ namespace dd
 						classDict.Add(deck.HeroClass.Name, 1);
 				}
 			}
-
-			MeetFrequencyBy("Classes", results, classDict);
+			var mySortedClassList = classDict.ToList();
+			mySortedClassList.Sort(
+				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
+			Console.WriteLine();
+			foreach (KeyValuePair<string, int> pair in mySortedClassList)
+			{
+				Console.WriteLine("  {0,-24} {1,2} {2,4}",
+					pair.Key,
+					pair.Value,
+					MeetFrequency(results.Count(), pair.Value));
+			}
 		}
 
 		private static void MeetFrequencyBy(
