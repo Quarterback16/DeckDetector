@@ -4,9 +4,27 @@ namespace Domain
 {
     public class Card : IEquatable<Card>
     {
+		public Card()
+		{
+		}
+
+		public Card(
+			string name,
+			int manaCost,
+			string cardType)
+		{
+			Name = name;
+			Mana = manaCost;
+			CardType = cardType;
+		}
+
         public string Name { get; set; }
 
-        public Hero HeroClass { get; set; }
+		public int Mana { get; set; }
+
+		public string CardType { get; set; }
+
+		public Hero HeroClass { get; set; }
 
 		public bool Single { get; set; }
 

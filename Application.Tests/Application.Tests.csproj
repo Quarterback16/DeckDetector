@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardParserTests.cs" />
     <Compile Include="DeckDetectorBoomsdayTests.cs" />
     <Compile Include="DeckDetectorKatacombsTests.cs" />
     <Compile Include="DeckDetectorTests.cs" />

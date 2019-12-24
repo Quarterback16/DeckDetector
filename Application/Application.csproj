@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardParser.cs" />
     <Compile Include="DeckDetector.cs" />
     <Compile Include="DeckParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

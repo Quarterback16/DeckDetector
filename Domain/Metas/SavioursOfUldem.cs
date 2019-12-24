@@ -98,6 +98,8 @@ namespace Domain.Metas
 				TauntControlWarrior(),
 				TessQuestRogue(),
 				HighlanderHunter(),
+				QuestMage(),
+				DragonMage()
 			};
 			meta.AddDecks(tier6Decks, 6);
 
@@ -1894,6 +1896,75 @@ private static Deck SecretPaladin()
 			};
 		}
 		#endregion
+
+		private static Deck QuestMage()
+		{
+			return new Deck
+			{
+				Name = "Quest Mage",
+				Prototype = "COMBO",
+				Tier = 3,
+				Rank = 24,
+				HeroClass = new Hero("Mage"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Arcane Artificer" },
+					new Card { Name = "Open the Waygate" },
+					new Card { Name = "Arcane Flakmage" },
+					new Card { Name = "Arcanologist" },
+					new Card { Name = "Doomsayer" },
+					new Card { Name = "Novice Engineer" },
+					new Card { Name = "Primordial Glyph" },
+					new Card { Name = "Research Project" },
+					new Card { Name = "Sorcerer's Apprentice" },
+					new Card { Name = "Acolyte of Pain" },
+					new Card { Name = "Arcane Intellect" },
+					new Card { Name = "Banana Buffoon" },
+					new Card { Name = "Frost Nova" },
+					new Card { Name = "Ice Barrier" },
+					new Card { Name = "Molten Reflection" },
+					new Card { Name = "Blizzard" },
+					new Card { Name = "Archmage Antonidas" },
+				}
+			};
+		}
+
+		private static Deck DragonMage()
+		{
+			return new Deck
+			{
+				Name = "Dragon Mage",
+				Prototype = "MIDRANGE",
+				Tier = 3,
+				Rank = 24,
+				HeroClass = new Hero("Mage"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Archmage Arugal" },
+					new Card { Name = "Book of Specters" },
+					new Card { Name = "Arcane Keysmith" },
+					new Card { Name = "Conjurers Calling" },
+					new Card { Name = "Luna's Pocket Galaxy" },
+					new Card { Name = "Novice Engineer" },
+					new Card { Name = "Astromancer" },
+					new Card { Name = "Kalegos" },
+
+					new Card { Name = "Doomsayer" },
+					new Card { Name = "Firetree Witchdoctor" },
+					new Card { Name = "Sunfury Protector" },
+					new Card { Name = "Brightwing" },
+					new Card { Name = "Voodoo Doll" },
+					new Card { Name = "Scaleworm" },
+					new Card { Name = "Twilight Drake" },
+					new Card { Name = "Dragonmaw Scorcher" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Crowd Roaster" },
+					new Card { Name = "Siamat" },
+					new Card { Name = "Alexstrasza" },
+					new Card { Name = "Mountain Giant" },
+				}
+			};
+		}
 
 	}
 }
