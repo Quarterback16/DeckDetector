@@ -15,10 +15,18 @@
 		{
 			if (TotalGames() == 0)
 				return "0%";
-			return $"{  Wins / (decimal) TotalGames() * 100M:####0}%";
+			return $"{  Clip() * 100M:####0}%";
 		}
 
-		private int TotalGames()
+		public decimal Clip()
+		{
+			if (TotalGames() == 0)
+				return 0.000M;
+
+			return Wins / (decimal)TotalGames() ;
+		}
+
+		public int TotalGames()
 		{
 			return Wins + Losses;
 		}

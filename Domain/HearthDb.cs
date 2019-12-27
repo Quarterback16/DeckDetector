@@ -117,7 +117,7 @@ namespace Domain
 { "Animal Companion", new CardData { ManaCost = 3 } },
 { "Arcane Artificer", new CardData { ManaCost = 1 } },
 { "Arcane Intellect", new CardData { ManaCost = 3 } },
-{ "Arcanite Reaper", new CardData { ManaCost = 5 } },
+{ "Arcanite Reaper", new CardData { ManaCost = 5, IsWeapon = true } },
 { "Arcanologist", new CardData { ManaCost = 2 } },
 { "Archmage Antonidas", new CardData { ManaCost = 7 } },
 { "Argent Squire", new CardData { ManaCost = 1 } },
@@ -407,7 +407,7 @@ namespace Domain
 { "Unleash the Hounds", new CardData { ManaCost = 3 , Aoe = true} },
 { "Unlicensed Apothecary", new CardData { ManaCost = 3 } },
 { "Unstable Evolution", new CardData { ManaCost = 1 } },
-{ "Upgrade!", new CardData { ManaCost = 0 } },
+{ "Upgrade!", new CardData { ManaCost = 0, IsWeapon = true } },
 { "Uther of the Ebon Blade", new CardData { ManaCost = 9 } },
 { "Val'anyr", new CardData { ManaCost = 6, IsWeapon = true } },
 { "Valeera the Hollow", new CardData { ManaCost = 9 } },
@@ -1196,7 +1196,7 @@ namespace Domain
 {"Valdris Felgorge", new CardData { ManaCost = 7,} },
 {"Veiled Worshipper", new CardData { ManaCost = 4,} },
 {"Zzeraku the Warped", new CardData { ManaCost = 8,} },
-{"Ancharr", new CardData { ManaCost = 3, IsWeapon = true,} },
+{"Ancharrr", new CardData { ManaCost = 3, IsWeapon = true,} },
 {"Awaken", new CardData { ManaCost = 3,} },
 {"Deathwing Mad Aspect", new CardData { ManaCost = 8,} },
 {"EVIL Quartermaster", new CardData { ManaCost = 3,} },
@@ -1207,7 +1207,8 @@ namespace Domain
 {"Scion of Ruin", new CardData { ManaCost = 3,} },
 {"Sky Raider", new CardData { ManaCost = 1,} },
 {"Skybarge", new CardData { ManaCost = 3,} },
-
+{"Garden Gnome", new CardData { ManaCost = 4 } },
+{"Treenforcements", new CardData { ManaCost = 1 } },
 
             };
         }

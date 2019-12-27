@@ -84,9 +84,17 @@ namespace dd
 			DeckDetector dd)
 		{
 			if (report.ToUpper() == "F")
-			   FrequencyReport(eventStore, homeDeck, dd);
+			   FrequencyReport(
+				   eventStore, 
+				   homeDeck, 
+				   dd);
+			else if (report.ToUpper() == "C")
+				ChampDeckReport(
+					eventStore, 
+					dd);
 			else if (report.ToUpper() == "A")
-				AlphaReport(dd);
+				AlphaReport(
+					dd);
 #if DEBUG
 			Console.ReadLine();
 #endif
@@ -95,6 +103,61 @@ namespace dd
 		private static void AlphaReport(DeckDetector dd)
 		{
 			dd.AlphaList(dd.ListDecks());
+		}
+
+		private static void ChampDeckReport(
+			HsEventStore.HsEventStore eventStore,
+			DeckDetector dd)
+		{
+			var deckDict = new Dictionary<string, Record>();
+			var results = (List<HsGamePlayedEvent>)
+				eventStore.Get<HsGamePlayedEvent>("game-played");
+			var totalRecord = new Record();
+
+			foreach (var game in results)
+			{
+				if (!deckDict.ContainsKey(game.HomeDeck))
+				{
+					deckDict.Add(
+						game.HomeDeck, 
+						new Record 
+						{ 
+							Name = game.HomeDeck
+						});
+				}
+				var record = deckDict[game.HomeDeck];
+				if (game.Result == "win")
+				{
+					record.Wins++;
+					totalRecord.Wins++;
+				}
+				else
+				{
+					record.Losses++;
+					totalRecord.Losses++;
+				}
+			}
+			var mysortedDeckList = deckDict.ToList();
+			mysortedDeckList.Sort(
+				(pair1, pair2) => pair2.Value.Clip().CompareTo(pair1.Value.Clip()));
+			Console.WriteLine("Champion Deck Report           GP    W    L   Percent");
+			Console.WriteLine();
+			foreach (KeyValuePair<string, Record> pair in mysortedDeckList)
+			{
+				Console.WriteLine("  {0,-26} {1,4} {2,4} {3,4}  {4,6}",
+					pair.Key,
+					pair.Value.TotalGames(),
+					pair.Value.Wins,
+					pair.Value.Losses,
+					pair.Value.Percent() );
+			}
+			Console.WriteLine();
+			Console.WriteLine("  {0,-26} {1,4} {2,4} {3,4}  {4,6}",
+				"Totals",
+				totalRecord.TotalGames(),
+				totalRecord.Wins,
+				totalRecord.Losses,
+				totalRecord.Percent());
 		}
 
 		private static void FrequencyReport(
@@ -126,7 +189,7 @@ namespace dd
 				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
 			foreach (KeyValuePair<string, int> pair in mysortedDeckList)
 			{
-				Console.WriteLine("  {0,-24} {1,2} {2,4} {3}  {4,2}",
+				Console.WriteLine("  {0,-26} {1,2} {2,4} {3}  {4,2}",
 					pair.Key,
 					pair.Value,
 					MeetFrequency(results.Count(),pair.Value),

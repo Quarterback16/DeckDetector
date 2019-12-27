@@ -13,7 +13,7 @@ namespace Application
 
         public DeckDetector()
         {
-            CurrentMeta = SavioursOfUldem.LoadMeta();
+            CurrentMeta = DescentOfDragons.LoadMeta();
         }
 
 		public DeckDetector(Meta meta)
@@ -214,7 +214,7 @@ namespace Application
 
 			foreach (var game in results)
 			{
-				if (game.HomeDeck == homeDeck
+				if (   game.HomeDeck == homeDeck
 					&& game.OpponentDeck == oppDeck)
 				{
 					if (game.Result.Equals("win"))
@@ -301,7 +301,8 @@ namespace Application
 			return record;
 		}
 
-		private static Record RunRecord(List<HsGamePlayedEvent> results)
+		private static Record RunRecord(
+			List<HsGamePlayedEvent> results)
 		{
 			var record = new Record();
 			var latestRun = 0;
@@ -322,13 +323,15 @@ namespace Application
 			return record;
 		}
 
-		private Record MetaRecord(List<HsGamePlayedEvent> results)
+		private Record MetaRecord(
+			List<HsGamePlayedEvent> results)
 		{
-			var record = new Record();
-			var currMonth = DateTime.Now.Month;
-			record.Name = $"Meta {CurrentMeta} Record";
-			record.Wins = 0;
-			record.Losses = 0;
+			var record = new Record
+			{
+				Name = $"Meta {CurrentMeta} Record",
+				Wins = 0,
+				Losses = 0
+			};
 			foreach (var game in results)
 			{
 				if (game.Result.Equals("win"))
