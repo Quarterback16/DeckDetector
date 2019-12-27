@@ -16,10 +16,15 @@ namespace Domain.Metas
 			//  TIER 1
 			var tier1Decks = new List<Deck>
 			{
+				AnubisathRogue(),
 				PirateWarrior(),
+				FaceHunter(),
 				QuestPriest(),
+				TempoRogue(),
 				SecretHighlanderHunter(),
+				HighlanderHunter(),
 				GalakrondZooWarlock(),
+				ControlWarrior(),
 				MechPaladin(),
 				GalakrondWarrior(),
 			};
@@ -27,7 +32,6 @@ namespace Domain.Metas
 
 			var tier2Decks = new List<Deck>
 			{
-				FaceHunter(),
 				TreantTokenDruid(),
 				HighlanderGalakrondRogue(),
 				EmbiggenDragonDruid(),
@@ -599,6 +603,148 @@ namespace Domain.Metas
 					new Card { Name = "Dragonqueen Alexstrasza" },
 					new Card { Name = "Kalecgos" },
 					new Card { Name = "Puzzle Box of Yogg-Saron" },
+				}
+			};
+		}
+
+		private static Deck AnubisathRogue()
+		{
+			return new Deck
+			{
+				Name = "Anubisath Rogue",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Rogue"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Backstab" },
+					new Card { Name = "Wisp" },
+					new Card { Name = "Bloodsail Flybooter" },
+					new Card { Name = "Southsea Deckhand" },
+					new Card { Name = "Stonetusk Boar" },
+					new Card { Name = "Novice Engineer" },
+					new Card { Name = "Vicious Scalehide" },
+					new Card { Name = "Acolyte of Pain" },
+					new Card { Name = "Necrium Blade" },
+					new Card { Name = "Necrium Apothecary" },
+					new Card { Name = "Anka, the Buried" },
+					new Card { Name = "Faceless Corruptor" },
+					new Card { Name = "Leeroy Jenkins" },
+					new Card { Name = "Necrium Vial" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Flik Skyshiv" },
+					new Card { Name = "Anubisath Warbringer" },
+				}
+			};
+		}
+		private static Deck ControlWarrior()
+		{
+			return new Deck
+			{
+				Name = "Control Warrior",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Warrior"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Eternium Rover" },
+					new Card { Name = "Shield Slam" },
+					new Card { Name = "Town Crier" },
+					new Card { Name = "Warpath" },
+					new Card { Name = "Weapons Project" },
+					new Card { Name = "SN1P-SN4P" },
+					new Card { Name = "Shield Block" },
+					new Card { Name = "Omega Devastator" },
+					new Card { Name = "Restless Mummy" },
+					new Card { Name = "Spellbreaker" },
+					new Card { Name = "Brawl" },
+					new Card { Name = "Dyn-o-matic" },
+					new Card { Name = "Harrison Jones" },
+					new Card { Name = "Plague of Wrath" },
+					new Card { Name = "Supercollider" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Deathwing, Mad Aspect" },
+					new Card { Name = "Archivist Elysiana" },
+					new Card { Name = "Dr. Boom, Mad Genius" },
+				}
+			};
+		}
+		private static Deck HighlanderHunter()
+		{
+			return new Deck
+			{
+				Name = "Highlander Hunter",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Hunter"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Blazing Battlemage" },
+					new Card { Name = "Dwarven Sharpshooter" },
+					new Card { Name = "Shimmerfly" },
+					new Card { Name = "Springpaw" },
+					new Card { Name = "Tracking" },
+					new Card { Name = "Corrosive Breath" },
+					new Card { Name = "Headhunter's Hatchet" },
+					new Card { Name = "Hench-Clan Hogsteed" },
+					new Card { Name = "Zephrys the Great" },
+					new Card { Name = "Animal Companion" },
+					new Card { Name = "Deadly Shot" },
+					new Card { Name = "Desert Spear" },
+					new Card { Name = "Diving Gryphon" },
+					new Card { Name = "Kill Command" },
+					new Card { Name = "Primordial Explorer" },
+					new Card { Name = "SN1P-SN4P" },
+					new Card { Name = "Unleash the Hounds" },
+					new Card { Name = "Ursatron" },
+					new Card { Name = "Dragonbane" },
+					new Card { Name = "Houndmaster Shaw" },
+					new Card { Name = "Marked Shot" },
+					new Card { Name = "Wing Blast" },
+					new Card { Name = "Faceless Corruptor" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Unleash the Beast" },
+					new Card { Name = "Veranus" },
+					new Card { Name = "Dinotamer Brann" },
+					new Card { Name = "Siamat" },
+					new Card { Name = "Dragonqueen Alexstrasza" },
+					new Card { Name = "Zul'jin" },
+				}
+			};
+		}
+		private static Deck TempoRogue()
+		{
+			return new Deck
+			{
+				Name = "Tempo Rogue",
+				Prototype = "TEMPO",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Rogue"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Backstab" },
+					new Card { Name = "Shadowstep" },
+					new Card { Name = "Bloodsail Flybooter" },
+					new Card { Name = "Pharaoh Cat" },
+					new Card { Name = "Acidic Swamp Ooze" },
+					new Card { Name = "Eviscerate" },
+					new Card { Name = "Sap" },
+					new Card { Name = "EVIL Miscreant" },
+					new Card { Name = "Edwin VanCleef" },
+					new Card { Name = "Necrium Blade" },
+					new Card { Name = "SI:7 Agent" },
+					new Card { Name = "Lifedrinker" },
+					new Card { Name = "Necrium Apothecary" },
+					new Card { Name = "Faceless Corruptor" },
+					new Card { Name = "Leeroy Jenkins" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Flik Skyshiv" },
+					new Card { Name = "Heistbaron Togwaggle" },
+					new Card { Name = "Mechanical Whelp" },
 				}
 			};
 		}

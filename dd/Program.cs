@@ -90,8 +90,7 @@ namespace dd
 				   dd);
 			else if (report.ToUpper() == "C")
 				ChampDeckReport(
-					eventStore, 
-					dd);
+					eventStore);
 			else if (report.ToUpper() == "A")
 				AlphaReport(
 					dd);
@@ -106,13 +105,13 @@ namespace dd
 		}
 
 		private static void ChampDeckReport(
-			HsEventStore.HsEventStore eventStore,
-			DeckDetector dd)
+			HsEventStore.HsEventStore eventStore)
 		{
 			var deckDict = new Dictionary<string, Record>();
 			var results = (List<HsGamePlayedEvent>)
 				eventStore.Get<HsGamePlayedEvent>("game-played");
 			var totalRecord = new Record();
+			var maxDeckNameLength = 0;
 
 			foreach (var game in results)
 			{
@@ -124,6 +123,8 @@ namespace dd
 						{ 
 							Name = game.HomeDeck
 						});
+					if (game.HomeDeck.Length > maxDeckNameLength)
+						maxDeckNameLength = game.HomeDeck.Length;
 				}
 				var record = deckDict[game.HomeDeck];
 				if (game.Result == "win")
@@ -140,11 +141,12 @@ namespace dd
 			var mysortedDeckList = deckDict.ToList();
 			mysortedDeckList.Sort(
 				(pair1, pair2) => pair2.Value.Clip().CompareTo(pair1.Value.Clip()));
-			Console.WriteLine("Champion Deck Report           GP    W    L   Percent");
+			var spacer = new String(' ', maxDeckNameLength - 20);
+			Console.WriteLine($"Champion Deck Report{spacer}     GP    W    L   Percent");
 			Console.WriteLine();
 			foreach (KeyValuePair<string, Record> pair in mysortedDeckList)
 			{
-				Console.WriteLine("  {0,-26} {1,4} {2,4} {3,4}  {4,6}",
+				Console.WriteLine("  {0,-" + maxDeckNameLength + "} {1,4} {2,4} {3,4}  {4,6}",
 					pair.Key,
 					pair.Value.TotalGames(),
 					pair.Value.Wins,
@@ -152,7 +154,7 @@ namespace dd
 					pair.Value.Percent() );
 			}
 			Console.WriteLine();
-			Console.WriteLine("  {0,-26} {1,4} {2,4} {3,4}  {4,6}",
+			Console.WriteLine("  {0,-" + maxDeckNameLength + "} {1,4} {2,4} {3,4}  {4,6}",
 				"Totals",
 				totalRecord.TotalGames(),
 				totalRecord.Wins,
