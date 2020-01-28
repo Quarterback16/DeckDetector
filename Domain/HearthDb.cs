@@ -932,6 +932,7 @@ namespace Domain
  {"Ancient Mysteries", new CardData { ManaCost = 0 } },
  {"Ancient of War", new CardData { ManaCost = 0 } },
  {"Anubisath Defender", new CardData { ManaCost = 5 } },
+ {"Anubisath Warbringer", new CardData { ManaCost = 9 } },
  {"Aranasi Broodmother", new CardData { ManaCost = 0 } },
  {"Arathi Weaponsmith", new CardData { ManaCost = 0 } },
  {"Arcane Flakmage", new CardData { ManaCost = 2 } },
@@ -1178,7 +1179,7 @@ namespace Domain
 {"Corrupt Elementalist", new CardData { ManaCost = 5,} },
 {"Cumulo-Maximus", new CardData { ManaCost = 5,} },
 {"Dragon's Pack", new CardData { ManaCost = 1,} },
-{"Galacrond the Tempest", new CardData { ManaCost = 7,} },
+{"Galakrond the Tempest", new CardData { ManaCost = 7,} },
 {"Invocation of Frost", new CardData { ManaCost = 1,} },
 {"Lightning Breath", new CardData { ManaCost = 3,} },
 {"Nithogg", new CardData { ManaCost = 6,} },
@@ -1209,6 +1210,8 @@ namespace Domain
 {"Skybarge", new CardData { ManaCost = 3,} },
 {"Garden Gnome", new CardData { ManaCost = 4 } },
 {"Treenforcements", new CardData { ManaCost = 1 } },
+{"Big Ol' Whelp", new CardData { ManaCost = 5 } },
+{"Wisp", new CardData { ManaCost = 0 } },
 
             };
         }
