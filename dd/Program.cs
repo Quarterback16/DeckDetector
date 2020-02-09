@@ -91,6 +91,9 @@ namespace dd
 			else if (report.ToUpper() == "C")
 				ChampDeckReport(
 					eventStore);
+			else if (report.ToUpper() == "M")
+				LastMonthReport(
+					eventStore);
 			else if (report.ToUpper() == "A")
 				AlphaReport(
 					dd);
@@ -102,6 +105,68 @@ namespace dd
 		private static void AlphaReport(DeckDetector dd)
 		{
 			dd.AlphaList(dd.ListDecks());
+		}
+
+		private static void LastMonthReport(
+			HsEventStore.HsEventStore eventStore)
+		{
+			var deckDict = new Dictionary<string, Record>();
+			var results = (List<HsGamePlayedEvent>)
+				eventStore.Get<HsGamePlayedEvent>("game-played");
+			var totalRecord = new Record();
+			var maxDeckNameLength = 0;
+			var lastMonth = DateTime.Now.AddMonths(-1).Month;
+
+			foreach (var game in results)
+			{
+				if (game.DatePlayed.Month != lastMonth)
+					continue;
+
+				if (!deckDict.ContainsKey(game.HomeDeck))
+				{
+					deckDict.Add(
+						game.HomeDeck,
+						new Record
+						{
+							Name = game.HomeDeck
+						});
+					if (game.HomeDeck.Length > maxDeckNameLength)
+						maxDeckNameLength = game.HomeDeck.Length;
+				}
+				var record = deckDict[game.HomeDeck];
+				if (game.Result == "win")
+				{
+					record.Wins++;
+					totalRecord.Wins++;
+				}
+				else
+				{
+					record.Losses++;
+					totalRecord.Losses++;
+				}
+			}
+			var mysortedDeckList = deckDict.ToList();
+			mysortedDeckList.Sort(
+				(pair1, pair2) => pair2.Value.Clip().CompareTo(pair1.Value.Clip()));
+			var spacer = new String(' ', maxDeckNameLength - 20);
+			Console.WriteLine($"Champion Deck Report{spacer}     GP    W    L   Percent");
+			Console.WriteLine();
+			foreach (KeyValuePair<string, Record> pair in mysortedDeckList)
+			{
+				Console.WriteLine("  {0,-" + maxDeckNameLength + "} {1,4} {2,4} {3,4}  {4,6}",
+					pair.Key,
+					pair.Value.TotalGames(),
+					pair.Value.Wins,
+					pair.Value.Losses,
+					pair.Value.Percent());
+			}
+			Console.WriteLine();
+			Console.WriteLine("  {0,-" + maxDeckNameLength + "} {1,4} {2,4} {3,4}  {4,6}",
+				"Totals",
+				totalRecord.TotalGames(),
+				totalRecord.Wins,
+				totalRecord.Losses,
+				totalRecord.Percent());
 		}
 
 		private static void ChampDeckReport(

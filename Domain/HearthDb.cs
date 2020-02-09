@@ -996,9 +996,9 @@ namespace Domain
  {"Penance", new CardData { ManaCost = 2 } },
  {"Pharaoh Cat", new CardData { ManaCost = 1 } },
  {"Plague of Death", new CardData { ManaCost = 9, Aoe = true } },
- {"Plague of Flames", new CardData { ManaCost = 1 } },
+ {"Plague of Flames", new CardData { ManaCost = 1, Aoe = true } },
  {"Plague of Murlocs", new CardData { ManaCost = 3 } },
- {"Plague of Wrath", new CardData { ManaCost = 5 } },
+ {"Plague of Wrath", new CardData { ManaCost = 5, Aoe = true } },
  {"Plot Twist", new CardData { ManaCost = 2 } },
  {"Pressure Plate", new CardData { ManaCost = 2, IsSecret = true } },
  {"Psychopomp", new CardData { ManaCost = 4 } },
@@ -1187,8 +1187,8 @@ namespace Domain
 {"Storm's Wrath", new CardData { ManaCost = 1,} },
 {"Surging Tempest", new CardData { ManaCost = 1,} },
 {"Abyssal Summoner", new CardData { ManaCost = 6,} },
-{"Crazed Netherwing", new CardData { ManaCost = 5,} },
-{"Dark Skies", new CardData { ManaCost = 3,} },
+{"Crazed Netherwing", new CardData { ManaCost = 5, Aoe = true} },
+{"Dark Skies", new CardData { ManaCost = 3, Aoe = true} },
 {"Dragonblight Cultist", new CardData { ManaCost = 3,} },
 {"Fiendish Rites", new CardData { ManaCost = 3,} },
 {"Galakrond the Wretched", new CardData { ManaCost = 7,} },
@@ -1212,6 +1212,8 @@ namespace Domain
 {"Treenforcements", new CardData { ManaCost = 1 } },
 {"Big Ol' Whelp", new CardData { ManaCost = 5 } },
 {"Wisp", new CardData { ManaCost = 0 } },
+{"Stampeding Roar", new CardData { ManaCost = 6 } },
+{"Winged Guardian", new CardData { ManaCost = 7 } },
 
             };
         }

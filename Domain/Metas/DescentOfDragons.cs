@@ -11,7 +11,7 @@ namespace Domain.Metas
 				code: "DD",
 				name: "Descent of Dragons",
 				patchNo: 16.5M,
-				asOf: new DateTime(2019, 12, 27));
+				asOf: new DateTime(2020, 1, 27));
 
 			//  TIER 1
 			var tier1Decks = new List<Deck>
@@ -52,11 +52,17 @@ namespace Domain.Metas
 				MechPaladin(),
 				CycloneMage(),
 				QuestDruid(),
+				QuestPriest(),
+				ControlShaman()
 			};
 			meta.AddDecks(tier4Decks, 4);
 
 			var tier5Decks = new List<Deck>
 			{
+				AmplifierOtkMage(),
+				RaDenGalakrondShaman(),
+				ElementalMage(),
+				BuffHunter(),
 				GalakrondPriest(),
 				HighlanderPaladin(),
 				PurePaladin(),
@@ -66,10 +72,13 @@ namespace Domain.Metas
 				HighlanderGalakrondRogue(),
 				EmbiggenDragonDruid(),
 				DeathrattleRogue(),
-				QuestPriest(),
 				SecretHighlanderHunter(),
 				ControlWarrior(),
-				MechPaladin(),
+				TauntBeastDruid(),
+				AnubisathRogue(),
+				HighlanderWarlock(),
+				HighlanderPriest(),
+				DragonWarlock()
 			};
 			meta.AddDecks(tier5Decks, 5);
 
@@ -78,6 +87,293 @@ namespace Domain.Metas
 
 
 		#region Decks
+
+		private static Deck AmplifierOtkMage()
+		{
+			return new Deck
+			{
+				Name = "Amplifier OTK Mage",
+				Prototype = "COMBO",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Mage"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Daring Fire-Eater" },
+					new Card { Name = "Ray of Frost" },
+					new Card { Name = "Bloodmage Thalnos" },
+					new Card { Name = "Doomsayer" },
+					new Card { Name = "Frostbolt" },
+					new Card { Name = "Loot Hoarder" },
+					new Card { Name = "Research Project" },
+					new Card { Name = "Acolyte of Pain" },
+					new Card { Name = "Arcane Amplifier" },
+					new Card { Name = "Arcane Intellect" },
+					new Card { Name = "Polymorph" },
+					new Card { Name = "Clockwork Automaton" },
+					new Card { Name = "Faceless Manipulator" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Blizzard" },
+					new Card { Name = "Luna's Pocket Galaxy" },
+					new Card { Name = "Jepetto Joybuzz" },
+					new Card { Name = "Tortollan Pilgrim" },
+				}
+			};
+		}
+
+		private static Deck RaDenGalakrondShaman()
+		{
+			return new Deck
+			{
+				Name = "Ra-Den Galakrond Shaman",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Shaman"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Invocation of Frost" },
+					new Card { Name = "Electra Stormsurge" },
+					new Card { Name = "Far Sight" },
+					new Card { Name = "Haunting Visions" },
+					new Card { Name = "Vulpera Scoundrel" },
+					new Card { Name = "Devoted Maniac" },
+					new Card { Name = "Hex" },
+					new Card { Name = "Hoard Pillager" },
+					new Card { Name = "Storm Chaser" },
+					new Card { Name = "The Fist of Ra-den" },
+					new Card { Name = "Dragon's Pack" },
+					new Card { Name = "Shield of Galakrond" },
+					new Card { Name = "Corrupt Elementalist" },
+					new Card { Name = "Kronx Dragonhoof" },
+					new Card { Name = "Earthquake" },
+					new Card { Name = "Galakrond, the Tempest" },
+					new Card { Name = "Hagatha the Witch" },
+					new Card { Name = "Shudderwock" },
+				}
+			};
+		}
+
+		private static Deck ElementalMage()
+		{
+			return new Deck
+			{
+				Name = "Elemental Mage",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Mage"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Elemental Evocation" },
+					new Card { Name = "Elemental Allies" },
+					new Card { Name = "Violet Spellwing" },
+					new Card { Name = "Arcane Servant" },
+					new Card { Name = "Frostbolt" },
+					new Card { Name = "Quicksand Elemental" },
+					new Card { Name = "Arcane Amplifier" },
+					new Card { Name = "Chenvaala" },
+					new Card { Name = "Fire Hawk" },
+					new Card { Name = "Cosmic Anomaly" },
+					new Card { Name = "Fireball" },
+					new Card { Name = "Scorch" },
+					new Card { Name = "Water Elemental" },
+					new Card { Name = "Bonfire Elemental" },
+					new Card { Name = "Hailbringer" },
+					new Card { Name = "Animated Avalanche" },
+				}
+			};
+		}
+
+		private static Deck BuffHunter()
+		{
+			return new Deck
+			{
+				Name = "Buff Hunter",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Hunter"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Bestial Wrath" },
+					new Card { Name = "Springpaw" },
+					new Card { Name = "The Beast Within" },
+					new Card { Name = "Tracking" },
+					new Card { Name = "Flare" },
+					new Card { Name = "Fresh Scent" },
+					new Card { Name = "Goblin Prank" },
+					new Card { Name = "Hunting Mastiff" },
+					new Card { Name = "Pressure Plate" },
+					new Card { Name = "Animal Companion" },
+					new Card { Name = "Deadly Shot" },
+					new Card { Name = "Diving Gryphon" },
+					new Card { Name = "Master's Call" },
+					new Card { Name = "Unleash the Hounds" },
+					new Card { Name = "Dire Frenzy" },
+					new Card { Name = "Tundra Rhino" },
+					new Card { Name = "Scarlet Webweaver" },
+					new Card { Name = "Zul'jin" },
+				}
+			};
+		}
+
+		private static Deck ControlShaman()
+		{
+			return new Deck
+			{
+				Name = "Control Shaman",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Shaman"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Earth Shock" },
+					new Card { Name = "Bloodmage Thalnos" },
+					new Card { Name = "Doomsayer" },
+					new Card { Name = "Witch's Brew" },
+					new Card { Name = "Electra Stormsurge" },
+					new Card { Name = "Far Sight" },
+					new Card { Name = "Lightning Storm" },
+					new Card { Name = "Plague of Murlocs" },
+					new Card { Name = "SN1P-SN4P" },
+					new Card { Name = "Zentimo" },
+					new Card { Name = "Hex" },
+					new Card { Name = "Storm Chaser" },
+					new Card { Name = "The Fist of Ra-den" },
+					new Card { Name = "Hagatha's Scheme" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Earthquake" },
+					new Card { Name = "Hagatha the Witch" },
+					new Card { Name = "Walking Fountain" },
+					new Card { Name = "Sathrovarr" },
+					new Card { Name = "Eye of the Storm" },
+					new Card { Name = "King Phaoris" },
+				}
+			};
+		}
+		private static Deck DragonWarlock()
+		{
+			return new Deck
+			{
+				Name = "Dragon Warlock",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Warlock"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Mortal Coil" },
+					new Card { Name = "Plague of Flames" },
+					new Card { Name = "Voidwalker" },
+					new Card { Name = "Expired Merchant" },
+					new Card { Name = "Faerie Dragon" },
+					new Card { Name = "Nether Breath" },
+					new Card { Name = "Dragonblight Cultist" },
+					new Card { Name = "Rafaam's Scheme" },
+					new Card { Name = "Fiendish Rites" },
+					new Card { Name = "Lifedrinker" },
+					new Card { Name = "Veiled Worshipper" },
+					new Card { Name = "Crazed Netherwing" },
+					new Card { Name = "Shield of Galakrond" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Kronx Dragonhoof" },
+					new Card { Name = "Galakrond, the Wretched" },
+					new Card { Name = "Twisting Nether" },
+					new Card { Name = "Zzeraku the Warped" },
+				}
+			};
+		}
+
+		private static Deck HighlanderPriest()
+		{
+			return new Deck
+			{
+				Name = "Highlander Priest",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Priest"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Forbidden Words" },
+					new Card { Name = "Disciple of Galakrond" },
+					new Card { Name = "Bloodmage Thalnos" },
+					new Card { Name = "Firetree Witchdoctor" },
+					new Card { Name = "Penance" },
+					new Card { Name = "Seance" },
+					new Card { Name = "Shadow Word: Pain" },
+					new Card { Name = "Zephrys the Great" },
+					new Card { Name = "Breath of the Infinite" },
+					new Card { Name = "Mindflayer Kaahrj" },
+					new Card { Name = "Scalerider" },
+					new Card { Name = "Shadow Word: Death" },
+					new Card { Name = "Fate Weaver" },
+					new Card { Name = "Sandbinder" },
+					new Card { Name = "Scaleworm" },
+					new Card { Name = "Troll Batrider" },
+					new Card { Name = "Big Ol' Whelp" },
+					new Card { Name = "Chronobreaker" },
+					new Card { Name = "Cobalt Spellkin" },
+					new Card { Name = "Mass Hysteria" },
+					new Card { Name = "Shield of Galakrond" },
+					new Card { Name = "Time Rip" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Evasive Wyrm" },
+					new Card { Name = "Kronx Dragonhoof" },
+					new Card { Name = "Evasive Drakonid" },
+					new Card { Name = "Galakrond, the Unspeakable" },
+					new Card { Name = "Siamat" },
+					new Card { Name = "Dragonqueen Alexstrasza" },
+					new Card { Name = "Plague of Death" },
+				}
+			};
+		}
+		private static Deck HighlanderWarlock()
+		{
+			return new Deck
+			{
+				Name = "Highlander Warlock",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Warlock"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Mortal Coil" },
+					new Card { Name = "Acidic Swamp Ooze" },
+					new Card { Name = "Doomsayer" },
+					new Card { Name = "Firetree Witchdoctor" },
+					new Card { Name = "Nether Breath" },
+					new Card { Name = "Zephrys the Great" },
+					new Card { Name = "Brightwing" },
+					new Card { Name = "Dark Skies" },
+					new Card { Name = "Scalerider" },
+					new Card { Name = "Shadow Bolt" },
+					new Card { Name = "SN1P-SN4P" },
+					new Card { Name = "Bone Wraith" },
+					new Card { Name = "Hellfire" },
+					new Card { Name = "Scaleworm" },
+					new Card { Name = "Twilight Drake" },
+					new Card { Name = "Big Ol' Whelp" },
+					new Card { Name = "Crazed Netherwing" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Abyssal Summoner" },
+					new Card { Name = "Evasive Wyrm" },
+					new Card { Name = "Khartut Defender" },
+					new Card { Name = "Siphon Soul" },
+					new Card { Name = "Crowd Roaster" },
+					new Card { Name = "Siamat" },
+					new Card { Name = "Valdris Felgorge" },
+					new Card { Name = "Twisting Nether" },
+					new Card { Name = "Alexstrasza" },
+					new Card { Name = "Dragonqueen Alexstrasza" },
+					new Card { Name = "Sathrovarr" },
+					new Card { Name = "Mountain Giant" },
+				}
+			};
+		}
 
 		private static Deck AlbatrossPriest()
 		{
@@ -519,7 +815,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Face Hunter",
-				Prototype = "CONTROL",
+				Prototype = "AGGRO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Hunter"),
@@ -586,7 +882,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Highlander Mage",
-				Prototype = "CONTROL",
+				Prototype = "MIDRANGE",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Mage"),
@@ -695,7 +991,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Highlander Hunter",
-				Prototype = "CONTROL",
+				Prototype = "MIDRANGE",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Hunter"),
@@ -846,7 +1142,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Aggro Shaman",
-				Prototype = "CONTROL",
+				Prototype = "AGGRO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Shaman"),
@@ -877,7 +1173,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Combo Priest",
-				Prototype = "CONTROL",
+				Prototype = "COMBO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Priest"),
@@ -1004,7 +1300,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Highlander Paladin",
-				Prototype = "CONTROL",
+				Prototype = "MIDRANGE",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Paladin"),
@@ -1048,7 +1344,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Highlander Rogue",
-				Prototype = "CONTROL",
+				Prototype = "MIDRANGE",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Rogue"),
@@ -1092,7 +1388,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Highlander Warrior",
-				Prototype = "CONTROL",
+				Prototype = "MIDRANGE",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Warrior"),
@@ -1257,6 +1553,39 @@ namespace Domain.Metas
 					new Card { Name = "Veranus" },
 					new Card { Name = "Shu'ma" },
 					new Card { Name = "Sea Giant" },
+				}
+			};
+		}
+
+		private static Deck TauntBeastDruid()
+		{
+			return new Deck
+			{
+				Name = "Taunt Beast Druid",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Druid"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Strength in Numbers" },
+					new Card { Name = "Breath of Dreams" },
+					new Card { Name = "Crystal Merchant" },
+					new Card { Name = "Wrath" },
+					new Card { Name = "Ferocious Howl" },
+					new Card { Name = "Healing Touch" },
+					new Card { Name = "Witching Hour" },
+					new Card { Name = "Archmage Vargoth" },
+					new Card { Name = "Predatory Instincts" },
+					new Card { Name = "Swipe" },
+					new Card { Name = "Witchwood Grizzly" },
+					new Card { Name = "Zilliax" },
+					new Card { Name = "Emerald Explorer" },
+					new Card { Name = "Stampeding Roar" },
+					new Card { Name = "Evasive Drakonid" },
+					new Card { Name = "Gloop Sprayer" },
+					new Card { Name = "Winged Guardian" },
+					new Card { Name = "Oondasta" },
 				}
 			};
 		}
