@@ -35,5 +35,10 @@ namespace HsEventStore
 		public Guid Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 		public int Version { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 		public DateTimeOffset TimeStamp { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+		public override string ToString()
+		{
+			return $"{DatePlayed} : {HomeDeck} vs {OpponentDeck}";
+		}
 	}
 }

@@ -16,7 +16,7 @@ namespace dd
 
 			var homeDeck = Environment.GetEnvironmentVariable("HOMEDECK");
 #if DEBUG
-			homeDeck = "Cyclone Giants Mage";
+			homeDeck = "HSR Mech Paladin";
 			Console.WriteLine($"Home Deck is {homeDeck}");
 #endif
 			var eventStore = new HsEventStore.HsEventStore();
@@ -88,11 +88,19 @@ namespace dd
 				   eventStore, 
 				   homeDeck, 
 				   dd);
+			else if (report.ToUpper() == "D")
+				DeckReport(
+					eventStore,
+					homeDeck,
+					dd);
 			else if (report.ToUpper() == "C")
 				ChampDeckReport(
 					eventStore);
-			else if (report.ToUpper() == "M")
+			else if (report.ToUpper() == "L")
 				LastMonthReport(
+					eventStore);
+			else if (report.ToUpper() == "T")
+				ThisMonthReport(
 					eventStore);
 			else if (report.ToUpper() == "A")
 				AlphaReport(
@@ -102,24 +110,88 @@ namespace dd
 #endif
 		}
 
+		private static void DeckReport(
+			HsEventStore.HsEventStore eventStore,
+			string homeDeck,
+			DeckDetector dd)
+		{
+			var OppDeckDict = new Dictionary<string, int>();
+			var OppDeckDateDict = new Dictionary<string, DateTime>();
+			var results = (List<HsGamePlayedEvent>)
+				eventStore.Get<HsGamePlayedEvent>("game-played");
+			var gamesPlayed = 0;
+			foreach (var game in results)
+			{
+				if (game.HomeDeck.Equals(homeDeck))
+				{
+					if (OppDeckDict.ContainsKey(game.OpponentDeck))
+					{
+						OppDeckDict[game.OpponentDeck]++;
+						OppDeckDateDict[key: game.OpponentDeck] = game.DatePlayed;
+					}
+					else
+					{
+						OppDeckDict.Add(game.OpponentDeck, 1);
+						OppDeckDateDict[key: game.OpponentDeck] = game.DatePlayed;
+					}
+					gamesPlayed++;
+				}
+			}
+			Console.WriteLine($"Deck: {homeDeck}");
+			Console.WriteLine($"Home Deck Report             {gamesPlayed}        Deck Record");
+			var mysortedDeckList = OppDeckDict.ToList();
+			mysortedDeckList.Sort(
+				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
+			foreach (KeyValuePair<string, int> pair in mysortedDeckList)
+			{
+				Console.WriteLine("  {0,-26} {1,2} {2,4} {3}  {4,2}",
+					pair.Key,
+					pair.Value,
+					MeetFrequency(gamesPlayed, pair.Value),
+					dd.RecordVersusDeck(homeDeck, pair.Key, results),
+					DaysSince(OppDeckDateDict[pair.Key]));
+			}
+		}
+
+		private static void ThisMonthReport(
+			HsEventStore.HsEventStore eventStore)
+		{
+			var thisMonth = DateTime.Now.Month;
+			MonthReport(
+				eventStore,
+				thisMonth,
+				"This Month");
+		}
+
+		private static void LastMonthReport(
+			HsEventStore.HsEventStore eventStore)
+		{
+			var lastMonth = DateTime.Now.AddMonths(-1).Month;
+			MonthReport(
+				eventStore, 
+				lastMonth,
+				"Last Month");
+		}
+
 		private static void AlphaReport(DeckDetector dd)
 		{
 			dd.AlphaList(dd.ListDecks());
 		}
 
-		private static void LastMonthReport(
-			HsEventStore.HsEventStore eventStore)
+		private static void MonthReport(
+			HsEventStore.HsEventStore eventStore,
+			int month,
+			string reportName)
 		{
 			var deckDict = new Dictionary<string, Record>();
 			var results = (List<HsGamePlayedEvent>)
 				eventStore.Get<HsGamePlayedEvent>("game-played");
 			var totalRecord = new Record();
 			var maxDeckNameLength = 0;
-			var lastMonth = DateTime.Now.AddMonths(-1).Month;
 
 			foreach (var game in results)
 			{
-				if (game.DatePlayed.Month != lastMonth)
+				if (game.DatePlayed.Month != month)
 					continue;
 
 				if (!deckDict.ContainsKey(game.HomeDeck))
@@ -145,28 +217,35 @@ namespace dd
 					totalRecord.Losses++;
 				}
 			}
-			var mysortedDeckList = deckDict.ToList();
-			mysortedDeckList.Sort(
-				(pair1, pair2) => pair2.Value.Clip().CompareTo(pair1.Value.Clip()));
-			var spacer = new String(' ', maxDeckNameLength - 20);
-			Console.WriteLine($"Champion Deck Report{spacer}     GP    W    L   Percent");
-			Console.WriteLine();
-			foreach (KeyValuePair<string, Record> pair in mysortedDeckList)
+			if (deckDict.Any())
 			{
+				var mysortedDeckList = deckDict.ToList();
+				mysortedDeckList.Sort(
+					(pair1, pair2) => pair2.Value.Clip().CompareTo(pair1.Value.Clip()));
+				if (maxDeckNameLength < 17)
+					maxDeckNameLength = 18;
+				var spacer = new String(' ', maxDeckNameLength - 17);
+				Console.WriteLine($"{reportName} Report{spacer}     GP    W    L   Percent");
+				Console.WriteLine();
+				foreach (KeyValuePair<string, Record> pair in mysortedDeckList)
+				{
+					Console.WriteLine("  {0,-" + maxDeckNameLength + "} {1,4} {2,4} {3,4}  {4,6}",
+						pair.Key,
+						pair.Value.TotalGames(),
+						pair.Value.Wins,
+						pair.Value.Losses,
+						pair.Value.Percent());
+				}
+				Console.WriteLine();
 				Console.WriteLine("  {0,-" + maxDeckNameLength + "} {1,4} {2,4} {3,4}  {4,6}",
-					pair.Key,
-					pair.Value.TotalGames(),
-					pair.Value.Wins,
-					pair.Value.Losses,
-					pair.Value.Percent());
+					"Totals",
+					totalRecord.TotalGames(),
+					totalRecord.Wins,
+					totalRecord.Losses,
+					totalRecord.Percent());
 			}
-			Console.WriteLine();
-			Console.WriteLine("  {0,-" + maxDeckNameLength + "} {1,4} {2,4} {3,4}  {4,6}",
-				"Totals",
-				totalRecord.TotalGames(),
-				totalRecord.Wins,
-				totalRecord.Losses,
-				totalRecord.Percent());
+			else
+				Console.WriteLine("No Decks to report on");
 		}
 
 		private static void ChampDeckReport(
