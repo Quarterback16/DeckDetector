@@ -1214,7 +1214,8 @@ namespace Domain
 {"Wisp", new CardData { ManaCost = 0 } },
 {"Stampeding Roar", new CardData { ManaCost = 6 } },
 {"Winged Guardian", new CardData { ManaCost = 7 } },
-
+{"Rotnest Drake", new CardData { ManaCost = 5, IsRemoval = true } },
+{"Frenzied Felwing", new CardData { ManaCost = 5 } },
             };
         }
 
