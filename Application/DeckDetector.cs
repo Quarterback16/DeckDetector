@@ -81,31 +81,104 @@ namespace Application
         public List<Deck> ListDecks(
 			string heroClass, 
 			string[] played)
-        {
-            if (played.Length == 0)
-                return ListDecks(heroClass);
+		{
+			if (played.Length == 0)
+				return ListDecks(heroClass);
 
-            //  deck must v all the cards played
-            var shortList = new List<Deck>();
-            var list = CurrentMeta.Decks
+			//  deck must v all the cards played
+			var shortList = new List<Deck>();
+			IEnumerable<Deck> list = DecksFor(heroClass);
+			foreach (Deck deck in list.ToList())
+			{
+				var cardCount = 0;
+				for (int i = 0; i < played.Length; i++)
+				{
+					List<Card> cards = deck.Cards;
+					if (deck.HasCardNamed(played[i]))
+					{
+						cardCount++;
+					}
+				}
+				if (cardCount.Equals(played.Length))
+					shortList.Add(deck);
+			}
+			return shortList.ToList();
+		}
+
+		public IEnumerable<Deck> DecksFor(
+			string abbrHeroClass)
+		{
+			return CurrentMeta.Decks
 				.Where(d => d.HeroClass.Name.ToUpper()
-				            .StartsWith(heroClass.ToUpper()));
-            foreach (Deck deck in list.ToList())
-            {
-                var cardCount = 0;
-                for (int i = 0; i < played.Length; i++)
-                {
-                    List<Card> cards = deck.Cards;
-                    if (deck.HasCardNamed(played[i]))
-                    {
-                        cardCount++;
-                    }
-                }
-                if (cardCount.Equals(played.Length))
-                    shortList.Add(deck);
-            }
-            return shortList.ToList();
-        }
+							.StartsWith(abbrHeroClass.ToUpper()));
+		}
+
+		public void DumpDeckRecordVsHero(
+			string homeDeck,
+			List<HsGamePlayedEvent> results,
+			string abbrHeroClass)
+		{
+			if (string.IsNullOrEmpty(abbrHeroClass))
+				return;
+
+			var heroClass = AbbrToHeroClass(abbrHeroClass);
+
+			var deckRecord = DeckTotalRecordVsHero(
+				results, 
+				homeDeck,
+				heroClass);
+			Console.WriteLine(deckRecord.ToString());
+		}
+
+		private HeroClass AbbrToHeroClass(
+			string abbrHeroClass)
+		{
+			var decks = DecksFor(abbrHeroClass);
+			var deck = decks.First();
+			return deck.HeroClass.HeroClass;
+		}
+
+		public Record DeckTotalRecordVsHero(
+			List<HsGamePlayedEvent> results,
+			string deckName,
+			HeroClass heroClass)
+		{
+			var record = new Record
+			{
+				Name = $@"{
+					deckName
+					} Record vs {
+					heroClass}",
+				Wins = 0,
+				Losses = 0
+			};
+			foreach (var game in results)
+			{
+				var oppHero = DeckHeroClass(game.OpponentDeck);
+				if (!oppHero.Equals(heroClass))
+					continue;
+				if ( game.HomeDeck.Equals(deckName))
+				{
+					if (game.Result.Equals("win"))
+						record.Wins++;
+					else
+						record.Losses++;
+				}
+			}
+			return record;
+		}
+
+		public HeroClass DeckHeroClass(string opponentDeck)
+		{
+			foreach (var deck in CurrentMeta.Decks)
+			{
+				if ( deck.Name.Equals(opponentDeck))
+				{
+					return deck.HeroClass.HeroClass;
+				}
+			}
+			return HeroClass.Priest;
+		}
 
 		public void DumpDecks(List<Deck> results)
 		{
@@ -432,4 +505,5 @@ namespace Application
 			return record;
 		}
 	}
+
 }

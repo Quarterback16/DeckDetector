@@ -19,6 +19,8 @@ namespace Domain.Metas
 				DragonHunter(),
 				MechPaladin(),
 				HighlanderHunter(),
+				GalakrondWarrior(),
+				QuestHunter(),
 			};
 			meta.AddDecks(tier1Decks, 1);
 
@@ -26,10 +28,8 @@ namespace Domain.Metas
 			{
 				TokenDruid(),
 				ResurrectPriest(),
-				QuestHunter(),
 				EmbiggenDruid(),
 				GalakrondZooWarlock(),
-				GalakrondWarrior(),
 				HighlanderMage(),
 				HighlanderRogue(),
 			};
@@ -38,14 +38,20 @@ namespace Domain.Metas
 			var tier3Decks = new List<Deck>
 			{
 				QuestDruid(),
-				ComboPriest(),
-				GalakrondWarlock()
+				GalakrondWarlock(),
+				GalakrondRogue(),
 			};
 			meta.AddDecks(tier3Decks, 3);
 
 			var tier4Decks = new List<Deck>
 			{
-				GalakrondRogue(),
+				ComboPriest(),
+				FaceHunter(),
+			};
+			meta.AddDecks(tier4Decks, 4);
+
+			var tier5Decks = new List<Deck>
+			{
 				AmplifierOtkMage(),
 				RaDenGalakrondShaman(),
 				ElementalMage(),
@@ -63,7 +69,6 @@ namespace Domain.Metas
 				QuestPriest(),
 				TreantTokenDruid(),
 				SecretHighlanderHunter(),
-				FaceHunter(),
 				HandWarlock(),
 				AnubisathRogue(),
 				ControlWarrior(),
@@ -81,8 +86,7 @@ namespace Domain.Metas
 				TauntBeastDruid()
 
 			};
-			meta.AddDecks(tier4Decks, 4);
-
+			meta.AddDecks(tier5Decks, 5);
 			return meta;
 		}
 
@@ -114,7 +118,7 @@ namespace Domain.Metas
 					new Card { Name = "Injured Blademaster" },
 					new Card { Name = "High Priest Amet" },
 					new Card { Name = "Psychopomp" },
-					new Card { Name = "Bwonsamdi, the Dead" },
+					new Card { Name = "Bwonsamdi the Dead" },
 				}
 			};
 		}
@@ -123,7 +127,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Dragon Hunter",
-				Prototype = "CONTROL",
+				Prototype = "AGGRO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Hunter"),
@@ -208,7 +212,7 @@ namespace Domain.Metas
 					new Card { Name = "Flik Skyshiv" },
 					new Card { Name = "Heistbaron Togwaggle" },
 					new Card { Name = "Kronx Dragonhoof" },
-					new Card { Name = "Galakrond, the Nightmare" },
+					new Card { Name = "Galakrond the Nightmare" },
 				}
 			};
 		}
@@ -238,7 +242,7 @@ namespace Domain.Metas
 					new Card { Name = "Shield of Galakrond" },
 					new Card { Name = "Zilliax" },
 					new Card { Name = "Kronx Dragonhoof" },
-					new Card { Name = "Galakrond, the Wretched" },
+					new Card { Name = "Galakrond the Wretched" },
 					new Card { Name = "Lord Godfrey" },
 					new Card { Name = "Alexstrasza" },
 					new Card { Name = "Dragonqueen Alexstrasza" },
@@ -271,7 +275,7 @@ namespace Domain.Metas
 					new Card { Name = "Scion of Ruin" },
 					new Card { Name = "Shield of Galakrond" },
 					new Card { Name = "Kronx Dragonhoof" },
-					new Card { Name = "Galakrond, the Unbreakable" },
+					new Card { Name = "Galakrond the Unbreakable" },
 				}
 			};
 		}
@@ -300,7 +304,7 @@ namespace Domain.Metas
 					new Card { Name = "Veiled Worshipper" },
 					new Card { Name = "Shield of Galakrond" },
 					new Card { Name = "Kronx Dragonhoof" },
-					new Card { Name = "Galakrond, the Wretched" },
+					new Card { Name = "Galakrond the Wretched" },
 					new Card { Name = "Sea Giant" },
 				}
 			};
@@ -375,7 +379,7 @@ namespace Domain.Metas
 					new Card { Name = "Conjurer's Calling" },
 					new Card { Name = "Escaped Manasaber" },
 					new Card { Name = "Twilight Drake" },
-					new Card { Name = "Malygos, Aspect of Magic" },
+					new Card { Name = "Malygos Aspect of Magic" },
 					new Card { Name = "Zilliax" },
 					new Card { Name = "Blizzard" },
 					new Card { Name = "Dragoncaster" },
@@ -431,7 +435,7 @@ namespace Domain.Metas
 					new Card { Name = "Flik Skyshiv" },
 					new Card { Name = "Heistbaron Togwaggle" },
 					new Card { Name = "Kronx Dragonhoof" },
-					new Card { Name = "Galakrond, the Nightmare" },
+					new Card { Name = "Galakrond the Nightmare" },
 					new Card { Name = "Siamat" },
 					new Card { Name = "Dragonqueen Alexstrasza" },
 				}
@@ -496,7 +500,7 @@ namespace Domain.Metas
 					new Card { Name = "Hidden Oasis" },
 					new Card { Name = "Nourish" },
 					new Card { Name = "Cenarius" },
-					new Card { Name = "Ysera, Unleashed" },
+					new Card { Name = "Ysera Unleashed" },
 				}
 			};
 		}
@@ -524,7 +528,7 @@ namespace Domain.Metas
 					new Card { Name = "Unleash the Hounds" },
 					new Card { Name = "Sky Gen'ral Kragg" },
 					new Card { Name = "Faceless Corruptor" },
-					new Card { Name = "Halazzi, the Lynx" },
+					new Card { Name = "Halazzi the Lynx" },
 					new Card { Name = "Leeroy Jenkins" },
 					new Card { Name = "Zilliax" },
 					new Card { Name = "Swarm of Locusts" },
@@ -559,7 +563,7 @@ namespace Domain.Metas
 					new Card { Name = "Time Rip" },
 					new Card { Name = "Zilliax" },
 					new Card { Name = "Khartut Defender" },
-					new Card { Name = "Galakrond, the Unspeakable" },
+					new Card { Name = "Galakrond the Unspeakable" },
 					new Card { Name = "Catrina Muerte" },
 					new Card { Name = "Mass Resurrection" },
 					new Card { Name = "Plague of Death" },
@@ -660,7 +664,7 @@ namespace Domain.Metas
 					new Card { Name = "Corrupt Elementalist" },
 					new Card { Name = "Kronx Dragonhoof" },
 					new Card { Name = "Earthquake" },
-					new Card { Name = "Galakrond, the Tempest" },
+					new Card { Name = "Galakrond the Tempest" },
 					new Card { Name = "Hagatha the Witch" },
 					new Card { Name = "Shudderwock" },
 				}
@@ -792,7 +796,7 @@ namespace Domain.Metas
 					new Card { Name = "Shield of Galakrond" },
 					new Card { Name = "Zilliax" },
 					new Card { Name = "Kronx Dragonhoof" },
-					new Card { Name = "Galakrond, the Wretched" },
+					new Card { Name = "Galakrond the Wretched" },
 					new Card { Name = "Twisting Nether" },
 					new Card { Name = "Zzeraku the Warped" },
 				}
@@ -836,7 +840,7 @@ namespace Domain.Metas
 					new Card { Name = "Evasive Wyrm" },
 					new Card { Name = "Kronx Dragonhoof" },
 					new Card { Name = "Evasive Drakonid" },
-					new Card { Name = "Galakrond, the Unspeakable" },
+					new Card { Name = "Galakrond the Unspeakable" },
 					new Card { Name = "Siamat" },
 					new Card { Name = "Dragonqueen Alexstrasza" },
 					new Card { Name = "Plague of Death" },
@@ -1326,7 +1330,7 @@ namespace Domain.Metas
 					new Card { Name = "Plague of Wrath" },
 					new Card { Name = "Supercollider" },
 					new Card { Name = "Zilliax" },
-					new Card { Name = "Deathwing, Mad Aspect" },
+					new Card { Name = "Deathwing Mad Aspect" },
 					new Card { Name = "Archivist Elysiana" },
 					new Card { Name = "Dr. Boom, Mad Genius" },
 				}
@@ -1529,7 +1533,7 @@ namespace Domain.Metas
 					new Card { Name = "Shield of Galakrond" },
 					new Card { Name = "Zilliax" },
 					new Card { Name = "Kronx Dragonhoof" },
-					new Card { Name = "Galakrond, the Wretched" },
+					new Card { Name = "Galakrond the Wretched" },
 					new Card { Name = "Twisting Nether" },
 					new Card { Name = "Alexstrasza" },
 					new Card { Name = "Dragonqueen Alexstrasza" },
@@ -1564,7 +1568,7 @@ namespace Domain.Metas
 					new Card { Name = "Time Rip" },
 					new Card { Name = "Zilliax" },
 					new Card { Name = "Kronx Dragonhoof" },
-					new Card { Name = "Galakrond, the Unspeakable" },
+					new Card { Name = "Galakrond the Unspeakable" },
 					new Card { Name = "Plague of Death" },
 				}
 			};
@@ -1652,7 +1656,7 @@ namespace Domain.Metas
 					new Card { Name = "Plague of Wrath" },
 					new Card { Name = "Supercollider" },
 					new Card { Name = "Zilliax" },
-					new Card { Name = "Deathwing, Mad Aspect" },
+					new Card { Name = "Deathwing Mad Aspect" },
 					new Card { Name = "Dr. Boom, Mad Genius" },
 					new Card { Name = "Dragonqueen Alexstrasza" },
 				}

@@ -2,7 +2,9 @@
 using Domain.Metas;
 using HsEventStore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
+
 
 namespace Application.Tests
 {
@@ -19,7 +21,7 @@ namespace Application.Tests
 
 		private DeckDetector SystemUnderTest()
 		{
-			return new DeckDetector(RastakhansRumble.LoadMeta());
+			return new DeckDetector(DescentOfDragons.LoadMeta());
 		}
 
 		[TestMethod]
@@ -46,6 +48,28 @@ namespace Application.Tests
 				homeDeck: "Lackey Rogue",
 				oppDeck: "Conjurer Mage",
 				results: events);
+		}
+
+		[TestMethod]
+		public void DeckDetector_HeathDb_HasAllCards()
+		{
+			var cards = sut.PlayableCards();
+			foreach (var card in cards)
+			{
+				if (!HearthDb.Contains(card))
+				{
+					Console.WriteLine(
+						$" [\"{card.Name}\", new CardData [ ManaCost = 0 ] ],"
+						);
+				}
+			}
+		}
+
+		[TestMethod]
+		public void DeckDetector_KnowsHeroForDeck()
+		{
+			var result = sut.DeckHeroClass("Mech Paladin");
+			Assert.IsTrue(result == HeroClass.Paladin);
 		}
 	}
 }

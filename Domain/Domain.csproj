@@ -44,6 +44,7 @@
     <Compile Include="Deck.cs" />
     <Compile Include="HearthDb.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="HeroClass.cs" />
     <Compile Include="Metas\BoomsDayInitial.cs" />
     <Compile Include="Metas\DescentOfDragons.cs" />
     <Compile Include="Metas\KatacombsAndKoboldsPostNerf.cs" />

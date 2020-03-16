@@ -46,6 +46,7 @@ namespace dd
 #endif
 				return;
 			}
+
             var decks = dd.ListDecks(
 				heroClass: options.HeroClass,
 				played: cardsPlayed.ToArray());
@@ -68,6 +69,10 @@ namespace dd
 				dd.DumpRunRecord(results);
 				dd.DumpDailyRecord(results);
 				Console.WriteLine("-----------------------------------");
+				dd.DumpDeckRecordVsHero(
+					homeDeck, 
+					results, 
+					options.HeroClass);
 			}
 			dd.DumpNotes(homeDeck, oppDeck, results);
 

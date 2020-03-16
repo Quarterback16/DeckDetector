@@ -57,7 +57,7 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_HeathDb_HasAllBoomsdayCards()
+		public void DeckDetector_HeathDb_HasAllCards()
 		{
 			var cards = sut.PlayableCards();
 			foreach (var card in cards)
