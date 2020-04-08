@@ -18,7 +18,8 @@ namespace Application.Tests
 
 		private DeckDetector SystemUnderTest()
 		{
-			return new DeckDetector(RastakhansRumble.LoadMeta());
+			return new DeckDetector(
+				RastakhansRumble.LoadMeta());
 		}
 
 		[TestMethod]
@@ -222,6 +223,19 @@ namespace Application.Tests
 			var result = sut.CurrentMeta.ToWiki("Control Priest");
 			Assert.IsNotNull(result);
 			Console.WriteLine(result);
+		}
+
+		[TestMethod]
+		public void DD_DoesChampionshipReport()
+		{
+			var homeDeck = "Control Priest";
+			var eventStore = new HsEventStore.HsEventStore(
+				sut.CurrentMeta.Code);
+			sut.Report(
+					report: "c",
+					eventStore: eventStore,
+					homeDeck: homeDeck,
+					dd: sut);
 		}
 	}
 }

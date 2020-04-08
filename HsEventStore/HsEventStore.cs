@@ -20,6 +20,16 @@ namespace HsEventStore
             }
         }
 
+        public HsEventStore(string metaName)
+        {
+            using (var r = new StreamReader(
+                $"gevents-{metaName}.json"))
+            {
+                var json = r.ReadToEnd();
+                Events = JsonConvert.DeserializeObject<List<HsGamePlayedEvent>>(json);
+            }
+        }
+
         //  Get all events for a specific aggregate (order by version)
         public IEnumerable<IEvent> Get<T>(Guid aggregateId, int fromVersion)
         {

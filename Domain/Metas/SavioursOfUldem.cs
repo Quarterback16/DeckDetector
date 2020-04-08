@@ -1048,7 +1048,6 @@ private static Deck SecretPaladin()
 		}
 		#endregion
 
-
 		#region Decks
 		private static Deck TokenDruid()
 		{
@@ -1829,7 +1828,6 @@ private static Deck SecretPaladin()
 			};
 		}
 		#endregion
-
 
 		#region Decks 2
 		private static Deck ChefNomiPriest()

@@ -13,5 +13,8 @@ namespace dd
 
 		[Option('r')]
 		public string Report { get; set; }
-	}
+
+        [Option('d')]
+        public string ReportDate { get; set; }
+    }
 }

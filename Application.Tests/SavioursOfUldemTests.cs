@@ -18,7 +18,8 @@ namespace Application.Tests
 
 		private DeckDetector SystemUnderTest()
 		{
-			return new DeckDetector(SavioursOfUldem.LoadMeta());
+			return new DeckDetector(
+				SavioursOfUldem.LoadMeta());
 		}
 
 		[TestMethod]
@@ -99,6 +100,19 @@ namespace Application.Tests
 						);
 				}
 			}
+		}
+
+		[TestMethod]
+		public void DD_DoesChampionshipReport()
+		{
+			var homeDeck = "Cyclone Giants Mage";
+			var eventStore = new HsEventStore.HsEventStore(
+				sut.CurrentMeta.Code);
+			sut.Report(
+					report: "c",
+					eventStore: eventStore,
+					homeDeck: homeDeck,
+					dd: sut);
 		}
 	}
 }

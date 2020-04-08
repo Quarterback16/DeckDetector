@@ -3,7 +3,8 @@
 ::  dd -r c  Championship report
 ::  dd -r l  Last Month Champs Report 
 ::  dd -r t  This Month Champs Report 
-::  dd -r f  Frequency Report
+::  dd -r f  Frequency Report -d date to start from eg 2020-03-01 
+::            prints frequency in ALL games in the date range, then home deck record vs the Deck
 ::  dd -r a  Alpha Report 
 ::  dd -r d  Home Deck Report 
 ::
