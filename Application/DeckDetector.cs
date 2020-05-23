@@ -810,10 +810,12 @@ namespace Application
 				dd);
 			ClassFrequency(
 				results,
-				dd);
+				dd,
+				reportDate);
 		}
 
-		private static object DateOut(string reportDate = "")
+		private static object DateOut(
+			string reportDate = "")
 		{
 			if (string.IsNullOrEmpty(reportDate))
 				return "   meta   ";
@@ -829,7 +831,8 @@ namespace Application
 
 		private static void ClassFrequency(
 			List<HsGamePlayedEvent> results,
-			DeckDetector dd)
+			DeckDetector dd,
+			string reportDate = "")
 		{
 			var decks = dd.ListDecks();
 
@@ -846,8 +849,15 @@ namespace Application
 				{ "Priest", 0 }
 			};
 
+			var resultsUsed = 0;
 			foreach (var game in results)
 			{
+				if (!string.IsNullOrEmpty(reportDate))
+				{
+					if (game.DatePlayed < DateTime.Parse(reportDate))
+						continue;
+				}
+				resultsUsed++;
 				var deck = GetDeck(
 					decks,
 					game.OpponentDeck);
@@ -870,7 +880,7 @@ namespace Application
 				Console.WriteLine("  {0,-24} {1,2} {2,4}",
 					pair.Key,
 					pair.Value,
-					MeetFrequency(results.Count(), pair.Value));
+					MeetFrequency(resultsUsed, pair.Value));
 			}
 		}
 

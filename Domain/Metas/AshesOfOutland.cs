@@ -78,7 +78,6 @@ namespace Domain.Metas
 			var tier5Decks = new List<Deck>
 			{
 				EvolveShaman(),
-
 				BigDemonHandlock(),
 				OTKDemonHunter(),
 				BigDemonHunter(),
