@@ -2,6 +2,7 @@
 {
 	public enum HeroClass
 	{
+		Demonhunter,
 		Druid,
 		Hunter,
 		Mage,

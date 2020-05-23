@@ -13,7 +13,7 @@ namespace Application
 
         public DeckDetector()
         {
-            CurrentMeta = DescentOfDragons.LoadMeta();
+            CurrentMeta = AshesOfOutland.LoadMeta();
         }
 
 		public DeckDetector(Meta meta)

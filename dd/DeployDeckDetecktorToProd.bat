@@ -12,6 +12,6 @@ xcopy e:\FileSync\SyncProjects\DeckDetector\dd\bin\Release\System.*.dll c:\apps\
 xcopy e:\FileSync\SyncProjects\DeckDetector\dd\bin\Release\CommandLine.* c:\apps\dd /y
 xcopy e:\FileSync\SyncProjects\DeckDetector\dd\bin\Release\Newtonsoft.* c:\apps\dd /y
 
-xcopy e:\FileSync\SyncProjects\DeckDetector\dd\bin\Release\RUN-DD.bat c:\apps\dd /y
+::xcopy e:\FileSync\SyncProjects\DeckDetector\dd\bin\Release\RUN-DD.bat c:\apps\dd /y
 
 pause
