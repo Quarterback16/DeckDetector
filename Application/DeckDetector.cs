@@ -807,7 +807,8 @@ namespace Application
 			}
 			ArchTypeFrequency(
 				results,
-				dd);
+				dd,
+				reportDate);
 			ClassFrequency(
 				results,
 				dd,
@@ -902,7 +903,8 @@ namespace Application
 
 		private static void ArchTypeFrequency(
 			List<HsGamePlayedEvent> results,
-			DeckDetector dd)
+			DeckDetector dd,
+			string reportDate = "")
 		{
 			var decks = dd.ListDecks();
 
@@ -914,8 +916,15 @@ namespace Application
 				{ "COMBO", 0 }
 			};
 
+			var usedResults = new List<HsGamePlayedEvent>();
 			foreach (var game in results)
 			{
+				if (!string.IsNullOrEmpty(reportDate))
+				{
+					if (game.DatePlayed < DateTime.Parse(reportDate))
+						continue;
+				}
+				usedResults.Add(game);
 				var deck = GetDeck(
 					decks,
 					game.OpponentDeck);
@@ -932,7 +941,7 @@ namespace Application
 
 			MeetFrequencyBy(
 				topic: "Prototypes",
-				results: results,
+				results: usedResults,
 				d: d);
 		}
 

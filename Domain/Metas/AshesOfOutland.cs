@@ -17,7 +17,7 @@ namespace Domain.Metas
 			///  
 			var tier1Decks = new List<Deck>
 			{
-				OutlandHighlanderHunter(),
+				HighlanderHunter(),
 				MurlocPaladin(),
 			};
 			meta.AddDecks(tier1Decks, 1);
@@ -309,7 +309,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Pirate Warrior",
-				Prototype = "CONTROL",
+				Prototype = "AGGRO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Warrior"),
@@ -403,31 +403,31 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Bomb Warrior",
-				Prototype = "CONTROL",
+				Prototype = "TEMPO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Warrior"),
 				Cards = new List<Card>
-	{
-		new Card { Name = "Eternium Rover" },
-					new Card { Name = "Omega Assembly" },
-					new Card { Name = "Shield Slam" },
-					new Card { Name = "Town Crier" },
-					new Card { Name = "Warpath" },
-					new Card { Name = "Weapons Project" },
-					new Card { Name = "Augmented Elekk" },
-					new Card { Name = "Clockwork Goblin" },
-					new Card { Name = "Shield Block" },
-					new Card { Name = "Militia Commander" },
-					new Card { Name = "Omega Devastator" },
-					new Card { Name = "Wrenchcalibur" },
-					new Card { Name = "Brawl" },
-					new Card { Name = "Dyn-o-matic" },
-					new Card { Name = "Harrison Jones" },
-					new Card { Name = "Blastmaster Boom" },
-					new Card { Name = "Dr. Boom Mad Genius" },
-				}
-			};
+				{
+					new Card { Name = "Eternium Rover" },
+								new Card { Name = "Omega Assembly" },
+								new Card { Name = "Shield Slam" },
+								new Card { Name = "Town Crier" },
+								new Card { Name = "Warpath" },
+								new Card { Name = "Weapons Project" },
+								new Card { Name = "Augmented Elekk" },
+								new Card { Name = "Clockwork Goblin" },
+								new Card { Name = "Shield Block" },
+								new Card { Name = "Militia Commander" },
+								new Card { Name = "Omega Devastator" },
+								new Card { Name = "Wrenchcalibur" },
+								new Card { Name = "Brawl" },
+								new Card { Name = "Dyn-o-matic" },
+								new Card { Name = "Harrison Jones" },
+								new Card { Name = "Blastmaster Boom" },
+								new Card { Name = "Dr. Boom Mad Genius" },
+							}
+						};
 		}
 
 		private static Deck EvolveShaman()
@@ -499,7 +499,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Highlander Mage",
-				Prototype = "CONTROL",
+				Prototype = "SINGLETON",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Mage"),
@@ -1223,6 +1223,7 @@ namespace Domain.Metas
 					new Card { Name = "Skeletal Dragon" },
 					new Card { Name = "Catrina Muerte" },
 					new Card { Name = "Mass Resurrection" },
+					new Card { Name = "Plague of Death" },
 				}
 			};
 		}
@@ -1418,11 +1419,11 @@ namespace Domain.Metas
 				}
 			};
 		}
-		private static Deck OutlandHighlanderHunter()
+		private static Deck HighlanderHunter()
 		{
 			return new Deck
 			{
-				Name = "Outland Highlander Hunter",
+				Name = "Highlander Hunter",
 				Prototype = "SINGLETON",
 				Tier = 5,
 				Rank = 25,

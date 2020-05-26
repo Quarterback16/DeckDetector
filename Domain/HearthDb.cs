@@ -116,6 +116,7 @@ namespace Domain
 { "Aluneth", new CardData { ManaCost = 6, IsWeapon = true } },
 { "Animal Companion", new CardData { ManaCost = 3 } },
 { "Arcane Artificer", new CardData { ManaCost = 1 } },
+{ "Mo'arg Artificer", new CardData { ManaCost = 2 } },
 { "Arcane Intellect", new CardData { ManaCost = 3 } },
 { "Arcanite Reaper", new CardData { ManaCost = 5, IsWeapon = true } },
 { "Arcanologist", new CardData { ManaCost = 2 } },
