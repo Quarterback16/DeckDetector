@@ -8,9 +8,11 @@ using System.Linq;
 
 namespace dd
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+		private const string K_DividerLine = "-----------------------------------";
+
+		private static void Main(string[] args)
         {
 			var dd = new DeckDetector();
 
@@ -61,7 +63,7 @@ namespace dd
 			var results = (List<HsGamePlayedEvent>)
 				eventStore.Get<HsGamePlayedEvent>("game-played");
 
-			if (cardsPlayed.Count() == 0)
+			if (cardsPlayed.Any())
 			{
 				dd.DumpMetaRecord(results);
 				dd.DumpPreviousMonthRecord(results);
@@ -70,10 +72,11 @@ namespace dd
 				dd.DumpDeckMonthRecord(homeDeck, results);
 				dd.DumpRunRecord(results);
 				dd.DumpDailyRecord(results);
-				Console.WriteLine("-----------------------------------");
+				Console.WriteLine(
+					value: K_DividerLine);
 				dd.DumpDeckRecordVsHero(
-					homeDeck, 
-					results, 
+					homeDeck,
+					results,
 					options.HeroClass);
 			}
 			dd.DumpNotes(homeDeck, oppDeck, results);
@@ -84,6 +87,7 @@ namespace dd
 #endif
 		}
 
+#if DEBUG
 		private static void Validate(
 			HsEventStore.HsEventStore eventStore, 
 			DeckDetector dd)
@@ -99,8 +103,9 @@ namespace dd
 					Console.WriteLine($"Unknown deck {game.OpponentDeck}");
 			}
 		}
-
-		private static string DumpDecks(List<Deck> results)
+#endif
+		private static string DumpDecks(
+			List<Deck> results)
         {
             var deckCount = 0;
 			var oppDeck = string.Empty;
@@ -125,12 +130,12 @@ namespace dd
 			if (results.Count == 1)
 			{
 				theDeck.Dump();
-				oppDeck = theDeck.Name;
+				return theDeck.Name;
 			}
 			else if (deckCount > 1)
 			{
 				theFirstDeck.Dump();
-				oppDeck = theFirstDeck.Name;
+				return theFirstDeck.Name;
 			}
 			return oppDeck;
 		}

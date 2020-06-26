@@ -145,41 +145,6 @@ namespace Domain.Metas
 			};
 		}
 
-		private static Deck Cubelock()
-		{
-			return new Deck
-			{
-				Name = "Cubelock",
-				Prototype = "CONTROL",
-				Tier = 1,
-				Rank = 5,
-				HeroClass = new Hero("Warlock"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Dark Pact" },
-					new Card { Name = "Kobold Librarian" },
-					//new Card { Name = "Mistress of Mixtures" },
-					new Card { Name = "Defile" },
-					new Card { Name = "Doomsayer" },
-					//new Card { Name = "Prince Taldaram" },
-					new Card { Name = "Hellfire" },
-					new Card { Name = "Stonehill Defender" },
-					new Card { Name = "Lesser Amethyst Spellstone" },
-					new Card { Name = "Spiritsinger Umbra" },  // IN
-					new Card { Name = "Carnivorous Cube" },
-					new Card { Name = "Doomguard" },
-					new Card { Name = "Faceless Manipulator" },
-					new Card { Name = "Possessed Lackey" },
-					new Card { Name = "The Lich King" },  // IN
-					new Card { Name = "Lord Godfrey" },  // IN
-					new Card { Name = "Skull of the Man'ari" },
-					new Card { Name = "Voidlord" },
-					new Card { Name = "Bloodreaver Gul'dan" },
-					new Card { Name = "Mountain Giant" },
-				}
-			};
-		}
-
 		private static Deck ControlWarlock()
 		{
 			return new Deck
@@ -489,39 +454,6 @@ namespace Domain.Metas
 			};
 		}
 
-		private static Deck TauntDruid()
-		{
-			return new Deck
-			{
-				Name = "Taunt Druid",
-				Prototype = "CONTROL",
-				Tier = 1,
-				Rank = 2,
-				HeroClass = new Hero("Druid"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Lesser Jasper Spellstone" },
-					new Card { Name = "Naturalize" },
-					new Card { Name = "Wild Growth" },
-					new Card { Name = "Wrath" },
-					new Card { Name = "Witching Hour" },
-					new Card { Name = "Branching Paths" },
-					new Card { Name = "Ironwood Golem" },
-					new Card { Name = "Oaken Summons" },
-					new Card { Name = "Swipe" },
-					new Card { Name = "Carnivorous Cube" },
-					new Card { Name = "Nourish" },
-					new Card { Name = "Primordial Drake" },
-					new Card { Name = "The Lich King" },
-					new Card { Name = "Dragonhatcher" },
-					new Card { Name = "Hadronox" },
-					new Card { Name = "Master Oakheart" },
-					new Card { Name = "Sleepy Dragon" },
-					new Card { Name = "Ultimate Infestation" },
-				}
-			};
-		}
-
 		private static Deck BigDruid()
 		{
 			return new Deck
@@ -633,39 +565,6 @@ namespace Domain.Metas
 
 					//new Card { Name = "To My Side!" },
 					//new Card { Name = "Rhok'delar" },
-				}
-			};
-		}
-
-		private static Deck SpellHunter()
-		{
-			return new Deck
-			{
-				Name = "Spell Hunter",
-				Prototype = "TEMPO",
-				Tier = 2,
-				Rank = 12,
-				HeroClass = new Hero("Hunter"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Arcane Shot" },
-					new Card { Name = "Candleshot" },
-					new Card { Name = "Hunter's Mark" },
-					new Card { Name = "Tracking" },
-					new Card { Name = "Explosive Trap" },
-					new Card { Name = "Freezing Trap" },
-					new Card { Name = "Grievous Bite" },
-					new Card { Name = "Snipe" },
-					new Card { Name = "Wandering Monster" },
-					new Card { Name = "Animal Companion" },
-					new Card { Name = "Eaglehorn Bow" },
-					new Card { Name = "Kill Command" },
-					new Card { Name = "Unleash the Hounds" },
-					new Card { Name = "Flanking Strike" },
-					new Card { Name = "Lesser Emerald Spellstone" },
-					new Card { Name = "Deathstalker Rexxar" },
-					new Card { Name = "To My Side!" },
-					new Card { Name = "Rhok'delar" },
 				}
 			};
 		}
@@ -900,41 +799,6 @@ namespace Domain.Metas
 			};
 		}
 
-		private static Deck ControlPriest()
-		{
-			return new Deck
-			{
-				Name = "Control Priest",
-				Prototype = "CONTROL",
-				Tier = 2,
-				Rank = 10,
-				HeroClass = new Hero("Priest"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Northshire Cleric" },
-					new Card { Name = "Power Word: Shield" },
-					new Card { Name = "Divine Hymn" },
-					new Card { Name = "Mind Blast" },
-					new Card { Name = "Shadow Visions" },
-					new Card { Name = "Wild Pyromancer" },
-					new Card { Name = "Acolyte of Pain" },
-					new Card { Name = "Twilight Acolyte" },
-					new Card { Name = "Duskbreaker" },
-					new Card { Name = "Mass Dispel" },
-					new Card { Name = "Shadow Word: Horror" },
-					new Card { Name = "Twilight Drake" },
-					new Card { Name = "Holy Fire" },
-					new Card { Name = "Cabal Shadow Priest" },
-					new Card { Name = "Psychic Scream" },
-					new Card { Name = "Primordial Drake" },
-					new Card { Name = "Shadowreaper Anduin" },
-					new Card { Name = "Alexstrasza" },
-					new Card { Name = "Tar Creeper" },  // tech v aggro
-					new Card { Name = "Harrison Jones" },  // tech v control
-				}
-			};
-		}
-
 		private static Deck MechathunPriest()
 		{
 			return new Deck
@@ -1018,38 +882,6 @@ namespace Domain.Metas
 			};
 		}
 
-		private static Deck QuestWarrior()
-		{
-			return new Deck
-			{
-				Name = "Quest Warrior",
-				Prototype = "CONTROL",
-				Tier = 3,
-				Rank = 17,
-				HeroClass = new Hero("Warrior"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Fire Plume's Heart" },
-					new Card { Name = "Shield Slam" },
-					new Card { Name = "Whirlwind" },
-					new Card { Name = "Cornered Sentry" },
-					new Card { Name = "Drywhisker Armorer" },
-					new Card { Name = "Execute" },
-					new Card { Name = "Slam" },
-					new Card { Name = "Warpath" },
-					new Card { Name = "Acolyte of Pain" },
-					new Card { Name = "Gluttonous Ooze" },
-					new Card { Name = "Phantom Militia" },
-					new Card { Name = "Shield Block" },
-					new Card { Name = "Stonehill Defender" },
-					new Card { Name = "Blood Razor" },
-					new Card { Name = "Saronite Chain Gang" },
-					new Card { Name = "Brawl" },
-					new Card { Name = "Scourgelord Garrosh" },
-				}
-			};
-		}
-
 		private static Deck OddPaladin()
 		{
 			return new Deck
@@ -1083,71 +915,6 @@ namespace Domain.Metas
 					new Card { Name = "Vinecleaver" },
 					new Card { Name = "Baku the Mooneater" },
 					//new Card { Name = "Witch's Cauldron" },  // tech vs Control
-				}
-			};
-		}
-
-		private static Deck SpitefulDruid()
-		{
-			return new Deck
-			{
-				Name = "Spiteful Druid",
-				Prototype = "TEMPO",
-				Tier = 2,
-				Rank = 13,
-				HeroClass = new Hero("Druid"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Fire Fly" },
-					new Card { Name = "Glacial Shard" },
-					new Card { Name = "Prince Keleseth" },
-					new Card { Name = "Crypt Lord" },
-					new Card { Name = "Druid of the Scythe" },
-					new Card { Name = "Greedy Sprite" },
-					new Card { Name = "Mind Control Tech" },
-					new Card { Name = "Tar Creeper" },
-					new Card { Name = "Saronite Chain Gang" },
-					new Card { Name = "Mossy Horror" },  //  tech v aggro
-					new Card { Name = "Spellbreaker" },
-					new Card { Name = "Cobalt Scalebane" },
-					new Card { Name = "Fungalmancer" },
-					new Card { Name = "Leeroy Jenkins" },
-					new Card { Name = "Spiteful Summoner" },
-					new Card { Name = "Malfurion the Pestilent" },
-					new Card { Name = "Grand Archivist" },
-					new Card { Name = "The Lich King" },
-					new Card { Name = "Ultimate Infestation" },
-				}
-			};
-		}
-
-		private static Deck DinoDruid()
-		{
-			return new Deck
-			{
-				Name = "Dino Druid",
-				Prototype = "TEMPO",
-				Tier = 5,
-				Rank = 25,
-				HeroClass = new Hero("Druid"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Lesser Jasper Spellstone" },
-					new Card { Name = "Naturalize" },
-					new Card { Name = "Wild Growth" },
-					new Card { Name = "Wrath" },
-					new Card { Name = "Ferocious Howl" },
-					new Card { Name = "Witching Hour" },
-					new Card { Name = "Branching Paths" },
-					new Card { Name = "Ironwood Golem" },
-					new Card { Name = "Oaken Summons" },
-					new Card { Name = "Swipe" },
-					new Card { Name = "Arcane Tyrant" },
-					new Card { Name = "Carnivorous Cube" },
-					new Card { Name = "Nourish" },
-					new Card { Name = "Silver Vanguard" },
-					new Card { Name = "Charged Devilsaur" },
-					new Card { Name = "Ultimate Infestation" },
 				}
 			};
 		}
@@ -1272,84 +1039,6 @@ namespace Domain.Metas
 			};
 		}
 
-		private static Deck RecruitHunter()
-		{
-			return new Deck
-			{
-				Name = "Recruit Hunter",
-				Prototype = "TEMPO",
-				Tier = 2,
-				Rank = 11,
-				HeroClass = new Hero("Hunter"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Candleshot" },
-					new Card { Name = "Fire Fly" },
-					new Card { Name = "Hunters Mark" },
-					new Card { Name = "Play Dead" },
-					new Card { Name = "Prince Keleseth" },
-					//new Card { Name = "Explosive Trap" },
-					//new Card { Name = "Freezing Trap" },
-					//new Card { Name = "Wandering Monster" },
-					//new Card { Name = "Crackling Razormaw" },
-					//new Card { Name = "Animal Companion" },
-					//new Card { Name = "Deadly Shot" },
-					//new Card { Name = "Eaglehorn Bow" },
-					new Card { Name = "Stitched Tracker" },
-					new Card { Name = "Tar Creeper" },
-					new Card { Name = "Flanking Strike" },
-					new Card { Name = "Saronite Chain Gang" },
-					new Card { Name = "Spellbreaker" },
-					new Card { Name = "Houndmaster Shaw" },  // tech v A
-					new Card { Name = "Witchwood Grizzly" },
-					new Card { Name = "Deathstalker Rexxar" },
-					new Card { Name = "Seeping Oozeling" },
-					new Card { Name = "Silver Vanguard" },
-					new Card { Name = "Charged Devilsaur" },
-					new Card { Name = "Kathrena Winterwisp" },
-					new Card { Name = "The Lich King" },
-					new Card { Name = "King Krush" },
-				}
-			};
-		}
-
-		private static Deck QuestPriest()
-		{
-			return new Deck
-			{
-				Name = "Quest Priest",
-				Prototype = "COMBO",
-				Tier = 4,
-				Rank = 24,
-				HeroClass = new Hero("Priest"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Awaken the Makers" },
-					new Card { Name = "Crystalline Oracle" },
-					new Card { Name = "Bloodmage Thalnos" },
-					new Card { Name = "Loot Hoarder" },
-					new Card { Name = "Plated Beetle" },
-					new Card { Name = "Shadow Visions" },
-					new Card { Name = "Spirit Lash" },
-					new Card { Name = "Shadow Word: Death" }, // tech v Control
-					new Card { Name = "Baleful Banker" },  // tech v Control
-					new Card { Name = "Twillight's Call" },
-					new Card { Name = "Zola the Gorgon" },
-					new Card { Name = "Duskbreaker" },
-					new Card { Name = "Stonehill Defender" },  //  tech vs Aggro
-					new Card { Name = "Spiritsinger Umbra" },
-					new Card { Name = "Rotten Applebaum" },
-					new Card { Name = "Bone Drake" },
-					new Card { Name = "Archbishop Benedictus" },
-					new Card { Name = "Psychic Scream" },
-					new Card { Name = "Primordial Drake" },
-					new Card { Name = "Shadowreaper Anduin" },
-					new Card { Name = "Alexstrasza" },
-					//new Card { Name = "Mind Control" },
-				}
-			};
-		}
-
 		private static Deck DeathrattleRogue()
 		{
 			return new Deck
@@ -1422,72 +1111,6 @@ namespace Domain.Metas
 			};
 		}
 
-		private static Deck EvenPaladin()
-		{
-			return new Deck
-			{
-				Name = "Even Paladin",
-				Prototype = "TEMPO",
-				Tier = 5,
-				Rank = 27,
-				HeroClass = new Hero("Paladin"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Armani Berserker" },
-					new Card { Name = "Argent Protector" },
-					new Card { Name = "Equality" },
-					new Card { Name = "Loot Hoarder" },
-					new Card { Name = "Wild Pyromancer" },
-					new Card { Name = "Blessing of Kings" },
-					new Card { Name = "Chillblade Champion" },
-					new Card { Name = "Plated Beetle" },  // tech v Aggro
-					new Card { Name = "Hammer of Wrath" },
-					new Card { Name = "Saronite Chain Gang" },
-					new Card { Name = "Spellbreaker" },
-					new Card { Name = "The Glass Knight" },
-					new Card { Name = "Truesilver Champion" },
-					new Card { Name = "Argent Commander" },
-					new Card { Name = "Avenging Wrath" },
-					new Card { Name = "Genn Greymane" },
-					new Card { Name = "Sunkeeper Tarim" },
-					new Card { Name = "Val'anyr" },
-					new Card { Name = "Consecration" },
-					new Card { Name = "Tirion Fordring" },  // tech v Control
-				}
-			};
-		}
-
-		private static Deck ComboPriest()
-		{
-			return new Deck
-			{
-				Name = "Combo Priest",
-				Prototype = "COMBO",
-				Tier = 3,
-				Rank = 19,
-				HeroClass = new Hero("Priest"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Circle of Healing" },
-					new Card { Name = "Silence" },
-					new Card { Name = "Inner Fire" },
-					new Card { Name = "Northshire Cleric" },
-					new Card { Name = "Power Word: Shield" },
-					new Card { Name = "Divine Spirit" },
-					new Card { Name = "Radient Elemental" },
-					new Card { Name = "Shadow Ascendant" },
-					new Card { Name = "Shadow Visions" },
-					new Card { Name = "Wild Pyromancer" },
-					new Card { Name = "Injured Blademaster" },
-					new Card { Name = "Tar Creeper" },
-					new Card { Name = "Tortollan Shellraiser" },
-					new Card { Name = "Unpowered Steambot" },
-					new Card { Name = "Witchwood Piper" },
-					new Card { Name = "Lyra the Sunshard" },
-				}
-			};
-		}
-
 		private static Deck ApmPriest()
 		{
 			return new Deck
@@ -1521,103 +1144,6 @@ namespace Domain.Metas
 					//new Card { Name = "Unpowered Steambot" },
 					new Card { Name = "Witchwood Piper" },
 					new Card { Name = "Psychic Scream" },
-				}
-			};
-		}
-
-		private static Deck MurlocPaladin()
-		{
-			return new Deck
-			{
-				Name = "Murloc Paladin",
-				Prototype = "AGGRO",
-				Tier = 3,
-				Rank = 21,
-				HeroClass = new Hero("Paladin"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Lost in the Jungle" },
-					new Card { Name = "Murloc Tidecaller" },
-					new Card { Name = "Righteous Protector" },
-					new Card { Name = "Hydrologist" },
-					new Card { Name = "Knife Juggler" },
-					new Card { Name = "Rockpool Hunter" },
-					new Card { Name = "Coldlight Seer" },
-					new Card { Name = "Divine Favor" },
-					new Card { Name = "Murloc Warleader" },
-					new Card { Name = "Nightmare Amalgam" },
-					new Card { Name = "Unidentified Maul" },
-					new Card { Name = "Blessing of Kings" },
-					new Card { Name = "Gentle Megasaur" },
-					new Card { Name = "Spellbreaker" },
-					new Card { Name = "Call to Arms" },
-					new Card { Name = "Fungalmancer" },
-					new Card { Name = "Sunkeeper Tarim" },
-					new Card { Name = "Vinecleaver" },
-				}
-			};
-		}
-
-		private static Deck OddHunter()
-		{
-			return new Deck
-			{
-				Name = "Odd Hunter",
-				Prototype = "AGGRO",
-				Tier = 5,
-				Rank = 28,
-				HeroClass = new Hero("Hunter"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Acherus Veteran" },
-					new Card { Name = "Arcane Shot" },
-					new Card { Name = "Argent Squire" },
-					new Card { Name = "Candleshot" },
-					new Card { Name = "Dire Mole" },
-					new Card { Name = "Fire Fly" },
-					new Card { Name = "Glacial Shard" },
-					new Card { Name = "Acherus Veteran" },
-					new Card { Name = "Tracking" },
-					new Card { Name = "Animal Companion" },
-					new Card { Name = "Eaglehorn Bow" },
-					new Card { Name = "Ironbeak Owl" },
-					new Card { Name = "Kill Command" },
-					new Card { Name = "Unleash the Hounds" },
-					new Card { Name = "Wolfrider" },
-					new Card { Name = "Baku the Mooneater" },
-					new Card { Name = "Leeroy Jenkins" },
-				}
-			};
-		}
-
-		private static Deck PirateWarrior()
-		{
-			return new Deck
-			{
-				Name = "Pirate Warrior",
-				Prototype = "AGGRO",
-				Tier = 5,
-				Rank = 29,
-				HeroClass = new Hero("Warrior"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Southsea Deckhand" },
-					new Card { Name = "Town Crier" },
-					new Card { Name = "Upgrade!" },
-					new Card { Name = "Bloodsail Raider" },
-					new Card { Name = "Heroic Strike" },
-					new Card { Name = "Woodcutter's Axe" },
-					new Card { Name = "Fiery War Axe" },
-					new Card { Name = "Frothing Berserker" },
-					new Card { Name = "Hench-Clan Thug" },
-					new Card { Name = "Rabid Worgen" },
-					new Card { Name = "Dread Corsair" },
-					new Card { Name = "Kor'kron Elite" },
-					new Card { Name = "Spellbreaker" },
-					new Card { Name = "Arcanite Reaper" },
-					new Card { Name = "Captain Greenskin" },
-					new Card { Name = "Darius Crowley" },
-					new Card { Name = "Leeroy Jenkins" },
 				}
 			};
 		}

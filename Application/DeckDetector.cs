@@ -3,6 +3,7 @@ using Domain.Metas;
 using HsEventStore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Application
@@ -25,7 +26,7 @@ namespace Application
 			bool dump = false)
         {
             var pc = CurrentMeta.PlayableCards().OrderBy(c => c.Name).ToList();
-			
+
 			if (dump)
 			{
 				foreach (var card in pc)
@@ -57,7 +58,8 @@ namespace Application
             return CurrentMeta.Decks;
         }
 
-        public List<Deck> ListDecks(string heroClass)
+        public List<Deck> ListDecks(
+			string heroClass)
         {
             if (string.IsNullOrEmpty(heroClass))
                 return ListDecks();
@@ -65,8 +67,12 @@ namespace Application
             var list = CurrentMeta
 				.Decks
 				.Where(
-					d => d.HeroClass.Name.ToUpper().StartsWith(
-						heroClass.ToUpper()));
+					d => d.HeroClass.Name.ToUpper(
+							CultureInfo.CurrentCulture).StartsWith(
+								heroClass.ToUpper(
+									CultureInfo.CurrentCulture),
+									false,
+									CultureInfo.CurrentCulture));
             return list.ToList();
         }
 
@@ -80,10 +86,10 @@ namespace Application
 		}
 
         public List<Deck> ListDecks(
-			string heroClass, 
+			string heroClass,
 			string[] played)
 		{
-			if (played.Length == 0)
+			if (played == null || played.Length == 0)
 				return ListDecks(heroClass);
 
 			//  deck must v all the cards played
@@ -94,7 +100,6 @@ namespace Application
 				var cardCount = 0;
 				for (int i = 0; i < played.Length; i++)
 				{
-					List<Card> cards = deck.Cards;
 					if (deck.HasCardNamed(played[i]))
 					{
 						cardCount++;
@@ -110,8 +115,13 @@ namespace Application
 			string abbrHeroClass)
 		{
 			return CurrentMeta.Decks
-				.Where(d => d.HeroClass.Name.ToUpper()
-							.StartsWith(abbrHeroClass.ToUpper()));
+				.Where(d => d.HeroClass.Name.ToUpper(
+					CultureInfo.CurrentCulture)
+						.StartsWith(
+							abbrHeroClass.ToUpper(
+								CultureInfo.CurrentCulture),
+							false,
+							CultureInfo.CurrentCulture));
 		}
 
 		public void DumpDeckRecordVsHero(
@@ -125,7 +135,7 @@ namespace Application
 			var heroClass = AbbrToHeroClass(abbrHeroClass);
 
 			var deckRecord = DeckTotalRecordVsHero(
-				results, 
+				results,
 				homeDeck,
 				heroClass);
 			Console.WriteLine(deckRecord.ToString());
@@ -153,8 +163,12 @@ namespace Application
 				Wins = 0,
 				Losses = 0
 			};
+			if (results is null)
+				return record;
 			foreach (var game in results)
 			{
+				if (game == null)
+					continue;
 				var oppHero = DeckHeroClass(game.OpponentDeck);
 				if (!oppHero.Equals(heroClass))
 					continue;
@@ -183,6 +197,9 @@ namespace Application
 
 		public void DumpDecks(List<Deck> results)
 		{
+			if (results is null)
+				return;
+
 			Deck theDeck = new Deck();
 			foreach (var deck in results)
 			{
@@ -197,6 +214,8 @@ namespace Application
 
 		public void AlphaList(List<Deck> results)
 		{
+			if (results is null)
+				return;
 			results.Sort();
 			foreach (var deck in results)
 			{
@@ -211,6 +230,9 @@ namespace Application
 			string oppDeck,
 			List<HsGamePlayedEvent> results)
 		{
+			if (results is null)
+				return;
+
 			var notes = new List<string>();
 			var gameCount = 0;
 			var wins = 0;
@@ -270,7 +292,7 @@ namespace Application
 				homeDeckRecord.Percent()
 				}");
 
-			if (notes.Any())
+			if (notes.Count > 0)
 			{
 				foreach (var item in notes)
 				{
@@ -286,6 +308,8 @@ namespace Application
 			string reportDate = "")
 		{
 			var record = new Record();
+			if (results is null )
+				return record.ToString();
 
 			foreach (var game in results)
 			{
@@ -314,6 +338,8 @@ namespace Application
 		public void DumpDailyRecord(
 			List<HsGamePlayedEvent> results)
 		{
+			if (results is null)
+				return;
 			var runRecord = DailyRecord(results);
 			Console.WriteLine(runRecord.ToString());
 		}
@@ -321,20 +347,31 @@ namespace Application
 		public void DumpRunRecord(
 			List<HsGamePlayedEvent> results)
 		{
+			if (results is null)
+				return;
+
 			var runRecord = RunRecord(results);
 			Console.WriteLine(runRecord.ToString());
 		}
 
 		public void DumpDeckRecord(
-			string homeDeck, List<HsGamePlayedEvent> results)
+			string homeDeck, 
+			List<HsGamePlayedEvent> results)
 		{
+			if (results is null)
+				return;
+
 			var deckRecord = DeckTotalRecord(results, homeDeck);
 			Console.WriteLine(deckRecord.ToString());
 		}
 
 		public void DumpDeckMonthRecord(
-			string homeDeck, List<HsGamePlayedEvent> results)
+			string homeDeck, 
+			List<HsGamePlayedEvent> results)
 		{
+			if (results is null)
+				return;
+
 			var deckRecord = DeckRecord(results, homeDeck);
 			Console.WriteLine(deckRecord.ToString());
 		}
@@ -342,6 +379,9 @@ namespace Application
 		public void DumpMonthRecord(
 			List<HsGamePlayedEvent> results)
 		{
+			if (results is null)
+				return;
+
 			var monthRecord = MonthRecord(results);
 			Console.WriteLine(monthRecord.ToString());
 		}
@@ -349,6 +389,9 @@ namespace Application
 		public void DumpPreviousMonthRecord(
 			List<HsGamePlayedEvent> results)
 		{
+			if (results is null)
+				return;
+
 			var monthRecord = PreviousMonthRecord(results);
 			Console.WriteLine(monthRecord.ToString());
 		}
@@ -356,6 +399,9 @@ namespace Application
 		public void DumpMetaRecord(
 			List<HsGamePlayedEvent> results)
 		{
+			if (results is null)
+				return;
+
 			var metaRecord = MetaRecord(results);
 			Console.WriteLine(metaRecord.ToString());
 		}
@@ -461,7 +507,6 @@ namespace Application
 					else
 						record.Losses++;
 				}
-
 			}
 			return record;
 		}
@@ -519,29 +564,46 @@ namespace Application
 			DeckDetector dd,
 			string reportDate = "")
 		{
-			if (report.ToUpper() == "F")
+			if (dd is null 
+				|| eventStore is null
+				|| string.IsNullOrEmpty(report))
+				return;
+
+			if (string.Equals(report, "F", StringComparison.CurrentCultureIgnoreCase))
+			{
 				FrequencyReport(
 					eventStore,
 					homeDeck,
 					dd,
 					reportDate);
-			else if (report.ToUpper() == "D")
+			}
+			else if (report.ToUpper(CultureInfo.CurrentCulture) == "D")
+			{
 				DeckReport(
 					eventStore,
 					homeDeck,
 					dd);
-			else if (report.ToUpper() == "C")
+			}
+			else if (report.ToUpper(CultureInfo.CurrentCulture) == "C")
+			{
 				ChampDeckReport(
 					eventStore);
-			else if (report.ToUpper() == "L")
+			}
+			else if (report.ToUpper(CultureInfo.CurrentCulture) == "L")
+			{
 				LastMonthReport(
 					eventStore);
-			else if (report.ToUpper() == "T")
+			}
+			else if (report.ToUpper(CultureInfo.CurrentCulture) == "T")
+			{
 				ThisMonthReport(
 					eventStore);
-			else if (report.ToUpper() == "A")
+			}
+			else if (report.ToUpper(CultureInfo.CurrentCulture) == "A")
+			{
 				AlphaReport(
 					dd);
+			}
 #if DEBUG
 			//Console.ReadLine();
 #endif
@@ -654,7 +716,7 @@ namespace Application
 					totalRecord.Losses++;
 				}
 			}
-			if (deckDict.Any())
+			if (deckDict.Count > 0)
 			{
 				var mysortedDeckList = deckDict.ToList();
 				mysortedDeckList.Sort(
@@ -682,7 +744,9 @@ namespace Application
 					totalRecord.Percent());
 			}
 			else
+			{
 				Console.WriteLine("No Decks to report on");
+			}
 		}
 
 		private static void ChampDeckReport(
@@ -761,7 +825,9 @@ namespace Application
 			{
 				if (!string.IsNullOrEmpty(reportDate))
 				{
-					if (game.DatePlayed < DateTime.Parse(reportDate))
+					if (game.DatePlayed < DateTime.Parse(
+							reportDate, 
+							CultureInfo.CurrentCulture))
 						continue;
 				}
 				if (OppDeckDict.ContainsKey(game.OpponentDeck))
@@ -784,7 +850,7 @@ namespace Application
 				}
 			}
 			Console.WriteLine($"Deck: {homeDeck}");
-			Console.WriteLine($@"Frequency Report {DateOut(reportDate)} {totalGames,3:N0}    Deck Record  {
+			Console.WriteLine($@"Frequency Report {DateOut(reportDate)}   {totalGames,3:N0}    Deck Record  {
 				deckRecord
 				}");
 			var mysortedDeckList = OppDeckDict.ToList();
@@ -792,7 +858,7 @@ namespace Application
 				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
 			foreach (KeyValuePair<string, int> pair in mysortedDeckList)
 			{
-				Console.WriteLine("  {0,-26} {1,2} {2,4} {3}  {4,2}",
+				Console.WriteLine("  {0,-28} {1,2} {2,4} {3}  {4,2}",
 					pair.Key,
 					pair.Value,
 					MeetFrequency(
@@ -863,7 +929,9 @@ namespace Application
 					decks,
 					game.OpponentDeck);
 				if (deck.HeroClass == null)
+				{
 					Console.WriteLine($"Hero class {game.OpponentDeck} not found");
+				}
 				else
 				{
 					if (classDict.ContainsKey(deck.HeroClass.Name))
@@ -897,7 +965,9 @@ namespace Application
 				Console.WriteLine("  {0,-24} {1,2} {2,4}",
 					pair.Key,
 					pair.Value,
-					MeetFrequency(results.Count(), pair.Value));
+					MeetFrequency(
+						results.Count,
+						pair.Value));
 			}
 		}
 
@@ -929,7 +999,9 @@ namespace Application
 					decks,
 					game.OpponentDeck);
 				if (deck.Prototype == null)
+				{
 					Console.WriteLine($"Deck {game.OpponentDeck} not found");
+				}
 				else
 				{
 					if (d.ContainsKey(deck.Prototype))
@@ -970,7 +1042,5 @@ namespace Application
 			};
 			return record.Percent();
 		}
-
 	}
-
 }

@@ -1623,7 +1623,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Highlander Warrior",
-				Prototype = "MIDRANGE",
+				Prototype = "SINGLETON",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Warrior"),

@@ -55,8 +55,7 @@ namespace Domain
 
         public int ManaCost()
         {
-            var manaCost = 0;
-            manaCost = HearthDb.ManaCost(Name);
+            var manaCost = HearthDb.ManaCost(Name);
             return manaCost;
         }
 

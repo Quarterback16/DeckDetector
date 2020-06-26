@@ -4,52 +4,63 @@ namespace Domain
 {
     public static class HearthDb
     {
-        public static Dictionary<string, CardData> CardBase { get; set; }
+        public static Dictionary<string, CardData> CardBase 
+		{ 
+			get; 
+			set; 
+		}
 
-        public static int ManaCost(string cardName)
+        public static int ManaCost(
+			string cardName)
         {
             if (CardBase == null)
                 LoadCardBase();
 
-            var cardData = new CardData();
-            if (CardBase.TryGetValue(cardName, out cardData))
+            if (CardBase.TryGetValue(
+				cardName, 
+				out CardData cardData))
             {
                 return cardData.ManaCost;
             }
             return -1;
         }
 
-        public static int ManaCost(Card card)
+        public static int ManaCost(
+			Card card)
         {
             if (CardBase == null)
                 LoadCardBase();
 
-            var cardData = new CardData();
-            if (CardBase.TryGetValue(card.Name, out cardData))
+            if (CardBase.TryGetValue(
+				card.Name, 
+				out CardData cardData))
             {
                 return cardData.ManaCost;
             }
             return -1;
         }
 
-        public static bool HasAoe(Card card)
+        public static bool HasAoe(
+			Card card)
         {
             if (CardBase == null)
                 LoadCardBase();
-            var cardData = new CardData();
-            if (CardBase.TryGetValue(card.Name, out cardData))
-            {
-                return cardData.Aoe;
-            }
-            return false;
+			if (CardBase.TryGetValue(
+				card.Name, 
+				out CardData cardData))
+			{
+				return cardData.Aoe;
+			}
+			return false;
         }
 
 		public static bool IsSecret(Card card)
 		{
 			if (CardBase == null)
 				LoadCardBase();
-			var cardData = new CardData();
-			if (CardBase.TryGetValue(card.Name, out cardData))
+			if (CardBase.TryGetValue(
+				card.Name, 
+				out CardData cardData))
 			{
 				return cardData.IsSecret;
 			}
@@ -60,8 +71,9 @@ namespace Domain
 		{
 			if (CardBase == null)
 				LoadCardBase();
-			var cardData = new CardData();
-			if (CardBase.TryGetValue(card.Name, out cardData))
+			if (CardBase.TryGetValue(
+				card.Name, 
+				out CardData cardData))
 			{
 				return cardData.IsWeapon;
 			}
@@ -72,33 +84,37 @@ namespace Domain
 		{
 			if (CardBase == null)
 				LoadCardBase();
-			var cardData = new CardData();
-			if (CardBase.TryGetValue(card.Name, out cardData))
+			if (CardBase.TryGetValue(
+				card.Name, 
+				out CardData cardData))
 			{
 				return cardData.IsRemoval;
 			}
 			return false;
 		}
 
-		public static bool IsBurn(Card card)
+		public static bool IsBurn(
+			Card card)
 		{
 			if (CardBase == null)
 				LoadCardBase();
-			var cardData = new CardData();
-			if (CardBase.TryGetValue(card.Name, out cardData))
+			if (CardBase.TryGetValue(
+				card.Name, 
+				out CardData cardData))
 			{
 				return cardData.IsBurn;
 			}
 			return false;
 		}
 
-		public static bool Contains(Card card)
+		public static bool Contains(
+			Card card)
 		{
 			if (CardBase == null)
 				LoadCardBase();
-
-			var cardData = new CardData();
-			if (CardBase.TryGetValue(card.Name, out cardData))
+			if (CardBase.TryGetValue(
+				card.Name, 
+				out _))
 			{
 				return true;
 			}
@@ -286,8 +302,11 @@ namespace Domain
 { "Lesser Jasper Spellstone", new CardData { ManaCost = 1 } },
 { "Level Up!", new CardData { ManaCost = 5, Aoe = true } },
 { "Lightfused Stegodon", new CardData { ManaCost = 4 } },
+{ "Sense Demons", new CardData { ManaCost = 4 } },
+{ "Scrap Shot", new CardData { ManaCost = 4, IsBurn = true } },
 { "Living Mana", new CardData { ManaCost = 5 , Aoe = true} },
 { "Loot Hoarder", new CardData { ManaCost = 2 } },
+{ "Imprisoned Felmaw", new CardData { ManaCost = 2 } },
 { "Lost in the Jungle", new CardData { ManaCost = 1 } },
 { "Maelstrom Portal", new CardData { ManaCost = 1 , Aoe = true} },
 { "Malchezaar's Imp", new CardData { ManaCost = 1 } },
@@ -312,6 +331,7 @@ namespace Domain
 { "Mistress of Mixtures", new CardData { ManaCost = 1 } },
 { "Molten Reflection", new CardData { ManaCost = 4 } },
 { "Mortal Coil", new CardData { ManaCost = 1 } },
+{ "Mortal Strike", new CardData { ManaCost = 4 } },
 { "Mountain Giant", new CardData { ManaCost = 12 } },
 { "Murloc Tidecaller", new CardData { ManaCost = 1 } },
 { "Murloc Warleader", new CardData { ManaCost = 3 } },
@@ -437,7 +457,7 @@ namespace Domain
  {"Amani Berserker", new CardData { ManaCost = 2 } },
  {"Arcane Keysmith", new CardData { ManaCost = 4 } },
  {"Arcane Missiles", new CardData { ManaCost = 1 } },
- {"Arcane Shot", new CardData { ManaCost = 1 } },
+ {"Arcane Shot", new CardData { ManaCost = 1, IsBurn = true } },
  {"Arcane Tyrant", new CardData { ManaCost = 5 } },
  {"Archbishop Benedictus", new CardData { ManaCost = 7 } },
  {"Argent Commander", new CardData { ManaCost = 6 } },
@@ -542,6 +562,7 @@ namespace Domain
  {"Vicious Fledgling", new CardData { ManaCost = 3 } },
  {"Vicious Scalehide", new CardData { ManaCost = 2 } },
  {"Violet Teacher", new CardData { ManaCost = 4 } },
+ {"Scalelord", new CardData { ManaCost = 5 } },
  {"Voodoo Doll", new CardData { ManaCost = 3, IsRemoval = true } },
  {"Warpath", new CardData { ManaCost = 2, Aoe = true } },
  {"Wing Blast", new CardData { ManaCost = 4 } },
@@ -557,6 +578,7 @@ namespace Domain
  { "Arcane Dynamo", new CardData { ManaCost = 6 } },
  { "Arcane Intelect", new CardData { ManaCost = 3 } },
  { "Astromancer", new CardData { ManaCost = 7 } },
+ { "Astromancer Solarian", new CardData { ManaCost = 3 } },
  { "Augmented Elekk", new CardData { ManaCost = 3 } },
  { "Azalina Soulthief", new CardData { ManaCost = 7 } },
  { "Barkskin", new CardData { ManaCost = 1 } },
@@ -602,6 +624,7 @@ namespace Domain
  { "Lab Recruiter", new CardData { ManaCost = 2 } },
  { "Landscaping", new CardData { ManaCost = 3 } },
  { "Lightwarden", new CardData { ManaCost = 1 } },
+ { "Imprisoned Sungill", new CardData { ManaCost = 1 } },
  { "Lorewalker Cho", new CardData { ManaCost = 2 } },
  { "Luna's Pocket Galaxy", new CardData { ManaCost = 7 } },
  { "Mechanical Whelp", new CardData { ManaCost = 6 } },
@@ -969,7 +992,7 @@ namespace Domain
  {"Fel Lord Betrug", new CardData { ManaCost = 7 } },
  {"Fiendish Circle", new CardData { ManaCost = 0 } },
  {"Fishflinger", new CardData { ManaCost = 2 } },
- {"Flame Ward", new CardData { ManaCost = 3 } },
+ {"Flame Ward", new CardData { ManaCost = 3, IsSecret = true } },
  {"Frightened Flunky", new CardData { ManaCost = 2 } },
  {"Hack the System", new CardData { ManaCost = 1 } },
  {"Hidden Oasis", new CardData { ManaCost = 6 } },
@@ -1078,7 +1101,7 @@ namespace Domain
 {"Treenforements", new CardData { ManaCost = 1,} },
 {"Ysera Unleashed", new CardData { ManaCost = 9,} },
 {"Clear the Way", new CardData { ManaCost = 1,} },
-{"Corrosive Breath", new CardData { ManaCost = 2,} },
+{"Corrosive Breath", new CardData { ManaCost = 2, IsBurn = true} },
 {"Diving Gryphon", new CardData { ManaCost = 3,} },
 {"Dragonbane", new CardData { ManaCost = 4,} },
 {"Dwarven Sharpshooter", new CardData { ManaCost = 1,} },
@@ -1288,6 +1311,10 @@ namespace Domain
  {"Illidari Felblade", new CardData { ManaCost = 2, IsWeapon = true } },
  {"Immolation Aura", new CardData { ManaCost = 2 } },
  {"Imprisoned Antaen", new CardData { ManaCost = 6 } },
+ {"Imprisoned Observer", new CardData { ManaCost = 3 } },
+ {"Warmaul Challenger", new CardData { ManaCost = 3 } },
+ {"Soul Cleave", new CardData { ManaCost = 3 } },
+ {"Magtheridon", new CardData { ManaCost = 4 } },
  {"Inner Demon", new CardData { ManaCost = 0 } },
  {"Ironbark", new CardData { ManaCost = 2 } },
  {"Kael'thas Sunstrider", new CardData { ManaCost = 6 } },
@@ -1318,7 +1345,7 @@ namespace Domain
  {"The Dark Portal", new CardData { ManaCost = 4 } },
   {"Raging Felscreamer", new CardData { ManaCost = 4 } },
    {"Chaos Nova", new CardData { ManaCost = 5, Aoe = true } },
- {"Twin Slice", new CardData { ManaCost = 0 } },
+ {"Twin Slice", new CardData { ManaCost = 1 } },
  {"Twisted Knowledge", new CardData { ManaCost = 0 } },
  {"Umberwing", new CardData { ManaCost = 2, IsWeapon = true } },
  {"Unstable Felbolt", new CardData { ManaCost = 1 } },

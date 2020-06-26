@@ -9,8 +9,8 @@ namespace Application
 		public string DeckName { get; set; }
 		public string Class { get; set; }
 
-		public List<Card> Cards { get; set; }
-		public List<string> Code { get; set; }
+		public List<Card> Cards { get; }
+		public List<string> Code { get; }
 
 		public DeckParser()
 		{
@@ -95,13 +95,15 @@ namespace Application
 			Code.Add(line1);
 		}
 
-		private string WikiName(
+		private static string WikiName(
 			string deckName)
 		{
 			return deckName.Replace(" ", string.Empty);
 		}
 
-		private string LineFrom(string line, int where)
+		private static string LineFrom(
+			string line,
+			int where)
 		{
 			return line.Substring(where, line.Length - where);
 		}
@@ -112,7 +114,7 @@ namespace Application
 			var name = LineFrom(line, 9);
 			var card = new Card
 			{
-				Single = qty == 1 ? true : false,
+				Single = qty == 1,
 				Name = name
 			};
 			Cards.Add(card);

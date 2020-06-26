@@ -399,39 +399,6 @@ namespace Domain.Metas
             };
         }
 
-        private static Deck ComboPaladin()
-        {
-            return new Deck
-            {
-                Name = "Combo Paladin",
-                Tier = 3,
-                Rank = 12,
-                HeroClass = new Hero("Paladin"),
-                Cards = new List<Card>
-                {
-                    new Card { Name = "Blessing of Wisdom" },
-                    new Card { Name = "Righteous Protector" },
-                    new Card { Name = "Bloodmage Thalnos" },
-                    new Card { Name = "Dirty Rat" },
-                    new Card { Name = "Equality" },
-                    new Card { Name = "Hydrologist" },
-                    new Card { Name = "Loot Hoarder" },
-                    new Card { Name = "Potion of Heroism" },
-                    new Card { Name = "Wild Pyromancer" },
-                    new Card { Name = "Autionmaster Beardo" },
-                    new Card { Name = "Rallying Blade" },
-                    new Card { Name = "Call to Arms" },
-                    new Card { Name = "Consecration" },
-                    new Card { Name = "Spellbreaker" },
-                    new Card { Name = "Burgly Bully" },
-                    new Card { Name = "Spikeridged Steed" },
-                    new Card { Name = "Sunkeeper Tarim" },
-                    new Card { Name = "Lynessa Sunsorrow" },
-                    new Card { Name = "Uther of the Ebon Blade" },
-                }
-            };
-        }
-
         private static Deck ControlMage()
         {
             return new Deck
@@ -931,34 +898,5 @@ namespace Domain.Metas
             };
         }
 
-
-        private static Deck BlankDeck()
-        {
-            return new Deck
-            {
-                Name = "Blank Deck",
-                HeroClass = new Hero(""),
-                Cards = new List<Card>
-                {
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                    new Card { Name = "" },
-                }
-            };
-        }
     }
 }

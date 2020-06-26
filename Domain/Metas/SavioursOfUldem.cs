@@ -917,38 +917,7 @@ private static Deck SecretPaladin()
 				}
 			};
 		}
-		private static Deck LackeyTempoRogue()
-		{
-			return new Deck
-			{
-				Name = "Lackey Tempo Rogue",
-				Prototype = "MIDRANGE",
-				Tier = 5,
-				Rank = 25,
-				HeroClass = new Hero("Rogue"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Backstab" },
-					new Card { Name = "Shadowstep" },
-					new Card { Name = "Pharaoh Cat" },
-					new Card { Name = "Swashburglar" },
-					new Card { Name = "EVIL Cable Rat" },
-					new Card { Name = "Eviscerate" },
-					new Card { Name = "Underbelly Fence" },
-					new Card { Name = "Blink Fox" },
-					new Card { Name = "Edwin VanCleef" },
-					new Card { Name = "EVIL Miscreant" },
-					new Card { Name = "Shaku, the Collector" },
-					new Card { Name = "SI:7 Agent" },
-					new Card { Name = "Hench-Clan Burglar" },
-					new Card { Name = "Vendetta" },
-					new Card { Name = "Waggle Pick" },
-					new Card { Name = "Leeroy Jenkins" },
-					new Card { Name = "Heistbaron Togwaggle" },
-					new Card { Name = "Ragnaros the Firelord" },
-				}
-			};
-		}
+
 		private static Deck QuestMalygosDruid()
 		{
 			return new Deck
@@ -1207,37 +1176,7 @@ private static Deck SecretPaladin()
 				}
 			};
 		}
-		private static Deck ComboPriest()
-		{
-			return new Deck
-			{
-				Name = "Combo Aggro Priest",
-				Prototype = "AGGRO",
-				Tier = 5,
-				Rank = 25,
-				HeroClass = new Hero("Priest"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Circle of Healing" },
-					new Card { Name = "Silence" },
-					new Card { Name = "Inner Fire" },
-					new Card { Name = "Lightwarden" },
-					new Card { Name = "Northshire Cleric" },
-					new Card { Name = "Power Word: Shield" },
-					new Card { Name = "Divine Spirit" },
-					new Card { Name = "Extra Arms" },
-					new Card { Name = "Holy Ripple" },
-					new Card { Name = "Injured Tol'vir" },
-					new Card { Name = "Neferset Ritualist" },
-					new Card { Name = "Wild Pyromancer" },
-					new Card { Name = "Acolyte of Pain" },
-					new Card { Name = "Injured Blademaster" },
-					new Card { Name = "High Priest Amet" },
-					new Card { Name = "Mass Dispel" },
-					new Card { Name = "Psychopomp" },
-				}
-			};
-		}
+
 		private static Deck ControlShaman()
 		{
 			return new Deck

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace dd
 {
-    class Options
+    internal class Options
     {
         [Option('c')]
         public string HeroClass { get; set; }
