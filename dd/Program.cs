@@ -63,8 +63,8 @@ namespace dd
 			var results = (List<HsGamePlayedEvent>)
 				eventStore.Get<HsGamePlayedEvent>("game-played");
 
-			if (cardsPlayed.Any())
-			{
+			//if (cardsPlayed.Any())
+			//{
 				dd.DumpMetaRecord(results);
 				dd.DumpPreviousMonthRecord(results);
 				dd.DumpMonthRecord(results);
@@ -78,7 +78,7 @@ namespace dd
 					homeDeck,
 					results,
 					options.HeroClass);
-			}
+			//}
 			dd.DumpNotes(homeDeck, oppDeck, results);
 
             Console.WriteLine();

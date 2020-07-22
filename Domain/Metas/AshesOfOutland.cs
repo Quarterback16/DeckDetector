@@ -11,16 +11,15 @@ namespace Domain.Metas
 			var meta = new Meta(
 				code: "AO2",
 				name: "Ashes of Outland",
-				patchNo: 17.4M,
+				patchNo: 17.6M,
 				asOf: new DateTime(2020, 6, 23));
 			///
 			///  TIER 1
 			///  
 			var tier1Decks = new List<Deck>
 			{
-				EnrageWarrior(),
-				EggWarrior(),
 				HighlanderHunter(),
+				MurlocPaladin(),
 			};
 			meta.AddDecks(
 				tier1Decks,
@@ -30,14 +29,17 @@ namespace Domain.Metas
 			/// 
 			var tier2Decks = new List<Deck>
 			{
-				BombControlWarrior(),
 				DragonHunter(),
-				SpellDruid(),
-				DragonDruid(),
-				TempoDemonHunter(), // aka AggroDemonHunter
-				MalygosDruid(),
+				TotemShaman(),
+				PurePaladin(),
 				GalakrondSecretRogue(),
+				TempoDemonHunter(), // aka AggroDemonHunter
+				Zoolock(),
+				HighlanderMage(),
+				GalakrondWarlock(),
+				QuestWarlock(),
 				GalakrondStealthRogue(),
+				BombControlWarrior(),
 			};
 			meta.AddDecks(
 				tier2Decks,
@@ -47,10 +49,15 @@ namespace Domain.Metas
 			///   
 			var tier3Decks = new List<Deck>
 			{
-				HighlanderMage(),
+				FaceHunter(),
+				HighlanderGalaRogue(),
+				GalakrondShaman(),
 				PirateWarrior(),
-				GalakrondRogue(),
-				QuestWarlock(),
+				GalakrondPriest(),
+				CubePriest(),
+				EggWarrior(),
+				NoMinionMage(),
+
 			};
 			meta.AddDecks(
 				tier3Decks,
@@ -60,26 +67,16 @@ namespace Domain.Metas
 			///   
 			var tier4Decks = new List<Deck>
 			{
-				FaceHunter(),
-				MurlocPaladin(),
-				PurePaladin(),
-				TotemShaman(),
-				EmbiggenDruid(),
-				GalakrondPriest(),
+				GalakrondRogue(),
+				DragonDruid(),
+				SpellDruid(),
 				ResurrectPriest(),
+				EnrageWarrior(),
+				QuestDruid(),
 				BigDruid(),
-				GalakrondShaman(),
-				GalakrondWarlock(),
-				SpellMage(),
-				ControlDemonHunter(),
-				NoMinionMage(),
-				HighlanderPriest(),
+				MalygosDruid(),
 				LibramPaladin(),
-				TokenDemonHunter(),
-				Zoolock(),
-				QuestResurrectPriest(),
-				TempoPriest(),
-				HighlanderShaman(),
+				GalakrondQuestShaman(),
 				//SmallSpellMage()
 			};
 			meta.AddDecks(tier4Decks, 4);
@@ -88,12 +85,18 @@ namespace Domain.Metas
 			///  
 			var tier5Decks = new List<Deck>
 			{
+				EmbiggenDruid(),
+				SpellMage(),
+				ControlDemonHunter(),
+				HighlanderPriest(),
+				TokenDemonHunter(),
+				QuestResurrectPriest(),
+				TempoPriest(),
+				HighlanderShaman(),
 				DivineShieldPaladin(),
 				MagtheridonControlWarrior(),
 				BurgleRogue(),
-				HighlanderGalaRogue(),
 				HighlanderDemonHunter(),
-				GalakrondQuestShaman(),
 				GalakrondWarrior(),
 				EvolveShaman(),
 				QuestRogue(),
@@ -183,7 +186,7 @@ namespace Domain.Metas
 					new Card { Name = "Flik Skyshiv" },
 					new Card { Name = "Heistbaron Togwaggle" },
 					new Card { Name = "Kronx Dragonhoof" },
-					new Card { Name = "Galakrond, the Nightmare" },
+					new Card { Name = "Galakrond the Nightmare" },
 				}
 			};
 		}
@@ -248,7 +251,7 @@ namespace Domain.Metas
 					new Card { Name = "Flik Skyshiv" },
 					new Card { Name = "Heistbaron Togwaggle" },
 					new Card { Name = "Kronx Dragonhoof" },
-					new Card { Name = "Galakrond, the Nightmare" },
+					new Card { Name = "Galakrond the Nightmare" },
 				}
 			};
 		}
@@ -583,7 +586,7 @@ namespace Domain.Metas
 					new Card { Name = "Brawl" },
 					new Card { Name = "Kobold Stickyfinger" },
 					new Card { Name = "Kronx Dragonhoof" },
-					new Card { Name = "Galakrond, the Unbreakable" },
+					new Card { Name = "Galakrond the Unbreakable" },
 					new Card { Name = "Deathwing, Mad Aspect" },
 				}
 			};
@@ -1478,6 +1481,74 @@ namespace Domain.Metas
 		#endregion
 
 		#region Decks
+
+		private static Deck QuestDruid()
+		{
+			return new Deck
+			{
+				Name = "Quest Druid",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Druid"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Innervate" },
+					new Card { Name = "Crystal Power" },
+					new Card { Name = "Untapped Potential" },
+					new Card { Name = "Crystal Merchant" },
+					new Card { Name = "Ironbark" },
+					new Card { Name = "Rising Winds" },
+					new Card { Name = "Steel Beetle" },
+					new Card { Name = "Wrath" },
+					new Card { Name = "Archspore Msshi'fn" },
+					new Card { Name = "Bogbeam" },
+					new Card { Name = "Anubisath Defender" },
+					new Card { Name = "Oasis Surger" },
+					new Card { Name = "Starfall" },
+					new Card { Name = "Hidden Oasis" },
+					new Card { Name = "Nourish" },
+					new Card { Name = "Sathrovarr" },
+					new Card { Name = "Ysera, Unleashed" },
+				}
+			};
+		}
+
+
+		private static Deck CubePriest()
+		{
+			return new Deck
+			{
+				Name = "Cube Priest",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Priest"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Disciple of Galakrond" },
+					new Card { Name = "Imprisoned Homunculus" },
+					new Card { Name = "Renew" },
+					new Card { Name = "Imprisoned Vilefiend" },
+					new Card { Name = "Penance" },
+					new Card { Name = "Sethekk Veilweaver" },
+					new Card { Name = "Shadow Word: Death" },
+					new Card { Name = "Apotheosis" },
+					new Card { Name = "Mindflayer Kaahrj" },
+					new Card { Name = "Escaped Manasaber" },
+					new Card { Name = "Grave Rune" },
+					new Card { Name = "Holy Nova" },
+					new Card { Name = "Psyche Split" },
+					new Card { Name = "Time Rip" },
+					new Card { Name = "Kronx Dragonhoof" },
+					new Card { Name = "Galakrond the Unspeakable" },
+					new Card { Name = "Skeletal Dragon" },
+					new Card { Name = "Soul Mirror" },
+					new Card { Name = "Murozond the Infinite" },
+				}
+			};
+		}
+
 		private static Deck Zoolock()
 		{
 			return new Deck

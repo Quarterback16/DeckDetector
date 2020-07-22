@@ -1350,6 +1350,7 @@ namespace Domain
  {"Umberwing", new CardData { ManaCost = 2, IsWeapon = true } },
  {"Unstable Felbolt", new CardData { ManaCost = 1 } },
  {"Wrathscale Naga", new CardData { ManaCost = 3 } },
+ {"Sethekk Veiweaver", new CardData { ManaCost = 3 } },
 
   {"Aeon Reaver", new CardData { ManaCost = 5 } },
  {"Ambush", new CardData { ManaCost = 2, IsSecret = true } },
