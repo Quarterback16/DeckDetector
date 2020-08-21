@@ -89,7 +89,7 @@ namespace dd
 
 #if DEBUG
 		private static void Validate(
-			HsEventStore.HsEventStore eventStore, 
+			HsEventStore.HsEventStore eventStore,
 			DeckDetector dd)
 		{
 			var results = (List<HsGamePlayedEvent>)

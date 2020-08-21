@@ -53,6 +53,7 @@
     <Compile Include="Metas\RastakhansRumble.cs" />
     <Compile Include="Metas\RiseOfShadows.cs" />
     <Compile Include="Metas\SavioursOfUldem.cs" />
+    <Compile Include="Metas\ScholomanceAcademy.cs" />
     <Compile Include="Metas\WitchwoodBalanced.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Record.cs" />

@@ -14,7 +14,7 @@ namespace Application
 
         public DeckDetector()
         {
-            CurrentMeta = AshesOfOutland.LoadMeta();
+            CurrentMeta = ScholomanceAcademy.LoadMeta();
         }
 
 		public DeckDetector(Meta meta)
@@ -637,13 +637,13 @@ namespace Application
 				}
 			}
 			Console.WriteLine($"Deck: {homeDeck}");
-			Console.WriteLine($"Home Deck Report             {gamesPlayed}        Deck Record");
+			Console.WriteLine($"Home Deck Report              {gamesPlayed}        Deck Record");
 			var mysortedDeckList = OppDeckDict.ToList();
 			mysortedDeckList.Sort(
 				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
 			foreach (KeyValuePair<string, int> pair in mysortedDeckList)
 			{
-				Console.WriteLine("  {0,-26} {1,2} {2,4} {3}  {4,2}",
+				Console.WriteLine("  {0,-27} {1,2} {2,4} {3}  {4,2}",
 					pair.Key,
 					pair.Value,
 					MeetFrequency(gamesPlayed, pair.Value),

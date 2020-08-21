@@ -54,6 +54,7 @@
     <Compile Include="RastakhansRumbleTests.cs" />
     <Compile Include="RiseOfShadowsTests.cs" />
     <Compile Include="SavioursOfUldemTests.cs" />
+    <Compile Include="ScholomanceAcademyTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj">
