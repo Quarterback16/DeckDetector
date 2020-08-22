@@ -28,6 +28,10 @@ namespace Domain
 
 		public bool Single { get; set; }
 
+		public string Spell { get; set; }
+		public int? Attack { get; set; }
+		public int? Health { get; set; }
+
 		internal bool HasTheseInitials(string cardName)
         {
 #if DEBUG
@@ -77,6 +81,28 @@ namespace Domain
 		public string CardName()
 		{
 			return $"{ManaCost()}-{Name}";
+		}
+
+		internal string SpellFor()
+		{
+			var spell = HearthDb.SpellFor(Name);
+			if (string.IsNullOrEmpty(spell))
+				return string.Empty;
+			return spell;
+		}
+
+		internal string Stats()
+		{
+			Attack = HearthDb.AttackFor(Name);
+			if (Attack == null)
+				return string.Empty;
+			Health = HearthDb.HealthFor(Name);
+			var stats = $"{Attack.ToString().Trim()}/{Health.ToString().Trim()}";
+			if (HearthDb.Taunt(Name))
+				stats += "-T";
+			if (HearthDb.DivineShield(Name))
+				stats += "-S";
+			return stats;
 		}
 
 		public int CardCount()

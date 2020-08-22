@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Domain
 {
@@ -93,6 +94,82 @@ namespace Domain
 			return false;
 		}
 
+		internal static int? AttackFor(
+			string cardName)
+		{
+			if (CardBase == null)
+				LoadCardBase();
+
+			if (CardBase.TryGetValue(
+				cardName,
+				out CardData cardData))
+			{
+				return cardData.Attack;
+			}
+			return null;
+		}
+
+		internal static bool Taunt(
+			string cardName)
+		{
+			if (CardBase == null)
+				LoadCardBase();
+
+			if (CardBase.TryGetValue(
+				cardName,
+				out CardData cardData))
+			{
+				return cardData.IsTaunt;
+			}
+			return false;
+		}
+
+
+		internal static bool DivineShield(
+			string cardName)
+		{
+			if (CardBase == null)
+				LoadCardBase();
+
+			if (CardBase.TryGetValue(
+				cardName,
+				out CardData cardData))
+			{
+				return cardData.HasShield;
+			}
+			return false;
+		}
+
+		internal static int? HealthFor(
+			string cardName)
+		{
+			if (CardBase == null)
+				LoadCardBase();
+
+			if (CardBase.TryGetValue(
+				cardName,
+				out CardData cardData))
+			{
+				return cardData.Health;
+			}
+			return null;
+		}
+
+		internal static string SpellFor(
+			string cardName)
+		{
+			if (CardBase == null)
+				LoadCardBase();
+
+			if (CardBase.TryGetValue(
+				cardName,
+				out CardData cardData))
+			{
+				return cardData.Spell;
+			}
+			return null;
+		}
+
 		public static bool IsBurn(
 			Card card)
 		{
@@ -159,7 +236,7 @@ namespace Domain
 { "Brawl", new CardData { ManaCost = 5, Aoe = true } },
 { "Bright-Eyed Scout", new CardData { ManaCost = 4 } },
 { "Bring It On!", new CardData { ManaCost = 2 } },
-{ "Cabal Shadow Priest", new CardData { ManaCost = 6 } },
+{ "Cabal Shadow Priest", new CardData { ManaCost = 6,  Attack = 4, Health = 5, Spell = "steal a minion with 2 or less attack" } },
 { "Cabalist's Tome", new CardData { ManaCost = 5 } },
 { "Cairn Bloodhoof", new CardData { ManaCost = 6 } },
 { "Call of the Wild", new CardData { ManaCost = 8 } },
@@ -286,7 +363,7 @@ namespace Domain
 { "Kabal Lackey", new CardData { ManaCost = 1 } },
 { "Kabal Songstealer", new CardData { ManaCost = 5 } },
 { "Kabal Talonpriest", new CardData { ManaCost = 3 } },
-{ "Kill Command", new CardData { ManaCost = 3, IsRemoval = true } },
+{ "Kill Command", new CardData { ManaCost = 3, IsRemoval = true, IsBurn = true } },
 { "Kindly Grandmother", new CardData { ManaCost = 2 } },
 { "Kingsbane", new CardData { ManaCost = 1, IsWeapon = true } },
 { "Kirin Tor Mage", new CardData { ManaCost = 3 } },
@@ -380,7 +457,7 @@ namespace Domain
 { "Shadow Ascendant", new CardData { ManaCost = 2 } },
 { "Shadow Essence", new CardData { ManaCost = 6 } },
 { "Shadow Visions", new CardData { ManaCost = 2 } },
-{ "Shadow Word: Death", new CardData { ManaCost = 3, IsRemoval = true } },
+{ "Shadow Word: Death", new CardData { ManaCost = 2, IsRemoval = true } },
 { "Shadow Word: Horror", new CardData { ManaCost = 4 } },
 { "Shadowcaster", new CardData { ManaCost = 5 } },
 { "Shadowreaper Anduin", new CardData { ManaCost = 8, IsBurn = true } },
@@ -428,7 +505,7 @@ namespace Domain
 { "Unleash the Hounds", new CardData { ManaCost = 3 , Aoe = true} },
 { "Unlicensed Apothecary", new CardData { ManaCost = 3 } },
 { "Unstable Evolution", new CardData { ManaCost = 1 } },
-{ "Upgrade!", new CardData { ManaCost = 0, IsWeapon = true } },
+{ "Upgrade!", new CardData { ManaCost = 1, IsWeapon = true } },
 { "Uther of the Ebon Blade", new CardData { ManaCost = 9 } },
 { "Val'anyr", new CardData { ManaCost = 6, IsWeapon = true } },
 { "Valeera the Hollow", new CardData { ManaCost = 9 } },
@@ -468,7 +545,7 @@ namespace Domain
  {"Baku the Mooneater", new CardData { ManaCost = 9 } },
  {"Baleful Banker", new CardData { ManaCost = 2 } },
  {"Baron Geddon", new CardData { ManaCost = 7 } },
- {"Blessing of Kings", new CardData { ManaCost = 4 } },
+ {"Blessing of Kings", new CardData { ManaCost = 4, Attack = 4, Health = 4 } },
  {"Blessing of Might", new CardData { ManaCost = 1 } },
  {"Blink Fox", new CardData { ManaCost = 3 } },
  {"Bloodmage Thalnos", new CardData { ManaCost = 2 } },
@@ -1000,7 +1077,7 @@ namespace Domain
  {"Holy Ripple", new CardData { ManaCost = 2, Aoe = true } },
  {"Hooked Scimitar", new CardData { ManaCost = 3, IsWeapon = true } },
  {"Hunter's Pack", new CardData { ManaCost = 3 } },
- {"Hyena Alpha", new CardData { ManaCost = 4 } },
+ {"Hyena Alpha", new CardData { ManaCost = 4, Attack = 3, Health = 3, Spell = "summon 2 2/2 if Have secret"  } },
  {"Immortal Prelate", new CardData { ManaCost = 2 } },
  {"Improve Morale", new CardData { ManaCost = 0 } },
  {"Injured Tol'vir", new CardData { ManaCost = 2 } },
@@ -1055,7 +1132,7 @@ namespace Domain
  {"Weaponized Wasp", new CardData { ManaCost = 3 } },
  {"Wild Bloodstinger", new CardData { ManaCost = 6 } },
  {"Worthy Expedition", new CardData { ManaCost = 1 } },
- {"Zephrys the Great", new CardData { ManaCost = 2 } },
+ {"Zephrys the Great", new CardData { ManaCost = 2,  Attack = 3, Health = 2 } },
 
  {"Aldor Peacekeeper", new CardData { ManaCost = 3 } },
  {"Anka, the Buried", new CardData { ManaCost = 5 } },
@@ -1103,9 +1180,9 @@ namespace Domain
 {"Clear the Way", new CardData { ManaCost = 1,} },
 {"Corrosive Breath", new CardData { ManaCost = 2, IsBurn = true} },
 {"Diving Gryphon", new CardData { ManaCost = 3,} },
-{"Dragonbane", new CardData { ManaCost = 4,} },
-{"Dwarven Sharpshooter", new CardData { ManaCost = 1,} },
-{"Phase Stalker", new CardData { ManaCost = 2,} },
+{"Dragonbane", new CardData { ManaCost = 4, Attack = 3, Health = 5 } },
+{"Dwarven Sharpshooter", new CardData { ManaCost = 1,Attack = 1, Health = 3 } },
+{"Phase Stalker", new CardData { ManaCost = 2, Attack = 2, Health = 3 } },
 {"Primordial Explorer", new CardData { ManaCost = 3,} },
 {"Stormhammer", new CardData { ManaCost = 3, IsWeapon = true,} },
 {"Toxic Reinforcements", new CardData { ManaCost = 1,} },
@@ -1122,7 +1199,7 @@ namespace Domain
 {"Violet Spellwing", new CardData { ManaCost = 1,} },
 {"Bad Luck Albatross", new CardData { ManaCost = 3,} },
 {"Big Ol Welp", new CardData { ManaCost = 5,} },
-{"Blazing Battlemage", new CardData { ManaCost = 1,} },
+{"Blazing Battlemage", new CardData { ManaCost = 1,  Attack = 2, Health = 2} },
 {"Blowtorch Saboteur", new CardData { ManaCost = 3,} },
 {"Camouflaged Dirigible", new CardData { ManaCost = 6,} },
 {"Chromatic Egg", new CardData { ManaCost = 5,} },
@@ -1148,7 +1225,7 @@ namespace Domain
 {"Hoard Pillager", new CardData { ManaCost = 4,} },
 {"Hot Air Baloon", new CardData { ManaCost = 1,} },
 {"Kobold Stickyfinger", new CardData { ManaCost = 5,} },
-{"Kronx Dragonhoof", new CardData { ManaCost = 6,} },
+{"Kronx Dragonhoof", new CardData { ManaCost = 6,  Attack = 6, Health = 6} },
 {"Living Dragonbreath", new CardData { ManaCost = 3,} },
 {"Parachute Brigand", new CardData { ManaCost = 2,} },
 {"Platebreaker", new CardData { ManaCost = 5,} },
@@ -1170,8 +1247,8 @@ namespace Domain
 {"Amber Watcher", new CardData { ManaCost = 5,} },
 {"Bronze Explorer", new CardData { ManaCost = 3,} },
 {"Dragonrider Tairitha", new CardData { ManaCost = 3,} },
-{"Lightforged Crusader", new CardData { ManaCost = 7,} },
-{"Lightforged Zealot", new CardData { ManaCost = 4,} },
+{"Lightforged Crusader", new CardData { ManaCost = 7, Attack = 7, Health = 7} },
+{"Lightforged Zealot", new CardData { ManaCost = 4, IsWeapon = true, Attack = 4, Health = 2} },
 {"Nozdormu the Timeless", new CardData { ManaCost = 4,} },
 {"Righteous Cause", new CardData { ManaCost = 1,} },
 {"Sand Breath", new CardData { ManaCost = 1,} },
@@ -1179,14 +1256,14 @@ namespace Domain
 {"Sky Claw", new CardData { ManaCost = 3,} },
 {"Breath of the Infinite", new CardData { ManaCost = 3,} },
 {"Chronobreaker", new CardData { ManaCost = 5,} },
-{"Disciple of Galakrond", new CardData { ManaCost = 1,} },
+{"Disciple of Galakrond", new CardData { ManaCost = 1,  Attack = 1, Health = 2} },
 {"Envoy of Lazul", new CardData { ManaCost = 2,} },
 {"Fate Weaver", new CardData { ManaCost = 4,} },
 {"Galacrond the Unspeakable", new CardData { ManaCost = 7,} },
 {"Grave Rune", new CardData { ManaCost = 4,} },
 {"Mindflayer Kaahrj", new CardData { ManaCost = 3,} },
 {"Murozond the Infinite", new CardData { ManaCost = 8,} },
-{"Time Rip", new CardData { ManaCost = 5,} },
+{"Time Rip", new CardData { ManaCost = 5, IsRemoval = true } },
 {"Whispers of EVIL", new CardData { ManaCost = 0,} },
 {"Bloodsail Flybooter", new CardData { ManaCost = 1,} },
 {"Candle Breath", new CardData { ManaCost = 6,} },
@@ -1229,7 +1306,7 @@ namespace Domain
 {"Molten Breath", new CardData { ManaCost = 4,} },
 {"Ramming Speed", new CardData { ManaCost = 3,} },
 {"Ritual Chopper", new CardData { ManaCost = 2, IsWeapon = true,} },
-{"Scion of Ruin", new CardData { ManaCost = 3,} },
+{"Scion of Ruin", new CardData { ManaCost = 3, } },
 {"Sky Raider", new CardData { ManaCost = 1,} },
 {"Skybarge", new CardData { ManaCost = 3,} },
 {"Garden Gnome", new CardData { ManaCost = 4 } },
@@ -1280,33 +1357,33 @@ namespace Domain
  {"Water Elemental", new CardData { ManaCost = 4 } },
  {"Air Raid", new CardData { ManaCost = 1 } },
  {"Akama", new CardData { ManaCost = 3 } },
- {"Aldor Attendant", new CardData { ManaCost = 2 } },
- {"Aldor Truthseeker", new CardData { ManaCost = 5 } },
+ {"Aldor Attendant", new CardData { ManaCost = 2, Attack = 1, Health = 3 } },
+ {"Aldor Truthseeker", new CardData { ManaCost = 5, Attack = 4, Health = 6, IsTaunt = true } },
  {"Aldrachi Warblades", new CardData { ManaCost = 2 } },
- {"Altruis the Outcast", new CardData { ManaCost = 3 } },
- {"Ashtongue Slayer", new CardData { ManaCost = 0 } },
+ {"Altruis the Outcast", new CardData { ManaCost = 3, Attack = 4, Health = 2 } },
+ {"Ashtongue Slayer", new CardData { ManaCost = 2 } },
  {"Bane of Doom", new CardData { ManaCost = 0 } },
- {"Battlefiend", new CardData { ManaCost = 1 } },
- {"Blade Dance", new CardData { ManaCost = 0 } },
+ {"Battlefiend", new CardData { ManaCost = 1,  Attack = 1, Health = 2 } },
+ {"Blade Dance", new CardData { ManaCost = 2 } },
  {"Bloodboil Brute", new CardData { ManaCost = 7 } },
  {"Bogbeam", new CardData { ManaCost = 3 } },
  {"Boggspine Knuckles", new CardData { ManaCost = 5, IsWeapon = true } },
- {"Bonechewer Brawler", new CardData { ManaCost = 2 } },
+ {"Bonechewer Brawler", new CardData { ManaCost = 2,  Attack = 2, Health = 3 } },
  {"Burrowing Scorpid", new CardData { ManaCost = 4 } },
  {"Chaos Strike", new CardData { ManaCost = 2 } },
  {"Command the Illidari", new CardData { ManaCost = 5 } },
  {"Consume Magic", new CardData { ManaCost = 0 } },
  {"Coordinated Strike", new CardData { ManaCost = 3 } },
  {"Corsair Cache", new CardData { ManaCost = 2 } },
- {"Crimson Sigil Runner", new CardData { ManaCost = 1 } },
+ {"Crimson Sigil Runner", new CardData { ManaCost = 1, Attack = 1, Health = 1 } },
  {"Exotic Mountseller", new CardData { ManaCost = 0 } },
  {"Eye Beam", new CardData { ManaCost = 1 } },
  {"Feast of Souls", new CardData { ManaCost = 0 } },
  {"Furious Felfin", new CardData { ManaCost = 2 } },
- {"Glaivebound Adept", new CardData { ManaCost = 5 } },
+ {"Glaivebound Adept", new CardData { ManaCost = 5,  Attack = 6, Health = 4 } },
  {"Greyheart Sage", new CardData { ManaCost = 3 } },
- {"Guardian Augmerchant", new CardData { ManaCost = 1 } },
- {"Hand of A'dal", new CardData { ManaCost = 2 } },
+ {"Guardian Augmerchant", new CardData { ManaCost = 1, Attack = 2, Health = 1 } },
+ {"Hand of A'dal", new CardData { ManaCost = 2, Attack = 2, Health = 2 } },
  {"Hand of Gul'dan", new CardData { ManaCost = 6 } },
  {"Illidari Felblade", new CardData { ManaCost = 2, IsWeapon = true } },
  {"Immolation Aura", new CardData { ManaCost = 2 } },
@@ -1318,13 +1395,13 @@ namespace Domain
  {"Inner Demon", new CardData { ManaCost = 0 } },
  {"Ironbark", new CardData { ManaCost = 2 } },
  {"Kael'thas Sunstrider", new CardData { ManaCost = 6 } },
- {"Kayn Sunfury", new CardData { ManaCost = 4 } },
- {"Lady Liadrin", new CardData { ManaCost = 7 } },
- {"Libram of Hope", new CardData { ManaCost = 9 } },
- {"Libram of Justice", new CardData { ManaCost = 6 } },
- {"Libram of Wisdom", new CardData { ManaCost = 2 } },
+ {"Kayn Sunfury", new CardData { ManaCost = 4,  Attack = 3, Health = 5 } },
+ {"Lady Liadrin", new CardData { ManaCost = 7, Attack = 4, Health = 6} },
+ {"Libram of Hope", new CardData { ManaCost = 9, Attack = 8, Health = 8, HasShield = true, IsTaunt = true, Heal = 8 } },
+ {"Libram of Justice", new CardData { ManaCost = 6, IsWeapon = true, Attack = 1, Health = 4 } },
+ {"Libram of Wisdom", new CardData { ManaCost = 2, Attack = 1, Health = 1 } },
  {"Maiev Shadowsong", new CardData { ManaCost = 4 } },
- {"Mana Burn", new CardData { ManaCost = 0 } },
+ {"Mana Burn", new CardData { ManaCost = 1 } },
  {"Marshspawn", new CardData { ManaCost = 3 } },
  {"Metamorphosis", new CardData { ManaCost = 5 } },
  {"Murgur Murgurgle", new CardData { ManaCost = 2 } },
@@ -1339,7 +1416,7 @@ namespace Domain
  {"Shadow Council", new CardData { ManaCost = 1 } },
  {"Shadowhoof Slayer", new CardData { ManaCost = 1 } },
   {"Ur'zul Horror", new CardData { ManaCost = 1 } },
- {"Skull of Gul'dan", new CardData { ManaCost = 6 } },
+ {"Skull of Gul'dan", new CardData { ManaCost = 6, Spell = "Draw 3, outcast reduce the cost by 3" } },
  {"Spectral Sight", new CardData { ManaCost = 2 } },
  {"Spymistress", new CardData { ManaCost = 1 } },
  {"The Dark Portal", new CardData { ManaCost = 4 } },
@@ -1347,14 +1424,14 @@ namespace Domain
    {"Chaos Nova", new CardData { ManaCost = 5, Aoe = true } },
  {"Twin Slice", new CardData { ManaCost = 1 } },
  {"Twisted Knowledge", new CardData { ManaCost = 0 } },
- {"Umberwing", new CardData { ManaCost = 2, IsWeapon = true } },
+ {"Umberwing", new CardData { ManaCost = 2, IsWeapon = true,  Attack = 1, Health = 2 } },
  {"Unstable Felbolt", new CardData { ManaCost = 1 } },
  {"Wrathscale Naga", new CardData { ManaCost = 3 } },
  {"Sethekk Veiweaver", new CardData { ManaCost = 3 } },
 
   {"Aeon Reaver", new CardData { ManaCost = 5 } },
  {"Ambush", new CardData { ManaCost = 2, IsSecret = true } },
- {"Apotheosis", new CardData { ManaCost = 3 } },
+ {"Apotheosis", new CardData { ManaCost = 3,  Attack = 2, Health = 3, Spell = "buff and grant life-steal" } },
  {"Ashtongue Battlelord", new CardData { ManaCost = 4 } },
  {"Bamboozle", new CardData { ManaCost = 2, IsSecret = true } },
  {"Blackjack Stunner", new CardData { ManaCost = 1 } },
@@ -1393,7 +1470,7 @@ namespace Domain
  {"Font of Power", new CardData { ManaCost = 2 } },
  {"Incanter's Flow", new CardData { ManaCost = 2 } },
  {"Netherwind Portal", new CardData { ManaCost = 3, IsSecret = true } },
- {"Shadow Word: Ruin", new CardData { ManaCost = 4 } },
+ {"Shadow Word: Ruin", new CardData { ManaCost = 4, Aoe = true, Spell = "Destroy minions with 5 or more attack" } },
 { "Kobold Sandtrooper", new CardData{ManaCost = 2} },
 { "Leper Gnome", new CardData{ManaCost = 1}},
  {"Al'ar", new CardData { ManaCost = 5 } },
@@ -1410,15 +1487,15 @@ namespace Domain
  {"Teron Gorefiend", new CardData { ManaCost = 3 } },
  {"Underlight Angling Rod", new CardData { ManaCost = 3, IsWeapon = true } },
  {"Warglaives of Azzinoth", new CardData { ManaCost = 5, IsWeapon = true  } },
- {"Adorable Infestation", new CardData { ManaCost = 1 } },
+ {"Adorable Infestation", new CardData { ManaCost = 1, Attack = 1, Health = 1, Spell = "summon a 1/1"  } },
  {"Animated Broomstick", new CardData { ManaCost = 1 } },
- {"Argent Braggart", new CardData { ManaCost = 2 } },
+ {"Argent Braggart", new CardData { ManaCost = 2, Attack = 9, Health = 9 } },
  {"Athletic Studies", new CardData { ManaCost = 1 } },
- {"Blessing of Authority", new CardData { ManaCost = 5 } },
+ {"Blessing of Authority", new CardData { ManaCost = 5, Attack = 8, Health = 8 } },
  {"Brain Freeze", new CardData { ManaCost = 3 } },
  {"Brittlebone Destroyer", new CardData { ManaCost = 4 } },
  {"Bulwark of Azzinoth", new CardData { ManaCost = 1, IsWeapon = true  } },
- {"Cabal Acolyte", new CardData { ManaCost = 4 } },
+ {"Cabal Acolyte", new CardData { ManaCost = 4, Attack = 2, Health = 6, Spell = "SB: steal minion with 2 or less attack"  } },
  {"Cleric of Scales", new CardData { ManaCost = 1 } },
  {"Coerce", new CardData { ManaCost = 3 } },
  {"Combustion", new CardData { ManaCost = 0 } },
@@ -1428,15 +1505,15 @@ namespace Domain
  {"Cutting Class", new CardData { ManaCost = 5 } },
  {"Darkglare", new CardData { ManaCost = 3 } },
  {"Deathwing, Mad Aspect", new CardData { ManaCost = 8 } },
- {"Demon Companion", new CardData { ManaCost = 2 } },
+ {"Demon Companion", new CardData { ManaCost = 2, Spell ="Summon a random Demon companion" } },
  {"Devolving Missiles", new CardData { ManaCost = 1 } },
- {"Devout Pupil", new CardData { ManaCost = 6 } },
+ {"Devout Pupil", new CardData { ManaCost = 6, Attack = 4, Health = 5, IsTaunt = true, HasShield = true } },
  {"Dimensional Ripper", new CardData { ManaCost = 10 } },
  {"Doctor Krastinov", new CardData { ManaCost = 5 } },
  {"Double Jump", new CardData { ManaCost = 1 } },
  {"Draconic Studies", new CardData { ManaCost = 1 } },
- {"Firebrand", new CardData { ManaCost = 0 } },
- {"First Day of School", new CardData { ManaCost = 0 } },
+ {"Firebrand", new CardData { ManaCost = 3 } },
+ {"First Day of School", new CardData { ManaCost = 0, Spell = "Add 2 1-cost minions to hand" } },
  {"Flesh Giant", new CardData { ManaCost = 8 } },
  {"Forest Warden Omu", new CardData { ManaCost = 6 } },
  {"Galakrond, the Nightmare", new CardData { ManaCost = 7 } },
@@ -1445,14 +1522,14 @@ namespace Domain
  {"Galakrond, the Wretched", new CardData { ManaCost = 7 } },
  {"Germination", new CardData { ManaCost = 4 } },
  {"Gibberling", new CardData { ManaCost = 1 } },
- {"Gift of Luminance", new CardData { ManaCost = 0 } },
- {"Goody Two-Shields", new CardData { ManaCost = 3 } },
+ {"Gift of Luminance", new CardData { ManaCost = 3, Spell = "Summon 1/1 copy, give it Shield" } },
+ {"Goody Two-Shields", new CardData { ManaCost = 3, Attack = 4, Health = 2 } },
  {"Guardian Animals", new CardData { ManaCost = 7 } },
  {"Headmaster Kel'Thuzad", new CardData { ManaCost = 5 } },
- {"High Abbess Alura", new CardData { ManaCost = 4 } },
+ {"High Abbess Alura", new CardData { ManaCost = 4, Attack = 3, Health = 6 } },
  {"Icicle", new CardData { ManaCost = 3 } },
- {"Imprisoned Vilefiend", new CardData { ManaCost = 2 } },
- {"Intrepid Initiate", new CardData { ManaCost = 0 } },
+ {"Imprisoned Vilefiend", new CardData { ManaCost = 2,  Attack = 3, Health = 5 } },
+ {"Intrepid Initiate", new CardData { ManaCost = 1, Attack = 3, Health = 2  } },
  {"Jandice Barov", new CardData { ManaCost = 4 } },
  {"Kargath Bladefist", new CardData { ManaCost = 4 } },
  {"Lab Partner", new CardData { ManaCost = 1 } },
@@ -1462,17 +1539,17 @@ namespace Domain
  {"Lorekeeper Polkelt", new CardData { ManaCost = 4 } },
  {"Magehunter", new CardData { ManaCost = 0 } },
  {"Malygos, Aspect of Magic", new CardData { ManaCost = 5 } },
- {"Manafeeder Panthara", new CardData { ManaCost = 0 } },
- {"Marrowslicer", new CardData { ManaCost = 0 } },
+ {"Manafeeder Panthara", new CardData { ManaCost = 2 } },
+ {"Marrowslicer", new CardData { ManaCost = 4, IsWeapon = true,  Attack = 4, Health = 2 } },
  {"Mindrender Illucia", new CardData { ManaCost = 3 } },
  {"Mozaki, Master Duelist", new CardData { ManaCost = 5 } },
  {"Nature Studies", new CardData { ManaCost = 1 } },
  {"Nethrandamus", new CardData { ManaCost = 0 } },
  {"Nightblade", new CardData { ManaCost = 5 } },
  {"Nightshade Matron", new CardData { ManaCost = 0 } },
- {"Onyx Magescribe", new CardData { ManaCost = 0 } },
+ {"Onyx Magescribe", new CardData { ManaCost = 6,  Attack = 4, Health = 9, Spell = "Add 2 spells to hand" } },
  {"Plagiarize", new CardData { ManaCost = 2 } },
- {"Plague of Madness", new CardData { ManaCost = 0 } },
+ {"Plague of Madness", new CardData { ManaCost = 1 } },
  {"Potion of Illusion", new CardData { ManaCost = 4 } },
  {"Primordial Studies", new CardData { ManaCost = 1 } },
  {"Raise Dead", new CardData { ManaCost = 0 } },
@@ -1481,33 +1558,33 @@ namespace Domain
  {"Runic Carvings", new CardData { ManaCost = 0 } },
  {"School Spirits", new CardData { ManaCost = 0 } },
  {"Secret Passage", new CardData { ManaCost = 1 } },
- {"Sethekk Veilweaver", new CardData { ManaCost = 2 } },
+ {"Sethekk Veilweaver", new CardData { ManaCost = 2,  Attack = 2, Health = 3 } },
  {"Shadowlight Scholar", new CardData { ManaCost = 0 } },
- {"Shardshatter Mystic", new CardData { ManaCost = 0 } },
+ {"Shardshatter Mystic", new CardData { ManaCost = 3, Attack = 3, Health = 2, Aoe = true } },
  {"Shield of Honor", new CardData { ManaCost = 0 } },
  {"Shieldbearer", new CardData { ManaCost = 0 } },
- {"Sneaky Delinquent", new CardData { ManaCost = 0 } },
- {"Soul Shear", new CardData { ManaCost = 0 } },
+ {"Sneaky Delinquent", new CardData { ManaCost = 2 } },
+ {"Soul Shear", new CardData { ManaCost = 2 } },
  {"Soulciologist Malicia", new CardData { ManaCost = 7 } },
- {"Soulshard Lapidary", new CardData { ManaCost = 0 } },
+ {"Soulshard Lapidary", new CardData { ManaCost = 5 } },
  {"Speaker Gidra", new CardData { ManaCost = 3 } },
  {"Sphere of Sapience", new CardData { ManaCost = 1, IsWeapon = true  } },
- {"Spirit Jailer", new CardData { ManaCost = 0 } },
+ {"Spirit Jailer", new CardData { ManaCost = 1 } },
  {"Survival of the Fittest", new CardData { ManaCost = 10 } },
  {"Sword and Board", new CardData { ManaCost = 2 } },
  {"Teacher's Pet", new CardData { ManaCost = 5 } },
  {"Totem Goliath", new CardData { ManaCost = 5 } },
- {"Tour Guide", new CardData { ManaCost = 1 } },
+ {"Tour Guide", new CardData { ManaCost = 1, Attack = 1, Health = 1  } },
  {"Transfer Student", new CardData { ManaCost = 4 } },
  {"Trick Totem", new CardData { ManaCost = 2 } },
  {"Troublemaker", new CardData { ManaCost = 8 } },
- {"Twilight Runner", new CardData { ManaCost = 0 } },
- {"Voracious Reader", new CardData { ManaCost = 2 } },
+ {"Twilight Runner", new CardData { ManaCost = 5 } },
+ {"Voracious Reader", new CardData { ManaCost = 2,  Attack = 1, Health = 3, Spell = "eot:draw til ur hand has 3" } },
  {"Vulpera Toxinblade", new CardData { ManaCost = 0 } },
  {"Wand Thief", new CardData { ManaCost = 1 } },
  {"Wave of Apathy", new CardData { ManaCost = 1 } },
- {"Wolpertinger", new CardData { ManaCost = 0 } },
- {"Wretched Tutor", new CardData { ManaCost = 0 } },
+ {"Wolpertinger", new CardData { ManaCost = 1, Attack = 1, Health = 1, Spell = "summons a copy"  } },
+ {"Wretched Tutor", new CardData { ManaCost = 4, Aoe = true,  Attack = 2, Health = 5 } },
  {"Ysera, Unleashed", new CardData { ManaCost = 9 } },
 			};
         }
@@ -1522,5 +1599,12 @@ namespace Domain
 		public bool IsWeapon { get; set; }
 		public bool IsRemoval { get; set; }
 		public bool IsBurn { get; set; }
+		public bool IsTaunt { get; set; }
+		public bool HasShield { get; set; }
+		public int? Heal { get; set; }
+		public string Spell { get; set; }
+
+		public int? Attack { get; set; }
+		public int? Health { get; set; }
 	}
 }

@@ -94,7 +94,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Aggro Demon Hunter",
-				Prototype = "CONTROL",
+				Prototype = "AGGRO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Demonhunter"),
@@ -222,7 +222,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Dragon Hunter",
-				Prototype = "CONTROL",
+				Prototype = "TEMPO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Hunter"),
@@ -266,7 +266,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Enrage Warrior",
-				Prototype = "CONTROL",
+				Prototype = "COMBO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Warrior"),
@@ -297,7 +297,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Face Hunter",
-				Prototype = "CONTROL",
+				Prototype = "AGGRO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Hunter"),
@@ -308,10 +308,11 @@ namespace Domain.Metas
 					new Card { Name = "Leper Gnome" },
 					new Card { Name = "Tour Guide" },
 					new Card { Name = "Toxic Reinforcements" },
-					new Card { Name = "Tracking" },
+					new Card { Name = "Pressure Plate" },
 					new Card { Name = "Wolpertinger" },
 					new Card { Name = "Explosive Trap" },
-					new Card { Name = "Imprisoned Felmaw" },
+					new Card { Name = "Intrepid Initiate" },
+					new Card { Name = "Freezing Trap" },
 					new Card { Name = "Phase Stalker" },
 					new Card { Name = "Scavenger's Ingenuity" },
 					new Card { Name = "Voracious Reader" },
@@ -486,7 +487,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Gibberling Druid",
-				Prototype = "CONTROL",
+				Prototype = "AGGRO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Druid"),
@@ -515,7 +516,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Guardian Druid",
-				Prototype = "CONTROL",
+				Prototype = "COMBO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Druid"),
@@ -546,7 +547,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Highlander Hunter",
-				Prototype = "CONTROL",
+				Prototype = "SINGLETON",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Hunter"),
@@ -590,7 +591,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Highlander Mage",
-				Prototype = "CONTROL",
+				Prototype = "SINGLETON",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Mage"),
@@ -634,7 +635,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Highlander Priest",
-				Prototype = "CONTROL",
+				Prototype = "SINGLETON",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Priest"),
@@ -709,7 +710,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Malygos Druid",
-				Prototype = "CONTROL",
+				Prototype = "OTK",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Druid"),
@@ -742,7 +743,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Secret Rogue",
-				Prototype = "CONTROL",
+				Prototype = "TEMPO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Rogue"),
@@ -772,7 +773,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Small Spell Mage",
-				Prototype = "CONTROL",
+				Prototype = "OTK",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Mage"),
@@ -803,7 +804,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Soul Demon Hunter",
-				Prototype = "CONTROL",
+				Prototype = "TEMPO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Demonhunter"),
@@ -834,7 +835,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Stealth Rogue",
-				Prototype = "CONTROL",
+				Prototype = "AGGRO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Rogue"),
@@ -864,7 +865,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Tortollan Mage",
-				Prototype = "CONTROL",
+				Prototype = "COMBO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Mage"),
@@ -898,7 +899,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Totem Shaman",
-				Prototype = "CONTROL",
+				Prototype = "AGGRO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Shaman"),
@@ -927,7 +928,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Weapon Rogue",
-				Prototype = "CONTROL",
+				Prototype = "AGGRO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Rogue"),
@@ -956,7 +957,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Zoo Warlock",
-				Prototype = "CONTROL",
+				Prototype = "AGGRO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Warlock"),

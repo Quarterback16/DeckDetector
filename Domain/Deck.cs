@@ -50,7 +50,8 @@ namespace Domain
 			{
 				ConsoleColor oldColour = Console.ForegroundColor;
 				SetColour(card);
-				Console.WriteLine($"{string.Format("{0,2}", card.ManaCost())}-{card.Name}");
+				Console.WriteLine(
+					$"{string.Format("{0,2}", card.ManaCost())}-{card.Name} {card.Stats()} {card.SpellFor()}");
 				Console.ForegroundColor = oldColour;
 			}
 			Console.WriteLine("------------------------------");
