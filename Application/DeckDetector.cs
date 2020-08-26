@@ -361,7 +361,9 @@ namespace Application
 			if (results is null)
 				return;
 
-			var deckRecord = DeckTotalRecord(results, homeDeck);
+			var deckRecord = DeckTotalRecord(
+				results, 
+				homeDeck);
 			Console.WriteLine(deckRecord.ToString());
 		}
 
