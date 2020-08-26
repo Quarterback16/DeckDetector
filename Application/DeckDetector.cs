@@ -183,7 +183,8 @@ namespace Application
 			return record;
 		}
 
-		public HeroClass DeckHeroClass(string opponentDeck)
+		public HeroClass DeckHeroClass(
+			string opponentDeck)
 		{
 			foreach (var deck in CurrentMeta.Decks)
 			{
@@ -374,8 +375,11 @@ namespace Application
 			if (results is null)
 				return;
 
-			var deckRecord = DeckRecord(results, homeDeck);
-			Console.WriteLine(deckRecord.ToString());
+			var deckRecord = DeckRecord(
+				results, 
+				homeDeck);
+			Console.WriteLine(
+				deckRecord.ToString());
 		}
 
 		public void DumpMonthRecord(
@@ -385,7 +389,8 @@ namespace Application
 				return;
 
 			var monthRecord = MonthRecord(results);
-			Console.WriteLine(monthRecord.ToString());
+			Console.WriteLine(
+				monthRecord.ToString());
 		}
 
 		public void DumpPreviousMonthRecord(
@@ -851,8 +856,10 @@ namespace Application
 						deckRecord.Losses++;
 				}
 			}
-			Console.WriteLine($"Deck: {homeDeck}");
-			Console.WriteLine($@"Frequency Report {DateOut(reportDate)}   {totalGames,3:N0}    Deck Record  {
+			Console.WriteLine(
+				$"Deck: {homeDeck}");
+			Console.WriteLine(
+				$@"Frequency Report {DateOut(reportDate)}   {totalGames,3:N0}    Deck Record  {
 				deckRecord
 				}");
 			var mysortedDeckList = OppDeckDict.ToList();
@@ -983,11 +990,13 @@ namespace Application
 			var d = new Dictionary<string, int>
 			{
 				{ "CONTROL", 0 },
+				{ "COMBO", 0 },
 				{ "MIDRANGE", 0 },
 				{ "AGGRO", 0 },
-				{ "COMBO", 0 }
+				{ "TEMPO", 0 },
 			};
 
+			var metaBalance = 0;
 			var usedResults = new List<HsGamePlayedEvent>();
 			foreach (var game in results)
 			{
@@ -1010,6 +1019,12 @@ namespace Application
 						d[deck.Prototype]++;
 					else
 						d.Add(deck.Prototype, 1);
+					if (deck.Prototype.Equals("CONTROL")
+						|| deck.Prototype.Equals("COMBO"))
+						metaBalance--;
+					if (deck.Prototype.Equals("AGGRO")
+						|| deck.Prototype.Equals("TEMPO"))
+						metaBalance++;
 				}
 			}
 
@@ -1017,6 +1032,15 @@ namespace Application
 				topic: "Prototypes",
 				results: usedResults,
 				d: d);
+
+			Console.WriteLine();
+			if (metaBalance > 0)
+				Console.WriteLine("  Meta is FAST");
+			else if (metaBalance < 0)
+				Console.WriteLine("  Meta is SLOW");
+			else
+				Console.WriteLine("  Meta is BALANCED");
+
 		}
 
 		private static Deck GetDeck(List<Deck> decks, string opponentDeck)

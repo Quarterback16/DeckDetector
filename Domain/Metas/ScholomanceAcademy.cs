@@ -710,7 +710,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Malygos Druid",
-				Prototype = "OTK",
+				Prototype = "COMBO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Druid"),
@@ -773,7 +773,7 @@ namespace Domain.Metas
 			return new Deck
 			{
 				Name = "Small Spell Mage",
-				Prototype = "OTK",
+				Prototype = "COMBO",
 				Tier = 5,
 				Rank = 25,
 				HeroClass = new Hero("Mage"),
