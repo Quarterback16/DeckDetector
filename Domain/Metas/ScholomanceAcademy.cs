@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Metas
 {
@@ -21,9 +18,10 @@ namespace Domain.Metas
 			///  
 			var tier1Decks = new List<Deck>
 			{
+				LibramPaladin(),
 				StealthRogue(),
-				BombWarrior(),
-				HighlanderPriest()
+				FaceHunter(),
+				AggroDemonHunter(),
 			};
 			meta.AddDecks(
 				tier1Decks,
@@ -33,19 +31,20 @@ namespace Domain.Metas
 			/// 
 			var tier2Decks = new List<Deck>
 			{
-				SoulDemonHunter(),
-				SecretRogue(),
-				FaceHunter(),
-				GuardianDruid(),
-				ZooWarlock(),
-				GalakrondPriest(),
-				GalakrondDragonPriest(),
-				LibramPaladin(),
-				EnrageWarrior(),
-				SmallSpellMage(),
+				MurlocPaladin(),
 				WeaponRogue(),
+				GuardianDruid(),
+				SoulDemonHunter(),
+				GibberlingDruid(),
+				HighlanderHunter(),
+				BombWarrior(),
+				BigWarrior(),
+				TotemShaman(),
+				SecretRogue(),
+				DragonHunter(),
+				ZooWarlock(),
 				MalygosDruid(),
-				ControlDemonHunter()
+
 			};
 			meta.AddDecks(
 				tier2Decks,
@@ -55,14 +54,15 @@ namespace Domain.Metas
 			///   
 			var tier3Decks = new List<Deck>
 			{
-				HighlanderHunter(),
-				AggroDemonHunter(),
-				GalakrondRogue(),
-				BigWarrior(),
-				DragonHunter(),
 				HighlanderMage(),
-				GibberlingDruid(),
-				GalakrondWarlock()
+				SmallSpellMage(),
+				GalakrondWarlock(),
+				HighlanderPriest(),
+				GalakrondPriest(),
+				GalakrondDragonPriest(),
+				EnrageWarrior(),
+				ControlDemonHunter(),
+				GalakrondRogue(),
 			};
 			meta.AddDecks(
 				tier3Decks,
@@ -73,7 +73,6 @@ namespace Domain.Metas
 			var tier4Decks = new List<Deck>
 			{
 				TortollanMage(),
-				TotemShaman(),
 				FreezeMage()
 			};
 			meta.AddDecks(tier4Decks, 4);
@@ -82,13 +81,146 @@ namespace Domain.Metas
 			///  
 			var tier5Decks = new List<Deck>
 			{
-
+				QuestResurrectPriest(),
+				PenFlingerPaladin(),
+				QuestRogue(),
+				SpellDamageShaman(),
+				QuestShaman()
 			};
 			meta.AddDecks(tier5Decks, 5);
 			return meta;
 		}
 
-#region Decks
+		#region Decks
+		private static Deck SpellDamageShaman()
+		{
+			return new Deck
+			{
+				Name = "Spell Damage Shaman",
+				Prototype = "COMBO",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Shaman"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Lightning Bloom" },
+					new Card { Name = "Devolving Missiles" },
+					new Card { Name = "Lightning Bolt" },
+					new Card { Name = "Primordial Studies" },
+					new Card { Name = "Rune Dagger" },
+					new Card { Name = "Arcane Watcher" },
+					new Card { Name = "Instructor Fireheart" },
+					new Card { Name = "Lady Vashj" },
+					new Card { Name = "Lightning Breath" },
+					new Card { Name = "Marshspawn" },
+					new Card { Name = "Molten Blast" },
+					new Card { Name = "Serpentshrine Portal" },
+					new Card { Name = "Squallhunter" },
+					new Card { Name = "Cobalt Spellkin" },
+					new Card { Name = "Harrison Jones" },
+					new Card { Name = "Ras Frostwhisper" },
+					new Card { Name = "Sorcerous Substitute" },
+				}
+			};
+		}
+		private static Deck QuestRogue()
+		{
+			return new Deck
+			{
+				Name = "Quest Rogue",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Rogue"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Backstab" },
+					new Card { Name = "Shadowstep" },
+					new Card { Name = "Bazaar Burglary" },
+					new Card { Name = "Blackjack Stunner" },
+					new Card { Name = "Dragon's Hoard" },
+					new Card { Name = "Pharaoh Cat" },
+					new Card { Name = "Secret Passage" },
+					new Card { Name = "Wand Thief" },
+					new Card { Name = "Clever Disguise" },
+					new Card { Name = "Dirty Tricks" },
+					new Card { Name = "Eviscerate" },
+					new Card { Name = "Plagiarize" },
+					new Card { Name = "Shadowjeweler Hanar" },
+					new Card { Name = "Underbelly Fence" },
+					new Card { Name = "Edwin VanCleef" },
+					new Card { Name = "Vendetta" },
+					new Card { Name = "Jandice Barov" },
+				}
+			};
+		}
+		private static Deck QuestShaman()
+		{
+			return new Deck
+			{
+				Name = "Quest Shaman",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Shaman"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Lightning Bloom" },
+					new Card { Name = "Corrupt the Waters" },
+					new Card { Name = "Devolving Missiles" },
+					new Card { Name = "Pen Flinger" },
+					new Card { Name = "Sludge Slurper" },
+					new Card { Name = "Tour Guide" },
+					new Card { Name = "Acidic Swamp Ooze" },
+					new Card { Name = "Cult Neophyte" },
+					new Card { Name = "EVIL Cable Rat" },
+					new Card { Name = "Manafeeder Panthara" },
+					new Card { Name = "Novice Engineer" },
+					new Card { Name = "Questing Explorer" },
+					new Card { Name = "Sandstorm Elemental" },
+					new Card { Name = "Wandmaker" },
+					new Card { Name = "Instructor Fireheart" },
+					new Card { Name = "Sky Gen'ral Kragg" },
+					new Card { Name = "Barista Lynchen" },
+					new Card { Name = "Cumulo-Maximus" },
+					new Card { Name = "The Lurker Below" },
+				}
+			};
+		}
+		private static Deck QuestResurrectPriest()
+		{
+			return new Deck
+			{
+				Name = "Quest Resurrect Priest",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Priest"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Forbidden Words" },
+					new Card { Name = "Raise Dead" },
+					new Card { Name = "Activate the Obelisk" },
+					new Card { Name = "Penance" },
+					new Card { Name = "Shadow Word: Death" },
+					new Card { Name = "Breath of the Infinite" },
+					new Card { Name = "Gift of Luminance" },
+					new Card { Name = "Archmage Vargoth" },
+					new Card { Name = "Grave Rune" },
+					new Card { Name = "Holy Nova" },
+					new Card { Name = "Mass Dispel" },
+					new Card { Name = "Convincing Infiltrator" },
+					new Card { Name = "Psyche Split" },
+					new Card { Name = "Sandhoof Waterbearer" },
+					new Card { Name = "Khartut Defender" },
+					new Card { Name = "Batterhead" },
+					new Card { Name = "Catrina Muerte" },
+					new Card { Name = "Mass Resurrection" },
+					new Card { Name = "Plague of Death" },
+				}
+			};
+		}
+
 		private static Deck AggroDemonHunter()
 		{
 			return new Deck
@@ -386,6 +518,38 @@ namespace Domain.Metas
 				}
 			};
 		}
+
+		private static Deck MurlocPaladin()
+		{
+			return new Deck
+			{
+				Name = "Murloc Paladin",
+				Prototype = "AGGRO",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Paladin"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Imprisoned Sungill" },
+					new Card { Name = "Murloc Tidecaller" },
+					new Card { Name = "Murmy" },
+					new Card { Name = "Toxfin" },
+					new Card { Name = "Fishflinger" },
+					new Card { Name = "Hand of A'dal" },
+					new Card { Name = "Hench-Clan Hogsteed" },
+					new Card { Name = "Murgur Murgurgle" },
+					new Card { Name = "Murloc Tidehunter" },
+					new Card { Name = "Coldlight Seer" },
+					new Card { Name = "Murloc Warleader" },
+					new Card { Name = "Underlight Angling Rod" },
+					new Card { Name = "Felfin Navigator" },
+					new Card { Name = "Hoard Pillager" },
+					new Card { Name = "Truesilver Champion" },
+					new Card { Name = "Scalelord" },
+				}
+			};
+		}
+
 		private static Deck GalakrondPriest()
 		{
 			return new Deck
@@ -822,6 +986,10 @@ namespace Domain.Metas
 					new Card { Name = "Shardshatter Mystic" },
 					new Card { Name = "Hoard Pillager" },
 					new Card { Name = "Magtheridon" },
+					new Card { Name = "Raging Felscreamer" },
+					new Card { Name = "Hulking Overfiend" },
+					new Card { Name = "Lorekeeper Polkelt" },
+					new Card { Name = "Aldrachi Warblades" },
 					new Card { Name = "Marrowslicer" },
 					new Card { Name = "Glaivebound Adept" },
 					new Card { Name = "Metamorphosis" },
@@ -860,6 +1028,40 @@ namespace Domain.Metas
 				}
 			};
 		}
+
+		private static Deck PenFlingerPaladin()
+		{
+			return new Deck
+			{
+				Name = "Pen Flinger Paladin",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Paladin"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "First Day of School" },
+					new Card { Name = "Aldor Attendant" },
+					new Card { Name = "Pen Flinger" },
+					new Card { Name = "Hand of A'dal" },
+					new Card { Name = "Libram of Wisdom" },
+					new Card { Name = "Loot Hoarder" },
+					new Card { Name = "Murgur Murgurgle" },
+					new Card { Name = "Novice Engineer" },
+					new Card { Name = "Gift of Luminance" },
+					new Card { Name = "Goody Two-Shields" },
+					new Card { Name = "Salhet's Pride" },
+					new Card { Name = "High Abbess Alura" },
+					new Card { Name = "Aldor Truthseeker" },
+					new Card { Name = "Harrison Jones" },
+					new Card { Name = "Libram of Justice" },
+					new Card { Name = "Devout Pupil" },
+					new Card { Name = "Lady Liadrin" },
+					new Card { Name = "Libram of Hope" },
+				}
+			};
+		}
+
 		private static Deck TortollanMage()
 		{
 			return new Deck
@@ -940,6 +1142,7 @@ namespace Domain.Metas
 					new Card { Name = "Intrepid Initiate" },
 					new Card { Name = "Secret Passage" },
 					new Card { Name = "Sinister Strike" },
+					new Card { Name = "Self-Sharpening Sword" },
 					new Card { Name = "Southsea Deckhand" },
 					new Card { Name = "Spymistress" },
 					new Card { Name = "Worgen Infiltrator" },
