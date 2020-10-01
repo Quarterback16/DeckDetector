@@ -7,21 +7,21 @@ namespace Domain.Metas
 	{
 		public static Meta LoadMeta()
 		{
-			//  Use top 1000 Legend HSR list
+			//  Use Diamond HSR list (my league)
 			var meta = new Meta(
 				code: "SA",
 				name: "Scholomance Academy",
-				patchNo: 18.2M,
-				asOf: new DateTime(2020, 8, 21));
+				patchNo: 18.3M,
+				asOf: new DateTime(2020, 9, 29));
 			///
 			///  TIER 1
 			///  
 			var tier1Decks = new List<Deck>
 			{
 				LibramPaladin(),
-				StealthRogue(),
+				HighlanderHunter(),
 				FaceHunter(),
-				AggroDemonHunter(),
+				PenFlingerPaladin(),
 			};
 			meta.AddDecks(
 				tier1Decks,
@@ -31,19 +31,15 @@ namespace Domain.Metas
 			/// 
 			var tier2Decks = new List<Deck>
 			{
-				MurlocPaladin(),
-				WeaponRogue(),
-				GuardianDruid(),
 				SoulDemonHunter(),
-				GibberlingDruid(),
-				HighlanderHunter(),
-				BombWarrior(),
-				BigWarrior(),
-				TotemShaman(),
 				SecretRogue(),
-				DragonHunter(),
-				ZooWarlock(),
-				MalygosDruid(),
+				TotemShaman(),
+				AggroDemonHunter(),
+				BombWarrior(),
+				SmallSpellMage(),
+				StealthRogue(),
+				BigWarrior(),
+				WeaponRogue(),
 
 			};
 			meta.AddDecks(
@@ -54,15 +50,14 @@ namespace Domain.Metas
 			///   
 			var tier3Decks = new List<Deck>
 			{
+				SkipperBombWarrior(),
 				HighlanderMage(),
-				SmallSpellMage(),
-				GalakrondWarlock(),
-				HighlanderPriest(),
-				GalakrondPriest(),
 				GalakrondDragonPriest(),
-				EnrageWarrior(),
-				ControlDemonHunter(),
-				GalakrondRogue(),
+				DragonHunter(),
+				ControlWarrior(),
+				HighlanderPriest(),
+				ZooWarlock(),
+
 			};
 			meta.AddDecks(
 				tier3Decks,
@@ -72,8 +67,15 @@ namespace Domain.Metas
 			///   
 			var tier4Decks = new List<Deck>
 			{
-				TortollanMage(),
-				FreezeMage()
+				GalakrondRogue(),
+				ResurrectPriest(),
+				GalakrondWarlock(),
+				GuardianDruid(),
+				GalakrondPriest(),
+				QuestRogue(),
+				NoMinionMage(),
+				QuestWarlock(),
+				MalygosDruid(),
 			};
 			meta.AddDecks(tier4Decks, 4);
 			///
@@ -81,9 +83,13 @@ namespace Domain.Metas
 			///  
 			var tier5Decks = new List<Deck>
 			{
+				EnrageWarrior(),
+				TortollanMage(),
+				MurlocPaladin(),
+				GibberlingDruid(),
+				ControlDemonHunter(),
+				FreezeMage(),
 				QuestResurrectPriest(),
-				PenFlingerPaladin(),
-				QuestRogue(),
 				SpellDamageShaman(),
 				QuestShaman()
 			};
@@ -92,6 +98,138 @@ namespace Domain.Metas
 		}
 
 		#region Decks
+
+		private static Deck QuestWarlock()
+		{
+			return new Deck
+			{
+				Name = "Quest Warlock",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Warlock"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Mortal Coil" },
+					new Card { Name = "Rain of Fire" },
+					new Card { Name = "Soulfire" },
+					new Card { Name = "Supreme Archaeology" },
+					new Card { Name = "Mo'arg Artificer" },
+					new Card { Name = "Nether Breath" },
+					new Card { Name = "Plot Twist" },
+					new Card { Name = "Questing Explorer" },
+					new Card { Name = "Dark Skies" },
+					new Card { Name = "School Spirits" },
+					new Card { Name = "Sense Demons" },
+					new Card { Name = "Lorekeeper Polkelt" },
+					new Card { Name = "Sky Gen'ral Kragg" },
+					new Card { Name = "Crazed Netherwing" },
+					new Card { Name = "Aranasi Broodmother" },
+					new Card { Name = "Keli'dan the Breaker" },
+					new Card { Name = "Khartut Defender" },
+					new Card { Name = "Alexstrasza" },
+					new Card { Name = "Malygos" },
+				}
+			};
+		}
+
+		private static Deck NoMinionMage()
+		{
+			return new Deck
+			{
+				Name = "No Minion Mage",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Mage"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Evocation" },
+					new Card { Name = "Font of Power" },
+					new Card { Name = "Learn Draconic" },
+					new Card { Name = "Magic Trick" },
+					new Card { Name = "Ray of Frost" },
+					new Card { Name = "Ancient Mysteries" },
+					new Card { Name = "Frostbolt" },
+					new Card { Name = "Incanter's Flow" },
+					new Card { Name = "Arcane Intellect" },
+					new Card { Name = "Flame Ward" },
+					new Card { Name = "Netherwind Portal" },
+					new Card { Name = "Fireball" },
+					new Card { Name = "Apexis Blast" },
+					new Card { Name = "Blizzard" },
+					new Card { Name = "Deep Freeze" },
+					new Card { Name = "Power of Creation" },
+				}
+			};
+		}
+		private static Deck ResurrectPriest()
+		{
+			return new Deck
+			{
+				Name = "Resurrect Priest",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Priest"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Forbidden Words" },
+					new Card { Name = "Penance" },
+					new Card { Name = "Shadow Word: Death" },
+					new Card { Name = "Breath of the Infinite" },
+					new Card { Name = "Archmage Vargoth" },
+					new Card { Name = "Grave Rune" },
+					new Card { Name = "Holy Nova" },
+					new Card { Name = "Mass Dispel" },
+					new Card { Name = "Psychopomp" },
+					new Card { Name = "Convincing Infiltrator" },
+					new Card { Name = "Psyche Split" },
+					new Card { Name = "Sandhoof Waterbearer" },
+					new Card { Name = "Khartut Defender" },
+					new Card { Name = "Catrina Muerte" },
+					new Card { Name = "Mass Resurrection" },
+					new Card { Name = "Plague of Death" },
+				}
+			};
+		}
+
+		private static Deck ControlWarrior()
+		{
+			return new Deck
+			{
+				Name = "Control Warrior",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Warrior"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Athletic Studies" },
+					new Card { Name = "Risky Skipper" },
+					new Card { Name = "Shield Slam" },
+					new Card { Name = "Sky Raider" },
+					new Card { Name = "Armorsmith" },
+					new Card { Name = "Battle Rage" },
+					new Card { Name = "Corsair Cache" },
+					new Card { Name = "Ancharrr" },
+					new Card { Name = "Bladestorm" },
+					new Card { Name = "Bloodsworn Mercenary" },
+					new Card { Name = "EVIL Quartermaster" },
+					new Card { Name = "Livewire Lance" },
+					new Card { Name = "Lord Barov" },
+					new Card { Name = "Shield Block" },
+					new Card { Name = "Kargath Bladefist" },
+					new Card { Name = "Brawl" },
+					new Card { Name = "Kobold Stickyfinger" },
+					new Card { Name = "Plague of Wrath" },
+					new Card { Name = "Bloodboil Brute" },
+					new Card { Name = "Deathwing, Mad Aspect" },
+					new Card { Name = "Rattlegore" },
+				}
+			};
+		}
+
 		private static Deck SpellDamageShaman()
 		{
 			return new Deck
@@ -284,6 +422,39 @@ namespace Domain.Metas
 				}
 			};
 		}
+		private static Deck SkipperBombWarrior()
+		{
+			return new Deck
+			{
+				Name = "Skipper Bomb Warrior",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Warrior"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Risky Skipper" },
+					new Card { Name = "Shield Slam" },
+					new Card { Name = "Upgrade!" },
+					new Card { Name = "Corsair Cache" },
+					new Card { Name = "Armorsmith" },
+					new Card { Name = "Battle Rage" },
+					new Card { Name = "Ancharr" },
+					new Card { Name = "Bladestorm" },
+					new Card { Name = "Lord Barov" },
+					new Card { Name = "Shield Block" },
+					new Card { Name = "Hoard Pillager" },
+					new Card { Name = "Wrenchcalibur" },
+					new Card { Name = "Brawl" },
+					new Card { Name = "Cutting Class" },
+					new Card { Name = "Doctor Krastinov" },
+					new Card { Name = "Kronx Dragonhoof" },
+					new Card { Name = "Blastmaster Boom" },
+					new Card { Name = "Galakrond, the Unbreakable" },
+					new Card { Name = "Deathwing, Mad Aspect" },
+				}
+			};
+		}
 		private static Deck BombWarrior()
 		{
 			return new Deck
@@ -439,12 +610,16 @@ namespace Domain.Metas
 					new Card { Name = "Dwarven Sharpshooter" },
 					new Card { Name = "Leper Gnome" },
 					new Card { Name = "Tour Guide" },
+					new Card { Name = "Demon Companion" },
 					new Card { Name = "Toxic Reinforcements" },
 					new Card { Name = "Pressure Plate" },
 					new Card { Name = "Wolpertinger" },
 					new Card { Name = "Explosive Trap" },
 					new Card { Name = "Intrepid Initiate" },
 					new Card { Name = "Freezing Trap" },
+					new Card { Name = "Pressure Plate" },
+					new Card { Name = "Pack Tactics" },
+					new Card { Name = "Imprisoned Felmaw" },
 					new Card { Name = "Phase Stalker" },
 					new Card { Name = "Scavenger's Ingenuity" },
 					new Card { Name = "Voracious Reader" },
@@ -452,6 +627,7 @@ namespace Domain.Metas
 					new Card { Name = "Kill Command" },
 					new Card { Name = "Unleash the Hounds" },
 					new Card { Name = "Dragonbane" },
+					new Card { Name = "Lorekeeper Polkelt" },
 				}
 			};
 		}
@@ -717,22 +893,33 @@ namespace Domain.Metas
 				HeroClass = new Hero("Hunter"),
 				Cards = new List<Card>
 				{
+					new Card { Name = "Adorable Infestation" },
 					new Card { Name = "Blazing Battlemage" },
 					new Card { Name = "Dwarven Sharpshooter" },
+					new Card { Name = "Demon Companion" },
 					new Card { Name = "Guardian Augmerchant" },
 					new Card { Name = "Tracking" },
-					new Card { Name = "Bonechewer Brawler" },
 					new Card { Name = "Corrosive Breath" },
+					new Card { Name = "Intrepid Initiate" },
+					new Card { Name = "Tour Guide" },
 					new Card { Name = "Faerie Dragon" },
+					new Card { Name = "Trueaim Crescent" },
+					new Card { Name = "Bonechewer Brawler" },
+					new Card { Name = "Wolpertinger" },
+					new Card { Name = "Freezing Trap" },
 					new Card { Name = "Imprisoned Felmaw" },
 					new Card { Name = "Scavenger's Ingenuity" },
+					new Card { Name = "Snake Trap" },
+					new Card { Name = "Kill Command" },
 					new Card { Name = "Transfer Student" },
+					new Card { Name = "Voracious Reader" },
 					new Card { Name = "Zephrys the Great" },
 					new Card { Name = "Animal Companion" },
 					new Card { Name = "Desert Spear" },
 					new Card { Name = "Diving Gryphon" },
 					new Card { Name = "Primordial Explorer" },
-					new Card { Name = "Scalerider" },
+					new Card { Name = "Phase Stalker" },
+					new Card { Name = "Pressure Plate" },
 					new Card { Name = "Stormhammer" },
 					new Card { Name = "Unleash the Hounds" },
 					new Card { Name = "Zixor, Apex Predator" },
@@ -743,8 +930,10 @@ namespace Domain.Metas
 					new Card { Name = "Rotnest Drake" },
 					new Card { Name = "Evasive Wyrm" },
 					new Card { Name = "Veranus" },
+					new Card { Name = "Eaglehorn Bow" },
 					new Card { Name = "Dinotamer Brann" },
 					new Card { Name = "Siamat" },
+					new Card { Name = "Ace Hunter Kreen" },
 					new Card { Name = "Dragonqueen Alexstrasza" },
 					new Card { Name = "Nagrand Slam" },
 				}
@@ -761,6 +950,7 @@ namespace Domain.Metas
 				HeroClass = new Hero("Mage"),
 				Cards = new List<Card>
 				{
+					new Card { Name = "Sphere of Sapience" },
 					new Card { Name = "Arcane Breath" },
 					new Card { Name = "Devolving Missiles" },
 					new Card { Name = "Ray of Frost" },
@@ -1042,10 +1232,13 @@ namespace Domain.Metas
 				{
 					new Card { Name = "First Day of School" },
 					new Card { Name = "Aldor Attendant" },
+					new Card { Name = "Animated Broomstick" },
 					new Card { Name = "Pen Flinger" },
 					new Card { Name = "Hand of A'dal" },
 					new Card { Name = "Libram of Wisdom" },
 					new Card { Name = "Loot Hoarder" },
+					new Card { Name = "Lord Barov" },
+					new Card { Name = "Lightforged Blessing" },
 					new Card { Name = "Murgur Murgurgle" },
 					new Card { Name = "Novice Engineer" },
 					new Card { Name = "Gift of Luminance" },
@@ -1137,6 +1330,7 @@ namespace Domain.Metas
 				Cards = new List<Card>
 				{
 					new Card { Name = "Preparation" },
+					new Card { Name = "Sap" },
 					new Card { Name = "Blazing Battlemage" },
 					new Card { Name = "Deadly Poison" },
 					new Card { Name = "Intrepid Initiate" },
@@ -1175,9 +1369,12 @@ namespace Domain.Metas
 					new Card { Name = "Expired Merchant" },
 					new Card { Name = "Soul Shear" },
 					new Card { Name = "Darkglare" },
+					new Card { Name = "Nether Breath" },
+					new Card { Name = "Crazed Netherwing" },
 					new Card { Name = "Neferset Thrasher" },
 					new Card { Name = "Shadowlight Scholar" },
 					new Card { Name = "Diseased Vulture" },
+					new Card { Name = "Void Drinker" },
 					new Card { Name = "Nightshade Matron" },
 					new Card { Name = "Shadowflame" },
 					new Card { Name = "Hand of Gul'dan" },
