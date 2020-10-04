@@ -5,6 +5,7 @@ namespace Domain.Metas
 {
 	public static class ScholomanceAcademy
 	{
+
 		public static Meta LoadMeta()
 		{
 			//  Use Diamond HSR list (my league)
@@ -18,10 +19,9 @@ namespace Domain.Metas
 			///  
 			var tier1Decks = new List<Deck>
 			{
-				LibramPaladin(),
 				HighlanderHunter(),
-				FaceHunter(),
 				PenFlingerPaladin(),
+				LibramPaladin(),
 			};
 			meta.AddDecks(
 				tier1Decks,
@@ -32,14 +32,15 @@ namespace Domain.Metas
 			var tier2Decks = new List<Deck>
 			{
 				SoulDemonHunter(),
-				SecretRogue(),
-				TotemShaman(),
-				AggroDemonHunter(),
-				BombWarrior(),
+				FaceHunter(),
 				SmallSpellMage(),
-				StealthRogue(),
+				AggroDemonHunter(),
+				SecretRogue(),
+				GalakrondDragonPriest(),
+				ControlWarrior(),
+				BombWarrior(),
 				BigWarrior(),
-				WeaponRogue(),
+				TotemShaman(),
 
 			};
 			meta.AddDecks(
@@ -50,11 +51,11 @@ namespace Domain.Metas
 			///   
 			var tier3Decks = new List<Deck>
 			{
+				WeaponRogue(),
 				SkipperBombWarrior(),
+				StealthRogue(),
 				HighlanderMage(),
-				GalakrondDragonPriest(),
 				DragonHunter(),
-				ControlWarrior(),
 				HighlanderPriest(),
 				ZooWarlock(),
 
@@ -84,13 +85,13 @@ namespace Domain.Metas
 			var tier5Decks = new List<Deck>
 			{
 				EnrageWarrior(),
-				TortollanMage(),
 				MurlocPaladin(),
 				GibberlingDruid(),
 				ControlDemonHunter(),
 				FreezeMage(),
 				QuestResurrectPriest(),
 				SpellDamageShaman(),
+				TortollanMage(),
 				QuestShaman()
 			};
 			meta.AddDecks(tier5Decks, 5);
@@ -210,6 +211,8 @@ namespace Domain.Metas
 					new Card { Name = "Shield Slam" },
 					new Card { Name = "Sky Raider" },
 					new Card { Name = "Armorsmith" },
+					new Card { Name = "Frightened Flunky" },
+					new Card { Name = "Coerce" },
 					new Card { Name = "Battle Rage" },
 					new Card { Name = "Corsair Cache" },
 					new Card { Name = "Ancharrr" },
@@ -221,6 +224,8 @@ namespace Domain.Metas
 					new Card { Name = "Shield Block" },
 					new Card { Name = "Kargath Bladefist" },
 					new Card { Name = "Brawl" },
+					new Card { Name = "Armored Goon" },
+					new Card { Name = "Troublemaker" },
 					new Card { Name = "Kobold Stickyfinger" },
 					new Card { Name = "Plague of Wrath" },
 					new Card { Name = "Bloodboil Brute" },
@@ -1155,7 +1160,7 @@ namespace Domain.Metas
 		}
 		private static Deck SoulDemonHunter()
 		{
-			return new Deck
+			var deck = new Deck
 			{
 				Name = "Soul Demon Hunter",
 				Prototype = "TEMPO",
@@ -1168,6 +1173,8 @@ namespace Domain.Metas
 					new Card { Name = "Double Jump" },
 					new Card { Name = "Spirit Jailer" },
 					new Card { Name = "Twin Slice" },
+					new Card { Name = "Consume Magic" },
+					new Card { Name = "Wandmaker" },
 					new Card { Name = "Blade Dance" },
 					new Card { Name = "Chaos Strike" },
 					new Card { Name = "Manafeeder Panthara" },
@@ -1187,6 +1194,23 @@ namespace Domain.Metas
 					new Card { Name = "Soulciologist Malicia" },
 				}
 			};
+			deck.AddAdvice(
+				"Libram Paladin",
+				"Keep Consume for buffed boys");
+			deck.AddAdvice(
+				"Pen Flinger Paladin",
+				"Keep Consume for buffed boys");
+			deck.AddAdvice(
+				"Pen Flinger Paladin",
+				"Play fast to get under the Hopes");
+			deck.AddAdvice(
+				"Small Spell Mage",
+				"Beware the T8 Mana Giant");
+			deck.AddAdvice(
+				"Bomb Warrior",
+				"Hammer him down before the bombs go off");
+
+			return deck;
 		}
 		private static Deck StealthRogue()
 		{

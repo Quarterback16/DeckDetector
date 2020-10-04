@@ -81,6 +81,20 @@ namespace Domain
 			return false;
 		}
 
+		public static bool IsWeaponRemoval(
+			Card card)
+		{
+			if (CardBase == null)
+				LoadCardBase();
+			if (CardBase.TryGetValue(
+				card.Name,
+				out CardData cardData))
+			{
+				return cardData.IsWeaponRemoval;
+			}
+			return false;
+		}
+
 		public static bool IsRemoval(Card card)
 		{
 			if (CardBase == null)
@@ -336,7 +350,7 @@ namespace Domain
 { "Greedy Sprite", new CardData { ManaCost = 3 } },
 { "Grimscale Chum", new CardData { ManaCost = 1 } },
 { "Grumble Worldshaker", new CardData { ManaCost = 6 } },
-{ "Harrison Jones", new CardData { ManaCost = 5 } },
+{ "Harrison Jones", new CardData { ManaCost = 5, IsWeaponRemoval = true } },
 { "Healing Rain", new CardData { ManaCost = 3 } },
 { "Hellfire", new CardData { ManaCost = 4 , Aoe = true} },
 { "Heroic Strike", new CardData { ManaCost = 2 } },
@@ -529,7 +543,7 @@ namespace Domain
 { "Y'Shaarj Rage Unbound", new CardData { ManaCost = 10 } },
 { "Zola the Gorgon", new CardData { ManaCost = 3 } },
  {"Acherus Veteran", new CardData { ManaCost = 1 } },
- {"Acidic Swap Ooze", new CardData { ManaCost = 2 } },
+ {"Acidic Swap Ooze", new CardData { ManaCost = 2, IsWeaponRemoval = true } },
  {"Al'Akir the Windlord", new CardData { ManaCost = 8 } },
  {"Amani Berserker", new CardData { ManaCost = 2 } },
  {"Arcane Keysmith", new CardData { ManaCost = 4 } },
@@ -1039,9 +1053,9 @@ namespace Domain
  {"Arcane Flakmage", new CardData { ManaCost = 2 } },
  {"Armagedillo", new CardData { ManaCost = 6 } },
  {"Armored Goon", new CardData { ManaCost = 6 } },
- {"Armorsmith", new CardData { ManaCost = 0 } },
- {"Battle Rage", new CardData { ManaCost = 0 } },
- {"Bazaar Burglary", new CardData { ManaCost = 1 } },
+ {"Armorsmith", new CardData { ManaCost = 1, Attack = 1, Health = 4} },
+ {"Battle Rage", new CardData { ManaCost = 2 } },
+ {"Bazaar Burglary", new CardData { ManaCost = 1,  } },
  {"Bazaar Mugger", new CardData { ManaCost = 5 } },
  {"BEEEES!!!", new CardData { ManaCost = 3 } },
  {"Blessing of Wisdom", new CardData { ManaCost = 0 } },
@@ -1158,7 +1172,7 @@ namespace Domain
  {"Mysterious Challenger", new CardData { ManaCost = 6 } },
  {"N'Zoth, the Corruptor", new CardData { ManaCost = 10 } },
  {"Ragnaros the Firelord", new CardData { ManaCost = 8 } },
- {"Salhet's Pride", new CardData { ManaCost =  3 } },
+ {"Salhet's Pride", new CardData { ManaCost =  3, Attack = 3, Health = 1 } },
  {"Sandwasp Queen", new CardData { ManaCost = 2 } },
  {"Sinister Deal", new CardData { ManaCost = 1 } },
  {"Spirit Bomb", new CardData { ManaCost = 1 } },
@@ -1194,7 +1208,7 @@ namespace Domain
 {"Elemental Allies", new CardData { ManaCost = 1,} },
 {"Learn Draconic", new CardData { ManaCost = 1,} },
 {"Malygos Aspect of Magic", new CardData { ManaCost = 5,} },
-{"Mana Giant", new CardData { ManaCost = 8,} },
+{"Mana Giant", new CardData { ManaCost = 8, Attack = 8, Health = 8} },
 {"Rolling Fireball", new CardData { ManaCost = 5,} },
 {"Violet Spellwing", new CardData { ManaCost = 1,} },
 {"Bad Luck Albatross", new CardData { ManaCost = 3,} },
@@ -1224,7 +1238,7 @@ namespace Domain
 {"Hippogryph", new CardData { ManaCost = 4,} },
 {"Hoard Pillager", new CardData { ManaCost = 4,} },
 {"Hot Air Baloon", new CardData { ManaCost = 1,} },
-{"Kobold Stickyfinger", new CardData { ManaCost = 5,} },
+{"Kobold Stickyfinger", new CardData { ManaCost = 5, IsWeaponRemoval = true } },
 {"Kronx Dragonhoof", new CardData { ManaCost = 6,  Attack = 6, Health = 6} },
 {"Living Dragonbreath", new CardData { ManaCost = 3,} },
 {"Parachute Brigand", new CardData { ManaCost = 2,} },
@@ -1407,7 +1421,7 @@ namespace Domain
  {"Mana Burn", new CardData { ManaCost = 1 } },
  {"Marshspawn", new CardData { ManaCost = 3 } },
  {"Metamorphosis", new CardData { ManaCost = 5 } },
- {"Murgur Murgurgle", new CardData { ManaCost = 2 } },
+ {"Murgur Murgurgle", new CardData { ManaCost = 2, Attack = 2, Health = 1 } },
  {"Overconfident Orc", new CardData { ManaCost = 3 } },
  {"Overgrowth", new CardData { ManaCost = 4 } },
  {"Wrathspike Brute", new CardData { ManaCost = 5 } },
@@ -1500,7 +1514,7 @@ namespace Domain
  {"Bulwark of Azzinoth", new CardData { ManaCost = 1, IsWeapon = true  } },
  {"Cabal Acolyte", new CardData { ManaCost = 4, Attack = 2, Health = 6, Spell = "SB: steal minion with 2 or less attack"  } },
  {"Cleric of Scales", new CardData { ManaCost = 1 } },
- {"Coerce", new CardData { ManaCost = 3 } },
+ {"Coerce", new CardData { ManaCost = 3, IsRemoval = true } },
  {"Combustion", new CardData { ManaCost = 0 } },
  {"Commencement", new CardData { ManaCost = 7, Spell = "Summon a minnion from deck give it Taunt and DS" } },
  {"Cram Session", new CardData { ManaCost = 2 } },
@@ -1601,6 +1615,7 @@ namespace Domain
         public bool Aoe { get; set; }
 		public bool IsSecret { get; set; }
 		public bool IsWeapon { get; set; }
+		public bool IsWeaponRemoval { get; set; }
 		public bool IsRemoval { get; set; }
 		public bool IsBurn { get; set; }
 		public bool IsTaunt { get; set; }

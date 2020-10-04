@@ -53,6 +53,21 @@ namespace Application
             return true;
         }
 
+		public Deck FindDeck(
+			string deckName)
+		{
+			Deck deck = new NullDeck();
+			foreach (Deck d in CurrentMeta.Decks)
+			{
+				if (d.Name.Equals(deckName))
+				{
+					deck = d;
+					break;
+				}
+			}
+			return deck;
+		}
+
         public List<Deck> ListDecks()
         {
             return CurrentMeta.Decks;
@@ -298,6 +313,28 @@ namespace Application
 				foreach (var item in notes)
 				{
 					Console.WriteLine(item);
+				}
+			}
+		}
+
+		public void DumpTips(
+			string homeDeck,
+			string oppDeck	)
+		{
+			var deck = FindDeck(homeDeck);
+
+			if (deck.Advice.Any())
+			{
+				foreach (var item in deck.Advice)
+				{
+					if (item.Key.Equals(oppDeck))
+					{
+						foreach (var tip in item.Value)
+						{
+							Console.WriteLine(
+								tip);
+						}
+					}
 				}
 			}
 		}

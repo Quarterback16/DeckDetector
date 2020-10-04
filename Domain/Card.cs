@@ -131,6 +131,12 @@ namespace Domain
 			return isWeapon;
 		}
 
+		public bool IsWeaponRemoval()
+		{
+			bool isWeaponRemoval = HearthDb.IsWeaponRemoval(this);
+			return isWeaponRemoval;
+		}
+
 		public bool IsRemoval()
 		{
 			bool isSecret = HearthDb.IsSecret(this);

@@ -46,6 +46,7 @@
     <Compile Include="DeckDetector.cs" />
     <Compile Include="DeckParser.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="NullDeck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

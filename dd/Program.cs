@@ -10,7 +10,7 @@ namespace dd
 {
     internal static class Program
     {
-		private const string K_DividerLine = "-----------------------------------";
+		private const string K_DividerLine = "--------------------------------------------------";
 
 		private static void Main(string[] args)
         {
@@ -65,13 +65,21 @@ namespace dd
 
 			//if (cardsPlayed.Any())
 			//{
-				dd.DumpMetaRecord(results);
-				dd.DumpPreviousMonthRecord(results);
-				dd.DumpMonthRecord(results);
-				dd.DumpDeckRecord(homeDeck, results);
-				dd.DumpDeckMonthRecord(homeDeck, results);
-				dd.DumpRunRecord(results);
-				dd.DumpDailyRecord(results);
+				dd.DumpMetaRecord(
+					results);
+				dd.DumpPreviousMonthRecord(
+					results);
+				dd.DumpMonthRecord(
+					results);
+				dd.DumpDeckRecord(
+					homeDeck, results);
+				dd.DumpDeckMonthRecord(
+					homeDeck, 
+					results);
+				dd.DumpRunRecord(
+					results);
+				dd.DumpDailyRecord(
+					results);
 				Console.WriteLine(
 					value: K_DividerLine);
 				dd.DumpDeckRecordVsHero(
@@ -79,9 +87,17 @@ namespace dd
 					results,
 					options.HeroClass);
 			//}
-			dd.DumpNotes(homeDeck, oppDeck, results);
+			dd.DumpNotes(
+				homeDeck,
+				oppDeck, 
+				results);
+			Console.WriteLine(
+				value: K_DividerLine);
+			dd.DumpTips(
+				homeDeck, 
+				oppDeck);
 
-            Console.WriteLine();
+			Console.WriteLine();
 #if DEBUG
 			Console.ReadLine();
 #endif

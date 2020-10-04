@@ -12,8 +12,31 @@ namespace Domain
         public int Tier { get; set; }
         public Hero HeroClass { get; set; }
         public List<Card> Cards { get; set; }
+		public Dictionary<string, List<string>> Advice 
+		{
+			get; 
+			set; 
+		}
 
-        public bool HasCardNamed(string cardName)
+		public Deck()
+		{
+			Advice = new Dictionary<string, List<string>>();
+		}
+
+		public void AddAdvice(
+			string oppDeck,
+			string tip)
+		{
+			if (!Advice.ContainsKey(oppDeck))
+			{
+				Advice.Add(
+					key: oppDeck,
+					value: new List<string>());
+			}
+			Advice[oppDeck].Add(tip);
+		}
+
+		public bool HasCardNamed(string cardName)
         {
 #if DEBUG
 			Console.WriteLine();
@@ -72,6 +95,11 @@ namespace Domain
 			if (card.IsWeapon())
 			{
 				Console.ForegroundColor = ConsoleColor.Magenta;
+				return;
+			}
+			if (card.IsWeaponRemoval())
+			{
+				Console.ForegroundColor = ConsoleColor.Blue;
 				return;
 			}
 			if (card.IsRemoval())
