@@ -626,7 +626,8 @@ namespace Application
 				DeckReport(
 					eventStore,
 					homeDeck,
-					dd);
+					dd,
+					reportDate);
 			}
 			else if (report.ToUpper(CultureInfo.CurrentCulture) == "C")
 			{
@@ -656,15 +657,24 @@ namespace Application
 		private static void DeckReport(
 			HsEventStore.HsEventStore eventStore,
 			string homeDeck,
-			DeckDetector dd)
+			DeckDetector dd,
+			string reportDate = "")
 		{
 			var OppDeckDict = new Dictionary<string, int>();
 			var OppDeckDateDict = new Dictionary<string, DateTime>();
 			var results = (List<HsGamePlayedEvent>)
 				eventStore.Get<HsGamePlayedEvent>("game-played");
 			var gamesPlayed = 0;
+			var totalRecord = new Record();
 			foreach (var game in results)
 			{
+				if (!string.IsNullOrEmpty(reportDate))
+				{
+					if (game.DatePlayed < DateTime.Parse(
+							reportDate,
+							CultureInfo.CurrentCulture))
+						continue;
+				}
 				if (game.HomeDeck.Equals(homeDeck))
 				{
 					if (OppDeckDict.ContainsKey(game.OpponentDeck))
@@ -678,13 +688,17 @@ namespace Application
 						OppDeckDateDict[key: game.OpponentDeck] = game.DatePlayed;
 					}
 					gamesPlayed++;
+					if (game.Result.Equals("win"))
+						totalRecord.Wins++;
+					else
+						totalRecord.Losses++;
 				}
 			}
-			Console.WriteLine($"Deck: {homeDeck}");
-			Console.WriteLine($"Home Deck Report              {gamesPlayed}        Deck Record");
 			var mysortedDeckList = OppDeckDict.ToList();
 			mysortedDeckList.Sort(
 				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
+			Console.WriteLine($"Deck: {homeDeck}");
+			Console.WriteLine($"Home Deck Report              {gamesPlayed}        Deck Record {totalRecord}");
 			foreach (KeyValuePair<string, int> pair in mysortedDeckList)
 			{
 				Console.WriteLine("  {0,-27} {1,2} {2,4} {3}  {4,2}",

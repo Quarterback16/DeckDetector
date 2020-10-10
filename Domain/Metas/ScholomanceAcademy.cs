@@ -36,6 +36,7 @@ namespace Domain.Metas
 				SmallSpellMage(),
 				AggroDemonHunter(),
 				SecretRogue(),
+				ControlPriest(),
 				GalakrondDragonPriest(),
 				ControlWarrior(),
 				BombWarrior(),
@@ -667,6 +668,41 @@ namespace Domain.Metas
 				}
 			};
 		}
+
+		private static Deck ControlPriest()
+		{
+			return new Deck
+			{
+				Name = "Control Priest",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Priest"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Raise Dead" },
+					new Card { Name = "Cleric of Scales" },
+					new Card { Name = "Draconic Studies" },
+					new Card { Name = "Renew" },
+					new Card { Name = "Holy Smite" },
+					new Card { Name = "Wave of Apathy" },
+					new Card { Name = "Sethekk Veilweaver" },
+					new Card { Name = "Shadow Word: Death" },
+					new Card { Name = "Wild Pyromancer" },
+
+					new Card { Name = "Apotheosis" },
+					new Card { Name = "Mindflayer Kaahrj" },
+					new Card { Name = "Madam Luzul" },
+					new Card { Name = "Cabal Acolyte" },
+					new Card { Name = "Twilight Drake" },
+
+					new Card { Name = "Cabal Shadow Priest" },
+					new Card { Name = "Cobalt Spellkin" },
+					new Card { Name = "Galakrond, the Unspeakable" },
+					new Card { Name = "Soul Mirror" },
+				}
+			};
+		}
 		private static Deck GalakrondDragonPriest()
 		{
 			return new Deck
@@ -1205,10 +1241,13 @@ namespace Domain.Metas
 				"Play fast to get under the Hopes");
 			deck.AddAdvice(
 				"Small Spell Mage",
-				"Beware the T8 Mana Giant");
+				"Bladedance the T8 Mana Giant into conjuring");
 			deck.AddAdvice(
 				"Bomb Warrior",
 				"Hammer him down before the bombs go off");
+			deck.AddAdvice(
+				"Small Spell Mage",
+				"Hold back some weapon damage for the fatal blow");
 
 			return deck;
 		}
