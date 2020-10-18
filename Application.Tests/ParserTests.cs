@@ -12,7 +12,7 @@ namespace Application.Tests
 		public void DeckParserLoadsSingleInput()
 		{
 			var sut = new DeckParser();
-			sut.LoadInput("Quest Warlock");
+			sut.LoadInput("Control Shaman");
 			sut.DisplayCode();
 		}
 

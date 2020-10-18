@@ -18,9 +18,16 @@ namespace Domain
 			set; 
 		}
 
+		public List<string> KeyPlays
+		{
+			get;
+			set;
+		}
+
 		public Deck()
 		{
 			Advice = new Dictionary<string, List<string>>();
+			KeyPlays = new List<string>();
 		}
 
 		public void AddAdvice(
@@ -34,6 +41,12 @@ namespace Domain
 					value: new List<string>());
 			}
 			Advice[oppDeck].Add(tip);
+		}
+
+		public void AddKeyPlays(
+			string play)
+		{
+			KeyPlays.Add(play);
 		}
 
 		public bool HasCardNamed(string cardName)

@@ -321,13 +321,24 @@ namespace Application
 			string homeDeck,
 			string oppDeck	)
 		{
+			var deckOpp = FindDeck(oppDeck);
+			if (deckOpp.KeyPlays.Any())
+			{
+				foreach (var item in deckOpp.KeyPlays)
+				{
+					Console.WriteLine(
+						item);
+				}
+			}
+
 			var deck = FindDeck(homeDeck);
 
 			if (deck.Advice.Any())
 			{
 				foreach (var item in deck.Advice)
 				{
-					if (item.Key.Equals(oppDeck))
+					if (item.Key.Equals(oppDeck)
+						|| oppDeck.Contains(item.Key))
 					{
 						foreach (var tip in item.Value)
 						{

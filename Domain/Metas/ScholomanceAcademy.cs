@@ -14,92 +14,199 @@ namespace Domain.Metas
 				name: "Scholomance Academy",
 				patchNo: 18.3M,
 				asOf: new DateTime(2020, 9, 29));
-			///
-			///  TIER 1
-			///  
+ 
 			var tier1Decks = new List<Deck>
 			{
 				HighlanderHunter(),
 				PenFlingerPaladin(),
 				LibramPaladin(),
+				FaceHunter(),
 			};
 			meta.AddDecks(
 				tier1Decks,
 				tier: 1);
-			///
 			///  Tier 2
-			/// 
 			var tier2Decks = new List<Deck>
 			{
 				SoulDemonHunter(),
-				FaceHunter(),
 				SmallSpellMage(),
+				BombWarrior(),
 				AggroDemonHunter(),
 				SecretRogue(),
-				ControlPriest(),
-				GalakrondDragonPriest(),
-				ControlWarrior(),
-				BombWarrior(),
+				GalakrondRogue(),
+				WeaponRogue(),
 				BigWarrior(),
-				TotemShaman(),
-
 			};
 			meta.AddDecks(
 				tier2Decks,
 				tier: 2);
-			///
-			///   Tier 3
-			///   
+
 			var tier3Decks = new List<Deck>
 			{
-				WeaponRogue(),
-				SkipperBombWarrior(),
+				HighlanderRogue(),
 				StealthRogue(),
-				HighlanderMage(),
-				DragonHunter(),
-				HighlanderPriest(),
-				ZooWarlock(),
-
+				TotemShaman(),
+				ControlPriest(),
+				SkipperBombWarrior(),
+				ControlWarrior(),
+				EnrageWarrior(),
 			};
 			meta.AddDecks(
 				tier3Decks,
 				tier: 3);
-			///
 			///   Tier 4
-			///   
 			var tier4Decks = new List<Deck>
 			{
-				GalakrondRogue(),
+				GuardianDruid(),
+				HighlanderMage(),
+				HighlanderPriest(),
 				ResurrectPriest(),
 				GalakrondWarlock(),
-				GuardianDruid(),
+				QuestDruid(),
+				ZooWarlock(),
+				ControlShaman(),
 				GalakrondPriest(),
+				MalygosDruid(),
+
+			};
+			meta.AddDecks(tier4Decks, 4);
+
+			///  The nether regions
+			var tier5Decks = new List<Deck>
+			{
 				QuestRogue(),
 				NoMinionMage(),
 				QuestWarlock(),
-				MalygosDruid(),
-			};
-			meta.AddDecks(tier4Decks, 4);
-			///
-			///  The nether regions
-			///  
-			var tier5Decks = new List<Deck>
-			{
-				EnrageWarrior(),
+				DragonHunter(),
+				GalakrondDragonPriest(),
 				MurlocPaladin(),
 				GibberlingDruid(),
 				ControlDemonHunter(),
 				FreezeMage(),
 				QuestResurrectPriest(),
 				SpellDamageShaman(),
+				QuestShaman(),
 				TortollanMage(),
-				QuestShaman()
 			};
 			meta.AddDecks(tier5Decks, 5);
 			return meta;
 		}
 
 		#region Decks
+
+		private static Deck ControlShaman()
+		{
+			var deck = new Deck
+			{
+				Name = "Control Shaman",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Shaman"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Lightning Bloom" },
+					new Card { Name = "Devolving Missiles" },
+					new Card { Name = "Primordial Studies" },
+					new Card { Name = "Diligent Notetaker" },
+					new Card { Name = "Rune Dagger" },
+					new Card { Name = "Witch's Brew" },
+					new Card { Name = "Instructor Fireheart" },
+					new Card { Name = "Marshspawn" },
+					new Card { Name = "Molten Blast" },
+					new Card { Name = "Serpentshrine Portal" },
+					new Card { Name = "Speaker Gidra" },
+					new Card { Name = "Groundskeeper" },
+					new Card { Name = "Torrent" },
+					new Card { Name = "Hagatha's Scheme" },
+					new Card { Name = "Ras Frostwhisper" },
+					new Card { Name = "Shattered Rumbler" },
+					new Card { Name = "Sorcerous Substitute" },
+					new Card { Name = "The Lurker Below" },
+					new Card { Name = "Tidal Wave" },
+				}
+			};
+			return deck;
+		}
+
+		private static Deck HighlanderRogue()
+		{
+			var deck = new Deck
+			{
+				Name = "Highlander Rogue",
+				Prototype = "SINGLETON",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Rogue"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Backstab" },
+					new Card { Name = "Shadowstep" },
+					new Card { Name = "Blackjack Stunner" },
+					new Card { Name = "Brain Freeze" },
+					new Card { Name = "Dragon's Hoard" },
+					new Card { Name = "Pharaoh Cat" },
+					new Card { Name = "Praise Galakrond!" },
+					new Card { Name = "Spymistress" },
+					new Card { Name = "Wand Thief" },
+					new Card { Name = "Ambush" },
+					new Card { Name = "Cult Neophyte" },
+					new Card { Name = "Dirty Tricks" },
+					new Card { Name = "Eviscerate" },
+					new Card { Name = "Plagiarize" },
+					new Card { Name = "Shadowjeweler Hanar" },
+					new Card { Name = "Underbelly Fence" },
+					new Card { Name = "Zephrys the Great" },
+					new Card { Name = "Edwin VanCleef" },
+					new Card { Name = "EVIL Miscreant" },
+					new Card { Name = "Seal Fate" },
+					new Card { Name = "Infiltrator Lilian" },
+					new Card { Name = "Lorekeeper Polkelt" },
+					new Card { Name = "Vendetta" },
+					new Card { Name = "Jandice Barov" },
+					new Card { Name = "Shield of Galakrond" },
+					new Card { Name = "Flik Skyshiv" },
+					new Card { Name = "Heistbaron Togwaggle" },
+					new Card { Name = "Kronx Dragonhoof" },
+					new Card { Name = "Galakrond, the Nightmare" },
+					new Card { Name = "Dragonqueen Alexstrasza" },
+				}
+			};
+			return deck;
+		}
+
+		private static Deck QuestDruid()
+		{
+			return new Deck
+			{
+				Name = "Quest Druid",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Druid"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Innervate" },
+					new Card { Name = "Crystal Power" },
+					new Card { Name = "Nature Studies" },
+					new Card { Name = "Untapped Potential" },
+					new Card { Name = "Worthy Expedition" },
+					new Card { Name = "Crystal Merchant" },
+					new Card { Name = "Rising Winds" },
+					new Card { Name = "Steel Beetle" },
+					new Card { Name = "Wrath" },
+					new Card { Name = "Speaker Gidra" },
+					new Card { Name = "Anubisath Defender" },
+					new Card { Name = "Headmaster Kel'Thuzad" },
+					new Card { Name = "Oasis Surger" },
+					new Card { Name = "Starfall" },
+					new Card { Name = "Hidden Oasis" },
+					new Card { Name = "Nourish" },
+					new Card { Name = "Cenarius" },
+					new Card { Name = "Ysera, Unleashed" },
+				}
+			};
+		}
 
 		private static Deck QuestWarlock()
 		{
@@ -367,7 +474,7 @@ namespace Domain.Metas
 
 		private static Deck AggroDemonHunter()
 		{
-			return new Deck
+			var deck = new Deck
 			{
 				Name = "Aggro Demon Hunter",
 				Prototype = "AGGRO",
@@ -394,6 +501,9 @@ namespace Domain.Metas
 					new Card { Name = "Skull of Gul'dan" },
 				}
 			};
+			deck.AddKeyPlays(
+				"Board flood, dont hold back ur AOE");
+			return deck;
 		}
 		private static Deck BigWarrior()
 		{
@@ -671,7 +781,7 @@ namespace Domain.Metas
 
 		private static Deck ControlPriest()
 		{
-			return new Deck
+			var deck =  new Deck
 			{
 				Name = "Control Priest",
 				Prototype = "CONTROL",
@@ -692,7 +802,7 @@ namespace Domain.Metas
 
 					new Card { Name = "Apotheosis" },
 					new Card { Name = "Mindflayer Kaahrj" },
-					new Card { Name = "Madam Luzul" },
+					new Card { Name = "Madame Lazul" },
 					new Card { Name = "Cabal Acolyte" },
 					new Card { Name = "Twilight Drake" },
 
@@ -702,6 +812,9 @@ namespace Domain.Metas
 					new Card { Name = "Soul Mirror" },
 				}
 			};
+			deck.AddKeyPlays(
+				"P will buff board with Apotheosis");
+			return deck;
 		}
 		private static Deck GalakrondDragonPriest()
 		{
@@ -925,7 +1038,7 @@ namespace Domain.Metas
 		}
 		private static Deck HighlanderHunter()
 		{
-			return new Deck
+			var deck = new Deck
 			{
 				Name = "Highlander Hunter",
 				Prototype = "SINGLETON",
@@ -979,6 +1092,8 @@ namespace Domain.Metas
 					new Card { Name = "Nagrand Slam" },
 				}
 			};
+			deck.AddKeyPlays("H will Polkhet to draw Bran");
+			return deck;
 		}
 		private static Deck HighlanderMage()
 		{
@@ -1071,7 +1186,7 @@ namespace Domain.Metas
 		}
 		private static Deck LibramPaladin()
 		{
-			return new Deck
+			var deck = new Deck
 			{
 				Name = "Libram Paladin",
 				Prototype = "CONTROL",
@@ -1099,6 +1214,13 @@ namespace Domain.Metas
 					new Card { Name = "Libram of Hope" },
 				}
 			};
+			deck.AddAdvice(
+				"Priest",
+				"buff doods to max 4 attack to play around Death");
+			deck.AddAdvice(
+				"Resurrect Priest",
+				"save board clear for Vargoth double res");
+			return deck;
 		}
 		private static Deck MalygosDruid()
 		{

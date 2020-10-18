@@ -64,7 +64,7 @@ namespace Application
 		{
 			AddCode($"private static Deck {WikiName(DeckName)}()");
 			AddCode("{");
-			AddCode("\treturn new Deck");
+			AddCode("\tvar deck = new Deck");
 			AddCode("\t{");
 			AddCode($"\t\tName = \"{DeckName}\",");
 			AddCode($"\t\tPrototype = \"CONTROL\",");
@@ -81,6 +81,7 @@ namespace Application
 			}
 			AddCode("\t\t}");
 			AddCode("\t};");
+			AddCode("\treturn deck;");
 			AddCode("}");
 
 			foreach (var item in Code)
