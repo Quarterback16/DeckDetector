@@ -1220,6 +1220,9 @@ namespace Domain.Metas
 			deck.AddAdvice(
 				"Resurrect Priest",
 				"save board clear for Vargoth double res");
+			deck.AddAdvice(
+				"Small Spell Mage",
+				"go wide to spread the devolving missiles out");
 			return deck;
 		}
 		private static Deck MalygosDruid()

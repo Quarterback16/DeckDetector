@@ -34,7 +34,8 @@ namespace dd
 				.WithParsed(o => options.Report = o.Report)
 				.WithParsed(o => options.ReportDate = o.ReportDate)
 				.WithParsed(o => options.HeroClass = o.HeroClass)
-                .WithParsed(o => cardsPlayed = o.Played);
+				.WithParsed(o => options.Opponent = o.Opponent)
+				.WithParsed(o => cardsPlayed = o.Played);
 
 			if (options.Report != null)
 			{
@@ -51,14 +52,28 @@ namespace dd
 				return;
 			}
 
-            var decks = dd.ListDecks(
-				heroClass: options.HeroClass,
-				played: cardsPlayed.ToArray());
+			if (string.IsNullOrEmpty(options.Opponent))
+			{
+				var decks = dd.ListDecks(
+					heroClass: options.HeroClass,
+					played: cardsPlayed.ToArray());
 
-            if (decks.Count == 0)
-                Console.WriteLine("Off-Meta Deck");
-            else
-                oppDeck = DumpDecks(decks);
+				if (decks.Count == 0)
+					Console.WriteLine("Off-Meta Deck");
+				else
+					oppDeck = DumpDecks(decks);
+			}
+			else
+			{
+				oppDeck = options.Opponent;
+				var displayDeck = dd.FindDeck(oppDeck);
+				if (displayDeck.IsEmpty())
+				{
+					Console.WriteLine($"{oppDeck} not found");
+					return;
+				}
+				displayDeck.Dump();
+			}
 
 			var results = (List<HsGamePlayedEvent>)
 				eventStore.Get<HsGamePlayedEvent>("game-played");

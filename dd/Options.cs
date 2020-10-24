@@ -16,5 +16,8 @@ namespace dd
 
         [Option('d')]
         public string ReportDate { get; set; }
-    }
+
+		[Option('o')]
+		public string Opponent { get; set; }
+	}
 }

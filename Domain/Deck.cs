@@ -93,6 +93,11 @@ namespace Domain
 			Console.WriteLine("------------------------------");
         }
 
+		public bool IsEmpty()
+		{
+			return Tier == 0;
+		}
+
 		private static void SetColour(Card card)
 		{
 			if (card.IsSecret() )
