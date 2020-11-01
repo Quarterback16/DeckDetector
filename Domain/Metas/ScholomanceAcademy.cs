@@ -1215,6 +1215,9 @@ namespace Domain.Metas
 				}
 			};
 			deck.AddAdvice(
+				"Pen Flinger Paladin",
+				"dont let them get the board");
+			deck.AddAdvice(
 				"Priest",
 				"buff doods to max 4 attack to play around Death");
 			deck.AddAdvice(

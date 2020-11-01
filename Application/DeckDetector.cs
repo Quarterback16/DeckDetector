@@ -715,9 +715,16 @@ namespace Application
 				Console.WriteLine("  {0,-27} {1,2} {2,4} {3}  {4,2}",
 					pair.Key,
 					pair.Value,
-					MeetFrequency(gamesPlayed, pair.Value),
-					dd.RecordVersusDeck(homeDeck, pair.Key, results),
-					DaysSince(OppDeckDateDict[pair.Key]));
+					MeetFrequency(
+						gamesPlayed, 
+						pair.Value),
+					dd.RecordVersusDeck(
+						homeDeck, 
+						pair.Key, 
+						results,
+						reportDate),
+					DaysSince(
+						OppDeckDateDict[pair.Key]));
 			}
 		}
 
