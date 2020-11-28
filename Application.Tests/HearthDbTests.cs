@@ -22,5 +22,15 @@ namespace Application.Tests
                 expected: 4,
                 actual: HearthDb.ManaCost("Dragonbane"));
         }
+
+		[TestMethod]
+		public void HearthDb_HasLegendaries()
+		{
+			var list = HearthDb.Legendaries();
+			foreach (var item in list)
+			{
+				System.Console.WriteLine(item);
+			}
+		}
     }
 }

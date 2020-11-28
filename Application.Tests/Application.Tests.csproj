@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AshesOfOutlandTests.cs" />
     <Compile Include="CardParserTests.cs" />
+    <Compile Include="DarkmoonFaireTests.cs" />
     <Compile Include="DeckDetectorBoomsdayTests.cs" />
     <Compile Include="DeckDetectorKatacombsTests.cs" />
     <Compile Include="DeckDetectorTests.cs" />

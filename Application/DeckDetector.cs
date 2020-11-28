@@ -14,12 +14,54 @@ namespace Application
 
         public DeckDetector()
         {
-            CurrentMeta = ScholomanceAcademy.LoadMeta();
+            CurrentMeta = DarkmoonFaire.LoadMeta();
         }
 
 		public DeckDetector(Meta meta)
 		{
 			CurrentMeta = meta;
+		}
+
+		public Dictionary<string,int> CardPopularity(
+			bool dump = false,
+			bool collectablesOnly = false)
+		{
+			var popularity = new Dictionary<string, int>();
+
+			foreach (var deck in CurrentMeta.Decks)
+			{
+				foreach (var card in deck.Cards)
+				{
+					if (collectablesOnly)
+					{
+						if (!HearthDb.IsLegendary(card) 
+							&& !HearthDb.IsEpic(card))
+							continue;
+					}
+					if (!popularity.ContainsKey(card.Name))
+					{
+						popularity.Add(card.Name, 1);
+					}
+					else
+					{
+						popularity[card.Name]++;
+					}
+				}
+			}
+
+			if (dump)
+			{
+				var sortedList = popularity.ToList();
+
+				sortedList.Sort((pair1, pair2) 
+					=> pair2.Value.CompareTo(pair1.Value));
+				foreach (var item in sortedList)
+				{
+					Console.WriteLine(
+						$"{item.Value} : {item.Key}");
+				}
+			}
+			return popularity;
 		}
 
 		public List<Card> PlayableCards(
