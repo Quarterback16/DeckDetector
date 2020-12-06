@@ -86,6 +86,7 @@ namespace Domain.Metas
 				HighlanderDemonHunter(),
 				SpellDamageShaman(),
 				TortollanMage(),
+				StowawayRogue()
 			};
 			meta.AddDecks(tier5Decks, 5);
 			return meta;
@@ -1478,10 +1479,10 @@ namespace Domain.Metas
 				"Libram Paladin",
 				"Keep Consume for buffed boys");
 			deck.AddAdvice(
-				"Pen Flinger Paladin",
+				"Broom Paladin",
 				"Keep Consume for buffed boys");
 			deck.AddAdvice(
-				"Pen Flinger Paladin",
+				"Broom Paladin",
 				"Play fast to get under the Hopes");
 			deck.AddAdvice(
 				"Small Spell Mage",
@@ -1490,9 +1491,44 @@ namespace Domain.Metas
 				"Bomb Warrior",
 				"Hammer him down before the bombs go off");
 			deck.AddAdvice(
+				"Highlander Hunter",
+				"You will need plenty of souls in ur deck");
+			deck.AddAdvice(
 				"Small Spell Mage",
 				"Hold back some weapon damage for the fatal blow");
 
+			return deck;
+		}
+		private static Deck StowawayRogue()
+		{
+			var deck = new Deck
+			{
+				Name = "Stowaway Rogue",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Rogue"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Backstab" },
+					new Card { Name = "Preparation" },
+					new Card { Name = "Secret Passage" },
+					new Card { Name = "Togwaggle's Scheme" },
+					new Card { Name = "Dirty Tricks" },
+					new Card { Name = "Eviscerate" },
+					new Card { Name = "Foxy Fraud" },
+					new Card { Name = "Sap" },
+					new Card { Name = "Akama" },
+					new Card { Name = "EVIL Miscreant" },
+					new Card { Name = "Ticket Master" },
+					new Card { Name = "Shadow of Death" },
+					new Card { Name = "Ogremancer" },
+					new Card { Name = "Stowaway" },
+					new Card { Name = "Flik Skyshiv" },
+					new Card { Name = "Heistbaron Togwaggle" },
+					new Card { Name = "Khartut Defender" },
+				}
+			};
 			return deck;
 		}
 		private static Deck StealthRogue()
@@ -1845,6 +1881,15 @@ namespace Domain.Metas
 					new Card { Name = "Y'Shaarj, the Defiler" },
 				}
 			};
+			deck.AddAdvice(
+				"Druid",
+				"Keep Twisting Nether for the Clowns");
+			deck.AddAdvice(
+				"Secret Mage",
+				"use coin and coils to test for Counterspell");
+			deck.AddAdvice(
+				"Broom Paladin",
+				"try to silence the Wisdoms");
 			return deck;
 		}
 		private static Deck CThunRogue()
@@ -2146,6 +2191,12 @@ namespace Domain.Metas
 			deck.AddAdvice(
 				"Soul Demon Hunter",
 				"save board clear for Malicia");
+			deck.AddAdvice(
+				"Evolve Shaman",
+				"play uptempo and kill all minions on site");
+			deck.AddAdvice(
+				"Evolve Shaman",
+				"save board clear for late game wide board");
 			return deck;
 		}
 		private static Deck SecretFaceHunter()

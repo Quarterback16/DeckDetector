@@ -6,7 +6,8 @@ namespace Domain
     {
         public string Name { get; set; }
         public HeroClass HeroClass { get; set; }
-        public Hero(string name )
+        public Hero(
+			string name )
         {
             Name = name;
             Enum.TryParse(name, out HeroClass heroClass);

@@ -12,7 +12,7 @@ namespace Application.Tests
 		public void DeckParserLoadsSingleInput()
 		{
 			var sut = new DeckParser();
-			sut.LoadInput("Control Shaman");
+			sut.LoadInput("Stowaway Rogue");
 			sut.DisplayCode();
 		}
 

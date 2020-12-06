@@ -392,6 +392,80 @@ namespace Application
 			}
 		}
 
+		public string RecordVersusPrototype(
+			string homeDeck,
+			DeckDetector dd,
+			string prototype,
+			List<HsGamePlayedEvent> results,
+			string reportDate = "")
+		{
+			var decks = dd.ListDecks();
+			var record = new Record();
+			if (results is null)
+				return record.ToString();
+
+			foreach (var game in results)
+			{
+				if (!string.IsNullOrEmpty(reportDate))
+				{
+					if (game.DatePlayed < DateTime.Parse(reportDate))
+						continue;
+				}
+				//  get class from DeckName
+				var theOpposingDeck = GetDeck(
+					decks,
+					game.OpponentDeck);
+
+				if (game.HomeDeck == homeDeck
+					&& theOpposingDeck.Prototype == prototype)
+				{
+					if (game.Result.Equals("win"))
+						record.Wins++;
+					else
+						record.Losses++;
+				}
+			}
+
+			return record.ToString();
+		}
+
+		public string RecordVersusClass(
+			string homeDeck,
+			DeckDetector dd,
+			string oppClass,
+			List<HsGamePlayedEvent> results,
+			string reportDate = "")
+		{
+			var decks = dd.ListDecks();
+			var record = new Record();
+			if (results is null)
+				return record.ToString();
+
+			foreach (var game in results)
+			{
+				if (!string.IsNullOrEmpty(reportDate))
+				{
+					if (game.DatePlayed < DateTime.Parse(reportDate))
+						continue;
+				}
+				//  get class from DeckName
+				var theOpposingDeck = GetDeck(
+					decks,
+					game.OpponentDeck);
+
+				if (game.HomeDeck == homeDeck
+					&& theOpposingDeck.HeroClass.Name == oppClass)
+				{
+					if (game.Result.Equals("win"))
+						record.Wins++;
+					else
+						record.Losses++;
+				}
+			}
+
+			return record.ToString();
+		}
+
 		public string RecordVersusDeck(
 			string homeDeck,
 			string oppDeck,
@@ -719,6 +793,188 @@ namespace Application
 				eventStore.Get<HsGamePlayedEvent>("game-played");
 			var gamesPlayed = 0;
 			var totalRecord = new Record();
+
+			DeckRecordVsOtherDecks(
+				homeDeck, 
+				dd, 
+				reportDate, 
+				OppDeckDict, 
+				OppDeckDateDict, 
+				results, 
+				gamesPlayed, 
+				totalRecord);
+			Console.WriteLine();
+			DeckRecordVsClasses(
+				homeDeck,
+				dd,
+				reportDate,
+				results,
+				gamesPlayed);
+			Console.WriteLine();
+			DeckRecordVsPrototype(
+				homeDeck,
+				dd,
+				reportDate,
+				results,
+				gamesPlayed);
+		}
+
+		private static void DeckRecordVsPrototype(
+			string homeDeck,
+			DeckDetector dd,
+			string reportDate,
+			List<HsGamePlayedEvent> results,
+			int gamesPlayed)
+		{
+			var classDict = new Dictionary<string, int>();
+			var decks = dd.ListDecks();
+			var totalRecord = new Record();
+
+			foreach (var game in results)
+			{
+				if (!string.IsNullOrEmpty(reportDate))
+				{
+					if (game.DatePlayed < DateTime.Parse(
+							reportDate,
+							CultureInfo.CurrentCulture))
+						continue;
+				}
+				if (game.HomeDeck.Equals(homeDeck))
+				{
+					var theOpposingDeck = GetDeck(
+						decks,
+						game.OpponentDeck);
+					if (theOpposingDeck == null
+						|| theOpposingDeck.Tier.Equals(0))
+					{
+						Console.WriteLine($"{game.OpponentDeck} not found");
+						continue;
+					}
+					if (classDict.ContainsKey(
+						theOpposingDeck.Prototype))
+					{
+						classDict[theOpposingDeck.Prototype]++;
+					}
+					else
+					{
+						classDict.Add(
+							theOpposingDeck.Prototype,
+							1);
+					}
+					gamesPlayed++;
+					if (game.Result.Equals("win"))
+						totalRecord.Wins++;
+					else
+						totalRecord.Losses++;
+				}
+			}
+			var mysortedDeckList = classDict.ToList();
+			mysortedDeckList.Sort(
+				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
+			DeckReportHeader(
+				homeDeck,
+				gamesPlayed,
+				totalRecord);
+			foreach (KeyValuePair<string, int> pair in mysortedDeckList)
+			{
+				Console.WriteLine("  {0,-27} {1,2} {2,4} {3}",
+					pair.Key,
+					pair.Value,
+					MeetFrequency(
+						gamesPlayed,
+						pair.Value),
+					dd.RecordVersusPrototype(
+						homeDeck,
+						dd,
+						pair.Key,
+						results,
+						reportDate));
+			}
+		}
+
+		private static void DeckRecordVsClasses(
+			string homeDeck,
+			DeckDetector dd,
+			string reportDate,
+			List<HsGamePlayedEvent> results,
+			int gamesPlayed)
+		{
+			var classDict = new Dictionary<string, int>();
+			var decks = dd.ListDecks();
+			var totalRecord = new Record();
+
+			foreach (var game in results)
+			{
+				if (!string.IsNullOrEmpty(reportDate))
+				{
+					if (game.DatePlayed < DateTime.Parse(
+							reportDate,
+							CultureInfo.CurrentCulture))
+						continue;
+				}
+				if (game.HomeDeck.Equals(homeDeck))
+				{
+					var theOpposingDeck = GetDeck(
+						decks,
+						game.OpponentDeck);
+					if (theOpposingDeck == null
+						|| theOpposingDeck.Tier.Equals(0))
+					{
+						Console.WriteLine($"{game.OpponentDeck} not found");
+						continue;
+					}
+					if (classDict.ContainsKey(
+						theOpposingDeck.HeroClass.Name))
+					{
+						classDict[theOpposingDeck.HeroClass.Name]++;
+					}
+					else
+					{
+						classDict.Add(
+							theOpposingDeck.HeroClass.Name,
+							1);
+					}
+					gamesPlayed++;
+					if (game.Result.Equals("win"))
+						totalRecord.Wins++;
+					else
+						totalRecord.Losses++;
+				}
+			}
+			var mysortedDeckList = classDict.ToList();
+			mysortedDeckList.Sort(
+				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
+			DeckReportHeader(
+				homeDeck,
+				gamesPlayed,
+				totalRecord);
+			foreach (KeyValuePair<string, int> pair in mysortedDeckList)
+			{
+				Console.WriteLine("  {0,-27} {1,2} {2,4} {3}",
+					pair.Key,
+					pair.Value,
+					MeetFrequency(
+						gamesPlayed,
+						pair.Value),
+					dd.RecordVersusClass(
+						homeDeck,
+			            dd,
+						pair.Key,
+						results,
+						reportDate));
+			}
+		}
+
+		private static void DeckRecordVsOtherDecks(
+			string homeDeck, 
+			DeckDetector dd, 
+			string reportDate, 
+			Dictionary<string, int> OppDeckDict, 
+			Dictionary<string, DateTime> OppDeckDateDict, 
+			List<HsGamePlayedEvent> results, 
+			int gamesPlayed, 
+			Record totalRecord)
+		{
 			foreach (var game in results)
 			{
 				if (!string.IsNullOrEmpty(reportDate))
@@ -750,24 +1006,49 @@ namespace Application
 			var mysortedDeckList = OppDeckDict.ToList();
 			mysortedDeckList.Sort(
 				(pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
-			Console.WriteLine($"Deck: {homeDeck}");
-			Console.WriteLine($"Home Deck Report              {gamesPlayed}        Deck Record {totalRecord}");
+			DeckReportHeader(
+				homeDeck, 
+				gamesPlayed, 
+				totalRecord);
 			foreach (KeyValuePair<string, int> pair in mysortedDeckList)
 			{
 				Console.WriteLine("  {0,-27} {1,2} {2,4} {3}  {4,2}",
 					pair.Key,
 					pair.Value,
 					MeetFrequency(
-						gamesPlayed, 
+						gamesPlayed,
 						pair.Value),
 					dd.RecordVersusDeck(
-						homeDeck, 
-						pair.Key, 
+						homeDeck,
+						pair.Key,
 						results,
 						reportDate),
 					DaysSince(
 						OppDeckDateDict[pair.Key]));
 			}
+		}
+
+		private static void DeckReportHeader(
+			string homeDeck, 
+			int gamesPlayed, 
+			Record totalRecord)
+		{
+			Console.WriteLine($@"Deck: {
+				Pad(homeDeck, 23)
+				} {
+				gamesPlayed
+				} Rec  {
+				totalRecord
+				}");
+		}
+
+		private static string Pad(
+			string homeDeck, 
+			int size)
+		{
+			var deckName = homeDeck + new string(' ', size);
+			deckName = deckName.Substring(0, size);
+			return deckName;
 		}
 
 		private static void ThisMonthReport(
@@ -1154,7 +1435,9 @@ namespace Application
 
 		}
 
-		private static Deck GetDeck(List<Deck> decks, string opponentDeck)
+		private static Deck GetDeck(
+			List<Deck> decks, 
+			string opponentDeck)
 		{
 			Deck foundDeck = new Deck();
 			foreach (var deck in decks)
