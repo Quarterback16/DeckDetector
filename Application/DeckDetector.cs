@@ -250,7 +250,7 @@ namespace Application
 					return deck.HeroClass.HeroClass;
 				}
 			}
-			return HeroClass.Priest;
+			return HeroClass.Unknown;
 		}
 
 		public void DumpDecks(List<Deck> results)
@@ -392,6 +392,41 @@ namespace Application
 			}
 		}
 
+		public void DumpMulligans(
+			string homeDeck,
+			string oppDeck,
+			string playOrder)
+		{
+			var oppHero = DeckHeroClass(oppDeck);
+			var deck = FindDeck(homeDeck);
+			var mulligans = new Dictionary<string, List<string>>();
+			if (playOrder.Equals("1"))
+			{
+				if (!deck.Mulligans1.Any())
+					return;
+				mulligans = deck.Mulligans1;
+			}
+			else if (playOrder.Equals("2"))
+			{
+				if (!deck.Mulligans2.Any())
+					return;
+				mulligans = deck.Mulligans2;
+			}
+			else
+				return;
+
+			foreach (var item in mulligans)
+			{
+				if (item.Key.Equals(oppHero.ToString()))
+				{
+					foreach (var mulligan in item.Value)
+						Console.Write(
+							$"{mulligan}, ");
+					Console.WriteLine();
+				}
+			}		
+		}
+
 		public string RecordVersusPrototype(
 			string homeDeck,
 			DeckDetector dd,
@@ -436,6 +471,11 @@ namespace Application
 			List<HsGamePlayedEvent> results,
 			string reportDate = "")
 		{
+			if (dd == null)
+			{
+				Console.WriteLine("dd is null");
+				return string.Empty;
+			}
 			var decks = dd.ListDecks();
 			var record = new Record();
 			if (results is null)
@@ -453,13 +493,21 @@ namespace Application
 					decks,
 					game.OpponentDeck);
 
-				if (game.HomeDeck == homeDeck
-					&& theOpposingDeck.HeroClass.Name == oppClass)
+				if (theOpposingDeck.HeroClass == null)
 				{
-					if (game.Result.Equals("win"))
-						record.Wins++;
-					else
-						record.Losses++;
+					//Console.WriteLine(
+					//	$"{theOpposingDeck} has no hero class");
+				}
+				else
+				{
+					if (game.HomeDeck == homeDeck
+						&& theOpposingDeck.HeroClass.Name == oppClass)
+					{
+						if (game.Result.Equals("win"))
+							record.Wins++;
+						else
+							record.Losses++;
+					}
 				}
 			}
 
@@ -771,6 +819,11 @@ namespace Application
 				ThisMonthReport(
 					eventStore);
 			}
+			else if (report.ToUpper(CultureInfo.CurrentCulture) == "B")
+			{
+				BestDeck(
+					eventStore);
+			}
 			else if (report.ToUpper(CultureInfo.CurrentCulture) == "A")
 			{
 				AlphaReport(
@@ -1049,6 +1102,73 @@ namespace Application
 			var deckName = homeDeck + new string(' ', size);
 			deckName = deckName.Substring(0, size);
 			return deckName;
+		}
+
+		private static void BestDeck(
+			HsEventStore.HsEventStore eventStore)
+		{
+			var deckDict = new Dictionary<string, Record>();
+			var results = (List<HsGamePlayedEvent>)
+				eventStore.Get<HsGamePlayedEvent>("game-played");
+
+			var maxDeckNameLength = 0;
+
+			foreach (var game in results)
+			{
+				if (!deckDict.ContainsKey(game.OpponentDeck))
+				{
+					deckDict.Add(
+						game.OpponentDeck,
+						new Record
+						{
+							Name = game.OpponentDeck
+						});
+					if (game.OpponentDeck.Length > maxDeckNameLength)
+						maxDeckNameLength = game.OpponentDeck.Length;
+				}
+				if (!deckDict.ContainsKey(game.HomeDeck))
+				{
+					deckDict.Add(
+						game.HomeDeck,
+						new Record
+						{
+							Name = game.HomeDeck
+						});
+					if (game.HomeDeck.Length > maxDeckNameLength)
+						maxDeckNameLength = game.HomeDeck.Length;
+				}
+				var record = deckDict[game.HomeDeck];
+				if (game.Result == "win")
+					record.Wins++;
+				else
+					record.Losses++;
+				deckDict[game.HomeDeck] = record;
+				var oppRecord = deckDict[game.OpponentDeck];
+				if (game.Result == "win")
+					oppRecord.Losses++;
+				else
+					oppRecord.Wins++;
+				deckDict[game.OpponentDeck] = oppRecord;
+			}
+
+			var mysortedDeckList = deckDict.ToList();
+			mysortedDeckList.Sort(
+				(pair1, pair2) => pair2.Value.Clip().CompareTo(pair1.Value.Clip()));
+			if (maxDeckNameLength < 20)
+				maxDeckNameLength = 20;
+			var spacer = new String(' ', maxDeckNameLength - 16);
+			Console.WriteLine($"Best Deck Report{spacer}     GP    W    L   Percent");
+			Console.WriteLine();
+			foreach (KeyValuePair<string, Record> pair in mysortedDeckList)
+			{
+				Console.WriteLine("  {0,-" + maxDeckNameLength + "} {1,4} {2,4} {3,4}  {4,6}",
+					pair.Key,
+					pair.Value.TotalGames(),
+					pair.Value.Wins,
+					pair.Value.Losses,
+					pair.Value.Percent());
+			}
+			Console.WriteLine();
 		}
 
 		private static void ThisMonthReport(

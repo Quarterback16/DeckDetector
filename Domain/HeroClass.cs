@@ -11,6 +11,7 @@
 		Rogue,
 		Shaman,
 		Warlock,
-		Warrior
+		Warrior,
+		Unknown
 	}
 }

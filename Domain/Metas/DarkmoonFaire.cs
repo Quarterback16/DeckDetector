@@ -16,9 +16,9 @@ namespace Domain.Metas
 
 			var tier1Decks = new List<Deck>
 			{
-				HighlanderHunter(),  
-				AggroDemonHunter(), 
-				PurePaladin(),
+				WhirlkickRogue(),
+				ZooWarlock(), 
+				EvolveShaman(),
 			};
 			meta.AddDecks(
 				tier1Decks,
@@ -26,22 +26,21 @@ namespace Domain.Metas
 			///  Tier 2
 			var tier2Decks = new List<Deck>
 			{
-				SoulDemonHunter(),  
-				EvolveShaman(),
-				FaceHunter(), 
-				TotemShaman(),  
-				EnhancementShaman(),  
-				BombWarrior(),  
-				SilverHandPaladin(),
-				BroomPaladin(), 
-				ZooWarlock(), 
-				StealthRogue(), 
-				EtcOtkWarrior(),
+				HighlanderHunter(),  
+				PurePaladin(),
 				SecretRogue(), 
-				SecretMage(),
-				SecretFaceHunter(),
-				AggroRogue(),
+				BroomPaladin(), 
+				EtcOtkWarrior(),
+				EnrageWarrior(),
+				StealthRogue(), 
+				AggroDemonHunter(), 
+				BombWarrior(),  
 				GuardianDruid(), 
+				SecretMage(),
+				TotemShaman(),  
+				GalakrondWarlock(),   
+				FaceHunter(), 
+
 			};
 			meta.AddDecks(
 				tier2Decks,
@@ -49,8 +48,12 @@ namespace Domain.Metas
 
 			var tier3Decks = new List<Deck>
 			{
+				SoulDemonHunter(),  
+				EnhancementShaman(),  
+				SilverHandPaladin(),
+				SecretFaceHunter(),
+				AggroRogue(),
 				MenagerieWarrior(),
-				GalakrondWarlock(),   
 				ControlWarrior(), 
 				DeathrattleHunter(),
 			};
@@ -67,6 +70,7 @@ namespace Domain.Metas
 				BigPriest(),
 				LifestealDemonHunter(),
 				ControlWarlock(),
+				PirateWarrior(),
 				CThunRogue(),
 				ElementalMage(),
 				ControlPriest(),  
@@ -74,6 +78,7 @@ namespace Domain.Metas
 				MalygosDruid(),  
 				HighlanderPriest(),  
 				QuestShaman(), 
+				DuelPaladin()
 				//SpellDruid(),
 			};
 			meta.AddDecks(tier4Decks, 4);
@@ -82,18 +87,131 @@ namespace Domain.Metas
 			var tier5Decks = new List<Deck>
 			{
 				LibramPaladin(),
+				VargothOTKMage(),
+				ResurrectPriest(),
+				TokenDemonHunter(),
+				QuestResurrectPriest(),
+				ControlDemonHunter(),
+				DragonHunter(),
 				BigWarrior(),
+				QuestWarlock(),
 				HighlanderDemonHunter(),
 				SpellDamageShaman(),
 				TortollanMage(),
-				StowawayRogue()
+				StowawayRogue(),
+				BigDruid(),
+				HighlanderRogue(),
+				ControlShaman(),
+				MurlocPaladin(),
+				GalakrondShaman(),
+				GalakrondPriest(),
+				QuestDruid(),
+				QuestRogue(),
+				GibberlingDruid(),
+				AggroShaman(),
+				WeaponRogue(),
+				MiracleRogue(),
+				ControlPaladin()
 			};
 			meta.AddDecks(tier5Decks, 5);
 			return meta;
 		}
 
 		#region Decks
+		private static Deck GalakrondShaman()
+		{
+			return new Deck
+			{
+				Name = "Galakrond Shaman",
+				Prototype = "MIDRANGE",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Shaman"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Sludge Slurper" },
+					new Card { Name = "Storm's Wrath" },
+					new Card { Name = "Surging Tempest" },
+					new Card { Name = "Invocation of Frost" },
+					new Card { Name = "Sandstorm Elemental" },
+					new Card { Name = "Desert Hare" },
+					new Card { Name = "Far Sight" },
+					new Card { Name = "Marshspawn" },
+					new Card { Name = "Serpentshrine Portal" },
+					new Card { Name = "Devoted Maniac" },
+					new Card { Name = "Hex" },
+					new Card { Name = "Boggspine Knuckles" },
+					new Card { Name = "Dragon's Pack" },
+					new Card { Name = "Shield of Galakrond" },
+					new Card { Name = "Corrupt Elementalist" },
+					new Card { Name = "Kronx Dragonhoof" },
+					new Card { Name = "Galakrond the Tempest" },
+				}
+			};
+		}
+		private static Deck MiracleRogue()
+		{
+			return new Deck
+			{
+				Name = "Miracle Rogue",
+				Tier = 3,
+				Rank = 20,
+				HeroClass = new Hero("Rogue"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Backstab" },
+					new Card { Name = "Counterfeit Coin" },
+					new Card { Name = "Preparation" },
+					new Card { Name = "Cold Blood" },
+					new Card { Name = "Fire Fly" },
+					new Card { Name = "Eviscerate" },
+					new Card { Name = "Sap" },
+					new Card { Name = "Shiv" },
+					new Card { Name = "Edwin VanCleef" },
+					new Card { Name = "Fan of Knives" },
+					new Card { Name = "SI:7 Agent" },
+					new Card { Name = "Elven Minstrel" },
+					new Card { Name = "Fal'dorei Strider" },
+					new Card { Name = "Leeroy Jenkins" },
+					new Card { Name = "Vilespine Slayer" },
+					new Card { Name = "Gadgetzan Auctioneer" },
+				}
+			};
+		}
 
+		private static Deck DuelPaladin()
+		{
+			var deck = new Deck
+			{
+				Name = "Duel Paladin",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Paladin"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "First Day of School" },
+					new Card { Name = "Desperate Measures" },
+					new Card { Name = "Air Raid" },
+					new Card { Name = "Hand of A'dal" },
+					new Card { Name = "Sanctuary" },
+					new Card { Name = "Snack Run" },
+					new Card { Name = "Subdue" },
+					new Card { Name = "Ceremonial Maul" },
+					new Card { Name = "Underlight Angling Rod" },
+					new Card { Name = "Archmage Vargoth" },
+					new Card { Name = "Consecration" },
+					new Card { Name = "Duel!" },
+					new Card { Name = "Avenging Wrath" },
+					new Card { Name = "Commencement" },
+					new Card { Name = "Plagued Protodrake" },
+					new Card { Name = "Tirion Fordring" },
+					new Card { Name = "Colossus of the Moon" },
+					new Card { Name = "Scrapyard Colossus" },
+				}
+			};
+			return deck;
+		}
 		private static Deck ControlShaman()
 		{
 			var deck = new Deck
@@ -906,6 +1024,38 @@ namespace Domain.Metas
 			};
 		}
 
+		private static Deck PirateWarrior()
+		{
+			return new Deck
+			{
+				Name = "Pirate Warrior",
+				Prototype = "AGGRO",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Warrior"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Imprisoned Gan'arg" },
+					new Card { Name = "Sky Raider" },
+					new Card { Name = "Southsea Deckhand" },
+					new Card { Name = "Upgrade!" },
+					new Card { Name = "Bloodsail Raider" },
+					new Card { Name = "Corsair Cache" },
+					new Card { Name = "Heroic Strike" },
+					new Card { Name = "Parachute Brigand" },
+					new Card { Name = "Ancharrr" },
+					new Card { Name = "Ironbeak Owl" },
+					new Card { Name = "Livewire Lance" },
+					new Card { Name = "Skybarge" },
+					new Card { Name = "Southsea Captain" },
+					new Card { Name = "Dread Corsair" },
+					new Card { Name = "Hoard Pillager" },
+					new Card { Name = "Kor'kron Elite" },
+					new Card { Name = "Mortal Strike" },
+					new Card { Name = "Arcanite Reaper" },
+				}
+			};
+		}
 		private static Deck GalakrondPriest()
 		{
 			return new Deck
@@ -993,6 +1143,7 @@ namespace Domain.Metas
 				HeroClass = new Hero("Warlock"),
 				Cards = new List<Card>
 			{
+				new Card { Name = "Sacrificial Pact" },
 				new Card { Name = "Plague of Flames" },
 				new Card { Name = "Mo'arg Artificer" },
 				new Card { Name = "Spirit Jailer" },
@@ -1349,6 +1500,7 @@ namespace Domain.Metas
 				new Card { Name = "Guess the Weight" }, // new
 				new Card { Name = "Lunar Eclipse" }, // new
 				new Card { Name = "Solar Eclipse" }, // new
+				new Card { Name = "Gadgetzan Auctioneer" },
 				new Card { Name = "Germination" },
 				new Card { Name = "Overgrowth" },
 				new Card { Name = "Swipe" },
@@ -1439,6 +1591,39 @@ namespace Domain.Metas
 			}
 			};
 		}
+		private static Deck WhirlkickRogue()
+		{
+			var deck = new Deck
+			{
+				Name = "Whirlkick Rogue",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Rogue"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Backstab" },
+					new Card { Name = "Preparation" },
+					new Card { Name = "Shadowstep" },
+					new Card { Name = "Brain Freeze" },
+					new Card { Name = "Pharaoh Cat" },
+					new Card { Name = "Prize Plunderer" },
+					new Card { Name = "Secret Passage" },
+					new Card { Name = "Wand Thief" },
+					new Card { Name = "Cold Blood" },
+					new Card { Name = "Eviscerate" },
+					new Card { Name = "Foxy Fraud" },
+					new Card { Name = "Swindle" },
+					new Card { Name = "Whirlkick Master" },
+					new Card { Name = "Edwin VanCleef" },
+					new Card { Name = "EVIL Miscreant" },
+					new Card { Name = "Questing Adventurer" },
+					new Card { Name = "SI:7 Agent" },
+					new Card { Name = "Jandice Barov" },
+				}
+			};
+			return deck;
+		}
 		private static Deck SoulDemonHunter()
 		{
 			var deck = new Deck
@@ -1476,14 +1661,20 @@ namespace Domain.Metas
 			}
 			};
 			deck.AddAdvice(
-				"Libram Paladin",
+				"Pure Paladin",
 				"Keep Consume for buffed boys");
+			deck.AddAdvice(
+				"Pure Paladin",
+				"Keep Kayn to get thru for the final blow");
 			deck.AddAdvice(
 				"Broom Paladin",
 				"Keep Consume for buffed boys");
 			deck.AddAdvice(
 				"Broom Paladin",
 				"Play fast to get under the Hopes");
+			deck.AddAdvice(
+				"Galakrond Rogue",
+				"Race the face as Cthun and Gala are slow");
 			deck.AddAdvice(
 				"Small Spell Mage",
 				"Bladedance the T8 Mana Giant into conjuring");
@@ -1496,8 +1687,62 @@ namespace Domain.Metas
 			deck.AddAdvice(
 				"Small Spell Mage",
 				"Hold back some weapon damage for the fatal blow");
+			deck.AddAdvice(
+				"Stealth Rogue",
+				"Save Silence for Edwin or Questing");
+			deck.AddAdvice(
+				"Stealth Rogue",
+				"Beware discovered Counterspell from Wand Thief");
+			deck.AddAdvice(
+				"Secret Rogue",
+				"Save Silence for Edwin or Questing");
+			deck.AddAdvice(
+				"Secret Rogue",
+				"Beware discovered Counterspell from Wand Thief");
+			deck.AddAdvice(
+				"Evolve Shaman",
+				"Blade dance the Hares");
+			deck.AddAdvice(
+				"Face Hunter",
+				"Control the board until he runs out of gas");
+			deck.AddAdvice(
+				"Aggro Demon Hunter",
+				"Control the early minions and get card advantage");
+			deck.AddAdvice(
+				"Aggro Demon Hunter",
+				"Deal with the Brawler before it gets buffed");
 
 			return deck;
+		}
+		private static Deck BigDruid()
+		{
+			return new Deck
+			{
+				Name = "Big Druid",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Druid"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Innervate" },
+					new Card { Name = "Strength in Numbers" },
+					new Card { Name = "Breath of Dreams" },
+					new Card { Name = "Ironbark" },
+					new Card { Name = "Wrath" },
+					new Card { Name = "Bogbeam" },
+					new Card { Name = "Frizz Kindleroost" },
+					new Card { Name = "Overgrowth" },
+					new Card { Name = "Swipe" },
+					new Card { Name = "Emerald Explorer" },
+					new Card { Name = "Evasive Drakonid" },
+					new Card { Name = "Exotic Mountseller" },
+					new Card { Name = "Winged Guardian" },
+					new Card { Name = "Twin Tyrant" },
+					new Card { Name = "Alexstrasza" },
+					new Card { Name = "Scrapyard Colossus" },
+				}
+			};
 		}
 		private static Deck StowawayRogue()
 		{
@@ -1574,7 +1819,7 @@ namespace Domain.Metas
 
 		private static Deck BroomPaladin()
 		{
-			return new Deck
+			var deck = new Deck
 			{
 				Name = "Broom Paladin",
 				Prototype = "CONTROL",
@@ -1600,8 +1845,7 @@ namespace Domain.Metas
 				new Card { Name = "Libram of Hope" },
 				new Card { Name = "Lady Liadrin" },
 				new Card { Name = "Yogg-Saron, Master of Fate" }, // new
-
-				//new Card { Name = "Loot Hoarder" },
+				new Card { Name = "Loot Hoarder" },
 				//new Card { Name = "Lightforged Blessing" },
 				//new Card { Name = "Murgur Murgurgle" },
 
@@ -1611,6 +1855,8 @@ namespace Domain.Metas
 				//new Card { Name = "Harrison Jones" },
 			}
 			};
+			deck.AddKeyPlays("P will use Silas to rotate u on T7");
+			return deck;
 		}
 
 		private static Deck TortollanMage()
@@ -1649,7 +1895,7 @@ namespace Domain.Metas
 		}
 		private static Deck TotemShaman()
 		{
-			return new Deck
+			var deck = new Deck
 			{
 				Name = "Totem Shaman",
 				Prototype = "AGGRO",
@@ -1666,19 +1912,269 @@ namespace Domain.Metas
 				new Card { Name = "Surging Tempest" },
 				new Card { Name = "Tour Guide" },
 				new Card { Name = "EVIL Totem" },
-				new Card { Name = "Trick Totem" },
 				new Card { Name = "Grand Totem Eys'or" },
+				new Card { Name = "Trick Totem" },
 				new Card { Name = "Mana Tide Totem" },
 				new Card { Name = "Totemic Reflection" },
 				new Card { Name = "Circus Amalgam" },
 				new Card { Name = "Splitting Axe" },
 				new Card { Name = "Bloodlust" },
+				new Card { Name = "Cagematch Custodian" },
 				new Card { Name = "Totem Goliath" },
 
 				//new Card { Name = "Serpentshrine Portal" },
 				//new Card { Name = "Runic Carvings" },
 			}
 			};
+			deck.AddMulligans1(
+				"Demonhunter",
+				new List<string>
+				{
+					"Grand Totem Ey'sore" ,
+					"Tour Guide" ,
+					"Totemic Reflection" ,
+					"Surging Tempest" ,
+					"Storm's Wrath" ,
+					"Totemic Might" ,
+					"Sludge Slurper" ,
+					"Cagematch Custodian",
+					"Totemic Surge" ,
+					"Circus Amalgam" ,
+					"EVIL Totem" ,
+					"Lightning Bloom" ,
+					"Mana Tide Totem" ,
+					"Totem Goliath" ,
+					"Splitting Axe" ,
+					"Trick Totem" ,
+					"Bloodlust" ,
+				});
+			deck.AddMulligans2(
+				"Demonhunter",
+				new List<string>
+				{
+					"Grand Totem Ey'sore" ,
+					"Totemic Reflection" ,
+				});
+			deck.AddMulligans1(
+				"Druid",
+				new List<string>
+				{
+					"Grand Totem Ey'sore" ,
+					"Storm's Wrath" ,
+					"Totem Goliath" ,
+					"Cagematch Custodian",
+					"Tour Guide" ,
+					"Circus Amalgam" ,
+					"Totemic Might" ,
+					"Bloodlust" ,
+					"Surging Tempest" ,
+					"Lightning Bloom" ,
+					"Mana Tide Totem" ,
+					"Sludge Slurper" ,
+					"Trick Totem" ,
+					"Totemic Reflection" ,
+				});
+			deck.AddMulligans2(
+				"Druid",
+				new List<string>
+				{
+					"Grand Totem Ey'sore" ,
+					"Totemic Reflection" ,
+					"Bloodlust" ,
+				});
+			deck.AddMulligans1(
+				"Hunter",
+				new List<string>
+				{
+					"Totemic Might" ,
+					"Tour Guide" ,
+					"Grand Totem Ey'sore" ,
+					"Totemic Reflection" ,
+					"Surging Tempest" ,
+					"Sludge Slurper" ,
+					"Lightning Bloom" ,
+					"EVIL Totem" ,
+					"Circus Amalgam" ,
+					"Trick Totem" ,
+					"Storm's Wrath" ,
+					"Cagematch Custodian",
+					"Totemic Surge" ,
+				});
+			deck.AddMulligans2(
+				"Hunter",
+				new List<string>
+				{
+					"Tour Guide" ,
+					"Totemic Might" ,
+				});
+			deck.AddMulligans1(
+				"Mage",
+				new List<string>
+				{
+					"Totem Goliath" ,
+					"Grand Totem Ey'sore" ,
+					"Tour Guide" ,
+					"Totemic Reflection" ,
+					"Splitting Axe" ,
+					"Cagematch Custodian",
+					"Storm's Wrath" ,
+					"Surging Tempest" ,
+					"Totemic Might" ,
+					"EVIL Totem" ,
+					"Lightning Bloom" ,
+					"Mana Tide Totem" ,
+					"Circus Amalgam" ,
+					"Sludge Slurper" ,
+				});
+
+			deck.AddMulligans2(
+				"Mage",
+				new List<string>
+				{
+					"Grand Totem Ey'sore" ,
+					"Totemic Reflection" ,
+					"Totemic Might" ,
+				});
+			deck.AddMulligans1(
+				"Paladin",
+				new List<string>
+				{
+					"Surging Tempest" ,
+					"Grand Totem Ey'sore" ,
+					"Tour Guide" ,
+					"Storm's Wrath" ,
+					"Totemic Reflection" ,
+					"Sludge Slurper" ,
+					"Splitting Axe" ,
+					"EVIL Totem" ,
+					"Trick Totem" ,
+					"Totemic Surge" ,
+					"Circus Amalgam" ,
+					"Totem Goliath" ,
+				});
+			deck.AddMulligans2(
+				"Paladin",
+				new List<string>
+				{
+					"Totem Goliath" ,
+					"Tour Guide" ,
+				});
+			deck.AddMulligans1(
+				"Priest",
+				new List<string>
+				{
+					"Grand Totem Ey'sore" ,
+					"Surging Tempest" ,
+					"Sludge Slurper" ,
+					"Mana Tide Totem" ,
+					"Totemic Reflection" ,
+					"Storm's Wrath" ,
+					"Circus Amalgam" ,
+					"Totemic Surge" ,
+					"EVIL Totem" ,
+					"Totemic Might" ,
+				});
+			deck.AddMulligans2(
+				"Priest",
+				new List<string>
+				{
+					"Grand Totem Ey'sore" ,
+					"Totem Goliath" ,
+					"Totemic Reflection" ,
+					"Splitting Axe" ,
+					"Lightning Bloom" ,
+				});
+			deck.AddMulligans1(
+				"Rogue",
+				new List<string>
+				{
+					"Tour Guide" ,
+					"Grand Totem Ey'sore" ,
+					"Storm's Wrath" ,
+					"Surging Tempest" ,
+					"EVIL Totem" ,
+					"Cagematch Custodian",
+					"Circus Amalgam" ,
+					"Totemic Might" ,
+					"Trick Totem" ,
+					"Totem Goliath" ,
+					"Sludge Slurper" ,
+					"Mana Tide Totem" ,
+					"Totemic Reflection" ,
+				});
+			deck.AddMulligans2(
+				"Rogue",
+				new List<string>
+				{
+					"Tour Guide" ,
+					"Totemic Reflection" ,
+					"Bloodlust" ,
+				});
+			deck.AddMulligans1(
+				"Shaman",
+				new List<string>
+				{
+					"Tour Guide" ,
+					"Grand Totem Ey'sore" ,
+					"Storm's Wrath" ,
+					"Surging Tempest" ,
+					"EVIL Totem" ,
+					"Cagematch Custodian",
+					"Circus Amalgam" ,
+					"Totemic Might" ,
+					"Trick Totem" ,
+					"Totem Goliath" ,
+					"Sludge Slurper" ,
+					"Mana Tide Totem" ,
+					"Totemic Reflection" ,
+				});
+			deck.AddMulligans2(
+				"Shaman",
+				new List<string>
+				{
+					"Totemic Reflection" ,
+					"Bloodlust" ,
+					"Tour Guide" ,
+				});
+			deck.AddMulligans1(
+				"Warlock",
+				new List<string>
+				{
+					"-Sludge Slurper" ,
+					"-Lightning Bloom" ,
+					"-Trick Totem" ,
+				});
+			deck.AddMulligans2(
+				"Warlock",
+				new List<string>
+				{
+					"Grand Totem Ey'sore" ,
+					"Tour Guide" ,
+					"Splitting Axe" ,
+				});
+			deck.AddMulligans1(
+				"Warrior",
+				new List<string>
+				{
+					"-Tour Guide" ,
+					"-Surging Tempest" ,
+					"-Storm's Wrath" ,
+					"-Cagematch Custodian",
+					"-Bloodlust" ,
+				});
+			deck.AddMulligans2(
+				"Warrior",
+				new List<string>
+				{
+					"Grand Totem Ey'sore" ,
+					"Totemic Reflection" ,
+					"Bloodlust" ,
+					"Storm's Wrath" ,
+					"Totem Goliath" ,
+					"Circus Amalgam" ,
+					"Totemic Might" ,
+				});
+			return deck;
 		}
 		private static Deck WeaponRogue()
 		{
@@ -1713,7 +2209,7 @@ namespace Domain.Metas
 		}
 		private static Deck ZooWarlock()
 		{
-			return new Deck
+			var deck = new Deck
 			{
 				Name = "Zoo Warlock",
 				Prototype = "AGGRO",
@@ -1750,6 +2246,123 @@ namespace Domain.Metas
 				//new Card { Name = "Shadowflame" },
 			}
 			};
+			deck.AddMulligans1(
+				"Demon Hunter",
+				new List<string>
+				{
+					"Hand of Gul'dan",
+					"Spirit Jailer",
+					"Voidwalker",
+					"Tour Guide",
+					"Darkglare",
+				});
+			deck.AddMulligans1(
+				"Druid",
+				new List<string>
+				{
+					"Kanrethad Ebonlocke",
+					"Darkglare",
+					"Hand of Gul'dan",
+					"Tour Guide",
+					"Voidwalker",
+					"Spirit Jailer",
+				});
+			deck.AddMulligans1(
+				"Hunter",
+				new List<string>
+				{
+					"Spirit Jailer",
+					"Hand of Gul'dan",
+					"Tour Guide",
+					"Flame Imp",
+					"Kanrethad Ebonlocke",
+					"Darkglare",
+				});
+			deck.AddMulligans1(
+				"Mage",
+				new List<string>
+				{
+					"Expired Merchant",
+					"Kanrethad Ebonlocke",
+					"Tour Guide",
+					"Flame Imp",
+					"Raise Dead",
+					"Hand of Gul'dan",
+					"Darkglare",
+					"Spirit Jailer",
+				});
+			deck.AddMulligans1(
+				"Paladin",
+				new List<string>
+				{
+					"Hand of Gul'dan",
+					"Flame Imp",
+					"Expired Merchant",
+					"Voidwalker",
+					"Spirit Jailer",
+					"Tour Guide",
+					"Darkglare",
+					"Kanrethad Ebonlocke",
+					"Animated Broomstick",
+				});
+			deck.AddMulligans1(
+				"Priest",
+				new List<string>
+				{
+					"Darkglare",
+					"Revenant Rascal",
+					"Tour Guide",
+					"Flame Imp",
+					"Wriggling Horror",
+					"Animated Broomstick",
+					"Hand of Gul'dan",
+					"Flesh Giant",
+				});
+			deck.AddMulligans1(
+				"Rogue",
+				new List<string>
+				{
+					"Flame Imp",
+					"Expired Merchant",
+					"Hand of Gul'dan",
+					"Tour Guide",
+					"Raise Dead",
+					"Voidwalker",
+					"Darkglare",
+				});
+			deck.AddMulligans1(
+				"Shaman",
+				new List<string>
+				{
+					"Tour Guide",
+					"Expired Merchant",
+					"Darkglare",
+					"Spirit Jailer",
+					"Kanrethad Ebonlocke",
+					"Flame Imp",
+				});
+			deck.AddMulligans1(
+				"Warlock",
+				new List<string>
+				{
+					"Flame Imp",
+					"Raise Dead",
+					"Tour Guide",
+					"Kanrethad Ebonlocke",
+					"Darkglare"
+				});
+			deck.AddMulligans1(
+				"Warrior",
+				new List<string>
+				{
+					"Hand of Gul'dan",
+					"Tour Guide",
+					"Flame Imp",
+					"Flesh Giant",
+					"Kanrethad Ebonlocke",
+					"Voidwalker",
+				});
+			return deck;
 		}
 		#endregion
 
@@ -2037,6 +2650,7 @@ namespace Domain.Metas
 				{
 					new Card { Name = "Animated Broomstick" },
 					new Card { Name = "Pen Flinger" },
+					new Card { Name = "Bloodmage Thalnos" },
 					new Card { Name = "Risky Skipper" },
 					new Card { Name = "Shield Slam" },
 					new Card { Name = "Armorsmith" },
@@ -2046,6 +2660,8 @@ namespace Domain.Metas
 					new Card { Name = "Bladestorm" },
 					new Card { Name = "Bloodsworn Mercenary" },
 					new Card { Name = "Coerce" },
+					new Card { Name = "Minefield" },
+					new Card { Name = "Loot Hoarder" },
 					new Card { Name = "EVIL Quartermaster" },
 					new Card { Name = "Lord Barov" },
 					new Card { Name = "Shield Block" },
@@ -2069,21 +2685,328 @@ namespace Domain.Metas
 				HeroClass = new Hero("Shaman"),
 				Cards = new List<Card>
 				{
-					new Card { Name = "Mutate" },
+					new Card { Name = "Sludge Slurper" },
+					new Card { Name = "Lightning Bloom" },
+					new Card { Name = "Animated Broomstick" },
 					new Card { Name = "Revolve" },
+					new Card { Name = "Serpentine Portal" },
 					new Card { Name = "Cagematch Custodian" },
-					new Card { Name = "Wandmaker" },
+					new Card { Name = "EVIL Cable Rat" },
 					new Card { Name = "Bogstrok Clacker" },
 					new Card { Name = "Desert Hare" },
 					new Card { Name = "Far Sight" },
 					new Card { Name = "Pit Master" },
 					new Card { Name = "Dread Corsair" },
-					new Card { Name = "Escaped Manasaber" },
+					new Card { Name = "Tour Guide" },
 					new Card { Name = "Hoard Pillager" },
 					new Card { Name = "Boggspine Knuckles" },
 					new Card { Name = "Derailed Coaster" },
 					new Card { Name = "Faceless Corruptor" },
 					new Card { Name = "Mogu Fleshshaper" },
+				}
+			};
+			deck.AddMulligans1(
+				"Demonhunter",
+				new List<string>
+				{
+					"Dread Corsair",
+					"Sepentineshrine Portal",
+					"Mogu Fleshshaper",
+					"Cagematch Custodian",
+					"Sludge Slurper",
+					"Animated Broomstick",
+					"Derailed Coaster",
+				});
+			deck.AddMulligans2(
+				"Demonhunter",
+				new List<string>
+				{
+					"Dread Corsair",
+					"Bogspine Knuckles",
+					"Sepentineshrine Portal",
+					"Derailed Coaster",
+					"Mogu Fleshshaper",
+					"Sludge Slurper",
+				});
+			deck.AddMulligans1(
+				"Druid",
+				new List<string>
+				{
+					"Sepentineshrine Portal",
+					"Cagematch Custodian",
+					"Mogu Fleshshaper",
+					"Tour Guide",
+					"Evil Cable Rat",
+					"Dread Corsair",
+					"Desert Hare",
+					"Derailed Coaster",
+				});
+			deck.AddMulligans2(
+				"Druid",
+				new List<string>
+				{
+					"Sludge Slurper",
+					"Desert Hare",
+					"Boggspine Knuckles",
+					"Hoard Pillager",
+					"Dread Corsair",
+					"Mogu Fleshshaper",
+					"Lightning Bloom",
+				});
+			deck.AddMulligans1(
+				"Hunter",
+				new List<string>
+				{
+					"Sepentineshrine Portal",
+					"Animated Broomstick",
+					"Mogu Fleshshaper",
+					"Boggspine Knuckles",
+					"Pit Master",
+					"Bogstrok Clacker",
+					"Sludge Slurper",
+					"Tour Guide",
+					"Cagematch Custodian",
+					"Dread Corsair",
+					"Hoard Pillager"
+				});
+			deck.AddMulligans2(
+				"Hunter",
+				new List<string>
+				{
+					"Sludge Slurper",
+					"Mogu Fleshshaper",
+					"Pit Master",
+					"Tour Guide",
+					"Lightning Bloom",
+					"Dread Corsair",
+				});
+			deck.AddMulligans1(
+				"Mage",
+				new List<string>
+				{
+					"EVIL Cable Rat",
+					"Dread Corsair",
+					"Cagematch Custodian",
+					"Bogspine Knuckles",
+				});			
+			deck.AddMulligans2(
+				"Mage",
+				new List<string>
+				{
+					"-EVIL Cable Rat",
+					"-Pit Master",
+					"-Bogstrok Clacker",
+					"-Sea Giant",
+					"-Hoard Pillager",
+				});
+			deck.AddMulligans1(
+				"Paladin",
+				new List<string>
+				{
+					"Dread Corair",
+					"Animated Broomstick",
+					"Bogspine Knuckles",
+					"Mogu Fleshshaper",
+					"Sea Giant",
+					"Cagematch Custodian",
+					"Sludge Slurper",
+					"Tour Guide",
+					"Bogstrok Clacker",
+				});
+			deck.AddMulligans2(
+				"Paladin",
+				new List<string>
+				{
+					"EVIL Cable Rat",
+					"Animated Broomstick",
+				});
+			deck.AddMulligans1(
+				"Priest",
+				new List<string>
+				{
+					"Pit Master",
+					"Bogspine Knuckles",
+					"EVIL Cable Rat",
+					"Dread Corair",
+					"Cagematch Custodian",
+					"Hoard Pillager",
+					"Bogstrok Clacker",
+					"Tour Guide",
+				});
+			deck.AddMulligans2(
+				"Priest",
+				new List<string>
+				{
+					"-Derailed Coaster",
+					"-Pit Master",
+					"-Lightning Bloom",
+					"-Tour Guide",
+					"-Bogstrok Clacker",
+					"-Sludge Slurper",
+					"-Mogu Fleshshaper",
+				});
+			deck.AddMulligans1(
+				"Rogue",
+				new List<string>
+				{
+					"-Mogu Fleshshaper",
+					"-Animated Broomstick",
+					"-Lightning Bloom",
+					"-Hoard Pillager",
+					"-Sea Giant",
+				});
+			deck.AddMulligans2(
+				"Rogue",
+				new List<string>
+				{
+					"Derailed Coaster",
+					"Animated Broomstick",
+					"Sea Giant",
+					"Tour Guide",
+					"Hoard Pillager",
+					"Bogstrok Clacker",
+					"Mogu Fleshshaper",
+					 "EVIL Cable Rat"
+				});
+			deck.AddMulligans1(
+				"Shaman",
+				new List<string>
+				{
+					"-Pit Master",
+					"-Lightning Bloom",
+					"-Sepentineshrine Portal",
+					"-Sea Giant",
+					"-Hoard Pillager"
+				});
+			deck.AddMulligans2(
+				"Shaman",
+				new List<string>
+				{
+					"Lightning Bloom",
+					"Dread Corsair",
+					"Boggspine Knuckles",
+				});
+			deck.AddMulligans1(
+				"Warlock",
+				new List<string>
+				{
+					"Sludge Slurper",
+					"Bogstrok Clacker",
+					"Bogspine Knuckles",
+					"Hoard Pillager",
+					"Cagematch Custodian",
+					"Mogu Fleshshaper",
+				});
+			deck.AddMulligans2(
+				"Warlock",
+				new List<string>
+				{
+					"Cagematch Custodian",
+					"Bogspine Knuckles",
+					"Animated Broomstick",
+					"Dsert Hare",
+					"Sea Giant",
+					"Lightning Bloom"
+				});
+			deck.AddMulligans1(
+				"Warrior",
+				new List<string>
+				{
+					"Hoard Pillager",
+					"Lightning Bloom",
+					"Dread Corsair",
+					"Cagematch Custodian",
+					"Sea Giant",
+					"Sludge Slurper",
+				});
+			deck.AddMulligans2(
+				"Warrior",
+				new List<string>
+				{
+					"-Pit Master",
+					"-Hoard Pillager",
+					"-Evil Cable Rat",
+					"-Sepentineshrine Portal",
+					"-Bogstrok Clacker",
+					"-Lightning Bloom",
+				});
+			deck.AddAdvice(
+				"Control Priest",
+				"T5 will steal ur weapon");
+			deck.AddAdvice(
+				"Control Priest",
+				"T7 will try to wipe board with Soul Mirror");
+			deck.AddAdvice(
+				"Druid",
+				"Keep Lightning Bloom for Ramp");
+			deck.AddAdvice(
+				"Soul Demon Hunter",
+				"Dont Overcommit into their AOE");
+
+			return deck;
+		}
+
+		private static Deck TokenDemonHunter()
+		{
+			var deck = new Deck
+			{
+				Name = "Token Demon Hunter",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Demonhunter"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Battlefiend" },
+					new Card { Name = "Twin Slice" },
+					new Card { Name = "Ur'zul Horror" },
+					new Card { Name = "Chaos Strike" },
+					new Card { Name = "Feast of Souls" },
+					new Card { Name = "Sightless Watcher" },
+					new Card { Name = "Umberwing" },
+					new Card { Name = "Coordinated Strike" },
+					new Card { Name = "Eye Beam" },
+					new Card { Name = "Satyr Overseer" },
+					new Card { Name = "Wrathscale Naga" },
+					new Card { Name = "Altruis the Outcast" },
+					new Card { Name = "Illidari Felblade" },
+					new Card { Name = "Command the Illidari" },
+					new Card { Name = "Glaivebound Adept" },
+					new Card { Name = "Nethrandamus" },
+				}
+			};
+			return deck;
+		}
+
+		private static Deck VargothOTKMage()
+		{
+			var deck = new Deck
+			{
+				Name = "Vargoth OTK Mage",
+				Prototype = "COMBO",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Mage"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Ray of Frost" },
+					new Card { Name = "Acidic Swamp Ooze" },
+					new Card { Name = "Ancient Mysteries" },
+					new Card { Name = "Doomsayer" },
+					new Card { Name = "Frostbolt" },
+					new Card { Name = "Novice Engineer" },
+					new Card { Name = "Arcane Intellect" },
+					new Card { Name = "Flame Ward" },
+					new Card { Name = "Frost Nova" },
+					new Card { Name = "Ice Barrier" },
+					new Card { Name = "Archmage Vargoth" },
+					new Card { Name = "Potion of Illusion" },
+					new Card { Name = "Blizzard" },
+					new Card { Name = "Khartut Defender" },
+					new Card { Name = "Sayge, Seer of Darkmoon" },
+					new Card { Name = "Mask of C'Thun" },
+					new Card { Name = "The Amazing Reno" },
+					new Card { Name = "Yogg-Saron, Master of Fate" },
 				}
 			};
 			return deck;
@@ -2362,5 +3285,59 @@ namespace Domain.Metas
 			};
 		}
 
+		private static Deck AggroShaman()
+		{
+			return new Deck
+			{
+				Name = "Aggro Shaman",
+				Prototype = "AGGRO",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Shaman"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Zap!" },
+					new Card { Name = "Sludge Slurper" },
+					new Card { Name = "Storm's Wrath" },
+					new Card { Name = "Voltaic Burst" },
+					new Card { Name = "EVIL Totem" },
+					new Card { Name = "Earthen Might" },
+					new Card { Name = "Likkim" },
+					new Card { Name = "Soul of the Murloc" },
+					new Card { Name = "Haunting Visions" },
+					new Card { Name = "SN1P-SN4P" },
+					new Card { Name = "Spirit of the Frog" },
+					new Card { Name = "Hex" },
+					new Card { Name = "Thunderhead" },
+					new Card { Name = "Vessina" },
+					new Card { Name = "Bloodlust" },
+					new Card { Name = "Faceless Corruptor" },
+					new Card { Name = "Sea Giant" },
+				}
+			};
+		}
+		private static Deck ControlPaladin()
+		{
+			return new Deck
+			{
+				Name = "Control Paladin",
+				Tier = 3,
+				Rank = 15,
+				HeroClass = new Hero("Paladin"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Equality" },
+					new Card { Name = "Loot Hoarder" },
+					new Card { Name = "Plated Beetle" },
+					new Card { Name = "Wild Pyromancer" },
+					new Card { Name = "Consecration" },
+					new Card { Name = "Harrison Jones" },
+					new Card { Name = "Cairn Bloodhoof" },
+					new Card { Name = "Tirion Fordring" },
+					new Card { Name = "Uther of the Ebon Blade" },
+					new Card { Name = "Ysera" },
+				}
+			};
+		}
 	}
 }

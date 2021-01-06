@@ -13,12 +13,12 @@ namespace dd
 		private const string K_DividerLine = "--------------------------------------------------";
 
 		private static void Main(string[] args)
-        {
+		{
 			var dd = new DeckDetector();
 
 			var homeDeck = Environment.GetEnvironmentVariable("HOMEDECK");
 #if DEBUG
-			homeDeck = "HSR Mech Paladin";
+			homeDeck = "Evolve Shaman";
 			Console.WriteLine($"Home Deck is {homeDeck}");
 #endif
 			var eventStore = new HsEventStore.HsEventStore();
@@ -28,13 +28,14 @@ namespace dd
 			var oppDeck = string.Empty;
 
 			var options = new Options();
-            IEnumerable<string> cardsPlayed = new List<string>();
+			IEnumerable<string> cardsPlayed = new List<string>();
 
-            var result = Parser.Default.ParseArguments<Options>(args)
+			var result = Parser.Default.ParseArguments<Options>(args)
 				.WithParsed(o => options.Report = o.Report)
 				.WithParsed(o => options.ReportDate = o.ReportDate)
 				.WithParsed(o => options.HeroClass = o.HeroClass)
 				.WithParsed(o => options.Opponent = o.Opponent)
+				.WithParsed(o => options.Mulligan = o.Mulligan)
 				.WithParsed(o => cardsPlayed = o.Played);
 
 			if (options.Report != null)
@@ -80,37 +81,45 @@ namespace dd
 
 			//if (cardsPlayed.Any())
 			//{
-				dd.DumpMetaRecord(
-					results);
-				dd.DumpPreviousMonthRecord(
-					results);
-				dd.DumpMonthRecord(
-					results);
-				dd.DumpDeckRecord(
-					homeDeck, results);
-				dd.DumpDeckMonthRecord(
-					homeDeck, 
-					results);
-				dd.DumpRunRecord(
-					results);
-				dd.DumpDailyRecord(
-					results);
-				Console.WriteLine(
-					value: K_DividerLine);
-				dd.DumpDeckRecordVsHero(
-					homeDeck,
-					results,
-					options.HeroClass);
+			dd.DumpMetaRecord(
+				results);
+			dd.DumpPreviousMonthRecord(
+				results);
+			dd.DumpMonthRecord(
+				results);
+			dd.DumpDeckRecord(
+				homeDeck, results);
+			dd.DumpDeckMonthRecord(
+				homeDeck,
+				results);
+			dd.DumpRunRecord(
+				results);
+			dd.DumpDailyRecord(
+				results);
+			Console.WriteLine(
+				value: K_DividerLine);
+			dd.DumpDeckRecordVsHero(
+				homeDeck,
+				results,
+				options.HeroClass);
 			//}
 			dd.DumpNotes(
 				homeDeck,
-				oppDeck, 
+				oppDeck,
 				results);
 			Console.WriteLine(
 				value: K_DividerLine);
 			dd.DumpTips(
-				homeDeck, 
+				homeDeck,
 				oppDeck);
+			if (!cardsPlayed.Any())
+			{
+				if (!string.IsNullOrEmpty(options.Mulligan))
+					dd.DumpMulligans(
+						homeDeck,
+						oppDeck,
+						options.Mulligan);
+			}
 
 			Console.WriteLine();
 #if DEBUG

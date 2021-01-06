@@ -17,6 +17,16 @@ namespace Domain
 			get; 
 			set; 
 		}
+		public Dictionary<string, List<string>> Mulligans1
+		{
+			get;
+			set;
+		}
+		public Dictionary<string, List<string>> Mulligans2
+		{
+			get;
+			set;
+		}
 
 		public List<string> KeyPlays
 		{
@@ -26,6 +36,8 @@ namespace Domain
 
 		public Deck()
 		{
+			Mulligans1 = new Dictionary<string, List<string>>();
+			Mulligans2 = new Dictionary<string, List<string>>();
 			Advice = new Dictionary<string, List<string>>();
 			KeyPlays = new List<string>();
 		}
@@ -41,6 +53,32 @@ namespace Domain
 					value: new List<string>());
 			}
 			Advice[oppDeck].Add(tip);
+		}
+
+		public void AddMulligans1(
+			string oppHero,
+			List<string> mulligans)
+		{
+			if (!Mulligans1.ContainsKey(oppHero))
+			{
+				Mulligans1.Add(
+					key: oppHero,
+					value: new List<string>());
+			}
+			Mulligans1[oppHero].AddRange(mulligans);
+		}
+
+		public void AddMulligans2(
+		string oppHero,
+		List<string> mulligans)
+		{
+			if (!Mulligans2.ContainsKey(oppHero))
+			{
+				Mulligans2.Add(
+					key: oppHero,
+					value: new List<string>());
+			}
+			Mulligans2[oppHero].AddRange(mulligans);
 		}
 
 		public void AddKeyPlays(
