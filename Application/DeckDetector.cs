@@ -1093,8 +1093,9 @@ namespace Application
 			int gamesPlayed, 
 			Record totalRecord)
 		{
+			var padding = gamesPlayed < 10 ? 24 : 23;
 			Console.WriteLine($@"Deck: {
-				Pad(homeDeck, 23)
+				Pad(homeDeck, padding)
 				} {
 				gamesPlayed
 				} Rec  {
@@ -1428,7 +1429,7 @@ namespace Application
 			List<Deck> decks)
 		{
 			if (string.IsNullOrEmpty(heroClass))
-				return false;
+				return true;
 
 			var od = GetDeck(
 				decks,

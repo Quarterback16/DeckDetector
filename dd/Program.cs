@@ -49,7 +49,7 @@ namespace dd
 					dd: dd,
 					reportDate: options.ReportDate,
 					heroClass: options.HeroClass,
-					quota: int.Parse(options.Quota));
+					quota: GetQuoua(options.Quota));
 #if DEBUG
 				Console.ReadLine();
 #endif
@@ -128,6 +128,13 @@ namespace dd
 #if DEBUG
 			Console.ReadLine();
 #endif
+		}
+
+		private static int GetQuoua(string quota)
+		{
+			if (string.IsNullOrEmpty(quota))
+				return 20;
+			return Int32.Parse(quota);
 		}
 
 #if DEBUG
