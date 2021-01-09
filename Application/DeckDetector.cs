@@ -781,7 +781,9 @@ namespace Application
 			HsEventStore.HsEventStore eventStore,
 			string homeDeck,
 			DeckDetector dd,
-			string reportDate = "")
+			string reportDate = "",
+			string heroClass = "",
+			int quota = 10)
 		{
 			if (dd is null 
 				|| eventStore is null
@@ -794,7 +796,8 @@ namespace Application
 					eventStore,
 					homeDeck,
 					dd,
-					reportDate);
+					reportDate,
+					heroClass);
 			}
 			else if (report.ToUpper(CultureInfo.CurrentCulture) == "D")
 			{
@@ -822,7 +825,8 @@ namespace Application
 			else if (report.ToUpper(CultureInfo.CurrentCulture) == "B")
 			{
 				BestDeck(
-					eventStore);
+					eventStore,
+					quota);
 			}
 			else if (report.ToUpper(CultureInfo.CurrentCulture) == "A")
 			{
@@ -903,22 +907,25 @@ namespace Application
 						Console.WriteLine($"{game.OpponentDeck} not found");
 						continue;
 					}
-					if (classDict.ContainsKey(
-						theOpposingDeck.Prototype))
+					if (theOpposingDeck.Prototype != null)
 					{
-						classDict[theOpposingDeck.Prototype]++;
+						if (classDict.ContainsKey(
+							theOpposingDeck.Prototype))
+						{
+							classDict[theOpposingDeck.Prototype]++;
+						}
+						else
+						{
+							classDict.Add(
+								theOpposingDeck.Prototype,
+								1);
+						}
+						gamesPlayed++;
+						if (game.Result.Equals("win"))
+							totalRecord.Wins++;
+						else
+							totalRecord.Losses++;
 					}
-					else
-					{
-						classDict.Add(
-							theOpposingDeck.Prototype,
-							1);
-					}
-					gamesPlayed++;
-					if (game.Result.Equals("win"))
-						totalRecord.Wins++;
-					else
-						totalRecord.Losses++;
 				}
 			}
 			var mysortedDeckList = classDict.ToList();
@@ -1105,7 +1112,8 @@ namespace Application
 		}
 
 		private static void BestDeck(
-			HsEventStore.HsEventStore eventStore)
+			HsEventStore.HsEventStore eventStore,
+			int quota)
 		{
 			var deckDict = new Dictionary<string, Record>();
 			var results = (List<HsGamePlayedEvent>)
@@ -1161,6 +1169,8 @@ namespace Application
 			Console.WriteLine();
 			foreach (KeyValuePair<string, Record> pair in mysortedDeckList)
 			{
+				if (pair.Value.TotalGames() < quota)
+					continue;
 				Console.WriteLine("  {0,-" + maxDeckNameLength + "} {1,4} {2,4} {3,4}  {4,6}",
 					pair.Key,
 					pair.Value.TotalGames(),
@@ -1332,8 +1342,10 @@ namespace Application
 			HsEventStore.HsEventStore eventStore,
 			string homeDeck,
 			DeckDetector dd,
-			string reportDate = "")
+			string reportDate = "",
+			string heroClass = "")
 		{
+			var decks = dd.ListDecks();
 			var OppDeckDict = new Dictionary<string, int>();
 			var OppDeckDateDict = new Dictionary<string, DateTime>();
 			var results = (List<HsGamePlayedEvent>)
@@ -1342,6 +1354,12 @@ namespace Application
 			var totalGames = 0;
 			foreach (var game in results)
 			{
+				if (!MatchesHeroClass(
+					heroClass,
+					game.OpponentDeck,
+					decks))
+					continue;
+
 				if (!string.IsNullOrEmpty(reportDate))
 				{
 					if (game.DatePlayed < DateTime.Parse(
@@ -1395,11 +1413,36 @@ namespace Application
 			ArchTypeFrequency(
 				results,
 				dd,
-				reportDate);
+				reportDate,
+				heroClass);
 			ClassFrequency(
 				results,
 				dd,
-				reportDate);
+				reportDate,
+				heroClass);
+		}
+
+		private static bool MatchesHeroClass(
+			string heroClass,
+			string oppDeck,
+			List<Deck> decks)
+		{
+			if (string.IsNullOrEmpty(heroClass))
+				return false;
+
+			var od = GetDeck(
+				decks,
+				oppDeck);
+			if (od == null || od.Name == null)
+				return false;
+
+			if (od.HeroClass
+					.Name.ToUpper()
+					.StartsWith(heroClass.ToUpper()))
+			{
+				return true;
+			}
+			return false;
 		}
 
 		private static object DateOut(
@@ -1420,7 +1463,8 @@ namespace Application
 		private static void ClassFrequency(
 			List<HsGamePlayedEvent> results,
 			DeckDetector dd,
-			string reportDate = "")
+			string reportDate = "",
+			string heroClass = null)
 		{
 			var decks = dd.ListDecks();
 
@@ -1440,6 +1484,11 @@ namespace Application
 			var resultsUsed = 0;
 			foreach (var game in results)
 			{
+				if (!MatchesHeroClass(
+						heroClass,
+						game.OpponentDeck,
+						decks))
+					continue;
 				if (!string.IsNullOrEmpty(reportDate))
 				{
 					if (game.DatePlayed < DateTime.Parse(reportDate))
@@ -1495,7 +1544,8 @@ namespace Application
 		private static void ArchTypeFrequency(
 			List<HsGamePlayedEvent> results,
 			DeckDetector dd,
-			string reportDate = "")
+			string reportDate = "",
+			string heroClass = null)
 		{
 			var decks = dd.ListDecks();
 
@@ -1512,6 +1562,12 @@ namespace Application
 			var usedResults = new List<HsGamePlayedEvent>();
 			foreach (var game in results)
 			{
+				if (!MatchesHeroClass(
+						heroClass,
+						game.OpponentDeck,
+						decks))
+					continue;
+
 				if (!string.IsNullOrEmpty(reportDate))
 				{
 					if (game.DatePlayed < DateTime.Parse(reportDate))

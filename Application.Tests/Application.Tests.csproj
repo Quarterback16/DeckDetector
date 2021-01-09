@@ -49,6 +49,7 @@
     <Compile Include="DeckDetectorTests.cs" />
     <Compile Include="DeckDetectorWitchwoodTests.cs" />
     <Compile Include="DomainTests.cs" />
+    <Compile Include="FuncionalCodeTests.cs" />
     <Compile Include="HearthDbTests.cs" />
     <Compile Include="ParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

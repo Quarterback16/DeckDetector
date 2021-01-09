@@ -20,6 +20,9 @@ namespace dd
 		[Option('o')]
 		public string Opponent { get; set; }
 
+		[Option('q')]
+		public string Quota { get; set; }
+
 		[Option('m')]
 		public string Mulligan { get; set; }
 	}

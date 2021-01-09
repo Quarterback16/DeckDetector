@@ -111,13 +111,94 @@ namespace Domain.Metas
 				AggroShaman(),
 				WeaponRogue(),
 				MiracleRogue(),
-				ControlPaladin()
+				ControlPaladin(),
+				HighlanderWarrior(),
+				BeastHunter()
 			};
 			meta.AddDecks(tier5Decks, 5);
 			return meta;
 		}
 
 		#region Decks
+		private static Deck HighlanderWarrior()
+		{
+			var deck = new Deck
+			{
+				Name = "Highlander Warrior",
+				Prototype = "SINGLETON",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Warrior"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Athletic Studies" },
+					new Card { Name = "Risky Skipper" },
+					new Card { Name = "Sky Raider" },
+					new Card { Name = "Sword and Board" },
+					new Card { Name = "Armorsmith" },
+					new Card { Name = "Battle Rage" },
+					new Card { Name = "Bumper Car" },
+					new Card { Name = "Corsair Cache" },
+					new Card { Name = "Frightened Flunky" },
+					new Card { Name = "Minefield" },
+					new Card { Name = "Slam" },
+					new Card { Name = "Zephrys the Great" },
+					new Card { Name = "Bladestorm" },
+					new Card { Name = "Bomb Wrangler" },
+					new Card { Name = "Bulwark of Azzinoth" },
+					new Card { Name = "Coerce" },
+					new Card { Name = "EVIL Quartermaster" },
+					new Card { Name = "Livewire Lance" },
+					new Card { Name = "Lord Barov" },
+					new Card { Name = "Shield Block" },
+					new Card { Name = "Kargath Bladefist" },
+					new Card { Name = "Reaper's Scythe" },
+					new Card { Name = "Restless Mummy" },
+					new Card { Name = "Sword Eater" },
+					new Card { Name = "Brawl" },
+					new Card { Name = "Kobold Stickyfinger" },
+					new Card { Name = "Plague of Wrath" },
+					new Card { Name = "Deathwing, Mad Aspect" },
+					new Card { Name = "Troublemaker" },
+					new Card { Name = "Dragonqueen Alexstrasza" },
+				}
+			};
+			return deck;
+		}
+		private static Deck ControlPaladin()
+		{
+			var deck = new Deck
+			{
+				Name = "Control Paladin",
+				Prototype = "CONTROL",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Paladin"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "First Day of School" },
+					new Card { Name = "Aldor Attendant" },
+					new Card { Name = "Hand of A'dal" },
+					new Card { Name = "Libram of Wisdom" },
+					new Card { Name = "Lightforged Blessing" },
+					new Card { Name = "Murgur Murgurgle" },
+					new Card { Name = "Redscale Dragontamer" },
+					new Card { Name = "Snack Run" },
+					new Card { Name = "Wild Pyromancer" },
+					new Card { Name = "Bronze Explorer" },
+					new Card { Name = "Lord Barov" },
+					new Card { Name = "Underlight Angling Rod" },
+					new Card { Name = "Consecration" },
+					new Card { Name = "Aldor Truthseeker" },
+					new Card { Name = "Cobalt Spellkin" },
+					new Card { Name = "Libram of Justice" },
+					new Card { Name = "Lady Liadrin" },
+					new Card { Name = "Libram of Hope" },
+					new Card { Name = "Yogg-Saron, Master of Fate" },
+				}
+			};
+			return deck;
+		}
 		private static Deck GalakrondShaman()
 		{
 			return new Deck
@@ -155,6 +236,7 @@ namespace Domain.Metas
 			{
 				Name = "Miracle Rogue",
 				Tier = 3,
+				Prototype = "COMBO",
 				Rank = 20,
 				HeroClass = new Hero("Rogue"),
 				Cards = new List<Card>
@@ -2978,6 +3060,38 @@ namespace Domain.Metas
 			return deck;
 		}
 
+		private static Deck BeastHunter()
+		{
+			var deck = new Deck
+			{
+				Name = "Beast Hunter",
+				Prototype = "AGGRO",
+				Tier = 5,
+				Rank = 25,
+				HeroClass = new Hero("Hunter"),
+				Cards = new List<Card>
+				{
+					new Card { Name = "Adorable Infestation" },
+					new Card { Name = "Bestial Wrath" },
+					new Card { Name = "Overwhelm" },
+					new Card { Name = "Stonetusk Boar" },
+					new Card { Name = "Trueaim Crescent" },
+					new Card { Name = "Wolpertinger" },
+					new Card { Name = "Don't Feed the Animals" },
+					new Card { Name = "Fresh Scent" },
+					new Card { Name = "Scavenger's Ingenuity" },
+					new Card { Name = "Diving Gryphon" },
+					new Card { Name = "Ramkahen Wildtamer" },
+					new Card { Name = "Shan'do Wildclaw" },
+					new Card { Name = "Vulpera Scoundrel" },
+					new Card { Name = "Zixor, Apex Predator" },
+					new Card { Name = "Scrap Shot" },
+					new Card { Name = "Trampling Rhino" },
+				}
+			};
+			return deck;
+		}
+
 		private static Deck VargothOTKMage()
 		{
 			var deck = new Deck
@@ -3316,28 +3430,6 @@ namespace Domain.Metas
 				}
 			};
 		}
-		private static Deck ControlPaladin()
-		{
-			return new Deck
-			{
-				Name = "Control Paladin",
-				Tier = 3,
-				Rank = 15,
-				HeroClass = new Hero("Paladin"),
-				Cards = new List<Card>
-				{
-					new Card { Name = "Equality" },
-					new Card { Name = "Loot Hoarder" },
-					new Card { Name = "Plated Beetle" },
-					new Card { Name = "Wild Pyromancer" },
-					new Card { Name = "Consecration" },
-					new Card { Name = "Harrison Jones" },
-					new Card { Name = "Cairn Bloodhoof" },
-					new Card { Name = "Tirion Fordring" },
-					new Card { Name = "Uther of the Ebon Blade" },
-					new Card { Name = "Ysera" },
-				}
-			};
-		}
+
 	}
 }

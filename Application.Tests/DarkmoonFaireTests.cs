@@ -49,6 +49,14 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
+		public void MetaHasDeck()
+		{
+			var deck = sut.FindDeck(
+				"Miracle Rogue");
+			Assert.IsNotNull(deck.Name);
+		}
+
+		[TestMethod]
 		public void DeckDetector_KnowsMostPopularCards()
 		{
 			var cards = sut.CardPopularity(
@@ -57,7 +65,7 @@ namespace Application.Tests
 		}
 
 		[TestMethod]
-		public void DeckDetector_Knows_WhichCardsMustBeCrafted()
+		public void DeckDetector_Knows_WhichExpensiveCardsMustBeCrafted()
 		{
 			var cards = sut.CardPopularity(
 				dump: true,

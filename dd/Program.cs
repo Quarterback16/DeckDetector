@@ -18,7 +18,7 @@ namespace dd
 
 			var homeDeck = Environment.GetEnvironmentVariable("HOMEDECK");
 #if DEBUG
-			homeDeck = "Evolve Shaman";
+			homeDeck = "Zoo Warlock";
 			Console.WriteLine($"Home Deck is {homeDeck}");
 #endif
 			var eventStore = new HsEventStore.HsEventStore();
@@ -36,6 +36,7 @@ namespace dd
 				.WithParsed(o => options.HeroClass = o.HeroClass)
 				.WithParsed(o => options.Opponent = o.Opponent)
 				.WithParsed(o => options.Mulligan = o.Mulligan)
+				.WithParsed(o => options.Quota = o.Quota)
 				.WithParsed(o => cardsPlayed = o.Played);
 
 			if (options.Report != null)
@@ -46,7 +47,9 @@ namespace dd
 					eventStore: eventStore,
 					homeDeck: homeDeck,
 					dd: dd,
-					reportDate: options.ReportDate);
+					reportDate: options.ReportDate,
+					heroClass: options.HeroClass,
+					quota: int.Parse(options.Quota));
 #if DEBUG
 				Console.ReadLine();
 #endif
