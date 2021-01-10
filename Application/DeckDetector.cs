@@ -805,7 +805,8 @@ namespace Application
 					eventStore,
 					homeDeck,
 					dd,
-					reportDate);
+					reportDate,
+					heroClass);
 			}
 			else if (report.ToUpper(CultureInfo.CurrentCulture) == "C")
 			{
@@ -842,7 +843,8 @@ namespace Application
 			HsEventStore.HsEventStore eventStore,
 			string homeDeck,
 			DeckDetector dd,
-			string reportDate = "")
+			string reportDate = "",
+			string heroClass = null)
 		{
 			var OppDeckDict = new Dictionary<string, int>();
 			var OppDeckDateDict = new Dictionary<string, DateTime>();
@@ -859,21 +861,24 @@ namespace Application
 				OppDeckDateDict, 
 				results, 
 				gamesPlayed, 
-				totalRecord);
+				totalRecord,
+				heroClass);
 			Console.WriteLine();
 			DeckRecordVsClasses(
 				homeDeck,
 				dd,
 				reportDate,
 				results,
-				gamesPlayed);
+				gamesPlayed,
+				heroClass);
 			Console.WriteLine();
 			DeckRecordVsPrototype(
 				homeDeck,
 				dd,
 				reportDate,
 				results,
-				gamesPlayed);
+				gamesPlayed,
+				heroClass);
 		}
 
 		private static void DeckRecordVsPrototype(
@@ -881,7 +886,8 @@ namespace Application
 			DeckDetector dd,
 			string reportDate,
 			List<HsGamePlayedEvent> results,
-			int gamesPlayed)
+			int gamesPlayed,
+			string heroClass = "")
 		{
 			var classDict = new Dictionary<string, int>();
 			var decks = dd.ListDecks();
@@ -889,6 +895,11 @@ namespace Application
 
 			foreach (var game in results)
 			{
+				if (!MatchesHeroClass(
+						heroClass,
+						game.OpponentDeck,
+						decks))
+					continue;
 				if (!string.IsNullOrEmpty(reportDate))
 				{
 					if (game.DatePlayed < DateTime.Parse(
@@ -957,7 +968,8 @@ namespace Application
 			DeckDetector dd,
 			string reportDate,
 			List<HsGamePlayedEvent> results,
-			int gamesPlayed)
+			int gamesPlayed,
+			string heroClass = "")
 		{
 			var classDict = new Dictionary<string, int>();
 			var decks = dd.ListDecks();
@@ -965,6 +977,11 @@ namespace Application
 
 			foreach (var game in results)
 			{
+				if (!MatchesHeroClass(
+						heroClass,
+						game.OpponentDeck,
+						decks))
+					continue;
 				if (!string.IsNullOrEmpty(reportDate))
 				{
 					if (game.DatePlayed < DateTime.Parse(
@@ -1033,10 +1050,17 @@ namespace Application
 			Dictionary<string, DateTime> OppDeckDateDict, 
 			List<HsGamePlayedEvent> results, 
 			int gamesPlayed, 
-			Record totalRecord)
+			Record totalRecord,
+			string heroClass = "")
 		{
+			var decks = dd.ListDecks();
 			foreach (var game in results)
 			{
+				if (!MatchesHeroClass(
+					heroClass,
+					game.OpponentDeck,
+					decks))
+					continue;
 				if (!string.IsNullOrEmpty(reportDate))
 				{
 					if (game.DatePlayed < DateTime.Parse(
