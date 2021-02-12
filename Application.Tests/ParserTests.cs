@@ -12,7 +12,7 @@ namespace Application.Tests
 		public void DeckParserLoadsSingleInput()
 		{
 			var sut = new DeckParser();
-			sut.LoadInput("Highlander Warrior");
+			sut.LoadInput("Mozaki OTK Mage");
 			sut.DisplayCode();
 		}
 

@@ -1,4 +1,6 @@
-﻿namespace Domain
+﻿using System;
+
+namespace Domain
 {
 	public class Record
 	{
@@ -29,6 +31,17 @@
 		public int TotalGames()
 		{
 			return Wins + Losses;
+		}
+
+		public string OverallResult()
+		{
+			if (TotalGames() == 0)
+				return " ";
+			if (Clip() > .5M)
+				return "W";
+			else if (Clip() == .5M)
+				return "T";
+			return "L";
 		}
 	}
 }

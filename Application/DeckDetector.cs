@@ -359,6 +359,57 @@ namespace Application
 			}
 		}
 
+		public string HomeRecordVsDeck(
+			string homeDeck,
+			string oppDeck,
+			List<HsGamePlayedEvent> results)
+		{
+			if (results is null)
+				return string.Empty;
+
+			var gameCount = 0;
+			var wins = 0;
+			var losses = 0;
+
+			foreach (var game in results)
+			{
+				if (game.HomeDeck == homeDeck
+					&& game.OpponentDeck == oppDeck)
+				{
+					gameCount++;
+					if (game.Result.Equals("win"))
+						wins++;
+					else
+						losses++;
+				}
+				if (oppDeck.Equals(homeDeck))
+					continue;  //  mirror dont double count
+
+				if (game.OpponentDeck == homeDeck
+					&& game.HomeDeck == oppDeck)
+				{
+					gameCount++;
+					if (game.Result.Equals("win"))
+						losses++;
+					else
+						wins++;
+				}
+			}
+			var homeDeckRecord = new Record
+			{
+				Losses = losses,
+				Wins = wins,
+			};
+			var result =$@" ({
+				wins
+				}-{
+				losses
+				})  {
+				homeDeckRecord.Percent()
+				}";
+			return result;
+		}
+
 		public void DumpTips(
 			string homeDeck,
 			string oppDeck	)
@@ -834,9 +885,96 @@ namespace Application
 				AlphaReport(
 					dd);
 			}
+			else if (report.ToUpper(CultureInfo.CurrentCulture) == "Y")
+			{
+				WinLossGraph(
+					eventStore);
+			}
 #if DEBUG
 			//Console.ReadLine();
 #endif
+		}
+
+		private void WinLossGraph(
+			HsEventStore.HsEventStore eventStore)
+		{
+			WinsAndLosses(
+				eventStore,
+				DateTime.Now);
+		}
+
+		private void WinsAndLosses(
+			HsEventStore.HsEventStore eventStore,
+			DateTime repDate)
+		{
+			Console.WriteLine($"Record for {MonthOut(repDate):u}");
+			var results = (List<HsGamePlayedEvent>)
+				eventStore.Get<HsGamePlayedEvent>("game-played");
+
+			var daysInMonth = DaysInMonth(
+				repDate);  
+			var lines = new string[daysInMonth];
+			for (int i = 0; i < lines.Length; i++)
+				lines[i] = string.Empty;
+
+			foreach (var game in results)
+			{
+				if (game.DatePlayed.Month != repDate.Month)
+					continue;
+				var theDay = game.DatePlayed.Day;
+				var theRes = game.Result.Equals("win") ? "+" : "-";
+				lines[theDay-1] += theRes;
+			}
+			for (int i = 0; i < lines.Length; i++)
+				lines[i] = $"{DateLabel(i + 1, repDate)} {RecordFor(lines[i])} : {lines[i]}";
+			for (int i = 0; i < lines.Length; i++)
+				Console.WriteLine(lines[i]);
+		}
+
+		private string RecordFor(string theLine )
+		{
+			var theRecord = new Record();
+			if (!string.IsNullOrEmpty(theLine))
+			{
+				for (int i = 0; i < theLine.Length; i++)
+				{
+					if (theLine.Substring(i, 1) == "+")
+						theRecord.Wins++;
+					else
+						theRecord.Losses++;
+				}
+			}
+			theRecord.Name = $"{theRecord.TotalGames(),2}";
+			return $"{theRecord.OverallResult()} {theRecord}";
+		}
+
+		private string DateLabel(
+			int i, 
+			DateTime repDate)
+		{
+			var theDate = new DateTime(
+				repDate.Year,
+				repDate.Month,
+				i);
+			return $"{theDate.ToString("dddd").Substring(0,2)} {theDate.Day:0#}";
+		}
+
+		private string MonthOut(DateTime repDate)
+		{
+			return repDate.ToString("yyyy-MM");
+		}
+
+		private int DaysInMonth(
+			DateTime repDate)
+		{
+			var nextMonthDate = repDate.AddMonths(1);
+			var startOfNextMonth = new DateTime(
+				nextMonthDate.Year,
+				nextMonthDate.Month,
+				1);
+			var lastDayOfPreviousMonthDate = startOfNextMonth
+				.AddDays(-1);
+			return lastDayOfPreviousMonthDate.Day;
 		}
 
 		private static void DeckReport(

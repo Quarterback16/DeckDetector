@@ -18,7 +18,7 @@ namespace dd
 
 			var homeDeck = Environment.GetEnvironmentVariable("HOMEDECK");
 #if DEBUG
-			homeDeck = "Zoo Warlock";
+			homeDeck = "Ramp Paladin";
 			Console.WriteLine($"Home Deck is {homeDeck}");
 #endif
 			var eventStore = new HsEventStore.HsEventStore();
@@ -56,6 +56,9 @@ namespace dd
 				return;
 			}
 
+			var results = (List<HsGamePlayedEvent>)
+				eventStore.Get<HsGamePlayedEvent>("game-played");
+
 			if (string.IsNullOrEmpty(options.Opponent))
 			{
 				var decks = dd.ListDecks(
@@ -65,7 +68,11 @@ namespace dd
 				if (decks.Count == 0)
 					Console.WriteLine("Off-Meta Deck");
 				else
-					oppDeck = DumpDecks(decks);
+					oppDeck = DumpDecks(
+						decks,
+						homeDeck,
+						dd,
+						results);
 			}
 			else
 			{
@@ -78,9 +85,6 @@ namespace dd
 				}
 				displayDeck.Dump();
 			}
-
-			var results = (List<HsGamePlayedEvent>)
-				eventStore.Get<HsGamePlayedEvent>("game-played");
 
 			//if (cardsPlayed.Any())
 			//{
@@ -154,14 +158,17 @@ namespace dd
 			}
 		}
 #endif
-		private static string DumpDecks(
-			List<Deck> results)
-        {
+		public static string DumpDecks(
+			List<Deck> decks,
+			string homeDeck,
+			DeckDetector dd,
+			List<HsGamePlayedEvent> results)
+		{
             var deckCount = 0;
 			var oppDeck = string.Empty;
             Deck theFirstDeck = new Deck();
             Deck theDeck = new Deck();
-            foreach (var deck in results)
+            foreach (var deck in decks)
             {
                 deckCount++;
                 if (deckCount == 1)
@@ -169,15 +176,18 @@ namespace dd
                 Console.WriteLine($@"T{
 					deck.Tier
 					} {
-					deck.Name
-					} ({
-					deck.Rank
-					})  {
-					deck.Prototype
+					deck.Name,-25
+					} ({deck.Rank:0#})  {
+					deck.Prototype,-10
+					} {
+					dd.HomeRecordVsDeck(
+						homeDeck,
+						deck.Name,
+						results)
 					}");
                 theDeck = deck;
             }
-			if (results.Count == 1)
+			if (decks.Count == 1)
 			{
 				theDeck.Dump();
 				return theDeck.Name;

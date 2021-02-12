@@ -1441,7 +1441,7 @@ namespace Domain
  {"Ashtongue Slayer", new CardData { ManaCost = 2,  Attack = 3, Health = 2, Spell = "Give a stealth minion +3 and imune"  } },
  {"Bane of Doom", new CardData { ManaCost = 0 } },
  {"Battlefiend", new CardData { ManaCost = 1,  Attack = 1, Health = 2 } },
- {"Blade Dance", new CardData { ManaCost = 3 } },
+ {"Blade Dance", new CardData { ManaCost = 3, Aoe = true, Spell = "damage 3 minions with ur blade damage" } },
  {"Bloodboil Brute", new CardData { ManaCost = 7, Aoe = true } },
  {"Bogbeam", new CardData { ManaCost = 3 } },
  {"Boggspine Knuckles", new CardData { ManaCost = 5, IsWeapon = true, Epic= true, Attack = 4, Health = 2   } },
@@ -1738,6 +1738,90 @@ namespace Domain
  {"Sayge, Seer of Darkmoon", new CardData { ManaCost = 6, Legendary = true  } },
  {"Solar Eclipse", new CardData { ManaCost = 2 } },
  {"Sorcerous Substitute", new CardData { ManaCost = 6 } },
+ 				{
+					"N'Zoth, God of the Deep",
+					new CardData
+					{
+						ManaCost = 10,
+						Spell = "BC: Res a minion of each type",
+						Legendary = true,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 5,
+						Health = 7
+					}
+				},
+				{
+					"Midway Maniac",
+					new CardData
+					{
+						ManaCost = 2,
+						Spell = "",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = true,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 1,
+						Health = 5
+					}
+				},
+				{
+					"Steeldancer",
+					new CardData
+					{
+						ManaCost = 4,
+						Spell = "Summon minion costing same as Wepon attack",
+						Legendary = false,
+						Epic = true,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = true,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 4,
+						Health = 4
+					}
+				},
+				{
+					"Silas Sarkmoon",
+					new CardData
+					{
+						ManaCost = 7,
+						Spell = "Choos a direction to rotate all minions",
+						Legendary = true,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 4,
+						Health = 4
+					}
+				},
  {"Spellbender", new CardData { ManaCost = 3, Epic= true } },
  {"Squallhunter", new CardData { ManaCost = 4 } },
  {"Stage Hand", new CardData { ManaCost = 2 } },
@@ -1754,10 +1838,869 @@ namespace Domain
  {"Umbral Owl", new CardData { ManaCost = 7 } },
  {"Vectus", new CardData { ManaCost = 5, Legendary = true } },
  {"Wandmaker", new CardData { ManaCost = 2 } },
- {"Wickd Whispers", new CardData { ManaCost = 1 } },
+ {"Wicked Whispers", new CardData { ManaCost = 1 } },
  {"Wriggling Horror", new CardData { ManaCost = 0 } },
  {"Yogg-Saron, Master of Fate", new CardData { ManaCost = 10, Legendary = true  } },
  {"Y'Shaarj, the Defiler", new CardData { ManaCost = 10, Legendary = true } },
+				{
+					"Illidari Studies",
+					new CardData
+					{
+						ManaCost = 1,
+						Spell = "Discover an Outcast card",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Felsaber",
+					new CardData
+					{
+						ManaCost = 4,
+						Spell = "Cant attack unless hero does",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 5,
+						Health = 6
+					}
+				},
+				{
+					"Dreaming Drake",
+					new CardData
+					{
+						ManaCost = 1,
+						Spell = "Corrupt: gain +2/+2",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = true,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 3,
+						Health = 4
+					}
+				},
+				{
+					"Arbor Up",
+					new CardData
+					{
+						ManaCost = 5,
+						Spell = "Summon 2 Treants",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Bola Shot",
+					new CardData
+					{
+						ManaCost = 1,
+						Spell = "Deal 1 to minion and 2 to neighbours",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = true,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Saddlemaster",
+					new CardData
+					{
+						ManaCost = 3,
+						Spell = "",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 3,
+						Health = 4
+					}
+				},
+				{
+					"Conjure Mana Biscuit",
+					new CardData
+					{
+						ManaCost = 2,
+						Spell = "",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Glacier Racer",
+					new CardData
+					{
+						ManaCost = 1,
+						Spell = "deal 3 to all frozens",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = true,
+						Heal = null,
+						Attack = 1,
+						Health = 3
+					}
+				},
+				{
+					"Redscale Dragontamer",
+					new CardData
+					{
+						ManaCost = 2,
+						Spell = "DR: draw a Dragon",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 2,
+						Health = 3
+					}
+				},
+				{
+					"Fishy Flyer",
+					new CardData
+					{
+						ManaCost = 4,
+						Spell = "Rush and DR",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 4,
+						Health = 3
+					}
+				},
+				{
+					"Darkmoon Rabbit",
+					new CardData
+					{
+						ManaCost = 10,
+						Spell = "Rush Poisonous",
+						Legendary = false,
+						Epic = true,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = true,
+						IsSecret = false,
+						Aoe = true,
+						Heal = null,
+						Attack = 1,
+						Health = 1
+					}
+				},
+				{
+					"Libram of Judgment",
+					new CardData
+					{
+						ManaCost = 7,
+						Spell = "Corrupt: Gain Lifesteal",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = true,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 5,
+						Health = 3
+					}
+				},
+				{
+					"Imprisoned Celestial",
+					new CardData
+					{
+						ManaCost = 3,
+						Spell = "SB: Give ur minions Shield",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 4,
+						Health = 5
+					}
+				},
+				{
+					"Lightsteed",
+					new CardData
+					{
+						ManaCost = 4,
+						Spell = "",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 3,
+						Health = 6
+					}
+				},
+				{
+					"Dark Inquisitor Xanesh",
+					new CardData
+					{
+						ManaCost = 5,
+						Spell = "Reduce cost of all corrupt cards by 2",
+						Legendary = true,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 3,
+						Health = 5
+					}
+				},
+				{
+					"Shennanigans",
+					new CardData
+					{
+						ManaCost = 2,
+						Spell = "transform 2nd draw into Banana",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = true,
+						Aoe = false,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Sparkjoy Cheat",
+					new CardData
+					{
+						ManaCost = 3,
+						Spell = "If holding a secret cast it and draw",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 3,
+						Health = 3
+					}
+				},
+				{
+					"Mistrunner",
+					new CardData
+					{
+						ManaCost = 5,
+						Spell = "Give friendly minion +3/+3",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 4,
+						Health = 4
+					}
+				},
+				{
+					"Landslide",
+					new CardData
+					{
+						ManaCost = 2,
+						Spell = "Deal 1 to all enemy minions, Overload 2",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = true,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Backfire",
+					new CardData
+					{
+						ManaCost = 3,
+						Spell = "Draw 3, damage Hero by 3",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Envoy Rustwix",
+					new CardData
+					{
+						ManaCost = 5,
+						Spell = "DR: add 3 primes to ur deck",
+						Legendary = true,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 5,
+						Health = 4
+					}
+				},
+				{
+					"Spiked Wheel",
+					new CardData
+					{
+						ManaCost = 1,
+						Spell = "+3 attack while hero has armour",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = true,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 0,
+						Health = 2
+					}
+				},
+				{
+					"Ironclad",
+					new CardData
+					{
+						ManaCost = 3,
+						Spell = "",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 2,
+						Health = 4
+					}
+				},
+				{
+					"Resizing Pouch",
+					new CardData
+					{
+						ManaCost = 1,
+						Spell = "Discover card costing ur remaining mana",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Nitroboost Poison",
+					new CardData
+					{
+						ManaCost = 1,
+						Spell = "Give a minion +2 attack, Corrupt and ur weapon",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Felfire Deadeye",
+					new CardData
+					{
+						ManaCost = 2,
+						Spell = "Hero pwr costs one less",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 2,
+						Health = 3
+					}
+				},
+				{
+					"Imprisoned Pheonix",
+					new CardData
+					{
+						ManaCost = 2,
+						Spell = "Dormant: Spell Dmg +2",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 2,
+						Health = 3
+					}
+				},
+				{
+					"Barricade",
+					new CardData
+					{
+						ManaCost = 4,
+						Spell = "Summon 2/4 Taunt and maybe another",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = true,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Guidance",
+					new CardData
+					{
+						ManaCost = 1,
+						Spell = "Gain a spell Overload gain 2",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Hysteria",
+					new CardData
+					{
+						ManaCost = 3,
+						Spell = "Choose minion it attacks tll it dies",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Luckysoul Hoarder",
+					new CardData
+					{
+						ManaCost = 3,
+						Spell = "2 souls frags, Corrupt draw",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 3,
+						Health = 4
+					}
+				},
+				{
+					"Rally",
+					new CardData
+					{
+						ManaCost = 4,
+						Spell = "Resurect a 1 2 and 3",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = null,
+						Health = null
+					}
+				},
+				{
+					"Crabrider",
+					new CardData
+					{
+						ManaCost = 1,
+						Spell = "Rush Windfury",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 1,
+						Health = 4
+					}
+				},
+				{
+					"Keywarden Ivory",
+					new CardData
+					{
+						ManaCost = 5,
+						Spell = "Discover a dc spell, SB add another copy",
+						Legendary = true,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 4,
+						Health = 5
+					}
+				},
+				{
+					"Armor Vendor",
+					new CardData
+					{
+						ManaCost = 1,
+						Spell = "4 Armour to both heros",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = 4,
+						Attack = 1,
+						Health = 3
+					}
+				},
+				{
+					"Runaway Blackwing",
+					new CardData
+					{
+						ManaCost = 9,
+						Spell = "end of turn deal 9 dmg to en minion",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 9,
+						Health = 9
+					}
+				},
+				{
+					"Deathwarden",
+					new CardData
+					{
+						ManaCost = 3,
+						Spell = "DRs cant trigger",
+						Legendary = false,
+						Epic = true,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 2,
+						Health = 5
+					}
+				},
+				{
+					"Moonfang",
+					new CardData
+					{
+						ManaCost = 5,
+						Spell = "Only takes 1 dmg at a time",
+						Legendary = true,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 6,
+						Health = 3
+					}
+				},
+				{
+					"Diligent Notetaker",
+					new CardData
+					{
+						ManaCost = 2,
+						Spell = "SB: Return the spell to ur hand",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = null,
+						Attack = 2,
+						Health = 3
+					}
+				},
+				{
+					"Groundskeeper",
+					new CardData
+					{
+						ManaCost = 4,
+						Spell = "",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = true,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = false,
+						Heal = 5,
+						Attack = 4,
+						Health = 5
+					}
+				},
+				{
+					"Tidal Wave",
+					new CardData
+					{
+						ManaCost = 8,
+						Spell = "Lifesteal deal 3 to all minions",
+						Legendary = false,
+						Epic = false,
+						IsWeapon = false,
+						IsWeaponRemoval = false,
+						IsTaunt = false,
+						HasShield = false,
+						IsBurn = false,
+						IsRemoval = false,
+						IsSecret = false,
+						Aoe = true,
+						Heal = 3,
+					}
+				},
 			};
 			foreach (var item in CardBase)
 			{

@@ -183,6 +183,7 @@ namespace Domain.Metas
 					new Card { Name = "Twisting Nether" },
 					new Card { Name = "Voidlord" },
 					new Card { Name = "Bloodreaver Gul'dan" },
+
 				}
 			};
 		}
